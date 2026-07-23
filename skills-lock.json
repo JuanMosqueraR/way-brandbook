@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "brand-identity": {
+      "source": "travisjneuman/.claude",
+      "sourceType": "github",
+      "skillPath": "skills/brand-identity/SKILL.md",
+      "computedHash": "47738ad03e69ff48d1042c15e5b1920a9501ba66c940a94328c742defccd6e86"
+    }
+  }
+}

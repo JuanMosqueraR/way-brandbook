@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Territorios de Marca 2026–2031</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ─── TOKENS ─────────────────────────────────── */
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #F0EDE8;
+      --muted: rgba(240, 237, 232, 0.45);
+
+      --raiz-1: #C4622A;
+      --raiz-2: #E8A84A;
+      --raiz-bg: #0E0703;
+
+      --veloz-1: #CDFF00;
+      --veloz-2: #FFFFFF;
+      --veloz-bg: #050505;
+
+      --nos-1: #C97B73;
+      --nos-2: #F0DDD5;
+      --nos-bg: #100706;
+
+      --ok: #4ADE80;
+      --warn: #FB923C;
+      --accent: #818CF8;
+    }
+
+    /* ─── RESET ──────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── FADE IN ON SCROLL ──────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8, 8, 8, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a.t-raiz {
+      color: var(--raiz-1);
+    }
+
+    .nav-links a.t-veloz {
+      color: var(--veloz-1);
+    }
+
+    .nav-links a.t-nos {
+      color: var(--nos-1);
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .hero-word {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(96px, 18vw, 220px);
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.55) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 36px;
+      font-size: clamp(13px, 2vw, 18px);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: 32px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-value {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .chip-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--border);
+      align-self: center;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-bar {
+      width: 1px;
+      height: 56px;
+      background: linear-gradient(to bottom, transparent, rgba(240, 237, 232, 0.35));
+      animation: bar 2s ease-in-out infinite;
+    }
+
+    @keyframes bar {
+
+      0%,
+      100% {
+        opacity: 0.2
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    /* ─── SECTION BASE ───────────────────────────── */
+    .sec {
+      padding: 120px 72px 100px;
+    }
+
+    .sec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 64px;
+    }
+
+    /* ─── DIAGNOSTICO ────────────────────────────── */
+    #diagnostico {
+      background: var(--surface);
+    }
+
+    .diag-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .diag-card {
+      padding: 40px 32px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .diag-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .diag-card.ok::after {
+      background: var(--ok);
+    }
+
+    .diag-card.warn::after {
+      background: var(--warn);
+    }
+
+    .diag-card.info::after {
+      background: var(--accent);
+    }
+
+    .diag-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .diag-card h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .diag-card.ok h3 {
+      color: var(--ok);
+    }
+
+    .diag-card.warn h3 {
+      color: var(--warn);
+    }
+
+    .diag-card.info h3 {
+      color: var(--accent);
+    }
+
+    .diag-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .diag-list li {
+      font-size: 14px;
+      color: rgba(240, 237, 232, 0.7);
+      line-height: 1.55;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .diag-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .diag-insight {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 17px;
+      color: rgba(240, 237, 232, 0.8);
+      line-height: 1.65;
+    }
+
+    /* ─── TERRITORY WRAPPER ──────────────────────── */
+    .territory {
+      padding: 130px 72px 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .t-bg-num {
+      position: absolute;
+      top: -40px;
+      right: -30px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: min(48vw, 520px);
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0.028;
+      color: #fff;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .t-header {
+      margin-bottom: 72px;
+    }
+
+    .t-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .t-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(72px, 14vw, 180px);
+      font-weight: 900;
+      line-height: 0.82;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .t-sub {
+      font-size: clamp(16px, 2.2vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      opacity: 0.6;
+    }
+
+    .t-essence {
+      display: inline-block;
+      padding: 18px 28px;
+      margin: 36px 0 0;
+      border-left: 3px solid;
+      background: rgba(255, 255, 255, 0.03);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(15px, 1.6vw, 20px);
+      line-height: 1.55;
+    }
+
+    .t-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .t-card {
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .t-card h4 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .t-card p {
+      font-size: 14px;
+      color: rgba(240, 237, 232, 0.72);
+      line-height: 1.7;
+    }
+
+    .t-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .t-list li {
+      font-size: 14px;
+      color: rgba(240, 237, 232, 0.72);
+      line-height: 1.55;
+    }
+
+    .t-list li::before {
+      content: '→ ';
+      opacity: 0.4;
+      font-size: 12px;
+    }
+
+    .voice-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .voice-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .voice-text {
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(240, 237, 232, 0.65);
+      line-height: 1.5;
+    }
+
+    .risk-box {
+      margin-top: 20px;
+      padding: 16px 20px;
+      border: 1px solid rgba(251, 146, 60, 0.3);
+      background: rgba(251, 146, 60, 0.06);
+      color: #FB923C;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .t-timeline {
+      grid-column: 1 / -1;
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .tl-year {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
+    .tl-text {
+      font-size: 14px;
+      color: rgba(240, 237, 232, 0.68);
+      line-height: 1.65;
+    }
+
+    /* ─── TERRITORY COLORS ───────────────────────── */
+    #raiz {
+      background: var(--raiz-bg);
+    }
+
+    #raiz .t-eyebrow {
+      color: var(--raiz-2);
+    }
+
+    #raiz .t-name {
+      color: var(--raiz-1);
+    }
+
+    #raiz .t-essence {
+      border-color: var(--raiz-2);
+    }
+
+    #raiz .t-card h4 {
+      color: var(--raiz-2);
+      opacity: 1;
+    }
+
+    #raiz .voice-text.after {
+      color: var(--raiz-2);
+    }
+
+    #veloz {
+      background: var(--veloz-bg);
+    }
+
+    #veloz .t-eyebrow {
+      color: var(--veloz-1);
+    }
+
+    #veloz .t-name {
+      color: var(--veloz-1);
+    }
+
+    #veloz .t-essence {
+      border-color: var(--veloz-1);
+    }
+
+    #veloz .t-card h4 {
+      color: var(--veloz-1);
+      opacity: 1;
+    }
+
+    #veloz .voice-text.after {
+      color: var(--veloz-1);
+    }
+
+    #nosotras {
+      background: var(--nos-bg);
+    }
+
+    #nosotras .t-eyebrow {
+      color: var(--nos-2);
+    }
+
+    #nosotras .t-name {
+      color: var(--nos-1);
+    }
+
+    #nosotras .t-essence {
+      border-color: var(--nos-2);
+    }
+
+    #nosotras .t-card h4 {
+      color: var(--nos-2);
+      opacity: 1;
+    }
+
+    #nosotras .voice-text.after {
+      color: var(--nos-1);
+    }
+
+    /* ─── COMPARACION ────────────────────────────── */
+    #comparacion {
+      background: #070707;
+    }
+
+    .compare-wrap {
+      overflow-x: auto;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    .compare-table th {
+      padding: 18px 22px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: left;
+      border-bottom: 2px solid;
+      white-space: nowrap;
+    }
+
+    .compare-table th:nth-child(1) {
+      color: var(--muted);
+      border-color: var(--border);
+    }
+
+    .compare-table th:nth-child(2) {
+      color: var(--raiz-1);
+      border-color: var(--raiz-1);
+    }
+
+    .compare-table th:nth-child(3) {
+      color: var(--veloz-1);
+      border-color: var(--veloz-1);
+    }
+
+    .compare-table th:nth-child(4) {
+      color: var(--nos-1);
+      border-color: var(--nos-1);
+    }
+
+    .compare-table td {
+      padding: 16px 22px;
+      font-size: 14px;
+      color: rgba(240, 237, 232, 0.68);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .compare-table td:first-child {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .highlight-row td {
+      font-weight: 600;
+    }
+
+    .highlight-row td:nth-child(2) {
+      color: var(--raiz-1);
+    }
+
+    .highlight-row td:nth-child(3) {
+      color: var(--veloz-1);
+    }
+
+    .highlight-row td:nth-child(4) {
+      color: var(--nos-1);
+    }
+
+    /* ─── RECOMENDACION ──────────────────────────── */
+    #recomendacion {
+      background: var(--bg);
+    }
+
+    .rec-box {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 64px;
+      position: relative;
+      margin-top: 48px;
+    }
+
+    .rec-tag {
+      position: absolute;
+      top: -13px;
+      left: 52px;
+      background: var(--bg);
+      padding: 0 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--nos-1);
+    }
+
+    .rec-pills {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .pill {
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pill-primary {
+      background: var(--nos-1);
+      color: #fff;
+    }
+
+    .pill-secondary {
+      border: 1px solid var(--raiz-1);
+      color: var(--raiz-1);
+    }
+
+    .pill-plus {
+      color: var(--muted);
+      font-size: 20px;
+      padding: 0;
+    }
+
+    .rec-body {
+      font-size: 16px;
+      color: rgba(240, 237, 232, 0.75);
+      line-height: 1.85;
+      max-width: 700px;
+    }
+
+    .rec-body strong {
+      color: var(--text);
+    }
+
+    /* ─── ELEGIR ─────────────────────────────────── */
+    #elegir {
+      background: #050505;
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 48px;
+    }
+
+    .elegir-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(36px, 7vw, 88px);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .elegir-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 60px;
+      line-height: 1.65;
+    }
+
+    .elegir-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .t-btn {
+      padding: 18px 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+
+    .t-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    }
+
+    .t-btn.raiz {
+      background: var(--raiz-1);
+      color: #fff;
+    }
+
+    .t-btn.veloz {
+      background: var(--veloz-1);
+      color: #000;
+    }
+
+    .t-btn.nosotras {
+      background: var(--nos-1);
+      color: #fff;
+    }
+
+    /* ─── MODAL ──────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #121212;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 56px 60px;
+      max-width: 560px;
+      width: 90%;
+      position: relative;
+      animation: fadeUp 0.3s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .modal h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .modal p {
+      font-size: 15px;
+      color: rgba(240, 237, 232, 0.7);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .modal-action {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      transition: opacity 0.2s;
+    }
+
+    .modal-action:hover {
+      opacity: 0.85;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      padding: 36px 72px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 14px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .sec {
+        padding: 100px 28px 80px;
+      }
+
+      .territory {
+        padding: 100px 28px 80px;
+      }
+
+      .diag-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .t-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .t-timeline {
+        grid-column: auto;
+      }
+
+      footer {
+        padding: 28px 28px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .rec-box {
+        padding: 40px 28px;
+      }
+
+      .hero-chips {
+        gap: 20px;
+      }
+    }
+
+    @media print {
+      nav {
+        position: static;
+      }
+
+      .territory,
+      #comparacion,
+      #recomendacion {
+        page-break-before: always;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════ NAV ════════════════════ -->
+  <nav>
+    <div class="nav-logo">WAY</div>
+    <ul class="nav-links">
+      <li><a href="#diagnostico">Diagnóstico</a></li>
+      <li><a href="#raiz" class="t-raiz">01 · Raíz</a></li>
+      <li><a href="#veloz" class="t-veloz">02 · Veloz</a></li>
+      <li><a href="#nosotras" class="t-nos">03 · Nosotras</a></li>
+      <li><a href="#comparacion">Comparación</a></li>
+      <li><a href="#elegir">Elegir</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════════════ HERO ════════════════════ -->
+  <section id="hero">
+    <p class="hero-eyebrow">Estrategia de Marca · Confidencial · Junio 2026</p>
+    <div class="hero-word reveal">WAY</div>
+    <p class="hero-sub reveal">Territorios de Marca · 2026 – 2031</p>
+    <div class="hero-chips reveal">
+      <div class="chip">
+        <span class="chip-value">3</span>
+        <span class="chip-label">Territorios</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="chip">
+        <span class="chip-value">5</span>
+        <span class="chip-label">Años</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="chip">
+        <span class="chip-value">61K</span>
+        <span class="chip-label">Seguidores actuales</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="chip">
+        <span class="chip-value">S/. 49–229</span>
+        <span class="chip-label">Rango de precio</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-bar"></div>
+      Explorar
+    </div>
+  </section>
+
+  <!-- ════════════════════ DIAGNOSTICO ════════════════════ -->
+  <section id="diagnostico" class="sec">
+    <p class="sec-label reveal">Punto de Partida</p>
+    <h2 class="sec-title reveal">Dónde está<br>WAY hoy</h2>
+    <div class="diag-grid">
+      <div class="diag-card ok reveal">
+        <div class="diag-icon">⚡</div>
+        <h3>Fortalezas Reales</h3>
+        <ul class="diag-list">
+          <li>Operación desde Galería Damero, Gamarra — velocidad de reposición que ninguna marca digital-only iguala
+          </li>
+          <li>24h de envío: diferenciador operativo real y escaso en el mercado</li>
+          <li>61K seguidores activos</li>
+          <li>Precio mid-range con margen para moverse hacia arriba o abajo</li>
+          <li>Nombres de productos con referencias internacionales: hay una aspiración cosmopolita latente</li>
+        </ul>
+      </div>
+      <div class="diag-card warn reveal">
+        <div class="diag-icon">◎</div>
+        <h3>Tensiones de Marca</h3>
+        <ul class="diag-list">
+          <li>"Mujer empoderada" lo dice cada marca de Gamarra. No diferencia.</li>
+          <li>360 productos activos pero con muchos productos agotados en la web
+          </li>
+          <li>Naming internacional (Estambul, Izmit) choca con posicionamiento de marca local</li>
+          <li>Voz en redes genérica: emojis, entusiasmo, invisible en mercado saturado</li>
+          <li>Operar desde Gamarra y aspirar a marca curada crea disonancia sin resolver</li>
+        </ul>
+      </div>
+      <div class="diag-card info reveal">
+        <div class="diag-icon">◆</div>
+        <h3>El Insight Central</h3>
+        <p class="diag-insight">"WAY tiene tres caminos radicalmente distintos para ganar los próximos 5 años. No son
+          variaciones del mismo concepto. Son apuestas estratégicas con diferentes riesgos, clientes y modelos de
+          negocio. Cada una exige una versión distinta de la marca."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ T1: RAÍZ ════════════════════ -->
+  <div class="territory" id="raiz">
+    <div class="t-bg-num">1</div>
+
+    <div class="t-header">
+      <p class="t-eyebrow reveal">Territorio 01 · Identidad Cultural</p>
+      <div class="t-name reveal">RAÍZ</div>
+      <p class="t-sub reveal">"Peruana sin disculpas"</p>
+      <div class="t-essence reveal">"La moda como acto de identidad. Somos Lima."</div>
+    </div>
+
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <h4>La Apuesta</h4>
+        <p>Todas las marcas de Gamarra quieren parecerse a marcas internacionales. WAY gana haciendo lo contrario:
+          apropiarse de la identidad limeña urbana de una forma que ninguna marca global puede copiar. No el Perú
+          artesanal de los alpacas —eso ya está tomado. El Perú que nadie ha convertido en moda moderna: Lima, sus
+          contradicciones, su energía, su mezcla de costa + sierra + selva filtrada por caos urbano. El nombre "WAY" en
+          inglés ya es un doble código: suena global pero vive en Gamarra. Esa tensión, bien manejada, es oro.</p>
+      </div>
+      <div class="t-card reveal">
+        <h4>A Quién Le Habla</h4>
+        <ul class="t-list">
+          <li>Mujer 22–34, limeña o que aspira a la identidad limeña urbana</li>
+          <li>La que combina ropa de tienda con vintage de feria sin disculparse</li>
+          <li>La que no necesita validación de marcas globales para sentirse bien vestida</li>
+          <li>Miraflores, Jesús María, Breña, Independencia — todas tienen estilo</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Sistema Visual</h4>
+        <ul class="t-list">
+          <li>Color: terracota, ocre, verde selva, marino profundo — pops de amarillo Inca</li>
+          <li>Fotografía: calles reales de Lima, mujeres con caras y actitud reales</li>
+          <li>Tipografía: serif contemporáneo con actitud, nada de scripts decorativos</li>
+          <li>Naming: colecciones por distritos (Barranco, Rímac, Surquillo, Chorrillos)</li>
+          <li>Eliminar referencias internacionales en nombres de producto</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Voz y Tono</h4>
+        <div class="voice-block">
+          <div>
+            <p class="voice-label">Antes</p>
+            <p class="voice-text">"Tu combinación perfecta la encuentras aquí ✨😍"</p>
+          </div>
+          <div>
+            <p class="voice-label">Después</p>
+            <p class="voice-text after">"Nadie te explica Lima. La vives. Esto es WAY."</p>
+          </div>
+          <p style="font-size:13px; color:rgba(240,237,232,0.5); line-height:1.6; margin-top:8px;">Directa · Orgullosa ·
+            Irreverente sin ser agresiva · Sin emojis de corazón genérico</p>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <h4>Estrategia de Producto</h4>
+        <ul class="t-list">
+          <li>4 drops coleccionales al año de 40–60 piezas, nombradas por barrios</li>
+          <li>Colaboraciones con artistas visuales peruanos para prints exclusivos</li>
+          <li>Pieza hero que se convierte en ícono de cada colección</li>
+          <li>Reducir SKUs activos de 360 a ~150 piezas bien editadas</li>
+          <li>Catálogo con historia, no solo inventario</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Inversión & Riesgo</h4>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Capex:</strong> Medio — branding,
+          producción curada, sesiones fotográficas en locación.</p>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Tiempo al resultado:</strong> 18–24
+          meses.</p>
+        <div class="risk-box">⚠ Requiere eliminar lo que vende bien hoy antes de que la nueva identidad genere tracción.
+          Existe un valle de ingresos en el Año 1.</div>
+      </div>
+      <div class="t-card t-timeline reveal">
+        <h4>Hoja de Ruta · 5 Años</h4>
+        <div class="tl-row">
+          <div class="tl-year">Año 1–2</div>
+          <div class="tl-text">Redefinir identidad visual completa. Limpiar catálogo. Lanzar sistema de drops mensuales.
+            Meta: 150K seguidores con contenido cultural + fashion auténtico.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 3</div>
+          <div class="tl-text">Primera colaboración con artista peruano reconocido. Pop-up físico fuera de Gamarra
+            (Barranco, Miraflores). WAY empieza a aparecer en medios de cultura, no solo de moda.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 4</div>
+          <div class="tl-text">Expansión a Bogotá y Santiago llevando la bandera peruana como diferenciador único — como
+            ninguna marca global puede hacer.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 5</div>
+          <div class="tl-text">WAY es la respuesta cuando alguien pregunta "¿cuál es la marca de moda que representa
+            Lima de verdad?" Marca cultural de referencia latinoamericana.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════ T2: VELOZ ════════════════════ -->
+  <div class="territory" id="veloz">
+    <div class="t-bg-num">2</div>
+
+    <div class="t-header">
+      <p class="t-eyebrow reveal">Territorio 02 · Fashion-Tech & Experiencia</p>
+      <div class="t-name reveal">VELOZ</div>
+      <p class="t-sub reveal">"El lujo es el tiempo"</p>
+      <div class="t-essence reveal">"No vendemos tiempo. Te lo devolvemos."</div>
+    </div>
+
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <h4>La Apuesta</h4>
+        <p>WAY tiene un superpoder que no ha convertido en filosofía de marca: 24 horas. En 2026, la mujer moderna de
+          Lima no sufre por falta de opciones — sufre por exceso de ellas. Este territorio convierte a WAY en la primera
+          marca fashion-tech de Perú: curaduría radical, tecnología de personalización y logística como ventaja
+          competitiva. El lujo del siglo XXI no es el precio — es la fricción cero.</p>
+      </div>
+      <div class="t-card reveal">
+        <h4>A Quién Le Habla</h4>
+        <ul class="t-list">
+          <li>Mujer 28–42, profesional activa, ingreso medio-alto</li>
+          <li>La que no quiere scrollear 400 productos — quiere 10 opciones buenas</li>
+          <li>Compra en Zara online pero quiere algo más local y más curado</li>
+          <li>Ya normalizó pagar por velocidad: delivery, Rappi, streaming, todo</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Sistema Visual</h4>
+        <ul class="t-list">
+          <li>Color: blanco absoluto + negro editorial. Un solo acento por temporada.</li>
+          <li>Fotografía: estudio. Luz perfecta. La ropa es protagonista absoluto.</li>
+          <li>Tipografía: sans-serif geométrico, tracking amplio, pesos extremos</li>
+          <li>Ecommerce rediseñado: quiz de estilo, home personalizada, checkout 2 pasos</li>
+          <li>Calidad visual de lujo, precio de mid-range</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Voz y Tono</h4>
+        <div class="voice-block">
+          <div>
+            <p class="voice-label">Antes</p>
+            <p class="voice-text">"Luce única con nosotras ✨"</p>
+          </div>
+          <div>
+            <p class="voice-label">Después</p>
+            <p class="voice-text after">"Lunes. Reunión. 3 opciones. Llega hoy."</p>
+          </div>
+          <p style="font-size:13px; color:rgba(240,237,232,0.5); line-height:1.6; margin-top:8px;">Precisa · Sin
+            adjetivos vacíos · Sin emojis · Como una buena sastre que ya sabe lo que necesitas</p>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <h4>Estrategia de Producto</h4>
+        <ul class="t-list">
+          <li>Máximo 80 piezas disponibles en simultáneo. Nunca más. Lo agotado, agotado.</li>
+          <li><strong style="color:rgba(240,237,232,0.9);">The Drop Semanal:</strong> 5–8 piezas nuevas cada lunes,
+            suscriptores primero</li>
+          <li><strong style="color:rgba(240,237,232,0.9);">"Ya está":</strong> suscripción mensual — 3 piezas
+            preseleccionadas por perfil, devuelve lo que no quiere</li>
+          <li><strong style="color:rgba(240,237,232,0.9);">Garantía WAY VELOZ:</strong> +24h → 50% off en el siguiente
+            pedido</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Inversión & Riesgo</h4>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Capex:</strong> Alto — tecnología,
+          personalización, logística a provincias, rediseño de ecommerce.</p>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Tiempo al resultado:</strong> 30–36
+          meses.</p>
+        <div class="risk-box">⚠ Si la promesa de 24h falla aunque sea en el 5% de los pedidos, la credibilidad del
+          territorio se derrumba. La tecnología es el cuello de botella.</div>
+      </div>
+      <div class="t-card t-timeline reveal">
+        <h4>Hoja de Ruta · 5 Años</h4>
+        <div class="tl-row">
+          <div class="tl-year">Año 1</div>
+          <div class="tl-text">Lanzar The Drop Semanal. Rediseñar ecommerce con quiz de estilo y home personalizada.
+            Medir NPS de velocidad de entrega semana a semana.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 2</div>
+          <div class="tl-text">Beta cerrada de suscripción "Ya está" con 200 clientas. Construir el primer algoritmo de
+            preferencias. Ajustar antes de escalar.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 3</div>
+          <div class="tl-text">Lanzar membresía WAY VELOZ: pago mensual por acceso anticipado + garantía extendida. El
+            servicio como producto.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 4–5</div>
+          <div class="tl-text">Expansión logística a Arequipa, Trujillo, Cusco manteniendo la promesa 24h. Primera marca
+            de moda peruana con modelo de suscripción rentable. Potencial de adquisición o licencia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════ T3: NOSOTRAS ════════════════════ -->
+  <div class="territory" id="nosotras">
+    <div class="t-bg-num">3</div>
+
+    <div class="t-header">
+      <p class="t-eyebrow reveal">Territorio 03 · Comunidad & Co-creación</p>
+      <div class="t-name reveal">NOSOTRAS</div>
+      <p class="t-sub reveal">"La marca que te pertenece"</p>
+      <div class="t-essence reveal">"No somos una marca con clientas.<br>Somos una comunidad con ropa."</div>
+    </div>
+
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <h4>La Apuesta</h4>
+        <p>El cambio más profundo en moda en los últimos 5 años no fue el lujo accesible ni la sustentabilidad. Fue que
+          las clientas dejaron de querer ser audiencia y empezaron a querer ser protagonistas. WAY tiene 61K seguidores
+          que consumen contenido pero no tienen poder dentro de la marca. Este territorio cambia eso. Como Glossier hizo
+          en beauty — pero para Lima. Las comunidades reales no se compran. Se construyen. Y WAY ya tiene el activo
+          inicial: mujeres que confían en ella.</p>
+      </div>
+      <div class="t-card reveal">
+        <h4>A Quién Le Habla</h4>
+        <ul class="t-list">
+          <li>Mujer 18–30, digital-nativa, activa en Instagram y TikTok</li>
+          <li>La que comparte sus outfits sin que nadie se lo pida</li>
+          <li>La que critica el sizing de las marcas sin miedo en comentarios</li>
+          <li>La que ya es embajadora informal de WAY sin ninguna compensación</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Sistema Visual</h4>
+        <ul class="t-list">
+          <li>Color: crudo, beige tostado, blanco roto — acento votado por la comunidad</li>
+          <li>Fotografía: UGC como contenido primario — las clientas SON el catálogo</li>
+          <li>Tipografía: warm, accesible, sin poses editoriales</li>
+          <li>Tallas: la comunidad vota qué tallas se producen cada temporada</li>
+          <li>Diversidad real, no performativa</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Voz y Tono</h4>
+        <div class="voice-block">
+          <div>
+            <p class="voice-label">Antes</p>
+            <p class="voice-text">"Ropa de moda para la mujer empoderada"</p>
+          </div>
+          <div>
+            <p class="voice-label">Después</p>
+            <p class="voice-text after">"Esto lo pediste tú. Aquí está."</p>
+          </div>
+          <p style="font-size:13px; color:rgba(240,237,232,0.5); line-height:1.6; margin-top:8px;">Íntimo ·
+            Conversacional · Co-conspiratorio · Primera persona del plural real, no corporativa</p>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <h4>Estrategia de Producto</h4>
+        <ul class="t-list">
+          <li><strong style="color:rgba(240,237,232,0.9);">Colecciones votadas:</strong> la comunidad elige entre 3
+            opciones de paleta/silueta cada temporada</li>
+          <li><strong style="color:rgba(240,237,232,0.9);">"Styled by [Nombre]":</strong> clienta real co-diseña una
+            pieza limitada al año, su nombre en la etiqueta</li>
+          <li><strong style="color:rgba(240,237,232,0.9);">WAY Circles:</strong> grupos de 50–100 clientas por zona para
+            testear, dar feedback y co-crear</li>
+          <li>Modelo de pre-orden: se produce solo lo que ya está vendido</li>
+        </ul>
+      </div>
+      <div class="t-card reveal">
+        <h4>Inversión & Riesgo</h4>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Capex:</strong> Bajo-Medio —
+          community management, plataforma de votación, logistics de pre-orden.</p>
+        <p style="margin-bottom:12px;"><strong style="color:rgba(240,237,232,0.9);">Tiempo al resultado:</strong> 12–18
+          meses.</p>
+        <div class="risk-box">⚠ La comunidad tiene poder real. Si WAY no cumple lo que se votó —por costos, producción o
+          timing— el daño a la confianza es mayor que con una marca tradicional.</div>
+      </div>
+      <div class="t-card t-timeline reveal">
+        <h4>Hoja de Ruta · 5 Años</h4>
+        <div class="tl-row">
+          <div class="tl-year">Año 1</div>
+          <div class="tl-text">Lanzar sistema de votación de colecciones. Crear primeros WAY Circles en Lima (diversidad
+            real de zonas). Primer "Styled by" con clienta elegida por la comunidad.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 2</div>
+          <div class="tl-text">Lookbook comunitario integrado en el ecommerce. Sistema de puntos: foto de outfit real =
+            descuento real. Las clientas son el equipo de marketing.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 3</div>
+          <div class="tl-text">Modelo de pre-orden para colecciones principales. Producción solo de lo ya vendido.
+            Drástica reducción de inventario sin salida y desperdicio.</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year">Año 4–5</div>
+          <div class="tl-text">WAY Circles regionales en Arequipa, Trujillo, Cusco. Potencial de marketplace: la
+            comunidad vende entre sí, WAY toma comisión. La marca se convierte en plataforma.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════ COMPARACION ════════════════════ -->
+  <section id="comparacion" class="sec">
+    <p class="sec-label reveal">Mapa de Decisión</p>
+    <h2 class="sec-title reveal">Los tres territorios<br>frente a frente</h2>
+    <div class="compare-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th>01 · RAÍZ</th>
+            <th>02 · VELOZ</th>
+            <th>03 · NOSOTRAS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ventaja competitiva</td>
+            <td>Identidad cultural irrepetible</td>
+            <td>Velocidad + curaduría editorial</td>
+            <td>Co-creación + comunidad real</td>
+          </tr>
+          <tr>
+            <td>Edad target</td>
+            <td>22 – 34</td>
+            <td>28 – 42</td>
+            <td>18 – 30</td>
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td>Mid + 5–10% premium</td>
+            <td>Mid-High (servicio justifica precio)</td>
+            <td>Mid-range (volumen por fidelidad)</td>
+          </tr>
+          <tr>
+            <td>Canal dominante</td>
+            <td>Instagram + pop-ups culturales</td>
+            <td>Web/app + WhatsApp VIP</td>
+            <td>TikTok + comunidad privada</td>
+          </tr>
+          <tr>
+            <td>Modelo de ingresos</td>
+            <td>Drops coleccionales + colaboraciones</td>
+            <td>Suscripción + membresía</td>
+            <td>Pre-orden + comisión marketplace</td>
+          </tr>
+          <tr>
+            <td>Inversión inicial</td>
+            <td>Media</td>
+            <td>Alta</td>
+            <td>Baja – Media</td>
+          </tr>
+          <tr>
+            <td>Tiempo al resultado visible</td>
+            <td>18–24 meses</td>
+            <td>30–36 meses</td>
+            <td>12–18 meses</td>
+          </tr>
+          <tr>
+            <td>Riesgo principal</td>
+            <td>Valle de ingresos en transición</td>
+            <td>Dependencia tecnológica y logística</td>
+            <td>Gestión de expectativas comunitarias</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Upside a 5 años</td>
+            <td>Marca cultural latinoamericana</td>
+            <td>Adquisición / expansión regional</td>
+            <td>Plataforma / marketplace</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════════════════════ RECOMENDACION ════════════════════ -->
+  <section id="recomendacion" class="sec">
+    <p class="sec-label reveal">Nuestra Recomendación</p>
+    <h2 class="sec-title reveal">Si tuviéramos<br>que elegir hoy</h2>
+    <div class="rec-box reveal">
+      <span class="rec-tag">Recomendación Estratégica</span>
+      <div class="rec-pills">
+        <span class="pill pill-primary">NOSOTRAS</span>
+        <span class="pill pill-plus">+</span>
+        <span class="pill pill-secondary">alma de RAÍZ</span>
+      </div>
+      <p class="rec-body">
+        <strong>NOSOTRAS</strong> como punto de entrada: requiere el menor capex, activa los 61K seguidores que ya
+        existen y genera diferenciación inmediata en un mercado donde nadie hace esto. Las comunidades reales no se
+        compran — se construyen. WAY ya tiene el activo inicial: mujeres que confían en la marca.<br><br>
+        Con <strong>RAÍZ</strong> como base de identidad: la comunidad necesita algo en qué creer. La identidad limeña
+        le da ese "de qué" hablar, ese orgullo compartido que hace que la gente quiera pertenecer. Sin una identidad
+        clara, una comunidad es solo un grupo de WhatsApp.<br><br>
+        <strong>VELOZ</strong> es el territorio más ambicioso y potencialmente más rentable a largo plazo — pero primero
+        hay que saber a dónde vas antes de construir el motor. Es el siguiente paso natural una vez que la marca tiene
+        comunidad e identidad claras. No es "no", es "después".
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════ ELEGIR ════════════════════ -->
+  <section id="elegir">
+    <h2 class="elegir-title reveal">¿Cuál es<br>el WAY de WAY?</h2>
+    <p class="elegir-sub reveal">Los tres territorios son viables. La decisión depende de a dónde quieres llevar la
+      marca en los próximos 5 años.</p>
+    <div class="elegir-btns reveal">
+      <button class="t-btn raiz" onclick="openModal('raiz')">01 · Raíz</button>
+      <button class="t-btn veloz" onclick="openModal('veloz')">02 · Veloz</button>
+      <button class="t-btn nosotras" onclick="openModal('nosotras')">03 · Nosotras</button>
+    </div>
+  </section>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer>
+    <span>WAY Peruvian · Territorios de Marca 2026–2031</span>
+    <span>Documento confidencial · Junio 2026</span>
+  </footer>
+
+  <!-- ════════════════════ MODAL ════════════════════ -->
+  <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════ JS ════════════════════ -->
+  <script>
+    /* ── Reveal on scroll ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Modal ── */
+    const modals = {
+      raiz: {
+        badge: 'Territorio 01',
+        color: '#C4622A',
+        title: 'RAÍZ elegida',
+        body: 'Excelente. El próximo paso es una sesión de trabajo para definir la nueva identidad visual: paleta, tipografía, naming de colecciones y tono de voz. También deberemos planificar la transición del catálogo actual al nuevo sistema de drops. ¿Cuándo coordinamos?',
+      },
+      veloz: {
+        badge: 'Territorio 02',
+        color: '#CDFF00',
+        titleColor: '#000',
+        title: 'VELOZ elegida',
+        body: 'Muy bien. El primer paso es auditar la operación logística actual y definir el stack tecnológico del ecommerce. Necesitaremos una hoja de ruta técnica antes de tocar la marca. El fundamento de VELOZ es la promesa que se cumple — construyamos primero ese motor.',
+      },
+      nosotras: {
+        badge: 'Territorio 03',
+        color: '#C97B73',
+        title: 'NOSOTRAS elegida',
+        body: 'Perfecto. Es también nuestra recomendación. El siguiente paso es mapear los WAY Circles iniciales: identificar entre 5 y 10 clientas actuales que ya tienen voz activa en redes y convertirlas en el primer núcleo. La comunidad empieza con personas, no con plataformas.',
+      },
+    };
+
+    function openModal(t) {
+      const m = modals[t];
+      document.getElementById('modal-content').innerHTML = `
+      <div class="modal-badge" style="background:${m.color}; color:${m.titleColor || '#fff'}">${m.badge}</div>
+      <h2>${m.title}</h2>
+      <p>${m.body}</p>
+      <button class="modal-action" style="background:${m.color}; color:${m.titleColor || '#fff'}" onclick="closeModal()">Cerrar</button>
+    `;
+      document.getElementById('modal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === document.getElementById('modal')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+
+</html>

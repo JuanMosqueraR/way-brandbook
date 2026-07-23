@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Propuesta de Identidad Visual 2026</title>
+
+  <!-- All 6 typefaces in a single request -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --doc-bg:     #F6F3EF;
+      --card-bg:    #FFFFFF;
+      --dark:       #1A1714;
+      --text:       #1A1714;
+      --muted:      #7A7370;
+      --border:     #E6E0D8;
+      --shadow:     0 2px 24px rgba(26,23,20,.08);
+      --radius:     14px;
+      --font-doc:   'Lato', sans-serif;
+      --gap:        5rem;
+    }
+
+    body {
+      font-family: var(--font-doc);
+      background: var(--doc-bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ──────────────────────────
+       PORTADA
+    ────────────────────────── */
+    .portada {
+      background: var(--dark);
+      color: #fff;
+      padding: 5.5rem 2rem 4.5rem;
+      text-align: center;
+    }
+
+    .portada__eyebrow {
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 2rem;
+    }
+
+    .portada__brand {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 14vw, 7.5rem);
+      font-weight: 700;
+      letter-spacing: .18em;
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .portada__title {
+      font-size: clamp(.95rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,.65);
+      letter-spacing: .04em;
+      margin-bottom: .75rem;
+    }
+
+    .portada__subtitle {
+      font-size: clamp(.85rem, 2vw, 1rem);
+      font-style: italic;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 3rem;
+    }
+
+    .portada__rule {
+      width: 36px;
+      height: 1px;
+      background: rgba(255,255,255,.25);
+      margin: 0 auto 1.5rem;
+    }
+
+    .portada__meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .5rem 1.5rem;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+    }
+
+    /* ──────────────────────────
+       INTRO
+    ────────────────────────── */
+    .intro {
+      padding: 4rem 0 1rem;
+      text-align: center;
+    }
+
+    .intro p {
+      max-width: 580px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    /* ──────────────────────────
+       SECTION HEADER
+    ────────────────────────── */
+    .section-hd {
+      padding: var(--gap) 0 2.75rem;
+    }
+
+    .section-hd__num {
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #C4714A;        /* terracota — neutral accent for the doc itself */
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+
+    .section-hd__title {
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -.025em;
+      line-height: 1.15;
+      margin-bottom: .8rem;
+    }
+
+    .section-hd__desc {
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+      font-size: .975rem;
+    }
+
+    /* ──────────────────────────
+       BADGE
+    ────────────────────────── */
+    .badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      letter-spacing: 0;
+    }
+
+    /* ──────────────────────────
+       PALETTE CARD
+    ────────────────────────── */
+    .palette-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .palette-card__head {
+      padding: 1.75rem 2.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .palette-card__headtext h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .palette-card__headtext p {
+      font-size: .9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: .15rem;
+    }
+
+    /* Color strip */
+    .palette-strip {
+      display: flex;
+      height: 90px;
+    }
+
+    .palette-strip__color {
+      flex: 1;
+    }
+
+    /* Swatch detail rows */
+    .palette-body {
+      padding: 1.75rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+
+    .swatch-list {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .84rem;
+    }
+
+    .swatch-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    .swatch-info strong {
+      display: block;
+      font-weight: 600;
+      font-size: .78rem;
+      color: var(--text);
+    }
+
+    .swatch-info span {
+      font-size: .72rem;
+      color: var(--muted);
+      font-family: 'Courier New', monospace;
+    }
+
+    .palette-rationale {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .palette-quote {
+      font-style: italic;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.8;
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+    }
+
+    .palette-target {
+      background: var(--doc-bg);
+      border-radius: 8px;
+      padding: .65rem .9rem;
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .palette-target strong { color: var(--text); }
+
+    /* Mini preview bar */
+    .palette-preview {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 2.25rem;
+    }
+
+    .palette-preview__label {
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .65rem;
+    }
+
+    .preview-bar {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      height: 54px;
+    }
+
+    .preview-bar__content {
+      flex: 3;
+      display: flex;
+      align-items: center;
+      padding: 0 1.15rem;
+    }
+
+    .preview-bar__text-h {
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .preview-bar__text-b {
+      font-size: .62rem;
+      opacity: .55;
+    }
+
+    .preview-bar__btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    /* ──────────────────────────
+       LOGO CARD
+    ────────────────────────── */
+    .logo-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .logo-card__head {
+      padding: 1.75rem 2.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-card__headtext h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .logo-card__headtext p {
+      font-size: .9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: .15rem;
+    }
+
+    .logo-specimen {
+      background: #FAFAF8;
+      border-bottom: 1px solid var(--border);
+      padding: 3.25rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-word {
+      line-height: 1;
+      color: var(--dark);
+    }
+
+    .logo-sub {
+      color: var(--muted);
+    }
+
+    .logo-card__body {
+      padding: 1.75rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem 2rem;
+    }
+
+    .logo-detail label {
+      display: block;
+      font-size: .63rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .3rem;
+    }
+
+    .logo-detail p {
+      font-size: .875rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .logo-message {
+      grid-column: 1 / -1;
+      background: var(--doc-bg);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      font-size: .875rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .logo-message strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    /* ──────────────────────────
+       TYPOGRAPHY PAIR CARD
+    ────────────────────────── */
+    .type-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .type-card__head {
+      padding: 1.4rem 2.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .type-card__head h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .type-card__head span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .type-card__body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .type-col {
+      padding: 1.85rem 2.25rem;
+    }
+
+    .type-col + .type-col {
+      border-left: 1px solid var(--border);
+    }
+
+    .type-col__role {
+      font-size: .63rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .3rem;
+    }
+
+    .type-col__name {
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+      color: var(--text);
+    }
+
+    .type-h1 { margin-bottom: .6rem; line-height: 1.1; }
+    .type-h2 { margin-bottom: .6rem; line-height: 1.3; }
+    .type-ui {
+      margin-bottom: .35rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .type-meta { margin-bottom: .5rem; }
+    .type-body { line-height: 1.75; color: var(--muted); font-size: .875rem; }
+
+    /* ──────────────────────────
+       FOOTER
+    ────────────────────────── */
+    .footer {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem;
+      margin-top: var(--gap);
+    }
+
+    .footer__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer__text {
+      max-width: 420px;
+      margin: 0 auto 2.75rem;
+      color: rgba(255,255,255,.5);
+      font-size: .95rem;
+      line-height: 1.75;
+    }
+
+    .footer__brand {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 12vw, 6rem);
+      font-weight: 700;
+      letter-spacing: .22em;
+      color: rgba(255,255,255,.08);
+      line-height: 1;
+    }
+
+    /* ──────────────────────────
+       RESPONSIVE
+    ────────────────────────── */
+    @media (max-width: 640px) {
+      .palette-body        { grid-template-columns: 1fr; }
+      .logo-card__body     { grid-template-columns: 1fr; }
+      .logo-message        { grid-column: 1; }
+      .type-card__body     { grid-template-columns: 1fr; }
+      .type-col + .type-col { border-left: none; border-top: 1px solid var(--border); }
+      .palette-strip       { height: 64px; }
+      .logo-specimen       { padding: 2.5rem 1.5rem; }
+    }
+
+    /* ──────────────────────────
+       PRINT
+    ────────────────────────── */
+    @media print {
+      .palette-card,
+      .logo-card,
+      .type-card { break-inside: avoid; }
+      .section-hd { break-after: avoid; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    /* ──────────────────────────
+       LOGO NOTE (Mejora 1)
+    ────────────────────────── */
+    .logo-note {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      background: #FFF8F0;
+      border: 1px solid #F0C080;
+      border-left: 3px solid #E8A040;
+      padding: 1rem 1.25rem;
+      margin: 0 2.25rem 1.5rem;
+      border-radius: 6px;
+    }
+    .logo-note__icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .logo-note p {
+      font-size: .85rem;
+      color: #5A4020;
+      line-height: 1.65;
+    }
+    .logo-note strong {
+      color: #3A2810;
+    }
+
+    /* ──────────────────────────
+       COMBO GRID (Mejora 2)
+    ────────────────────────── */
+    .combo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .combo-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .combo-preview {
+      position: relative;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .combo-wordmark {
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      line-height: 1;
+    }
+    .combo-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      padding: .25rem .6rem;
+      border-radius: 4px;
+    }
+    .combo-info {
+      padding: 1.1rem 1.25rem 1.25rem;
+    }
+    .combo-name {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+      color: var(--text);
+    }
+    .combo-desc {
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: .5rem;
+    }
+    .combo-target {
+      font-size: .75rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .combo-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ──────────────────────────
+       FOOTER ACTIONS (Mejora)
+    ────────────────────────── */
+    .footer__actions {
+      display: flex;
+      gap: .85rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .footer__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .8rem 1.6rem;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .footer__btn:hover {
+      opacity: .88;
+      transform: translateY(-2px);
+    }
+
+    .footer__btn--wa {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .footer__btn--email {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.85);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    @media (max-width: 480px) {
+      .footer__actions { flex-direction: column; align-items: center; }
+      .footer__btn     { width: 100%; max-width: 280px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       PORTADA
+  ═══════════════════════════════════ -->
+  <header class="portada">
+    <p class="portada__eyebrow">Identidad Visual · Propuesta Creativa</p>
+    <h1 class="portada__brand">WAY</h1>
+    <p class="portada__title">Propuesta de Identidad Visual</p>
+    <p class="portada__subtitle">Tres caminos. Tú eliges el que más te representa.</p>
+    <div class="portada__rule" aria-hidden="true"></div>
+    <div class="portada__meta">
+      <span>Lima, Perú</span>
+      <span>·</span>
+      <span>Moda Femenina</span>
+      <span>·</span>
+      <span>Junio 2026</span>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════
+       INTRO
+  ═══════════════════════════════════ -->
+  <section class="intro">
+    <div class="container">
+      <p>
+        Desarrollamos tres propuestas de identidad visual para WAY, cada una con su propio
+        carácter, emoción y audiencia dentro del territorio <em>NOSOTRAS</em>. No hay una
+        respuesta correcta — hay la que mejor expresa quién eres tú y quién quieres ser
+        para tus clientas. Tómate el tiempo de sentirlas antes de elegir.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ═══════════════════════════════════
+         SECCIÓN 01 — PALETAS DE COLOR
+    ═══════════════════════════════════ -->
+    <div class="section-hd">
+      <p class="section-hd__num">01 — Paleta de Color</p>
+      <h2 class="section-hd__title">¿Qué colores son WAY?</h2>
+      <p class="section-hd__desc">
+        Cada paleta tiene seis colores con un rol definido: fondo, superficie, acento principal,
+        acento secundario, ancla oscura y texto. Al final de cada opción verás cómo se vería
+        aplicada en un elemento de marca real.
+      </p>
+    </div>
+
+    <!-- ── PALETA A — Tierra Nuestra ── -->
+    <article class="palette-card" aria-label="Paleta A: Tierra Nuestra">
+      <div class="palette-card__head">
+        <div class="badge" aria-label="Opción A">A</div>
+        <div class="palette-card__headtext">
+          <h2>Tierra Nuestra</h2>
+          <p>La paleta de la mujer que lleva Lima en la piel</p>
+        </div>
+      </div>
+
+      <!-- Color strip -->
+      <div class="palette-strip" role="img" aria-label="Franja de colores: Crudo, Lino, Arena, Terracota, Cacao, Tierra">
+        <div class="palette-strip__color" style="background:#F7F3EE" title="Crudo #F7F3EE"></div>
+        <div class="palette-strip__color" style="background:#EDE5DA" title="Lino #EDE5DA"></div>
+        <div class="palette-strip__color" style="background:#D4A882" title="Arena Tostada #D4A882"></div>
+        <div class="palette-strip__color" style="background:#C4714A" title="Terracota #C4714A"></div>
+        <div class="palette-strip__color" style="background:#7A4A3A" title="Cacao #7A4A3A"></div>
+        <div class="palette-strip__color" style="background:#2A1F18" title="Tierra Oscura #2A1F18"></div>
+      </div>
+
+      <!-- Body: swatches + rationale -->
+      <div class="palette-body">
+        <div class="swatch-list">
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#F7F3EE;border-color:#ddd" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Fondo — Crudo</strong>
+              <span>#F7F3EE</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#EDE5DA" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Superficie — Lino</strong>
+              <span>#EDE5DA</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#D4A882" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 2 — Arena Tostada</strong>
+              <span>#D4A882</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#C4714A" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 1 — Terracota</strong>
+              <span>#C4714A</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#7A4A3A" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Ancla — Cacao</strong>
+              <span>#7A4A3A</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#2A1F18" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Texto — Tierra Oscura</strong>
+              <span>#2A1F18</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="palette-rationale">
+          <p class="palette-quote">
+            El terracota de las cerámicas de Quinua, la arena de Paracas, el cacao del norte.
+            Una paleta peruana sin necesitar decirlo — cálida, enraizada, con historia.
+          </p>
+          <div class="palette-target">
+            <strong>Conecta mejor con:</strong> mujer 38–65+, arraigada, que valora
+            lo auténtico y lo duradero por encima de la tendencia del momento.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini preview -->
+      <div class="palette-preview">
+        <p class="palette-preview__label">Previsualización en contexto</p>
+        <div class="preview-bar">
+          <div class="preview-bar__content" style="background:#F7F3EE;color:#2A1F18">
+            <div>
+              <div class="preview-bar__text-h">Nueva colección</div>
+              <div class="preview-bar__text-b">Blusas · Vestidos · Sets</div>
+            </div>
+          </div>
+          <div class="preview-bar__btn" style="background:#C4714A">
+            Ver más
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── PALETA B — Dulce Encuentro ── -->
+    <article class="palette-card" aria-label="Paleta B: Dulce Encuentro">
+      <div class="palette-card__head">
+        <div class="badge" aria-label="Opción B">B</div>
+        <div class="palette-card__headtext">
+          <h2>Dulce Encuentro</h2>
+          <p>La paleta del grupo de WhatsApp de las mejores amigas</p>
+        </div>
+      </div>
+
+      <div class="palette-strip" role="img" aria-label="Franja de colores: Blanco hueso, Rosa pálido, Melocotón, Rosa terracota, Lavanda, Casi negro">
+        <div class="palette-strip__color" style="background:#FAF8F5" title="#FAF8F5"></div>
+        <div class="palette-strip__color" style="background:#F2EDE9" title="#F2EDE9"></div>
+        <div class="palette-strip__color" style="background:#D4C4A8" title="#D4C4A8"></div>
+        <div class="palette-strip__color" style="background:#C4847A" title="#C4847A"></div>
+        <div class="palette-strip__color" style="background:#BBA8C4" title="#BBA8C4"></div>
+        <div class="palette-strip__color" style="background:#2E2926" title="#2E2926"></div>
+      </div>
+
+      <div class="palette-body">
+        <div class="swatch-list">
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#FAF8F5;border-color:#ddd" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Fondo — Blanco Hueso</strong>
+              <span>#FAF8F5</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#F2EDE9" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Superficie — Rosa Pálido</strong>
+              <span>#F2EDE9</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#D4C4A8" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Neutralizador — Melocotón Arena</strong>
+              <span>#D4C4A8</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#C4847A" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 1 — Rosa Terracota</strong>
+              <span>#C4847A</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#BBA8C4" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 2 — Lavanda Polvosa</strong>
+              <span>#BBA8C4</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#2E2926" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Texto — Casi Negro</strong>
+              <span>#2E2926</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="palette-rationale">
+          <p class="palette-quote">
+            El rosa que no grita, la lavanda que une. No es el rosado de marca genérica —
+            es el color de la complicidad, del "te queda perfecto", del grupo donde
+            todas se apoyan.
+          </p>
+          <div class="palette-target">
+            <strong>Conecta mejor con:</strong> mujer 28–45, urbana, activa en Instagram
+            y WhatsApp, que busca pertenencia y se siente representada por una comunidad real.
+          </div>
+        </div>
+      </div>
+
+      <div class="palette-preview">
+        <p class="palette-preview__label">Previsualización en contexto</p>
+        <div class="preview-bar">
+          <div class="preview-bar__content" style="background:#FAF8F5;color:#2E2926">
+            <div>
+              <div class="preview-bar__text-h">Nueva colección</div>
+              <div class="preview-bar__text-b">Blusas · Vestidos · Sets</div>
+            </div>
+          </div>
+          <div class="preview-bar__btn" style="background:#C4847A">
+            Ver más
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── PALETA C — Bronce Íntimo ── -->
+    <article class="palette-card" aria-label="Paleta C: Bronce Íntimo">
+      <div class="palette-card__head">
+        <div class="badge" aria-label="Opción C">C</div>
+        <div class="palette-card__headtext">
+          <h2>Bronce Íntimo</h2>
+          <p>Para la mujer que sabe lo que quiere sin necesitar demostrarlo</p>
+        </div>
+      </div>
+
+      <div class="palette-strip" role="img" aria-label="Franja de colores: Marfil, Beige, Champagne, Bronce, Caoba, Negro profundo">
+        <div class="palette-strip__color" style="background:#F9F6F1" title="#F9F6F1"></div>
+        <div class="palette-strip__color" style="background:#EDE7DE" title="#EDE7DE"></div>
+        <div class="palette-strip__color" style="background:#C9B99A" title="#C9B99A"></div>
+        <div class="palette-strip__color" style="background:#9B7B5A" title="#9B7B5A"></div>
+        <div class="palette-strip__color" style="background:#6B5040" title="#6B5040"></div>
+        <div class="palette-strip__color" style="background:#1E1A17" title="#1E1A17"></div>
+      </div>
+
+      <div class="palette-body">
+        <div class="swatch-list">
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#F9F6F1;border-color:#ddd" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Fondo — Marfil Cálido</strong>
+              <span>#F9F6F1</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#EDE7DE" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Superficie — Beige Antiguo</strong>
+              <span>#EDE7DE</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#C9B99A" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 2 — Champagne</strong>
+              <span>#C9B99A</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#9B7B5A" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Acento 1 — Bronce</strong>
+              <span>#9B7B5A</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#6B5040" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Ancla — Caoba</strong>
+              <span>#6B5040</span>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-dot" style="background:#1E1A17" aria-hidden="true"></div>
+            <div class="swatch-info">
+              <strong>Texto — Negro Profundo</strong>
+              <span>#1E1A17</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="palette-rationale">
+          <p class="palette-quote">
+            El bronce de los adornos familiares — no el oro frío del lujo exclusivo,
+            sino el oro que se toca. Sofisticación sin distancia, elegancia
+            sin barrera de entrada.
+          </p>
+          <div class="palette-target">
+            <strong>Conecta mejor con:</strong> mujer 40–65+, profesional o emprendedora,
+            gustos definidos, compra con criterio y mantiene una lealtad alta a las marcas que elige.
+          </div>
+        </div>
+      </div>
+
+      <div class="palette-preview">
+        <p class="palette-preview__label">Previsualización en contexto</p>
+        <div class="preview-bar">
+          <div class="preview-bar__content" style="background:#F9F6F1;color:#1E1A17">
+            <div>
+              <div class="preview-bar__text-h">Nueva colección</div>
+              <div class="preview-bar__text-b">Blusas · Vestidos · Sets</div>
+            </div>
+          </div>
+          <div class="preview-bar__btn" style="background:#9B7B5A">
+            Ver más
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════
+         SECCIÓN 02 — DIRECCIÓN DE LOGO
+    ═══════════════════════════════════ -->
+    <div class="section-hd">
+      <p class="section-hd__num">02 — Dirección de Logo</p>
+      <h2 class="section-hd__title">¿Cómo se escribe WAY?</h2>
+      <p class="section-hd__desc">
+        Tres direcciones tipográficas, cada una con su propio carácter. Lo que ves aquí
+        es cómo se vería el nombre de la marca en cada estilo. El logo final lo construye
+        una diseñadora gráfica — esto define el camino y la personalidad de ese logo.
+      </p>
+    </div>
+
+    <!-- ── LOGO 1 — La Firma ── -->
+    <article class="logo-card" aria-label="Dirección de logo 1: La Firma">
+      <div class="logo-card__head">
+        <div class="badge" aria-label="Opción 1">1</div>
+        <div class="logo-card__headtext">
+          <h2>La Firma</h2>
+          <p>WAY como el nombre de una diseñadora que ya no necesita presentación</p>
+        </div>
+      </div>
+
+      <div class="logo-specimen">
+        <div class="logo-word"
+          style="font-family:'Playfair Display',serif;font-size:clamp(3.5rem,13vw,7.5rem);font-weight:700;letter-spacing:.18em;">
+          WAY
+        </div>
+        <div class="logo-sub"
+          style="font-family:'Playfair Display',serif;font-size:clamp(.8rem,2.5vw,1.05rem);font-weight:400;font-style:italic;letter-spacing:.22em;">
+          peruvian fashion
+        </div>
+      </div>
+
+      <div class="logo-card__body">
+        <div class="logo-detail">
+          <label>Estilo tipográfico</label>
+          <p>Serif de alto contraste — grácil, con transición marcada entre trazo grueso y fino</p>
+        </div>
+        <div class="logo-detail">
+          <label>Forma del logo</label>
+          <p>Wordmark puro — sin símbolo. El nombre solo tiene suficiente presencia para no necesitar nada más.</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tipografía</label>
+          <p><strong>Playfair Display</strong> · Google Fonts · Peso 700</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tono visual</label>
+          <p>Sofisticado, íntimo, atemporal — como la firma en una carta personal</p>
+        </div>
+        <div class="logo-message">
+          <strong>Qué dice sobre WAY:</strong> es una marca con historia y criterio.
+          No sigue modas — las tiene. Habla a la mujer que elige con cabeza, que busca
+          calidad sobre cantidad, y que valora cuando una marca tiene algo propio que decir.
+        </div>
+      </div>
+    </article>
+
+    <!-- ── LOGO 2 — El Encuentro ── -->
+    <article class="logo-card" aria-label="Dirección de logo 2: El Encuentro">
+      <div class="logo-card__head">
+        <div class="badge" aria-label="Opción 2">2</div>
+        <div class="logo-card__headtext">
+          <h2>El Encuentro</h2>
+          <p>WAY como el lugar donde todas llegan y se encuentran</p>
+        </div>
+      </div>
+
+      <div class="logo-specimen">
+        <div class="logo-word"
+          style="font-family:'Nunito',sans-serif;font-size:clamp(3.5rem,13vw,7.5rem);font-weight:800;letter-spacing:.08em;text-transform:lowercase;">
+          way
+        </div>
+        <div class="logo-sub"
+          style="font-family:'Nunito',sans-serif;font-size:clamp(.75rem,2.2vw,.95rem);font-weight:400;letter-spacing:.28em;text-transform:uppercase;">
+          peruvian fashion
+        </div>
+      </div>
+
+      <div class="logo-note">
+        <span class="logo-note__icon">⚠</span>
+        <p><strong>Nota importante:</strong> esta es la única dirección que usa el nombre
+        en minúsculas ("way"). No es solo una decisión tipográfica — define cómo aparecerá
+        el nombre de la marca en todos los materiales para siempre. Si prefieres mantener
+        las mayúsculas ("WAY"), esta dirección puede adaptarse sin perder su carácter.</p>
+      </div>
+
+      <div class="logo-card__body">
+        <div class="logo-detail">
+          <label>Estilo tipográfico</label>
+          <p>Sans-serif humanista — extremos redondeados, curvas orgánicas que transmiten calidez</p>
+        </div>
+        <div class="logo-detail">
+          <label>Forma del logo</label>
+          <p>Wordmark en minúsculas + símbolo opcional (arco abstracto, abrazo) para uso como ícono en RRSS</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tipografía</label>
+          <p><strong>Nunito</strong> · Google Fonts · Peso 800 (ExtraBold)</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tono visual</label>
+          <p>Cercano, comunitario, inclusivo — cálido sin caer en lo infantil</p>
+        </div>
+        <div class="logo-message">
+          <strong>Qué dice sobre WAY:</strong> somos nosotras, todas juntas. La marca no te habla
+          desde arriba — te toma de la mano. El territorio <em>NOSOTRAS</em> encarnado visualmente:
+          una tipografía que abraza en lugar de declarar.
+        </div>
+      </div>
+    </article>
+
+    <!-- ── LOGO 3 — La Arquitecta ── -->
+    <article class="logo-card" aria-label="Dirección de logo 3: La Arquitecta">
+      <div class="logo-card__head">
+        <div class="badge" aria-label="Opción 3">3</div>
+        <div class="logo-card__headtext">
+          <h2>La Arquitecta</h2>
+          <p>WAY como una mujer que construyó su propio camino</p>
+        </div>
+      </div>
+
+      <div class="logo-specimen">
+        <div class="logo-word"
+          style="font-family:'DM Sans',sans-serif;font-size:clamp(3.5rem,13vw,7.5rem);font-weight:700;letter-spacing:.22em;">
+          WAY
+        </div>
+        <div class="logo-sub"
+          style="font-family:'DM Sans',sans-serif;font-size:clamp(.7rem,2vw,.9rem);font-weight:300;letter-spacing:.42em;text-transform:uppercase;">
+          peruvian fashion
+        </div>
+      </div>
+
+      <div class="logo-card__body">
+        <div class="logo-detail">
+          <label>Estilo tipográfico</label>
+          <p>Sans-serif geométrica moderna — limpia, editorial, con curvas humanistas que la alejan del frío</p>
+        </div>
+        <div class="logo-detail">
+          <label>Forma del logo</label>
+          <p>Wordmark con detalle tipográfico propio — el símbolo nace de las letras, no se añade desde fuera</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tipografía</label>
+          <p><strong>DM Sans</strong> · Google Fonts · Peso 700</p>
+        </div>
+        <div class="logo-detail">
+          <label>Tono visual</label>
+          <p>Confiado, editorial, progresista — escalable a cualquier formato o tamaño</p>
+        </div>
+        <div class="logo-message">
+          <strong>Qué dice sobre WAY:</strong> tenemos visión. Es la marca de la mujer que ya llegó
+          y ahora comparte lo que sabe. Empoderada en el sentido real — no el slogan, la actitud.
+          Lista para crecer sin perder identidad.
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════
+         SECCIÓN 03 — PAREJAS TIPOGRÁFICAS
+    ═══════════════════════════════════ -->
+    <div class="section-hd">
+      <p class="section-hd__num">03 — Pareja Tipográfica</p>
+      <h2 class="section-hd__title">Las letras de WAY en contexto</h2>
+      <p class="section-hd__desc">
+        Cada dirección de logo trae su propia pareja: una fuente para titulares grandes
+        y una para el texto cotidiano — descripciones, botones, UI de la tienda.
+        Ambas disponibles gratis en Google Fonts.
+      </p>
+    </div>
+
+    <!-- ── TIPO 1 — Playfair + Lato ── -->
+    <article class="type-card" aria-label="Pareja tipográfica 1: Playfair Display y Lato">
+      <div class="type-card__head">
+        <h3>Dirección 1 — La Firma</h3>
+        <span>Playfair Display &amp; Lato</span>
+      </div>
+      <div class="type-card__body">
+        <div class="type-col">
+          <p class="type-col__role">Display · Titulares</p>
+          <p class="type-col__name">Playfair Display</p>
+
+          <div class="type-h1"
+            style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--dark);">
+            Nueva Colección
+          </div>
+          <div class="type-h2"
+            style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;font-style:italic;color:var(--muted);">
+            Vestidos · Blusas · Sets
+          </div>
+          <p class="type-body"
+            style="font-family:'Playfair Display',serif;font-size:.8rem;margin-top:.75rem;">
+            Pesos disponibles: 400, 400 italic, 700, 700 italic
+          </p>
+        </div>
+        <div class="type-col">
+          <p class="type-col__role">Cuerpo · Texto y UI</p>
+          <p class="type-col__name">Lato</p>
+
+          <div class="type-ui"
+            style="font-family:'Lato',sans-serif;font-size:.82rem;font-weight:700;color:var(--dark);">
+            Agregar al carrito
+          </div>
+          <div class="type-meta"
+            style="font-family:'Lato',sans-serif;font-size:.85rem;font-weight:400;color:var(--dark);">
+            Talla S · Stock disponible
+          </div>
+          <p class="type-body"
+            style="font-family:'Lato',sans-serif;">
+            La blusa que buscabas para esa ocasión especial.
+            Envío en 24 horas a todo Lima.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── TIPO 2 — Nunito + Source Sans 3 ── -->
+    <article class="type-card" aria-label="Pareja tipográfica 2: Nunito y Source Sans 3">
+      <div class="type-card__head">
+        <h3>Dirección 2 — El Encuentro</h3>
+        <span>Nunito &amp; Source Sans 3</span>
+      </div>
+      <div class="type-card__body">
+        <div class="type-col">
+          <p class="type-col__role">Display · Titulares</p>
+          <p class="type-col__name">Nunito</p>
+
+          <div class="type-h1"
+            style="font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:800;color:var(--dark);">
+            Nueva Colección
+          </div>
+          <div class="type-h2"
+            style="font-family:'Nunito',sans-serif;font-size:1.05rem;font-weight:600;color:var(--muted);">
+            Vestidos · Blusas · Sets
+          </div>
+          <p class="type-body"
+            style="font-family:'Nunito',sans-serif;font-size:.8rem;margin-top:.75rem;">
+            Pesos disponibles: 400, 600, 700, 800
+          </p>
+        </div>
+        <div class="type-col">
+          <p class="type-col__role">Cuerpo · Texto y UI</p>
+          <p class="type-col__name">Source Sans 3</p>
+
+          <div class="type-ui"
+            style="font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-weight:600;color:var(--dark);">
+            Agregar al carrito
+          </div>
+          <div class="type-meta"
+            style="font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:400;color:var(--dark);">
+            Talla S · Stock disponible
+          </div>
+          <p class="type-body"
+            style="font-family:'Source Sans 3',sans-serif;">
+            La blusa que buscabas para esa ocasión especial.
+            Envío en 24 horas a todo Lima.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── TIPO 3 — DM Serif Display + DM Sans ── -->
+    <article class="type-card" aria-label="Pareja tipográfica 3: DM Serif Display y DM Sans">
+      <div class="type-card__head">
+        <h3>Dirección 3 — La Arquitecta</h3>
+        <span>DM Serif Display &amp; DM Sans</span>
+      </div>
+      <div class="type-card__body">
+        <div class="type-col">
+          <p class="type-col__role">Display · Titulares</p>
+          <p class="type-col__name">DM Serif Display</p>
+
+          <div class="type-h1"
+            style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:400;color:var(--dark);">
+            Nueva Colección
+          </div>
+          <div class="type-h2"
+            style="font-family:'DM Serif Display',serif;font-size:1.05rem;font-weight:400;font-style:italic;color:var(--muted);">
+            Vestidos · Blusas · Sets
+          </div>
+          <p class="type-body"
+            style="font-family:'DM Serif Display',serif;font-size:.8rem;margin-top:.75rem;">
+            Pesos disponibles: 400, 400 italic
+          </p>
+        </div>
+        <div class="type-col">
+          <p class="type-col__role">Cuerpo · Texto y UI</p>
+          <p class="type-col__name">DM Sans</p>
+
+          <div class="type-ui"
+            style="font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:var(--dark);">
+            Agregar al carrito
+          </div>
+          <div class="type-meta"
+            style="font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:400;color:var(--dark);">
+            Talla S · Stock disponible
+          </div>
+          <p class="type-body"
+            style="font-family:'DM Sans',sans-serif;">
+            La blusa que buscabas para esa ocasión especial.
+            Envío en 24 horas a todo Lima.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════════════════════════
+         SECCIÓN 04 — COMBINACIONES SUGERIDAS
+    ═══════════════════════════════════ -->
+    <div class="section-hd">
+      <p class="section-hd__num">04 — Combinaciones Sugeridas</p>
+      <h2 class="section-hd__title">Paleta + logo juntos</h2>
+      <p class="section-hd__desc">
+        Así se verían las tres combinaciones más naturales entre paleta y dirección
+        de logo. Úsalas como punto de partida — puedes mezclar cualquier paleta
+        con cualquier logo.
+      </p>
+    </div>
+
+    <div class="combo-grid">
+      <!-- Combo 1 -->
+      <article class="combo-card">
+        <div class="combo-preview" style="background:#F7F3EE;">
+          <div class="combo-wordmark"
+            style="font-family:'Playfair Display',serif;font-weight:700;
+                   letter-spacing:.18em;color:#2A1F18;">
+            WAY
+          </div>
+          <div class="combo-tag" style="background:#C4714A;">A + 1</div>
+        </div>
+        <div class="combo-info">
+          <h3 class="combo-name">La más auténtica</h3>
+          <p class="combo-desc">Tierra Nuestra · La Firma · Playfair Display + Lato</p>
+          <p class="combo-target">Mejor para: mujer 38–65+, arraigada, criterio propio</p>
+        </div>
+      </article>
+
+      <!-- Combo 2 -->
+      <article class="combo-card">
+        <div class="combo-preview" style="background:#FAF8F5;">
+          <div class="combo-wordmark"
+            style="font-family:'Nunito',sans-serif;font-weight:800;
+                   letter-spacing:.08em;color:#2E2926;text-transform:lowercase;">
+            way
+          </div>
+          <div class="combo-tag" style="background:#C4847A;">B + 2</div>
+        </div>
+        <div class="combo-info">
+          <h3 class="combo-name">La más cercana</h3>
+          <p class="combo-desc">Dulce Encuentro · El Encuentro · Nunito + Source Sans 3</p>
+          <p class="combo-target">Mejor para: mujer 28–45, comunidad digital activa</p>
+        </div>
+      </article>
+
+      <!-- Combo 3 -->
+      <article class="combo-card">
+        <div class="combo-preview" style="background:#F9F6F1;">
+          <div class="combo-wordmark"
+            style="font-family:'DM Sans',sans-serif;font-weight:700;
+                   letter-spacing:.22em;color:#1E1A17;">
+            WAY
+          </div>
+          <div class="combo-tag" style="background:#9B7B5A;">C + 3</div>
+        </div>
+        <div class="combo-info">
+          <h3 class="combo-name">La más sofisticada</h3>
+          <p class="combo-desc">Bronce Íntimo · La Arquitecta · DM Serif Display + DM Sans</p>
+          <p class="combo-target">Mejor para: mujer 40–65+, gustos definidos, compra con criterio</p>
+        </div>
+      </article>
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <p class="footer__title">¿Cuál es la tuya?</p>
+    <p class="footer__text">
+      Una vez que elijas la paleta y la dirección de logo que más te representa,
+      construimos el brandbook completo con tu identidad visual definida y lista
+      para usar en cada punto de contacto con tus clientas.
+    </p>
+    <div class="footer__actions">
+      <a class="footer__btn footer__btn--wa"
+         href="https://wa.me/51986532924?text=Hola%2C%20ya%20revisé%20la%20propuesta%20de%20identidad%20visual%20de%20WAY.%20Mi%20elección%20es%3A%20Paleta%20____%20%2B%20Logo%20____."
+         target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Responder por WhatsApp
+      </a>
+      <a class="footer__btn footer__btn--email"
+         href="mailto:jmosquera92r@gmail.com?subject=WAY%20%E2%80%94%20Elecci%C3%B3n%20de%20Identidad%20Visual&body=Hola%2C%20ya%20revisé%20la%20propuesta%20de%20identidad%20visual%20de%20WAY.%0A%0AMi%20elección%20es%3A%0A%0A-%20Paleta%3A%20____%0A-%20Logo%3A%20____%0A%0AComentarios%3A">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        Responder por Email
+      </a>
+    </div>
+    <p class="footer__brand" aria-hidden="true">WAY</p>
+  </footer>
+
+</body>
+</html>

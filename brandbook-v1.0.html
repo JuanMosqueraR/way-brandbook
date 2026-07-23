@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Brandbook Oficial 2026</title>
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <style>
+    /* Territorio 01 — La Firma. Fuentes vía Google Fonts CDN (documentos de presentación lo permiten; ver CLAUDE.md). */
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@400;500;600&display=swap');
+
+    /* ===== DESIGN TOKENS — Territorio 01: La Firma ===== */
+    :root {
+      --color-marfil:    #F7F3EE;
+      --color-negro:     #2A1F18;
+      --color-terracota: #C4714A;
+      --color-gris:      #8A7D70;
+      --color-borde:     #E5DDD2;
+      --color-white:     #FFFFFF;
+
+      --color-pending:        #D97706;
+      --color-pending-bg:     #FFFBEB;
+      --color-pending-border: #FCD34D;
+      --color-pending-text:   #92400E;
+
+      --color-ok-bg: #F0FDF4; --color-ok-border: #BBF7D0; --color-ok-text: #166534;
+      --color-no-bg: #FFF1F2; --color-no-border: #FECDD3; --color-no-text: #9F1239;
+
+      --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+      --font-family:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --font-regular:  400;
+      --font-medium:   500;
+      --font-semibold: 600;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --text-3xl:  1.875rem;
+      --text-4xl:  2.25rem;
+      --text-5xl:  3rem;
+      --text-6xl:  3.75rem;
+      --text-7xl:  4.5rem;
+      --text-8xl:  6rem;
+
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --sidebar-width:  260px;
+      --section-pad-x:  var(--space-16);
+      --section-pad-y:  var(--space-24);
+
+      --shadow-sm: 0 1px 3px rgba(42,31,24,.08);
+      --shadow-md: 0 4px 16px rgba(42,31,24,.10);
+
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+      --radius-xl:   16px;
+      --radius-full: 9999px;
+
+      --transition: 200ms ease;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-family);
+      font-weight: var(--font-regular);
+      color: var(--color-negro);
+      background: var(--color-marfil);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ===== SIDEBAR ===== */
+    #sidebar {
+      position: fixed; top: 0; left: 0;
+      width: var(--sidebar-width); height: 100vh;
+      background: var(--color-negro);
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto; overflow-x: hidden;
+    }
+    .sidebar-header { padding: var(--space-8) var(--space-6); border-bottom: 1px solid rgba(247,243,238,.1); }
+    .sidebar-brand {
+      font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl);
+      color: var(--color-marfil); letter-spacing: .28em; padding-left: .28em;
+      text-transform: uppercase; display: block;
+    }
+    .sidebar-subtitle {
+      font-size: var(--text-xs); font-weight: var(--font-regular);
+      color: var(--color-terracota); letter-spacing: .2em;
+      text-transform: uppercase; margin-top: var(--space-2); display: block;
+    }
+    .sidebar-nav { flex: 1; padding: var(--space-6) 0; list-style: none; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) var(--space-6);
+      color: rgba(247,243,238,.55); text-decoration: none;
+      font-size: var(--text-sm); font-weight: var(--font-medium);
+      transition: color var(--transition), background var(--transition), border-left-color var(--transition);
+      border-left: 2px solid transparent; line-height: 1.3;
+      cursor: pointer;
+    }
+    .sidebar-nav a:hover { color: rgba(247,243,238,.9); background: rgba(247,243,238,.04); }
+    .sidebar-nav a.active {
+      color: var(--color-terracota); border-left-color: var(--color-terracota);
+      background: rgba(196,113,74,.08);
+    }
+    .nav-num { font-size: var(--text-xs); font-weight: var(--font-regular); color: var(--color-terracota); opacity: .75; min-width: 20px; }
+    .sidebar-footer { padding: var(--space-6); border-top: 1px solid rgba(247,243,238,.1); }
+    .sidebar-footer-text { font-size: var(--text-xs); color: rgba(247,243,238,.3); letter-spacing: .1em; }
+
+    #menu-toggle {
+      display: none; position: fixed;
+      top: var(--space-4); left: var(--space-4); z-index: 200;
+      width: 44px; height: 44px; background: var(--color-negro);
+      border: none; border-radius: var(--radius-md); cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    #menu-toggle span { display: block; width: 20px; height: 2px; background: var(--color-marfil); border-radius: 2px; }
+    #sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(42,31,24,.5); z-index: 99; }
+
+    /* ===== MAIN LAYOUT ===== */
+    #content { margin-left: var(--sidebar-width); }
+
+    /* ===== SECTION BASE ===== */
+    .section { padding: var(--section-pad-y) var(--section-pad-x); min-height: 100vh; position: relative; }
+    .section--dark    { background: var(--color-negro); color: var(--color-marfil); }
+    .section--surface { background: var(--color-borde); background: #F1EAE0; }
+    .section--white   { background: var(--color-white); }
+
+    .section-label {
+      font-size: var(--text-xs); font-weight: var(--font-semibold);
+      letter-spacing: .25em; text-transform: uppercase;
+      color: var(--color-terracota); margin-bottom: var(--space-3); display: block;
+    }
+    .section--dark .section-label { color: #D9A487; }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-5xl); font-weight: 500;
+      line-height: 1.08; letter-spacing: -.01em;
+      color: var(--color-negro); margin-bottom: var(--space-6);
+    }
+    .section--dark .section-title { color: var(--color-marfil); }
+
+    .section-intro {
+      font-size: var(--text-lg); font-weight: var(--font-regular);
+      line-height: 1.7; color: var(--color-gris);
+      max-width: 640px; margin-bottom: var(--space-12);
+    }
+    .section--dark .section-intro { color: rgba(247,243,238,.65); }
+
+    .subsection-title {
+      font-size: var(--text-xl); font-weight: var(--font-semibold);
+      color: var(--color-negro); margin: var(--space-10) 0 var(--space-5);
+      padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-borde);
+    }
+    .section--dark .subsection-title { color: var(--color-marfil); border-bottom-color: rgba(247,243,238,.15); }
+
+    /* ===== PENDING BLOCK ===== */
+    .pending-block {
+      background: var(--color-pending-bg); border: 1px solid var(--color-pending-border);
+      border-left: 4px solid var(--color-pending); border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6); margin: var(--space-6) 0;
+    }
+    .pending-label {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--color-pending); margin-bottom: var(--space-2);
+    }
+    .pending-label::before { content: '⚠'; font-size: var(--text-sm); }
+    .pending-block p  { font-size: var(--text-sm); color: var(--color-pending-text); line-height: 1.6; }
+    .pending-block ol,
+    .pending-block ul { margin-top: var(--space-2); padding-left: var(--space-5); }
+    .pending-block li { font-size: var(--text-sm); color: var(--color-pending-text); margin-bottom: var(--space-1); line-height: 1.6; }
+    .pending-inline { color: var(--color-pending); font-size: var(--text-xs); font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
+
+    /* ===== CARDS / GRIDS ===== */
+    .card { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-sm); border: 1px solid var(--color-borde); }
+    .card-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-negro); margin-bottom: var(--space-3); }
+    .card-body  { font-size: var(--text-base); color: var(--color-gris); line-height: 1.7; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+
+    /* ===== DO / DON'T ===== */
+    .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-8); }
+    .do-block, .dont-block { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .do-block   { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); }
+    .dont-block { background: var(--color-no-bg); border: 1px solid var(--color-no-border); }
+    .do-block   .block-title { color: var(--color-ok-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .dont-block .block-title { color: var(--color-no-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .do-block   ul, .dont-block ul { list-style: none; padding: 0; }
+    .do-block   li { color: var(--color-ok-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .do-block   li::before { content: '✓'; font-weight: 700; }
+    .dont-block li { color: var(--color-no-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .dont-block li::before { content: '✕'; font-weight: 700; }
+
+    /* ===== WORDMARK — reusable logo type ===== */
+    .wordmark {
+      font-family: var(--font-display); font-weight: 500; text-transform: uppercase;
+      color: var(--color-negro); line-height: 1; display: inline-block;
+    }
+    .wordmark--inverted { color: var(--color-marfil); }
+    .wordmark--xl  { font-size: 5.5rem;  letter-spacing: .3em;  padding-left: .3em; }
+    .wordmark--lg  { font-size: 4.125rem; letter-spacing: .3em;  padding-left: .3em; }
+    .wordmark--md  { font-size: 1.875rem; letter-spacing: .26em; padding-left: .26em; }
+    .wordmark--sm  { font-size: 1.1875rem; letter-spacing: .3em; padding-left: .3em; }
+    .tagline-italic {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      color: var(--color-negro); letter-spacing: .04em;
+    }
+    .tagline-italic--inverted { color: var(--color-marfil); }
+
+    /* ===== 01 PORTADA ===== */
+    #portada {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+      background: var(--color-negro); overflow: hidden;
+      padding: var(--space-24) var(--space-16);
+    }
+    #portada::before {
+      content: ''; position: absolute; top: -20%; right: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(196,113,74,.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #portada::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(196,113,74,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .portada-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: rgba(247,243,238,.06); border: 1px solid rgba(247,243,238,.15);
+      border-radius: var(--radius-full); padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.7);
+      text-transform: uppercase; margin-bottom: var(--space-10);
+    }
+    .portada-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-terracota); display: inline-block; }
+    .portada-monogram {
+      width: 88px; height: 88px; border-radius: 50%; background: rgba(247,243,238,.06);
+      border: 1px solid rgba(247,243,238,.2);
+      display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-10);
+    }
+    .portada-monogram span { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 2.5rem; color: var(--color-marfil); margin-top: -3px; }
+    .portada-line { width: 60px; height: 1px; background: var(--color-terracota); margin: var(--space-8) auto; }
+    .portada-tagline-wrap { margin-bottom: var(--space-6); }
+    .portada-tagline { font-family: var(--font-display); font-size: var(--text-2xl); font-style: italic; color: rgba(247,243,238,.7); max-width: 520px; line-height: 1.5; }
+    .portada-meta { display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap; justify-content: center; }
+    .portada-meta-item .label { display: block; font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.35); text-transform: uppercase; margin-bottom: 2px; }
+    .portada-meta-item .value { display: block; font-size: var(--text-sm); color: rgba(247,243,238,.75); font-weight: var(--font-medium); }
+    .portada-url { margin-top: var(--space-16); font-size: var(--text-xs); letter-spacing: .3em; color: rgba(247,243,238,.25); text-transform: uppercase; }
+    .portada-working-note { margin-top: var(--space-6); font-size: var(--text-xs); letter-spacing: .05em; color: rgba(217,164,135,.85); }
+
+    /* ===== 02 SOBRE WAY ===== */
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-12); }
+    .mv-card { border-radius: var(--radius-lg); padding: var(--space-10); }
+    .mv-card--dark    { background: var(--color-negro); color: var(--color-marfil); }
+    .mv-card--accent  { background: var(--color-terracota); color: var(--color-white); }
+    .mv-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .3em; text-transform: uppercase; margin-bottom: var(--space-4); opacity: .75; display: block; }
+    .mv-text  { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: 1.5; font-style: italic; }
+    .valores-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
+    .valor-card {
+      background: var(--color-white); border: 1px solid var(--color-borde);
+      border-radius: var(--radius-lg); padding: var(--space-6);
+      text-align: center; transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .valor-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .valor-icon { width: 40px; height: 40px; margin: 0 auto var(--space-4); color: var(--color-terracota); }
+    .valor-name { font-size: var(--text-sm); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--color-negro); margin-bottom: var(--space-2); display: block; }
+    .valor-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+
+    /* ===== 03 AUDIENCIA ===== */
+    .persona-layout { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-10); align-items: start; }
+    .persona-card   { background: var(--color-negro); border-radius: var(--radius-xl); overflow: hidden; }
+    .persona-photo  {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .persona-photo .mono-lg { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 96px; color: rgba(247,243,238,.9); }
+    .persona-info { padding: var(--space-6); }
+    .persona-name       { font-size: var(--text-xl); font-weight: 700; color: var(--color-marfil); margin-bottom: 2px; }
+    .persona-descriptor { font-size: var(--text-sm); color: #D9A487; margin-bottom: var(--space-4); font-style: italic; }
+    .persona-tag {
+      display: inline-block; background: rgba(196,113,74,.18); color: #E0AF97;
+      font-size: var(--text-xs); font-weight: var(--font-medium); letter-spacing: .05em;
+      padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); margin: 2px;
+    }
+    .demo-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-8); }
+    .demo-table tr { border-bottom: 1px solid var(--color-borde); }
+    .demo-table tr:last-child { border-bottom: none; }
+    .demo-table td { padding: var(--space-3) var(--space-4); font-size: var(--text-sm); }
+    .demo-table td:first-child { font-weight: var(--font-semibold); color: var(--color-gris); width: 42%; text-transform: uppercase; font-size: var(--text-xs); letter-spacing: .1em; }
+    .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-6); }
+    .insight-block { background: #F1EAE0; border-radius: var(--radius-md); padding: var(--space-5); }
+    .insight-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .15em; color: var(--color-terracota); margin-bottom: var(--space-3); }
+    .insight-block ul { list-style: none; padding: 0; }
+    .insight-block li { font-size: var(--text-sm); color: var(--color-negro); padding: 3px 0; display: flex; align-items: flex-start; gap: var(--space-2); }
+    .insight-block li::before { content: '→'; color: var(--color-terracota); font-size: var(--text-xs); margin-top: 3px; flex-shrink: 0; }
+
+    /* ===== 04 PERSONALIDAD DE MARCA ===== */
+    .dna-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-borde); border: 1px solid var(--color-borde); margin: var(--space-8) 0 var(--space-12); }
+    .dna-card { background: var(--color-white); padding: var(--space-6) var(--space-5); }
+    .dna-num  { font-family: var(--font-display); font-style: italic; font-size: var(--text-xl); color: var(--color-terracota); display: block; margin-bottom: var(--space-2); }
+    .dna-name { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); display: block; margin-bottom: var(--space-1); }
+    .dna-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+    .voice-quote {
+      background: var(--color-negro); color: var(--color-marfil); border-radius: var(--radius-lg);
+      padding: var(--space-10); margin: var(--space-10) 0; text-align: center;
+    }
+    .voice-quote p { font-family: var(--font-display); font-style: italic; font-size: var(--text-2xl); line-height: 1.5; max-width: 620px; margin: 0 auto; }
+    .voice-quote span { display: block; margin-top: var(--space-4); font-size: var(--text-xs); letter-spacing: .25em; text-transform: uppercase; color: #D9A487; }
+
+    /* ===== 05 LOGO ===== */
+    .logo-system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-8) 0 var(--space-3); }
+    .logo-cell {
+      border: 1px solid var(--color-borde); background: var(--color-marfil);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: var(--space-10) var(--space-4); gap: var(--space-3); text-align: center;
+    }
+    .logo-cell--primary { grid-column: 1 / -1; padding: var(--space-20) var(--space-6) var(--space-16); gap: var(--space-5); }
+    .logo-cell--dark { background: var(--color-negro); }
+    .logo-cell-label { font-size: var(--text-xs); letter-spacing: .2em; text-transform: uppercase; color: var(--color-gris); }
+    .logo-cell--dark .logo-cell-label { color: #B7A28F; }
+    .logo-caption-note { font-size: var(--text-xs); color: var(--color-pending); font-weight: 700; letter-spacing: .04em; }
+
+    .clearspace-wrap {
+      background: #F1EAE0; border-radius: var(--radius-lg); padding: var(--space-12);
+      text-align: center; border: 1px dashed var(--color-terracota); margin: var(--space-8) 0;
+    }
+    .clearspace-inner { display: inline-flex; border: 1px dashed rgba(196,113,74,.5); padding: var(--space-8); border-radius: var(--radius-md); }
+    .clearspace-note { font-size: var(--text-xs); color: var(--color-gris); margin-top: var(--space-4); font-style: italic; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .wronguse-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .wronguse-box {
+      border: 1px solid var(--color-borde); border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .wronguse-demo { background: var(--color-marfil); min-height: 120px; display: flex; align-items: center; justify-content: center; padding: var(--space-6); }
+    .wronguse-caption { background: var(--color-no-bg); border-top: 1px solid var(--color-no-border); padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-2); }
+    .wronguse-caption .xi { color: var(--color-no-text); font-weight: 700; }
+    .wronguse-caption span:last-child { font-size: var(--text-xs); color: var(--color-no-text); }
+
+    .rules-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
+    .rules-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .rules-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .rules-table tr:last-child td { border-bottom: none; }
+    .rule-ok { color: var(--color-ok-text); font-weight: var(--font-semibold); }
+    .rule-no { color: var(--color-no-text); font-weight: var(--font-semibold); }
+    .rule-avoid { color: var(--color-pending); font-weight: var(--font-semibold); }
+
+    /* ===== 06 COLORES ===== */
+    .swatch-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .swatch { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .swatch-chip  { height: 120px; width: 100%; }
+    .swatch-info  { background: var(--color-white); padding: var(--space-4); border: 1px solid var(--color-borde); border-top: none; }
+    .swatch-name  { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-negro); margin-bottom: var(--space-2); display: block; }
+    .swatch-code  { font-size: var(--text-xs); color: var(--color-gris); font-family: 'Courier New', monospace; margin-bottom: 2px; }
+    .swatch-use   { font-size: var(--text-xs); color: var(--color-gris); margin-top: var(--space-2); line-height: 1.5; }
+    .code-lbl     { font-family: var(--font-family); font-weight: var(--font-semibold); color: var(--color-gris); text-transform: uppercase; font-size: 10px; letter-spacing: .1em; margin-right: 4px; }
+
+    /* ===== 07 TIPOGRAFÍA ===== */
+    .type-specimen { margin: var(--space-8) 0; }
+    .type-row { padding: var(--space-6) 0; border-bottom: 1px solid var(--color-borde); }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .15em; color: var(--color-terracota); display: block; margin-bottom: var(--space-3); }
+    .type-sample-display { font-family: var(--font-display); font-size: var(--text-4xl); color: var(--color-negro); line-height: 1.15; margin-bottom: var(--space-2); }
+    .type-sample-display.italic { font-style: italic; font-weight: 400; }
+    .type-sample-body { font-family: var(--font-family); font-size: var(--text-xl); color: var(--color-negro); line-height: 1.4; }
+    .type-weight-tag { font-size: var(--text-xs); color: var(--color-gris); }
+    .hier-table { width: 100%; border-collapse: collapse; margin: var(--space-10) 0; }
+    .hier-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .hier-table td { padding: var(--space-5) var(--space-4); border-bottom: 1px solid var(--color-borde); vertical-align: middle; font-size: var(--text-sm); color: var(--color-negro); }
+    .hier-table tr:last-child td { border-bottom: none; }
+    .hier-sample-h1 { font-family: var(--font-display); font-weight: 500; font-size: var(--text-3xl); }
+    .hier-sample-h2 { font-family: var(--font-display); font-style: italic; font-size: var(--text-2xl); }
+    .hier-sample-h3 { font-family: var(--font-family); font-weight: 600; font-size: var(--text-lg); }
+    .hier-sample-body { font-family: var(--font-family); font-weight: 400; font-size: var(--text-base); }
+    .hier-sample-caption { font-family: var(--font-family); font-weight: 500; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .1em; }
+    .hier-sample-label { font-family: var(--font-family); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .15em; color: var(--color-terracota); }
+
+    /* ===== 08 VOZ Y TONO ===== */
+    .tone-tags { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-6) 0 var(--space-10); }
+    .tone-tag { font-size: var(--text-lg); font-weight: 700; padding: var(--space-3) var(--space-6); border-radius: var(--radius-full); background: #F1EAE0; color: var(--color-negro); border: 2px solid transparent; }
+    .tone-tag--dark   { background: var(--color-negro); color: var(--color-marfil); }
+    .tone-tag--accent { border-color: var(--color-terracota); }
+    .copy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); }
+    .copy-bubble { border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); font-size: var(--text-base); line-height: 1.6; }
+    .copy-bubble--ok  { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); color: var(--color-ok-text); }
+    .copy-bubble--bad { background: var(--color-no-bg); border: 1px solid var(--color-no-border); color: var(--color-no-text); }
+    .bubble-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .15em; margin-bottom: var(--space-2); display: block; }
+    .reference-copy-list { list-style: none; padding: 0; margin: var(--space-6) 0; }
+    .reference-copy-list li {
+      font-family: var(--font-display); font-style: italic; font-size: var(--text-xl); color: var(--color-negro);
+      padding: var(--space-4) 0; border-bottom: 1px solid var(--color-borde);
+    }
+    .reference-copy-list li:last-child { border-bottom: none; }
+    .prohibit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-6); }
+    .prohibit-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-no-bg); border-radius: var(--radius-md); border: 1px solid var(--color-no-border); }
+    .prohibit-item .xi { color: var(--color-no-text); font-weight: 700; font-size: var(--text-lg); flex-shrink: 0; }
+    .prohibit-item span:last-child { font-size: var(--text-sm); color: var(--color-no-text); }
+
+    /* ===== 09 FOTOGRAFÍA ===== */
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin: var(--space-8) 0; }
+    .photo-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-borde); }
+    .photo-box { aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); }
+    .photo-box--ok  { background: linear-gradient(160deg, #EFE6D8, #D9C7AE); }
+    .photo-box--bad { background: var(--color-no-bg); position: relative; }
+    .photo-box--bad::after { content: '✕'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 80px; color: rgba(159,18,57,.12); font-weight: 700; }
+    .photo-card-info { padding: var(--space-4); background: var(--color-white); border-top: 1px solid var(--color-borde); }
+    .photo-card-title { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-negro); display: block; margin-bottom: 4px; }
+    .photo-card-desc  { font-size: var(--text-xs); color: var(--color-gris); }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-8) 0; }
+    .comp-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-md); padding: var(--space-5); }
+    .comp-card-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-2); }
+    .comp-card-desc  { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+
+    /* ===== 10 APLICACIONES ===== */
+    .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+    .app-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; color: var(--color-gris); margin-bottom: var(--space-4); display: block; }
+    /* Instagram mockup */
+    .ig-post { border: 1px solid var(--color-borde); border-radius: var(--radius-xl); overflow: hidden; background: var(--color-white); }
+    .ig-header { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-borde); }
+    .ig-avatar  { width: 34px; height: 34px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
+    .ig-avatar span { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--color-marfil); font-size: var(--text-base); }
+    .ig-user    { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-negro); }
+    .ig-img     { aspect-ratio: 1; background: linear-gradient(160deg, #EFE6D8, #C98F68); display: flex; align-items: center; justify-content: center; }
+    .ig-img .wordmark { font-size: 2.5rem; letter-spacing: .3em; padding-left: .3em; color: rgba(247,243,238,.85); }
+    .ig-actions { padding: var(--space-3) var(--space-4); display: flex; gap: var(--space-4); font-size: 20px; color: var(--color-negro); }
+    .ig-caption { padding: 0 var(--space-4) var(--space-4); font-size: var(--text-sm); color: var(--color-negro); line-height: 1.5; }
+    .ig-caption strong { font-weight: 700; }
+    /* WhatsApp mockup */
+    .wa-wrap { background: #E9E1D4; border-radius: var(--radius-xl); overflow: hidden; }
+    .wa-header { background: var(--color-negro); padding: var(--space-3) var(--space-5); display: flex; align-items: center; gap: var(--space-3); }
+    .wa-avatar  { width: 36px; height: 36px; border-radius: 50%; background: var(--color-terracota); display: flex; align-items: center; justify-content: center; }
+    .wa-avatar span { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--color-marfil); font-size: var(--text-base); }
+    .wa-name    { color: var(--color-marfil); font-size: var(--text-sm); font-weight: var(--font-semibold); }
+    .wa-status  { color: rgba(247,243,238,.6); font-size: var(--text-xs); }
+    .wa-msgs    { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); }
+    .wa-bubble  { max-width: 85%; padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); font-size: var(--text-sm); line-height: 1.5; }
+    .wa-bubble--brand  { background: var(--color-white); align-self: flex-end; border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg); border: 1px solid var(--color-borde); }
+    .wa-bubble--client { background: #F7F1E7; align-self: flex-start; border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg); }
+    .wa-time { font-size: 10px; color: var(--color-gris); text-align: right; margin-top: 4px; }
+    /* Escala real — hang tag & etiqueta */
+    .scale-apps-wrap { display: flex; gap: var(--space-10); align-items: flex-end; flex-wrap: wrap; margin: var(--space-8) 0; }
+    .scale-app { display: flex; flex-direction: column; gap: var(--space-3); }
+    .hangtag {
+      width: 151px; height: 340px; background: var(--color-marfil); border: 1px solid #E0D7CA;
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center;
+      padding: 22px 12px; box-sizing: border-box;
+    }
+    .hangtag-hole { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--color-negro); margin-bottom: 84px; }
+    .hangtag-tagline { font-family: var(--font-display); font-style: italic; font-size: 9.5px; letter-spacing: .08em; color: var(--color-negro); margin-top: 8px; }
+    .hangtag-footer { margin-top: auto; width: 100%; border-top: 1px solid var(--color-terracota); padding-top: 8px; text-align: center; font-size: 7px; letter-spacing: .24em; text-transform: uppercase; color: var(--color-gris); }
+    .woven-label { width: 227px; height: 57px; background: var(--color-negro); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    .scale-app-caption { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-gris); }
+    .ig-avatar-lg { width: 110px; height: 110px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
+    .ig-avatar-lg span { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 52px; color: var(--color-marfil); margin-top: -4px; }
+    .tote-bag {
+      width: 190px; height: 253px; background: var(--color-negro); box-shadow: var(--shadow-md);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3);
+    }
+    /* Packaging */
+    .pack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-6) 0; }
+    .pack-item {
+      aspect-ratio: 1; background: #F1EAE0; border: 1px dashed var(--color-borde);
+      border-radius: var(--radius-lg); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: var(--space-2);
+      padding: var(--space-4); text-align: center;
+    }
+    .pack-item .icon  { font-size: 32px; }
+    .pack-item .label { font-size: var(--text-xs); color: var(--color-gris); font-weight: var(--font-medium); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
+      #sidebar { transform: translateX(-100%); transition: transform 200ms ease; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-overlay.visible { display: block; }
+      #menu-toggle { display: flex; }
+      #content { margin-left: 0; }
+      .section-title { font-size: var(--text-4xl); }
+      .wordmark--xl { font-size: 3rem; }
+      .portada-meta { flex-wrap: wrap; justify-content: center; }
+      .mv-grid, .do-dont-grid, .copy-grid, .app-grid, .persona-layout, .grid-2, .grid-3,
+      .logo-system-grid, .comp-grid, .scale-apps-wrap { grid-template-columns: 1fr; }
+      .scale-apps-wrap { display: flex; flex-direction: column; align-items: center; }
+      .valores-grid, .dna-grid { grid-template-columns: repeat(2, 1fr); }
+      .swatch-grid   { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid, .wronguse-grid { grid-template-columns: 1fr 1fr; }
+      .prohibit-grid { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .pack-grid     { grid-template-columns: 1fr 1fr; }
+      .logo-cell--primary { padding: var(--space-12) var(--space-4); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+
+    /* ===== PRINT / PDF ===== */
+    @media print {
+      #sidebar, #menu-toggle, #sidebar-overlay { display: none !important; }
+      #content { margin-left: 0 !important; }
+      .section { min-height: auto; page-break-before: always; padding: 40px 60px; }
+      #portada { page-break-before: avoid; min-height: 100vh; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .valor-card, .swatch, .mv-card, .dna-card, .logo-cell { break-inside: avoid; }
+      a { text-decoration: none; color: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="menu-toggle" aria-label="Abrir menú" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</button>
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-brand">WAY</span>
+    <span class="sidebar-subtitle">Brandbook Oficial</span>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#portada"      class="nav-link"><span class="nav-num">01</span>Portada</a></li>
+    <li><a href="#sobre-way"    class="nav-link"><span class="nav-num">02</span>Sobre WAY</a></li>
+    <li><a href="#audiencia"    class="nav-link"><span class="nav-num">03</span>Audiencia</a></li>
+    <li><a href="#personalidad" class="nav-link"><span class="nav-num">04</span>Personalidad</a></li>
+    <li><a href="#logo"         class="nav-link"><span class="nav-num">05</span>Logo</a></li>
+    <li><a href="#colores"      class="nav-link"><span class="nav-num">06</span>Colores</a></li>
+    <li><a href="#tipografia"   class="nav-link"><span class="nav-num">07</span>Tipografía</a></li>
+    <li><a href="#voz-tono"     class="nav-link"><span class="nav-num">08</span>Voz y Tono</a></li>
+    <li><a href="#fotografia"   class="nav-link"><span class="nav-num">09</span>Fotografía</a></li>
+    <li><a href="#aplicaciones" class="nav-link"><span class="nav-num">10</span>Aplicaciones</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <p class="sidebar-footer-text">© 2026 WAY PERUVIAN</p>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main id="content">
+
+  <!-- 01 PORTADA -->
+  <section id="portada" class="section section--dark">
+    <div class="portada-badge"><span></span>Moda Femenina Peruana · Nosotras</div>
+    <div class="portada-monogram"><span>W</span></div>
+    <div class="wordmark wordmark--xl wordmark--inverted">WAY</div>
+    <div class="portada-line"></div>
+    <div class="portada-tagline-wrap">
+      <p class="portada-tagline">"Una manera propia"</p>
+      <p class="pending-inline" style="display:block;text-align:center;margin-top:var(--space-3);">[PENDIENTE — selección final de tagline]</p>
+    </div>
+    <div class="portada-meta">
+      <div class="portada-meta-item"><span class="label">País</span><span class="value">Perú</span></div>
+      <div class="portada-meta-item"><span class="label">Categoría</span><span class="value">Moda Femenina</span></div>
+      <div class="portada-meta-item"><span class="label">Territorio</span><span class="value">01 — La Firma</span></div>
+      <div class="portada-meta-item"><span class="label">Edición</span><span class="value">2026</span></div>
+      <div class="portada-meta-item"><span class="label">Versión</span><span class="value">1.0</span></div>
+    </div>
+    <p class="portada-url">wayperuvian.pe &nbsp;·&nbsp; @way_peruvian</p>
+    <!-- ASSUMPTION: identidad basada en Territorio 01 — La Firma, aún pendiente de confirmación final del cliente (ver CLAUDE.md, Fase 4). Documento de trabajo. -->
+    <p class="portada-working-note">Identidad visual del Territorio 01 — La Firma · documento de trabajo, pendiente de confirmación final del cliente</p>
+  </section>
+
+  <!-- 02 SOBRE WAY -->
+  <section id="sobre-way" class="section section--surface">
+    <span class="section-label">02 — Sobre WAY</span>
+    <h1 class="section-title">Quiénes somos</h1>
+    <p class="section-intro">WAY es una marca de moda femenina peruana construida con su comunidad, no dirigida a ella. Ecommerce primero, con tienda física en Lima — y un compromiso operativo claro: envíos en 24 horas.</p>
+
+    <div class="pending-block">
+      <span class="pending-label">[PENDIENTE — Cliente]</span>
+      <p>Historia de origen de la marca. Para completar esta sección, el cliente debe responder:</p>
+      <ol>
+        <li>¿Por qué el nombre "WAY"?</li>
+        <li>¿Cuándo y por qué nació la marca?</li>
+        <li>¿Quién la fundó y qué la motivó a empezar?</li>
+        <li>¿Qué momento o insight marcó el inicio de WAY?</li>
+      </ol>
+    </div>
+
+    <div class="mv-grid">
+      <div class="mv-card mv-card--dark">
+        <span class="mv-label">Misión</span>
+        <p class="mv-text">Vestir a la mujer peruana que sabe lo que quiere — con moda de calidad premium, entrega en 24 horas y una comunidad que se construye entre todas.</p>
+      </div>
+      <div class="mv-card mv-card--accent">
+        <span class="mv-label">Visión</span>
+        <p class="mv-text">Ser la marca de moda femenina de referencia en América Latina, reconocida por construir comunidad con sus clientas — no solo venderles ropa.</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Valores de Marca</h2>
+    <div class="valores-grid">
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="valor-name">Comunidad</span>
+        <p class="valor-desc">Construida entre todas, no dirigida desde arriba.</p>
+      </div>
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="valor-name">Calidez</span>
+        <p class="valor-desc">Presente y cercana, como una amiga con buen gusto.</p>
+      </div>
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span class="valor-name">Calidad</span>
+        <p class="valor-desc">Premium accesible — aspiracional sin excluir.</p>
+      </div>
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span class="valor-name">Autenticidad</span>
+        <p class="valor-desc">Alma peruana, con raíces — no folclórica.</p>
+      </div>
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+        <span class="valor-name">Velocidad</span>
+        <p class="valor-desc">Envíos en 24 horas. Respuesta inmediata por WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 AUDIENCIA -->
+  <section id="audiencia" class="section section--white">
+    <span class="section-label">03 — Audiencia</span>
+    <h1 class="section-title">Cliente Ideal</h1>
+    <p class="section-intro">La mujer WAY es independiente económicamente, socialmente activa y guiada por valores. Tiene gusto y lo sabe — y está cansada de marcas que le hablan con condescendencia o ignoran su edad.</p>
+
+    <div class="persona-layout">
+      <div class="persona-card">
+        <div class="persona-photo"><span class="mono-lg">W</span></div>
+        <div class="persona-info">
+          <p class="persona-name">La mujer WAY</p>
+          <p class="persona-descriptor">28 – 65+ años</p>
+          <div>
+            <span class="persona-tag">Lima</span>
+            <span class="persona-tag">Independiente</span>
+            <span class="persona-tag">Instagram</span>
+            <span class="persona-tag">WhatsApp</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <table class="demo-table">
+          <tr><td>Género</td><td>Mujer</td></tr>
+          <tr><td>Ubicación</td><td>Lima, Perú — expansión nacional</td></tr>
+          <tr><td>Edad</td><td>28–65+ años <span style="color:var(--color-gris);font-size:var(--text-xs);">(corregido de 18–30 inicial)</span></td></tr>
+          <tr><td>Perfil</td><td>Independiente económicamente, socialmente activa, guiada por valores</td></tr>
+          <tr><td>Canal principal</td><td>WhatsApp + Instagram — más que TikTok, dado el rango de edad real</td></tr>
+          <tr><td>Ticket promedio</td><td>S/ 180</td></tr>
+          <tr><td>Posicionamiento de precio</td><td>Mid-range accesible <span class="pending-inline">[PENDIENTE — confirmar]</span></td></tr>
+        </table>
+        <div class="insights-grid">
+          <div class="insight-block">
+            <p class="insight-title">Comportamiento de compra</p>
+            <ul>
+              <li>Descubre en Instagram</li>
+              <li>Consulta por WhatsApp antes de comprar</li>
+              <li>Valora el envío rápido</li>
+              <li>Compra con criterios claros, no por impulso</li>
+            </ul>
+          </div>
+          <div class="insight-block">
+            <p class="insight-title">Valores personales</p>
+            <ul>
+              <li>Quiere pertenecer a algo real, no a un carrito de compras</li>
+              <li>Valora el gusto y la experiencia de compra</li>
+              <li>Espera respeto por su edad, no condescendencia</li>
+              <li>Busca una comunidad que comparta su sensibilidad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 PERSONALIDAD DE MARCA -->
+  <section id="personalidad" class="section section--surface">
+    <span class="section-label">04 — Personalidad de Marca</span>
+    <h1 class="section-title">ADN de Marca</h1>
+    <p class="section-intro">Ocho atributos gobiernan cada decisión de marca, de la palabra escrita al pixel. Lo que Glossier hizo por la belleza, aplicado a la moda premium accesible en América Latina.</p>
+
+    <div class="dna-grid">
+      <div class="dna-card"><span class="dna-num">01</span><span class="dna-name">Cálida</span><p class="dna-desc">Emocionalmente presente, no distante.</p></div>
+      <div class="dna-card"><span class="dna-num">02</span><span class="dna-name">Segura</span><p class="dna-desc">Autoridad ganada, no actuada.</p></div>
+      <div class="dna-card"><span class="dna-num">03</span><span class="dna-name">Comunidad primero</span><p class="dna-desc">Construida juntas, de todas.</p></div>
+      <div class="dna-card"><span class="dna-num">04</span><span class="dna-name">Atemporal</span><p class="dna-desc">Relevante en 2026 y en 2036.</p></div>
+      <div class="dna-card"><span class="dna-num">05</span><span class="dna-name">Premium accesible</span><p class="dna-desc">Aspiracional sin excluir.</p></div>
+      <div class="dna-card"><span class="dna-num">06</span><span class="dna-name">Alma peruana</span><p class="dna-desc">Con raíces, no folclórica.</p></div>
+      <div class="dna-card"><span class="dna-num">07</span><span class="dna-name">Editorial</span><p class="dna-desc">Curada e intencional.</p></div>
+      <div class="dna-card"><span class="dna-num">08</span><span class="dna-name">Íntima</span><p class="dna-desc">Una amiga de confianza con gusto impecable.</p></div>
+    </div>
+
+    <div class="voice-quote">
+      <p>"La amiga que da consejos de moda, no la vendedora agresiva."</p>
+      <span>Voz de marca</span>
+    </div>
+
+    <h2 class="subsection-title">Tono de Voz</h2>
+    <div class="do-dont-grid">
+      <div class="do-block">
+        <p class="block-title">Sí ✓</p>
+        <ul>
+          <li>Emojis naturales (✨ 😍)</li>
+          <li>Segunda persona — hablarle de "tú"</li>
+          <li>Verbos de acción</li>
+          <li>Cercanía y calidez</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <p class="block-title">No ✕</p>
+        <ul>
+          <li>Lenguaje corporativo</li>
+          <li>Tecnicismos</li>
+          <li>Condescendencia</li>
+          <li>Venta agresiva o urgencia falsa</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 LOGO -->
+  <section id="logo" class="section section--white">
+    <span class="section-label">05 — Logo</span>
+    <h1 class="section-title">Sistema de Logo — La Firma</h1>
+    <p class="section-intro">WAY como el nombre de una diseñadora que ya no necesita presentación. Sin símbolos, sin íconos — el nombre solo, con calidad de firma. En otras palabras: ZARA, PRADA, CELINE.</p>
+
+    <div class="pending-block" style="border-left-color:var(--color-ok-text);background:var(--color-ok-bg);border-color:var(--color-ok-border);">
+      <span class="pending-label" style="color:var(--color-ok-text);">✓ Generado</span>
+      <p style="color:var(--color-negro);">Los 4 lockups de abajo ya son SVG vectorial real — no una aproximación en CSS. Se generaron convirtiendo los contornos de Bodoni Moda a paths (fontTools), a partir del texto exacto y el tracking especificados en la propuesta de Claude Design. El favicon 32×32&nbsp;px del monograma también está generado.</p>
+      <ul>
+        <li><a href="assets/logo/way-wordmark-negro.svg">way-wordmark-negro.svg</a> — logotipo principal, negro sobre transparente</li>
+        <li><a href="assets/logo/way-wordmark-marfil.svg">way-wordmark-marfil.svg</a> — versión invertida, marfil sobre transparente</li>
+        <li><a href="assets/logo/way-wordmark-embroidery-master.svg">way-wordmark-embroidery-master.svg</a> — master engrosado para bordado</li>
+        <li><a href="assets/logo/way-monogram.svg">way-monogram.svg</a> — monograma W en círculo</li>
+        <li><a href="assets/logo/favicon.png">favicon.png</a> — 32×32 px, derivado del monograma</li>
+      </ul>
+    </div>
+    <div class="pending-block">
+      <span class="pending-label">[PENDIENTE — Diseñador]</span>
+      <p>Lo único que queda fuera de este documento:</p>
+      <ul>
+        <li>AI/EPS — conversión directa del SVG en Illustrator (abrir → guardar como), no requiere rediseño</li>
+        <li>Archivo de digitalización de bordado (DST/PES) — requiere al proveedor de bordado; usar <code>way-wordmark-embroidery-master.svg</code> como fuente (ver nota más abajo)</li>
+      </ul>
+    </div>
+
+    <h2 class="subsection-title">Sistema de Identidad</h2>
+    <div class="logo-system-grid">
+      <div class="logo-cell logo-cell--primary">
+        <img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:280px;">
+        <div class="tagline-italic" style="font-size:var(--text-lg);">una manera propia</div>
+        <span class="logo-caption-note">Tagline ilustrativo — texto final [PENDIENTE — selección final]</span>
+      </div>
+      <div class="logo-cell">
+        <img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;">
+        <div style="width:44px;height:1px;background:var(--color-terracota);"></div>
+        <span class="logo-cell-label">Compacto / apilado</span>
+      </div>
+      <div class="logo-cell">
+        <img src="assets/logo/way-monogram.svg" alt="Monograma WAY" style="width:110px;height:110px;">
+        <span class="logo-cell-label">Monograma · recorte 110&nbsp;px</span>
+      </div>
+      <div class="logo-cell logo-cell--dark">
+        <img src="assets/logo/way-wordmark-marfil.svg" alt="WAY" style="width:130px;">
+        <span class="logo-cell-label">Invertido — fondo oscuro</span>
+      </div>
+    </div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);line-height:1.6;max-width:640px;margin-bottom:var(--space-10);">Letras con trazos que van del muy grueso al muy fino — esa tensión da elegancia sin esfuerzo. Las mayúsculas van muy separadas entre sí, lo que las hace imponentes. El tagline aparece en cursiva de la misma familia, a escala pequeña.</p>
+
+    <h2 class="subsection-title">Nota sobre Versión Bordada</h2>
+    <div class="pending-block" style="border-left-color:var(--color-terracota);background:#FBF3EC;border-color:#EAD3C1;">
+      <span class="pending-label" style="color:var(--color-terracota);">⚠ Requisito funcional</span>
+      <p style="color:var(--color-negro);">Los trazos finos de Bodoni Moda son el riesgo de esta dirección a escala de etiqueta bordada (1.5 cm). <code>way-wordmark-embroidery-master.svg</code> usa el peso 800 (el más grueso disponible en la fuente) como punto de partida — pero incluso a ese peso las astas finas del diseño Bodoni siguen siendo delgadas: el peso de fuente por sí solo no basta. El proveedor de bordado debe engrosar manualmente esas astas al digitalizar (DST/PES); si el diseño no sobrevive al bordado a 1.5&nbsp;cm, no califica. Ver la etiqueta tejida en la sección 10 — Aplicaciones.</p>
+    </div>
+
+    <h2 class="subsection-title">Zona de Exclusión</h2>
+    <!-- ASSUMPTION: regla de espacio libre inferida de práctica estándar de branding; a confirmar por el diseñador junto con los archivos vectoriales. -->
+    <div class="clearspace-wrap">
+      <div class="clearspace-inner">
+        <div class="wordmark wordmark--md">WAY</div>
+      </div>
+      <p class="clearspace-note">La zona de exclusión mínima equivale a la altura de la letra "Y" del logotipo, medida en los cuatro lados. Ningún elemento gráfico, texto o borde puede invadir este espacio. <span class="pending-inline">[PENDIENTE — confirmar con diseñador]</span></p>
+    </div>
+
+    <h2 class="subsection-title">Usos Incorrectos</h2>
+    <div class="wronguse-grid">
+      <div class="wronguse-box">
+        <div class="wronguse-demo"><img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;transform:scaleX(1.6);"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Estirar o deformar las proporciones</span></div>
+      </div>
+      <div class="wronguse-box">
+        <div class="wronguse-demo"><img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;transform:rotate(-14deg);"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Rotar el logotipo</span></div>
+      </div>
+      <div class="wronguse-box">
+        <div class="wronguse-demo"><img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;filter:invert(28%) sepia(89%) saturate(2500%) hue-rotate(214deg);"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Colores fuera de la paleta oficial</span></div>
+      </div>
+      <div class="wronguse-box">
+        <div class="wronguse-demo"><img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;filter:drop-shadow(3px 4px 4px rgba(0,0,0,.5));"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Sombras, biseles o efectos decorativos</span></div>
+      </div>
+      <div class="wronguse-box">
+        <div class="wronguse-demo"><img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;opacity:.3;"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Opacidad reducida</span></div>
+      </div>
+      <div class="wronguse-box">
+        <div class="wronguse-demo" style="background:linear-gradient(135deg,#C9BFAE,#8A7D70);"><img src="assets/logo/way-wordmark-marfil.svg" alt="WAY" style="width:130px;"></div>
+        <div class="wronguse-caption"><span class="xi">✕</span><span>Fondos de bajo contraste o fotografía compleja</span></div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Reglas de Uso</h2>
+    <table class="rules-table">
+      <thead><tr><th>Uso</th><th>Estado</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Logotipo negro sobre marfil</td><td class="rule-ok">✓ Aprobado</td><td>Uso principal. Máximo contraste y calidez.</td></tr>
+        <tr><td>Logotipo marfil sobre negro</td><td class="rule-ok">✓ Aprobado</td><td>Versión invertida para fondos oscuros o portadas.</td></tr>
+        <tr><td>Monograma W en avatar circular</td><td class="rule-ok">✓ Aprobado</td><td>Instagram, WhatsApp Business, favicon.</td></tr>
+        <tr><td>Logotipo con proporciones alteradas</td><td class="rule-no">✕ Prohibido</td><td>Las proporciones y el tracking original deben mantenerse siempre.</td></tr>
+        <tr><td>Logotipo con opacidad reducida</td><td class="rule-no">✕ Prohibido</td><td>El logotipo debe aparecer siempre al 100% de opacidad.</td></tr>
+        <tr><td>Logotipo en colores fuera de la paleta</td><td class="rule-no">✕ Prohibido</td><td>Solo negro, marfil o terracota como acento puntual.</td></tr>
+        <tr><td>Efectos decorativos (sombra, gradiente, bisel)</td><td class="rule-no">✕ Prohibido</td><td>El logotipo se mantiene limpio, sin efectos visuales añadidos.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 06 COLORES -->
+  <section id="colores" class="section section--surface">
+    <span class="section-label">06 — Colores</span>
+    <h1 class="section-title">Sistema de Color</h1>
+    <p class="section-intro">Una paleta cálida — marfil, negro cálido y terracota — que mantiene al logotipo con calidad de firma humana, no altiva.</p>
+
+    <h2 class="subsection-title">Paleta La Firma</h2>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#F7F3EE;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Marfil cálido</span>
+          <p class="swatch-code"><span class="code-lbl">HEX</span>#F7F3EE</p>
+          <p class="swatch-code"><span class="code-lbl">RGB</span>247, 243, 238</p>
+          <p class="swatch-use">Fondo principal. Base del sistema.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#2A1F18;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Casi negro</span>
+          <p class="swatch-code"><span class="code-lbl">HEX</span>#2A1F18</p>
+          <p class="swatch-code"><span class="code-lbl">RGB</span>42, 31, 24</p>
+          <p class="swatch-use">Texto principal, logotipo, fondos invertidos.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#C4714A;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Terracota</span>
+          <p class="swatch-code"><span class="code-lbl">HEX</span>#C4714A</p>
+          <p class="swatch-code"><span class="code-lbl">RGB</span>196, 113, 74</p>
+          <p class="swatch-use">Acento — líneas, detalles, nunca texto extenso.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#8A7D70;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Gris cálido</span>
+          <p class="swatch-code"><span class="code-lbl">HEX</span>#8A7D70</p>
+          <p class="swatch-code"><span class="code-lbl">RGB</span>138, 125, 112</p>
+          <p class="swatch-use">Texto secundario, captions, metadatos.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:#E5DDD2;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Borde</span>
+          <p class="swatch-code"><span class="code-lbl">HEX</span>#E5DDD2</p>
+          <p class="swatch-code"><span class="code-lbl">RGB</span>229, 221, 210</p>
+          <p class="swatch-use">Bordes, separadores, superficies sutiles.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Reglas de Combinación</h2>
+    <table class="rules-table">
+      <thead><tr><th>Combinación</th><th>Estado</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td>Casi negro sobre marfil</td><td class="rule-ok">✓ Aprobado</td><td>Combinación principal para texto y logotipo.</td></tr>
+        <tr><td>Marfil sobre casi negro</td><td class="rule-ok">✓ Aprobado</td><td>Versión invertida — portadas, fondos oscuros.</td></tr>
+        <tr><td>Terracota como línea o detalle puntual</td><td class="rule-ok">✓ Aprobado</td><td>Subrayados, separadores, acentos de marca.</td></tr>
+        <tr><td>Gris cálido para texto secundario</td><td class="rule-ok">✓ Aprobado</td><td>Captions, metadatos, texto de apoyo.</td></tr>
+        <tr><td>Terracota como fondo de bloques grandes</td><td class="rule-avoid">△ Evitar</td><td>Reservado para acentos puntuales, no superficies grandes.</td></tr>
+        <tr><td>Texto largo en terracota</td><td class="rule-avoid">△ Evitar</td><td>Contraste insuficiente para lectura extensa.</td></tr>
+        <tr><td>Colores fuera de esta paleta (tonos fríos, neón)</td><td class="rule-no">✕ Prohibido</td><td>Rompe la calidez atemporal del territorio.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 07 TIPOGRAFÍA -->
+  <section id="tipografia" class="section section--white">
+    <span class="section-label">07 — Tipografía</span>
+    <h1 class="section-title">Sistema Tipográfico</h1>
+    <p class="section-intro">Dos familias, dos roles: Bodoni Moda lleva la voz editorial de la firma; Archivo sostiene la claridad del día a día.</p>
+
+    <div class="type-specimen">
+      <div class="type-row">
+        <span class="type-meta">Bodoni Moda · Italic 400 — titulares, firma, tagline</span>
+        <p class="type-sample-display italic">Una manera propia</p>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Bodoni Moda · Medium 500 — logotipo, mayúsculas</span>
+        <p class="type-sample-display">LA FIRMA DE WAY</p>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Archivo · Regular 400 — cuerpo, fichas de producto, email</span>
+        <p class="type-sample-body">Tu combinación perfecta la encuentras aquí. Ropa de moda para la mujer empoderada, con envíos en 24 horas.</p>
+      </div>
+      <div class="type-row">
+        <span class="type-meta">Archivo · SemiBold 600 — interfaz, botones, labels</span>
+        <p class="type-sample-body" style="font-weight:600;">ENVÍOS EN 24 HORAS</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Jerarquía Completa</h2>
+    <table class="hier-table">
+      <thead><tr><th>Nivel</th><th>Especificación</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>H1</td><td>Bodoni Moda 500 · 48–64px</td><td><span class="hier-sample-h1">Luce única con nosotras</span></td></tr>
+        <tr><td>H2</td><td>Bodoni Moda Italic 400 · 28–32px</td><td><span class="hier-sample-h2">una manera propia</span></td></tr>
+        <tr><td>H3</td><td>Archivo 600 · 18–20px</td><td><span class="hier-sample-h3">Nueva colección</span></td></tr>
+        <tr><td>Body</td><td>Archivo 400 · 16px / 1.6</td><td><span class="hier-sample-body">Tu combinación perfecta la encuentras aquí ✨</span></td></tr>
+        <tr><td>Caption</td><td>Archivo 500 · 12px · mayúsculas trackeadas</td><td><span class="hier-sample-caption">Envíos en 24 horas</span></td></tr>
+        <tr><td>Label</td><td>Archivo 600 · 11px · mayúsculas, tracking amplio</td><td><span class="hier-sample-label">Nuevo</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 08 VOZ Y TONO -->
+  <section id="voz-tono" class="section section--surface">
+    <span class="section-label">08 — Voz y Tono</span>
+    <h1 class="section-title">Cómo Habla WAY</h1>
+    <p class="section-intro">La amiga que da consejos de moda honestos — nunca la vendedora agresiva.</p>
+
+    <div class="tone-tags">
+      <span class="tone-tag tone-tag--dark">Cercana</span>
+      <span class="tone-tag tone-tag--accent">Cálida</span>
+      <span class="tone-tag">Segura</span>
+      <span class="tone-tag">Directa</span>
+    </div>
+
+    <h2 class="subsection-title">Copy de Referencia</h2>
+    <ul class="reference-copy-list">
+      <li>"Tu combinación perfecta la encuentras aquí ✨"</li>
+      <li>"Luce única con nosotras"</li>
+      <li>"Ropa de moda para la mujer empoderada"</li>
+      <li>"ENVÍOS EN 24 HORAS"</li>
+    </ul>
+
+    <h2 class="subsection-title">Aprobado vs. Rechazado</h2>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado</span>"Encontramos tu talla y te la mandamos en 24 horas ✨"</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"Adquiera las últimas tendencias en nuestra plataforma de ecommerce."</div>
+    </div>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado</span>"Esto te va a quedar increíble, créenos 😍"</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"Nuestro equipo de expertos en moda ha seleccionado los mejores productos para usted."</div>
+    </div>
+
+    <h2 class="subsection-title">Nunca en la Voz de WAY</h2>
+    <div class="prohibit-grid">
+      <div class="prohibit-item"><span class="xi">✕</span><span>Lenguaje corporativo</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Tecnicismos de moda sin explicar</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Condescendencia ("tú no sabías, pero...")</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Venta agresiva o urgencia falsa</span></div>
+    </div>
+  </section>
+
+  <!-- 09 FOTOGRAFÍA -->
+  <section id="fotografia" class="section section--white">
+    <span class="section-label">09 — Fotografía</span>
+    <h1 class="section-title">Estilo Fotográfico</h1>
+    <p class="section-intro">Editorial cálido — referencia Saint Male (@saintmale.cl). Rostro protagonista, luz cálida y direccional, color grading crema-marrón-borgoña.</p>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="photo-box photo-box--ok">🧥</div>
+        <div class="photo-card-info"><span class="photo-card-title">Interior con carácter</span><p class="photo-card-desc">Espacios con textura y personalidad — no un set neutro.</p></div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-box photo-box--ok">🌇</div>
+        <div class="photo-card-info"><span class="photo-card-title">Exterior urbano con textura</span><p class="photo-card-desc">Calles, muros, luz de calle — Lima como telón de fondo real.</p></div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-box photo-box--bad">📷</div>
+        <div class="photo-card-info"><span class="photo-card-title" style="color:var(--color-no-text);">Fondo blanco de estudio</span><p class="photo-card-desc">Prohibido — le quita el alma editorial a la marca.</p></div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Reglas de Composición</h2>
+    <div class="comp-grid">
+      <div class="comp-card"><p class="comp-card-title">Iluminación</p><p class="comp-card-desc">Cálida y direccional. Las sombras están permitidas — dan carácter, no se corrigen.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Encuadre</p><p class="comp-card-desc">Mix de cuerpo entero, ¾ y detalle. Nunca solo un tipo de plano.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Rostro</p><p class="comp-card-desc">Visible y expresivo — protagonista, no accesorio de la prenda.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Color grading</p><p class="comp-card-desc">Paleta crema-marrón-borgoña. Feed coherente, no editado imagen por imagen.</p></div>
+    </div>
+
+    <h2 class="subsection-title">Prohibido</h2>
+    <div class="prohibit-grid">
+      <div class="prohibit-item"><span class="xi">✕</span><span>Fondo blanco de estudio</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Flash directo</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Pared de ladrillo como único recurso</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Poses de catálogo</span></div>
+    </div>
+  </section>
+
+  <!-- 10 APLICACIONES -->
+  <section id="aplicaciones" class="section section--surface">
+    <span class="section-label">10 — Aplicaciones</span>
+    <h1 class="section-title">Aplicaciones de Marca</h1>
+    <p class="section-intro">De la etiqueta bordada a 1.5&nbsp;cm al feed de Instagram: el sistema La Firma en cada punto de contacto.</p>
+
+    <div class="app-grid">
+      <div>
+        <span class="app-label">Instagram — Post de Producto</span>
+        <div class="ig-post">
+          <div class="ig-header"><img src="assets/logo/way-monogram.svg" alt="Monograma WAY" class="ig-avatar"><p class="ig-user">way_peruvian</p></div>
+          <div class="ig-img"><div class="wordmark">WAY</div></div>
+          <div class="ig-actions"><span>♡</span><span>💬</span><span>↗</span></div>
+          <div class="ig-caption"><strong>way_peruvian</strong> Tu combinación perfecta la encuentras aquí ✨ Luce única con nosotras 💕 ENVÍOS EN 24 HORAS 🚀<br><br>#modaperuana #wayperuvian #nosotras</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="app-label">WhatsApp Business — Atención al Cliente</span>
+        <div class="wa-wrap">
+          <div class="wa-header"><div class="wa-avatar"><span>W</span></div><div><p class="wa-name">WAY Peruvian</p><p class="wa-status">en línea</p></div></div>
+          <div class="wa-msgs">
+            <div class="wa-bubble wa-bubble--client">Hola! Quería consultar si tienen este vestido en talla M 😊<p class="wa-time">10:32</p></div>
+            <div class="wa-bubble wa-bubble--brand">¡Hola! 😊 Claro que sí, tenemos talla M disponible. ¿Te enviamos las medidas exactas? ✨<p class="wa-time">10:33 ✓✓</p></div>
+            <div class="wa-bubble wa-bubble--client">Sí por favor! Y cuánto demora el envío?<p class="wa-time">10:34</p></div>
+            <div class="wa-bubble wa-bubble--brand">Hacemos envíos EN 24 HORAS a Lima 🚀 ¡Tu vestido llega mañana! 💕<p class="wa-time">10:34 ✓✓</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Perfil de Instagram — Avatar</h2>
+    <div class="scale-apps-wrap">
+      <div class="scale-app">
+        <img src="assets/logo/way-monogram.svg" alt="Monograma WAY" class="ig-avatar-lg">
+        <span class="scale-app-caption">Avatar de Instagram / WhatsApp — recorte circular 110&nbsp;px</span>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Físico — Escala Real</h2>
+    <div class="scale-apps-wrap">
+      <div class="scale-app">
+        <div class="hangtag">
+          <div class="hangtag-hole"></div>
+          <div class="wordmark" style="font-size:24px;letter-spacing:.26em;padding-left:.26em;">WAY</div>
+          <div class="hangtag-tagline">una manera propia</div>
+          <div class="hangtag-footer">Lima · Perú</div>
+        </div>
+        <span class="scale-app-caption">Hang tag — 4 × 9 cm, escala real</span>
+      </div>
+      <div class="scale-app">
+        <div class="woven-label"><div class="wordmark wordmark--inverted" style="font-size:19px;letter-spacing:.3em;padding-left:.3em;">WAY</div></div>
+        <span class="scale-app-caption">Etiqueta tejida — 1.5 cm, escala real</span>
+      </div>
+      <div class="scale-app">
+        <div class="tote-bag"><div class="wordmark wordmark--inverted" style="font-size:22px;letter-spacing:.28em;padding-left:.28em;">WAY</div></div>
+        <span class="scale-app-caption">Bolsa — 30 × 40 cm, mostrada a escala reducida</span>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Empaque y Materiales Físicos</h2>
+    <div class="pending-block">
+      <span class="pending-label">[PENDIENTE — Cliente]</span>
+      <p>Confirmar existencia y especificaciones de tissue paper con patrón/sello de marca, sticker de sellado y tarjeta de agradecimiento.</p>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-item"><span class="icon">🛍️</span><span class="label">Bolsa de Empaque</span></div>
+      <div class="pack-item"><span class="icon">🏷️</span><span class="label">Hang Tag</span></div>
+      <div class="pack-item"><span class="icon">🧻</span><span class="label">Tissue Paper</span></div>
+      <div class="pack-item"><span class="icon">⭐</span><span class="label">Sticker de Sellado</span></div>
+      <div class="pack-item"><span class="icon">💌</span><span class="label">Tarjeta de Agradecimiento</span></div>
+      <div class="pack-item"><span class="icon">📦</span><span class="label">Caja de Envío</span></div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Sidebar scroll-spy — highlights active section as user scrolls
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 140) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // Close sidebar on mobile when a nav link is clicked
+  navLinks.forEach(a => {
+    a.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
+  });
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('visible');
+  }
+
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>
