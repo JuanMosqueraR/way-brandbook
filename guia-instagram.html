@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Guía de Instagram</title>
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <style>
+    /* Mismo sistema visual del brandbook (Territorio 01 — La Firma). Documento operativo, separado
+       a propósito: la cadencia de contenido cambia mes a mes; la identidad de marca no. */
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@400;500;600&display=swap');
+
+    :root {
+      --color-marfil:    #F7F3EE;
+      --color-negro:     #2A1F18;
+      --color-terracota: #C4714A;
+      --color-gris:      #8A7D70;
+      --color-borde:     #E5DDD2;
+      --color-white:     #FFFFFF;
+
+      --color-pending:        #D97706;
+      --color-pending-bg:     #FFFBEB;
+      --color-pending-border: #FCD34D;
+      --color-pending-text:   #92400E;
+
+      --color-ok-bg: #F0FDF4; --color-ok-border: #BBF7D0; --color-ok-text: #166534;
+      --color-no-bg: #FFF1F2; --color-no-border: #FECDD3; --color-no-text: #9F1239;
+
+      --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+      --font-family:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --font-regular: 400; --font-medium: 500; --font-semibold: 600;
+
+      --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem; --text-lg: 1.125rem;
+      --text-xl: 1.25rem; --text-2xl: 1.5rem; --text-3xl: 1.875rem; --text-4xl: 2.25rem;
+      --text-5xl: 3rem; --text-6xl: 3.75rem; --text-7xl: 4.5rem; --text-8xl: 6rem;
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+      --sidebar-width: 260px;
+      --section-pad-x: var(--space-16);
+      --section-pad-y: var(--space-24);
+
+      --shadow-sm: 0 1px 3px rgba(42,31,24,.08);
+      --shadow-md: 0 4px 16px rgba(42,31,24,.10);
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+      --transition: 200ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-family); font-weight: var(--font-regular);
+      color: var(--color-negro); background: var(--color-marfil);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+
+    #sidebar {
+      position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
+      background: var(--color-negro); display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto; overflow-x: hidden;
+    }
+    .sidebar-header { padding: var(--space-8) var(--space-6); border-bottom: 1px solid rgba(247,243,238,.1); }
+    .sidebar-brand {
+      font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl);
+      color: var(--color-marfil); letter-spacing: .28em; padding-left: .28em;
+      text-transform: uppercase; display: block;
+    }
+    .sidebar-subtitle {
+      font-size: var(--text-xs); color: var(--color-terracota); letter-spacing: .2em;
+      text-transform: uppercase; margin-top: var(--space-2); display: block;
+    }
+    .sidebar-nav { flex: 1; padding: var(--space-6) 0; list-style: none; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6);
+      color: rgba(247,243,238,.55); text-decoration: none; font-size: var(--text-sm); font-weight: var(--font-medium);
+      transition: color var(--transition), background var(--transition), border-left-color var(--transition);
+      border-left: 2px solid transparent; line-height: 1.3; cursor: pointer;
+    }
+    .sidebar-nav a:hover { color: rgba(247,243,238,.9); background: rgba(247,243,238,.04); }
+    .sidebar-nav a.active { color: var(--color-terracota); border-left-color: var(--color-terracota); background: rgba(196,113,74,.08); }
+    .nav-num { font-size: var(--text-xs); color: var(--color-terracota); opacity: .75; min-width: 20px; }
+    .sidebar-footer { padding: var(--space-6); border-top: 1px solid rgba(247,243,238,.1); }
+    .sidebar-footer-text { font-size: var(--text-xs); color: rgba(247,243,238,.3); letter-spacing: .1em; }
+
+    #menu-toggle {
+      display: none; position: fixed; top: var(--space-4); left: var(--space-4); z-index: 200;
+      width: 44px; height: 44px; background: var(--color-negro); border: none; border-radius: var(--radius-md);
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    #menu-toggle span { display: block; width: 20px; height: 2px; background: var(--color-marfil); border-radius: 2px; }
+    #sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(42,31,24,.5); z-index: 99; }
+
+    #content { margin-left: var(--sidebar-width); }
+    .section { padding: var(--section-pad-y) var(--section-pad-x); min-height: 100vh; position: relative; }
+    .section--dark    { background: var(--color-negro); color: var(--color-marfil); }
+    .section--surface { background: #F1EAE0; }
+    .section--white   { background: var(--color-white); }
+
+    .section-label {
+      font-size: var(--text-xs); font-weight: var(--font-semibold); letter-spacing: .25em; text-transform: uppercase;
+      color: var(--color-terracota); margin-bottom: var(--space-3); display: block;
+    }
+    .section--dark .section-label { color: #D9A487; }
+    .section-title {
+      font-family: var(--font-display); font-size: var(--text-5xl); font-weight: 500; line-height: 1.08;
+      letter-spacing: -.01em; color: var(--color-negro); margin-bottom: var(--space-6);
+    }
+    .section--dark .section-title { color: var(--color-marfil); }
+    .section-intro {
+      font-size: var(--text-lg); line-height: 1.7; color: var(--color-gris); max-width: 640px; margin-bottom: var(--space-12);
+    }
+    .section--dark .section-intro { color: rgba(247,243,238,.65); }
+    .subsection-title {
+      font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--color-negro);
+      margin: var(--space-10) 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-borde);
+    }
+
+    .pending-block {
+      background: var(--color-pending-bg); border: 1px solid var(--color-pending-border);
+      border-left: 4px solid var(--color-pending); border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6); margin: var(--space-6) 0;
+    }
+    .pending-label {
+      display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--color-pending); margin-bottom: var(--space-2);
+    }
+    .pending-label::before { content: '⚠'; font-size: var(--text-sm); }
+    .pending-block p { font-size: var(--text-sm); color: var(--color-pending-text); line-height: 1.6; }
+    .pending-block ul { margin-top: var(--space-2); padding-left: var(--space-5); }
+    .pending-block li { font-size: var(--text-sm); color: var(--color-pending-text); margin-bottom: var(--space-1); line-height: 1.6; }
+    .pending-inline { color: var(--color-pending); font-size: var(--text-xs); font-weight: 700; white-space: nowrap; }
+
+    .card { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-sm); border: 1px solid var(--color-borde); }
+    .card-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-negro); margin-bottom: var(--space-3); }
+    .card-body { font-size: var(--text-base); color: var(--color-gris); line-height: 1.7; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+
+    .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-8); }
+    .do-block, .dont-block { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .do-block   { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); }
+    .dont-block { background: var(--color-no-bg); border: 1px solid var(--color-no-border); }
+    .do-block   .block-title { color: var(--color-ok-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .dont-block .block-title { color: var(--color-no-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .do-block ul, .dont-block ul { list-style: none; padding: 0; }
+    .do-block li { color: var(--color-ok-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .do-block li::before { content: '✓'; font-weight: 700; }
+    .dont-block li { color: var(--color-no-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .dont-block li::before { content: '✕'; font-weight: 700; }
+
+    .rules-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
+    .rules-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .rules-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .rules-table tr:last-child td { border-bottom: none; }
+    .tag-pill { display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: var(--radius-full); }
+    .tag-pill--editorial { background: var(--color-negro); color: var(--color-marfil); }
+    .tag-pill--lookbook  { background: #EFE6D8; color: var(--color-negro); }
+    .tag-pill--detalle   { background: var(--color-terracota); color: var(--color-white); }
+    .tag-pill--promo     { background: var(--color-pending-bg); color: var(--color-pending-text); border: 1px solid var(--color-pending-border); }
+
+    /* ===== 01 PORTADA ===== */
+    #portada {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: var(--color-negro); overflow: hidden; padding: var(--space-24) var(--space-16);
+    }
+    #portada::before {
+      content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(196,113,74,.14) 0%, transparent 70%); pointer-events: none;
+    }
+    .portada-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2); background: rgba(247,243,238,.06);
+      border: 1px solid rgba(247,243,238,.15); border-radius: var(--radius-full); padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.7); text-transform: uppercase; margin-bottom: var(--space-10);
+    }
+    .portada-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-terracota); display: inline-block; }
+    .wordmark { font-family: var(--font-display); font-weight: 500; text-transform: uppercase; color: var(--color-marfil); line-height: 1; display: inline-block; font-size: 3.5rem; letter-spacing: .3em; padding-left: .3em; }
+    .portada-line { width: 60px; height: 1px; background: var(--color-terracota); margin: var(--space-8) auto; }
+    .portada-subtitle { font-family: var(--font-display); font-size: var(--text-2xl); font-style: italic; color: rgba(247,243,238,.75); }
+    .portada-meta { display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap; justify-content: center; }
+    .portada-meta-item .label { display: block; font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.35); text-transform: uppercase; margin-bottom: 2px; }
+    .portada-meta-item .value { display: block; font-size: var(--text-sm); color: rgba(247,243,238,.75); font-weight: var(--font-medium); }
+    .portada-note { margin-top: var(--space-16); font-size: var(--text-xs); letter-spacing: .05em; color: rgba(217,164,135,.85); max-width: 480px; }
+
+    /* ===== 02 CALENDARIO ===== */
+    .cadence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin: var(--space-8) 0 var(--space-12); }
+    .cadence-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; }
+    .cadence-number { font-family: var(--font-display); font-size: var(--text-6xl); color: var(--color-terracota); line-height: 1; margin-bottom: var(--space-3); }
+    .cadence-label { font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--color-negro); margin-bottom: var(--space-2); }
+    .cadence-desc { font-size: var(--text-xs); color: var(--color-gris); }
+
+    .pillar-wrap { margin: var(--space-8) 0; }
+    .pillar-row { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) 0; }
+    .pillar-row-label { width: 140px; flex-shrink: 0; font-size: var(--text-sm); font-weight: 600; color: var(--color-negro); }
+    .pillar-bar-track { flex: 1; height: 28px; background: var(--color-borde); border-radius: var(--radius-sm); overflow: hidden; }
+    .pillar-bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: var(--space-3); font-size: var(--text-xs); font-weight: 700; color: var(--color-marfil); }
+
+    .week-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
+    .week-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .week-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); }
+    .week-table tr:last-child td { border-bottom: none; }
+    .week-day { font-weight: 700; }
+
+    /* ===== 03 REELS Y STORIES ===== */
+    .reel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); margin: var(--space-8) 0; }
+    .reel-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-6); }
+    .reel-card-title { font-size: var(--text-base); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-2); }
+    .reel-card-desc { font-size: var(--text-sm); color: var(--color-gris); line-height: 1.6; margin-bottom: var(--space-3); }
+    .reel-card-tag { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--color-terracota); }
+
+    .story-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .story-item { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; }
+    .story-item-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-3); color: var(--color-marfil); }
+    .story-item-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-1); }
+    .story-item-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+
+    .spec-list { display: flex; flex-wrap: wrap; gap: var(--space-4); margin: var(--space-8) 0; }
+    .spec-item { background: var(--color-negro); color: var(--color-marfil); border-radius: var(--radius-md); padding: var(--space-4) var(--space-6); flex: 1; min-width: 200px; }
+    .spec-item-label { font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase; color: #D9A487; margin-bottom: var(--space-1); display: block; }
+    .spec-item-value { font-size: var(--text-sm); font-weight: 600; }
+
+    /* ===== 04 COMUNIDAD ===== */
+    .response-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin: var(--space-8) 0; }
+    .response-card { border-radius: var(--radius-lg); padding: var(--space-6); text-align: center; border: 1px solid var(--color-borde); background: var(--color-white); }
+    .response-time { font-family: var(--font-display); font-size: var(--text-3xl); color: var(--color-terracota); margin-bottom: var(--space-2); }
+    .response-channel { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-1); }
+    .response-desc { font-size: var(--text-xs); color: var(--color-gris); }
+
+    .protocol-steps { counter-reset: step; margin: var(--space-8) 0; }
+    .protocol-step { display: flex; gap: var(--space-5); padding: var(--space-5) 0; border-bottom: 1px solid var(--color-borde); }
+    .protocol-step:last-child { border-bottom: none; }
+    .protocol-step-num {
+      counter-increment: step; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--color-negro); color: var(--color-marfil); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-style: italic; font-size: var(--text-lg);
+    }
+    .protocol-step-num::before { content: counter(step); }
+    .protocol-step-title { font-size: var(--text-base); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-1); }
+    .protocol-step-desc { font-size: var(--text-sm); color: var(--color-gris); line-height: 1.6; }
+
+    /* ===== 05 COPY ===== */
+    .formula-wrap { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin: var(--space-8) 0; }
+    .formula-part { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); flex: 1; min-width: 160px; }
+    .formula-part-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--color-terracota); margin-bottom: var(--space-2); display: block; }
+    .formula-part-example { font-size: var(--text-sm); color: var(--color-negro); font-style: italic; }
+    .formula-plus { font-size: var(--text-xl); color: var(--color-gris); flex-shrink: 0; }
+
+    .cta-pills { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-6) 0; }
+    .cta-pill { background: var(--color-negro); color: var(--color-marfil); padding: var(--space-3) var(--space-6); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600; }
+
+    .hashtag-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin: var(--space-8) 0; }
+    .hashtag-group-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--color-gris); margin-bottom: var(--space-3); }
+    .hashtag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .hashtag-chip { background: #F1EAE0; color: var(--color-negro); font-size: var(--text-xs); padding: 4px 10px; border-radius: var(--radius-full); }
+
+    .copy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); }
+    .copy-bubble { border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); font-size: var(--text-base); line-height: 1.6; }
+    .copy-bubble--ok  { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); color: var(--color-ok-text); }
+    .copy-bubble--bad { background: var(--color-no-bg); border: 1px solid var(--color-no-border); color: var(--color-no-text); }
+    .bubble-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .15em; margin-bottom: var(--space-2); display: block; }
+
+    @media (max-width: 768px) {
+      :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
+      #sidebar { transform: translateX(-100%); transition: transform 200ms ease; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-overlay.visible { display: block; }
+      #menu-toggle { display: flex; }
+      #content { margin-left: 0; }
+      .section-title { font-size: var(--text-4xl); }
+      .grid-2, .grid-3, .grid-4, .cadence-grid, .reel-grid, .do-dont-grid, .copy-grid, .response-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: repeat(2, 1fr); }
+      .hashtag-groups { grid-template-columns: 1fr; }
+      .pillar-row-label { width: 100px; font-size: var(--text-xs); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    .print-only-credit { display: none; }
+    @media print {
+      #sidebar, #menu-toggle, #sidebar-overlay { display: none !important; }
+      #content { margin-left: 0 !important; }
+      .section { min-height: auto; page-break-before: always; padding: 40px 60px; }
+      #portada { page-break-before: avoid; min-height: 100vh; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .cadence-card, .reel-card, .story-item, .response-card { break-inside: avoid; }
+      a { text-decoration: none; color: inherit; }
+      .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="menu-toggle" aria-label="Abrir menú" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-brand">WAY</span>
+    <span class="sidebar-subtitle">Guía de Instagram</span>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#portada"    class="nav-link"><span class="nav-num">01</span>Portada</a></li>
+    <li><a href="#calendario" class="nav-link"><span class="nav-num">02</span>Calendario y Cadencia</a></li>
+    <li><a href="#reels"      class="nav-link"><span class="nav-num">03</span>Reels y Stories</a></li>
+    <li><a href="#comunidad"  class="nav-link"><span class="nav-num">04</span>Gestión de Comunidad</a></li>
+    <li><a href="#copy"       class="nav-link"><span class="nav-num">05</span>Copy y Captions</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <p class="sidebar-footer-text">© 2026 WAY PERUVIAN</p>
+    <p class="sidebar-footer-text" style="margin-top:4px;opacity:.7;">Identidad de marca — Juan Mosquera</p>
+  </div>
+</nav>
+
+<main id="content">
+
+  <!-- 01 PORTADA -->
+  <section id="portada" class="section section--dark">
+    <div class="portada-badge"><span></span>Documento Operativo</div>
+    <div class="wordmark">WAY</div>
+    <div class="portada-line"></div>
+    <p class="portada-subtitle">Guía de Instagram</p>
+    <div class="portada-meta">
+      <div class="portada-meta-item"><span class="label">Canal</span><span class="value">@way_peruvian</span></div>
+      <div class="portada-meta-item"><span class="label">Complementa</span><span class="value">Brandbook v1.1</span></div>
+      <div class="portada-meta-item"><span class="label">Edición</span><span class="value">2026</span></div>
+    </div>
+    <!-- ASSUMPTION: documento independiente del brandbook a propósito — la cadencia/estrategia operativa cambia con frecuencia; la identidad de marca no. Este documento referencia al brandbook en vez de duplicar contenido (voz, tipos de toma, paleta). -->
+    <p class="portada-note">Documento operativo — se actualiza con más frecuencia que el brandbook. Para identidad de marca (logo, color, tipografía, voz), ver el brandbook oficial.</p>
+  </section>
+
+  <!-- 02 CALENDARIO Y CADENCIA -->
+  <section id="calendario" class="section section--surface">
+    <span class="section-label">02 — Calendario y Cadencia</span>
+    <h1 class="section-title">Ritmo de Publicación</h1>
+    <p class="section-intro">Propuesta de cadencia para una cuenta ya establecida (63,1 mil seguidores) con audiencia 28–65+ — consistencia antes que volumen. <span class="pending-inline">[PROPUESTA — validar con datos de rendimiento reales]</span></p>
+
+    <div class="cadence-grid">
+      <div class="cadence-card">
+        <div class="cadence-number">4–5</div>
+        <div class="cadence-label">Posts de Feed / semana</div>
+        <div class="cadence-desc">Suficiente para mantenerse visible sin saturar — esta audiencia no vive pegada al feed.</div>
+      </div>
+      <div class="cadence-card">
+        <div class="cadence-number">3–4</div>
+        <div class="cadence-label">Reels / semana</div>
+        <div class="cadence-desc">El algoritmo favorece Reels para alcance — clave para llegar a seguidoras nuevas.</div>
+      </div>
+      <div class="cadence-card">
+        <div class="cadence-number">3–5</div>
+        <div class="cadence-label">Stories / día</div>
+        <div class="cadence-desc">Bajo costo de producción, alta frecuencia — el espacio para lo espontáneo.</div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Mezcla de Contenido</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Basada en los tipos de toma definidos en el brandbook (sección 09).</p>
+    <div class="pillar-wrap">
+      <div class="pillar-row">
+        <span class="pillar-row-label">Lookbook</span>
+        <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:40%;background:var(--color-negro);">40%</div></div>
+      </div>
+      <div class="pillar-row">
+        <span class="pillar-row-label">Editorial</span>
+        <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:25%;background:#9B7B5A;">25%</div></div>
+      </div>
+      <div class="pillar-row">
+        <span class="pillar-row-label">Detalle</span>
+        <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:20%;background:var(--color-terracota);">20%</div></div>
+      </div>
+      <div class="pillar-row">
+        <span class="pillar-row-label">Promo</span>
+        <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:15%;background:var(--color-gris);">15%</div></div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Plantilla Semanal</h2>
+    <table class="week-table">
+      <thead><tr><th>Día</th><th>Formato</th><th>Tipo de toma</th><th>Objetivo</th></tr></thead>
+      <tbody>
+        <tr><td class="week-day">Lunes</td><td>Feed</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>Arranque de semana — outfit completo, inspiración</td></tr>
+        <tr><td class="week-day">Martes</td><td>Reel</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>"Cómo combinarlo" — una prenda, 3 looks</td></tr>
+        <tr><td class="week-day">Miércoles</td><td>Feed</td><td><span class="tag-pill tag-pill--detalle">Detalle</span></td><td>Textura y calidad — construir confianza</td></tr>
+        <tr><td class="week-day">Jueves</td><td>Reel</td><td><span class="tag-pill tag-pill--editorial">Editorial</span></td><td>Narrativa de marca — sin venta directa</td></tr>
+        <tr><td class="week-day">Viernes</td><td>Feed</td><td><span class="tag-pill tag-pill--promo">Promo</span></td><td>Nuevo ingreso o disponibilidad de fin de semana</td></tr>
+        <tr><td class="week-day">Sábado</td><td>Reel</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>Contenido de mayor alcance — fin de semana</td></tr>
+        <tr><td class="week-day">Domingo</td><td>Feed</td><td><span class="tag-pill tag-pill--editorial">Editorial</span></td><td>Tono reflexivo — cierre de semana</td></tr>
+      </tbody>
+    </table>
+    <p class="pending-inline" style="display:block;">[PROPUESTA — ajustar según qué días muestran mejor rendimiento real]</p>
+  </section>
+
+  <!-- 03 REELS Y STORIES -->
+  <section id="reels" class="section section--white">
+    <span class="section-label">03 — Reels y Stories</span>
+    <h1 class="section-title">Formatos de Video</h1>
+    <p class="section-intro">Reels para alcance, Stories para cercanía diaria. Ambos siguen la voz de marca definida en el brandbook — cálida, segura, nunca vendedora agresiva.</p>
+
+    <h2 class="subsection-title">Formatos de Reels</h2>
+    <div class="reel-grid">
+      <div class="reel-card">
+        <span class="reel-card-tag">Lookbook</span>
+        <p class="reel-card-title">Cómo combinarlo</p>
+        <p class="reel-card-desc">Una prenda, tres formas de llevarla — de día, de noche, casual. Muestra versatilidad, no solo el producto.</p>
+      </div>
+      <div class="reel-card">
+        <span class="reel-card-tag">Editorial</span>
+        <p class="reel-card-title">Detrás de cámara</p>
+        <p class="reel-card-desc">El proceso de empaque, el envío en 24 horas en acción — humaniza la marca y refuerza el diferenciador operativo.</p>
+      </div>
+      <div class="reel-card">
+        <span class="reel-card-tag">Comunidad</span>
+        <p class="reel-card-title">Testimonio / UGC</p>
+        <p class="reel-card-desc">Repost de una clienta real mostrando su compra. Máxima prueba social — "Nosotras" en acción.</p>
+      </div>
+      <div class="reel-card">
+        <span class="reel-card-tag">Promo</span>
+        <p class="reel-card-title">Reveal de nuevo ingreso</p>
+        <p class="reel-card-desc">Primera mirada a una prenda nueva antes de que esté disponible en tienda — genera anticipación.</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Tipos de Story</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Mapeados a los highlights ya rediseñados en el brandbook (sección 10).</p>
+    <div class="story-grid">
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5 8.4 8.4 0 01-4-1L3 20l1-4.5A8.5 8.5 0 1121 11.5z"/></svg></div>
+        <p class="story-item-title">Encuesta / pregunta</p>
+        <p class="story-item-desc">Interacción rápida — "¿cuál te gusta más?"</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <p class="story-item-title">Horarios / tienda</p>
+        <p class="story-item-desc">Disponibilidad de Galería Damero, recordatorios de horario.</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div>
+        <p class="story-item-title">Testimonios</p>
+        <p class="story-item-desc">Captura de reseñas y mensajes reales de clientas.</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v10a1 1 0 001 1h14a1 1 0 001-1V9"/><path d="M9 20v-6h6v6"/></svg></div>
+        <p class="story-item-title">Nuevo ingreso</p>
+        <p class="story-item-desc">Disponibilidad de talla, primeras fotos de producto nuevo.</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Especificaciones Técnicas</h2>
+    <div class="spec-list">
+      <div class="spec-item"><span class="spec-item-label">Formato</span><span class="spec-item-value">9:16 vertical</span></div>
+      <div class="spec-item"><span class="spec-item-label">Subtítulos</span><span class="spec-item-value">Siempre — mayoría ve sin sonido</span></div>
+      <div class="spec-item"><span class="spec-item-label">Gancho</span><span class="spec-item-value">Primeros 3 segundos, visual fuerte</span></div>
+      <div class="spec-item"><span class="spec-item-label">Duración Reel</span><span class="spec-item-value">15–30 segundos</span></div>
+    </div>
+  </section>
+
+  <!-- 04 GESTIÓN DE COMUNIDAD -->
+  <section id="comunidad" class="section section--surface">
+    <span class="section-label">04 — Gestión de Comunidad</span>
+    <h1 class="section-title">Cómo Respondemos</h1>
+    <p class="section-intro">Instagram es descubrimiento; WhatsApp es venta. La comunidad se gestiona con el mismo tono cercano del brandbook — nunca corporativo, nunca condescendiente.</p>
+
+    <div class="response-grid">
+      <div class="response-card">
+        <div class="response-time">&lt; 2h</div>
+        <p class="response-channel">Comentarios</p>
+        <p class="response-desc">En horario laboral — responder públicamente, cercano</p>
+      </div>
+      <div class="response-card">
+        <div class="response-time">&lt; 4h</div>
+        <p class="response-channel">DMs</p>
+        <p class="response-desc">Consultas generales — compra se deriva a WhatsApp</p>
+      </div>
+      <div class="response-card">
+        <div class="response-time">Inmediato</div>
+        <p class="response-channel">Reclamos públicos</p>
+        <p class="response-desc">Reconocer primero, resolver en privado después</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Instagram vs. WhatsApp — Qué Va Dónde</h2>
+    <table class="rules-table">
+      <thead><tr><th>Consulta</th><th>Canal</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Descubrimiento, inspiración, "me encanta esto"</td><td>Instagram</td><td>Es el canal de exploración — mantener la conversación pública y visible</td></tr>
+        <tr><td>Talla, disponibilidad, precio</td><td>WhatsApp</td><td>Requiere info específica en tiempo real — WhatsApp ya es el canal de venta confirmado</td></tr>
+        <tr><td>Reclamo de producto o envío</td><td>WhatsApp</td><td>Necesita datos del pedido — nunca resolver en comentarios públicos</td></tr>
+        <tr><td>Colaboraciones / prensa</td><td>DM de Instagram</td><td>Primer contacto profesional, luego se mueve a correo o WhatsApp</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Protocolo ante Reclamo Público</h2>
+    <div class="protocol-steps">
+      <div class="protocol-step">
+        <div class="protocol-step-num"></div>
+        <div><p class="protocol-step-title">Reconocer, nunca ignorar ni borrar</p><p class="protocol-step-desc">Un comentario negativo ignorado se lee peor que uno mal resuelto. Responder siempre, salvo spam o abuso evidente.</p></div>
+      </div>
+      <div class="protocol-step">
+        <div class="protocol-step-num"></div>
+        <div><p class="protocol-step-title">Mover la conversación a privado</p><p class="protocol-step-desc">"Hola [nombre], lamentamos el inconveniente 💛 te escribimos por DM para resolverlo enseguida."</p></div>
+      </div>
+      <div class="protocol-step">
+        <div class="protocol-step-num"></div>
+        <div><p class="protocol-step-title">Resolver por WhatsApp</p><p class="protocol-step-desc">Ahí se maneja el caso con datos del pedido — el mismo canal de atención al cliente ya establecido.</p></div>
+      </div>
+      <div class="protocol-step">
+        <div class="protocol-step-num"></div>
+        <div><p class="protocol-step-title">Nunca a la defensiva</p><p class="protocol-step-desc">Aunque el reclamo sea injusto, el tono público siempre es calmado y cálido — quien lee no es solo la clienta, es cualquiera que pase por ahí.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 COPY Y CAPTIONS -->
+  <section id="copy" class="section section--white">
+    <span class="section-label">05 — Copy y Captions</span>
+    <h1 class="section-title">Cómo Escribimos</h1>
+    <p class="section-intro">Extensión práctica de la voz de marca del brandbook (sección 08) — aquí está la fórmula, no solo el tono.</p>
+
+    <h2 class="subsection-title">Fórmula de Caption</h2>
+    <div class="formula-wrap">
+      <div class="formula-part"><span class="formula-part-label">Gancho</span><p class="formula-part-example">"Esto se agota rápido 👀"</p></div>
+      <span class="formula-plus">+</span>
+      <div class="formula-part"><span class="formula-part-label">Cuerpo</span><p class="formula-part-example">"Tela ligera, corte que estiliza, en 4 colores"</p></div>
+      <span class="formula-plus">+</span>
+      <div class="formula-part"><span class="formula-part-label">CTA</span><p class="formula-part-example">"Escríbenos por WhatsApp para tu talla"</p></div>
+      <span class="formula-plus">+</span>
+      <div class="formula-part"><span class="formula-part-label">Hashtags</span><p class="formula-part-example">8–12, mezcla de marca y nicho</p></div>
+    </div>
+
+    <h2 class="subsection-title">Banco de CTAs Aprobados</h2>
+    <div class="cta-pills">
+      <span class="cta-pill">Escríbenos por WhatsApp</span>
+      <span class="cta-pill">Encuéntralo en el link de la bio</span>
+      <span class="cta-pill">Cuéntanos cuál es tu favorito 👇</span>
+      <span class="cta-pill">Disponible en Galería Damero</span>
+      <span class="cta-pill">Envíos en 24 horas</span>
+    </div>
+
+    <h2 class="subsection-title">Estrategia de Hashtags</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">8–12 por post — menos y más relevantes rinde mejor que el máximo de 30.</p>
+    <div class="hashtag-groups">
+      <div>
+        <p class="hashtag-group-title">Marca</p>
+        <div class="hashtag-list"><span class="hashtag-chip">#wayperuvian</span><span class="hashtag-chip">#way_peruvian</span><span class="hashtag-chip">#nosotras</span></div>
+      </div>
+      <div>
+        <p class="hashtag-group-title">Nicho</p>
+        <div class="hashtag-list"><span class="hashtag-chip">#modamujer</span><span class="hashtag-chip">#outfitideas</span><span class="hashtag-chip">#modaperuana</span></div>
+      </div>
+      <div>
+        <p class="hashtag-group-title">Local</p>
+        <div class="hashtag-list"><span class="hashtag-chip">#limaperu</span><span class="hashtag-chip">#modalima</span><span class="hashtag-chip">#galeriadamero</span></div>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Aprobado vs. Rechazado</h2>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado</span>"Esto se agota rápido — encuéntralo por WhatsApp antes que se acabe tu talla 👀"</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"¡ÚLTIMAS UNIDADES! ¡COMPRA YA! 🔥🔥🔥"</div>
+    </div>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado</span>"Gracias por tu mensaje 💛 lamentamos el inconveniente, te escribimos por privado para resolverlo."</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"Lamentamos que no haya cumplido sus expectativas. Un asesor se pondrá en contacto."</div>
+    </div>
+  </section>
+
+  <p class="print-only-credit">Identidad de marca — Juan Mosquera</p>
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  function updateNav() {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+  navLinks.forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }));
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('visible');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>

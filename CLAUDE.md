@@ -23,9 +23,10 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 |---|---|---|
 | 1 | Análisis de marca + 3 territorios propuestos | ✅ Completado |
 | 2 | Propuesta de identidad visual (paletas, logos, tipografías) | ✅ Completado |
-| 3 | Propuestas de logo/identidad en Claude Design | ✅ Listo para presentar |
-| 4 | Aprobación de territorio + identidad por cliente | ⏳ Pendiente |
-| 5 | Brandbook completo (`brandbook.html`) | 🔒 Bloqueado hasta Fase 4 |
+| 3 | Propuestas de logo/identidad en Claude Design | ✅ Completado |
+| 4 | Aprobación de territorio + identidad por cliente | ✅ Completado — La Firma |
+| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+) — ⏳ pendiente formalizar cotización/acuerdo comercial |
+| 6 | Guía de Instagram (`guia-instagram.html`) — documento operativo separado | ✅ Construido |
 
 ---
 
@@ -78,16 +79,16 @@ La marca se construye *con* sus clientas, no se les dirige desde arriba.
 - **Psicografía:** Activa, socialmente conectada, guiada por valores, valora el gusto y la experiencia
 - **Comportamiento:** Descubre en Instagram, consulta por WhatsApp antes de comprar, valora envío rápido
 - **Canal principal:** WhatsApp + Instagram (más que TikTok, dado el rango de edad real)
-- **Ticket promedio:** `[PENDIENTE — Cliente]`
+- **Ticket promedio:** ✅ S/180
 - **Posicionamiento de precio:** Mid-range accesible `[PENDIENTE — confirmar]`
 
 ---
 
-## Propuestas de Identidad Visual — En Revisión
+## Territorios Creativos Explorados
 
-Tres territorios creativos desarrollados en Claude Design. El cliente aún no ha elegido.
+Tres territorios desarrollados en Claude Design. El cliente ya eligió — **Territorio 01, La Firma** — los otros dos quedan como referencia histórica de las direcciones descartadas.
 
-### Territorio 01 — La Firma
+### Territorio 01 — La Firma ✅ ELEGIDO
 - **Concepto:** WAY como nombre con autoridad ganada. Solo tipografía, sin símbolos (como ZARA, PRADA, CELINE)
 - **Tipografía:** Bodoni Moda — serif didona de alto contraste
 - **Paleta:** Marfil cálido `#F7F3EE` · Casi negro `#2A1F18` · Terracota `#C4714A`
@@ -124,13 +125,32 @@ Tres territorios creativos desarrollados en Claude Design. El cliente aún no ha
 
 ```
 way-brandbook/
-  brandbook.html              ← entregable final (🔒 bloqueado hasta confirmar identidad)
-  territorios-way.html        ← ✅ presentación de 3 territorios de marca (dark theme, editorial)
-  propuesta-identidad.html    ← ✅ propuesta de paletas, logos y tipografías (3 opciones c/u)
+  brandbook.html               ← entregable principal — Territorio 01, La Firma (v1.1+)
+  brandbook-v1.0.html          ← respaldo de la versión previa a las mejoras iterativas
+  guia-instagram.html          ← documento operativo separado — calendario, Reels/Stories, comunidad, copy
+  territorios-way.html         ← ✅ presentación de 3 territorios de marca (dark theme, editorial)
+  propuesta-identidad.html     ← ✅ propuesta de paletas, logos y tipografías (3 opciones c/u)
   assets/
-    logo/                     ← vacío, pendiente archivos del cliente
-  CLAUDE.md                   ← este archivo
+    logo/                      ← SVG vectoriales reales (fontTools) + favicon + logo.webp legacy
+      way-wordmark-negro.svg          ← logotipo principal, negro sobre transparente
+      way-wordmark-marfil.svg         ← versión invertida, marfil sobre transparente
+      way-wordmark-embroidery-master.svg ← master engrosado para bordado (peso 800)
+      way-monogram.svg                ← monograma W en círculo — avatar/favicon
+      favicon.png                     ← 32×32, derivado del monograma
+      logo.webp                       ← ⚠️ logo legacy pre-existente, distinto a La Firma — ver nota abajo
+    photos/                    ← 15 fotos: 9 generadas (Editorial/Lookbook/Detalle/Promo, Gemini
+                                   "Nano Banana", fieles a prendas reales de WAY) + 6 reales del feed
+                                   actual (@way_peruvian, para el comparativo antes/después)
+  CLAUDE.md                    ← este archivo
 ```
+
+### ⚠️ Nota sin resolver: `assets/logo/logo.webp`
+Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es un logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself"), probablemente el logo actual/legacy de la marca. No se ha usado en `brandbook.html`. Pendiente decidir con el cliente si hay que documentarlo como identidad anterior o simplemente reemplazarlo.
+
+### Hosting
+Repo en GitHub: `https://github.com/JuanMosqueraR/way-brandbook` (colaborador: `juanatquanta`). Publicado vía GitHub Pages (Settings → Pages → main → /root). URL pública: `https://juanmosquerar.github.io/way-brandbook/brandbook.html`.
+
+**Nota:** no usar Claude Artifacts para compartir públicamente este documento — el share público falla consistentemente (probable filtro de moderación por imitar UI de plataformas reales — mockups de Instagram/WhatsApp/TikTok/Shopify). La vista privada de Artifacts sí funciona para revisión interna.
 
 ### Claude Design (externo)
 - **URL:** https://claude.ai/design
@@ -149,8 +169,9 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 | **Propósito** | Elegir una dirección | Ejecutar esa dirección |
 | **Contenido** | 3 opciones distintas | 1 identidad con reglas completas |
 | **Estado** | Mockup / propuesta | Producción |
-| **Formato del logo** | HTML/CSS (no vectorial) | Especificaciones para diseñador |
-| **Qué falta agregar** | — | Zonas de exclusión, usos incorrectos, jerarquía tipográfica, guía de foto, plantillas de RRSS, especificaciones de empaque |
+| **Formato del logo** | HTML/CSS (no vectorial) | SVG vectorial real (fontTools) |
+| **Qué se agregó** | — | Zonas de exclusión, usos incorrectos, jerarquía tipográfica, guía de foto (con ejemplos generados), sistema de aplicaciones digitales (IG/WhatsApp/TikTok/Shopify), mockups físicos funcionales |
+| **Qué sigue pendiente** | — | Especificaciones de empaque (depende del cliente), AI/EPS del logo, archivo de digitalización de bordado |
 
 ---
 
@@ -167,7 +188,19 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male |
 | 8 | Empaque (bolsas, etiquetas, tissue paper) | ⏳ Pendiente cliente |
 | 9 | Rango de edad cliente ideal | ✅ 28–65+ |
-| 10 | Logo vectorial final | ⏳ Pendiente acuerdo comercial + diseñador |
+| 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
+| 11 | Cotización formal del proyecto | ⏳ Pendiente enviar — presentación de 2 slides en preparación, ver rango de precio investigado |
+| 12 | Logo legacy (`logo.webp`) | ⏳ Sin resolver — ver nota en Archivos del Proyecto |
+
+---
+
+## Cotización
+
+Investigación de mercado peruano 2026 hecha (freelance básico S/500–1,500 · identidad completa desde S/3,500 · branding integral con manual S/6,500–15,000). El brandbook entregado se posiciona en el tramo alto de "branding integral" por incluir SVG vectorial real, fotografía generada con fidelidad a prendas reales, sistema de aplicaciones digitales completo (IG/WhatsApp/TikTok/Shopify) y mockups físicos funcionales — no solo specs en texto.
+
+**Rango recomendado:** S/8,000–12,000 el brandbook (o hasta S/12,000–15,000 si aún no se cobró el proceso de fases 1-4) + S/1,500–3,000 aparte por `guia-instagram.html` (no incluir gratis — es consultoría de estrategia de contenido, servicio separado).
+
+Pendiente: preparar presentación de máximo 2 slides con esta justificación para enviar como cotización formal al cliente.
 
 ---
 
@@ -175,11 +208,13 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 
 1. ~~Presentar documento de Claude Design~~ ✅
 2. ~~Cliente elige territorio~~ ✅ La Firma
-3. **Formalizar acuerdo comercial** antes de entregar brandbook final
-4. **Construir `brandbook.html`** — suficiente información para arrancar. Secciones pendientes se marcan `[PENDIENTE — Cliente]`
-5. **Obtener respuestas** de historia de origen y validación de misión/visión
-6. **Confirmar tagline** — cliente eligiendo entre 5 opciones
-7. **Completar brandbook** con info de empaque y logo vectorial cuando estén disponibles
+3. ~~Construir `brandbook.html`~~ ✅ — v1.1+, hosteado en GitHub Pages
+4. ~~Construir guía operativa de Instagram~~ ✅ `guia-instagram.html`
+5. **Preparar y enviar cotización** — presentación de 2 slides (ver sección Cotización)
+6. **Formalizar acuerdo comercial** con la clienta
+7. **Obtener respuestas** de historia de origen, validación de misión/visión, y elección de tagline
+8. **Resolver** qué hacer con `logo.webp` (identidad legacy)
+9. **Completar** info de empaque cuando el cliente la provea
 
 ---
 
@@ -189,6 +224,6 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 - Comentarios de código en **inglés**
 - Marcar supuestos con `<!-- ASSUMPTION: ... -->`
 - Marcar pendientes con texto visible `[PENDIENTE — Cliente]` en color amber
-- `brandbook.html` debe ser autocontenido (sin CDNs externos)
+- `brandbook.html` es autocontenido salvo Google Fonts vía CDN (Bodoni Moda + Archivo) — igual que los documentos de presentación; todo lo demás (logos, fotos) va embebido/local
 - Documentos de presentación pueden usar Google Fonts vía CDN
 - Claude Design se usa para propuestas visuales; los entregables finales viven en este repo
