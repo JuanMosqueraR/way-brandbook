@@ -128,6 +128,8 @@ way-brandbook/
   brandbook.html               ← entregable principal — Territorio 01, La Firma (v1.1+)
   brandbook-v1.0.html          ← respaldo de la versión previa a las mejoras iterativas
   guia-instagram.html          ← documento operativo separado — calendario, Reels/Stories, comunidad, copy
+  guia-ecommerce.html          ← documento operativo separado — diagnóstico y reestructuración de wayperuvian.pe
+  estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets) — hecho en otra sesión
   territorios-way.html         ← ✅ presentación de 3 territorios de marca (dark theme, editorial)
   propuesta-identidad.html     ← ✅ propuesta de paletas, logos y tipografías (3 opciones c/u)
   assets/

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Guía de Reestructuración de Ecommerce</title>
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <style>
+    /* Mismo sistema visual del brandbook (Territorio 01 — La Firma). Documento operativo,
+       separado a propósito: cubre arquitectura/UX de wayperuvian.pe, no identidad de marca. */
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Archivo:wght@400;500;600&display=swap');
+
+    :root {
+      --color-marfil:    #F7F3EE;
+      --color-negro:     #2A1F18;
+      --color-terracota: #C4714A;
+      --color-gris:      #8A7D70;
+      --color-borde:     #E5DDD2;
+      --color-white:     #FFFFFF;
+
+      --color-pending:        #D97706;
+      --color-pending-bg:     #FFFBEB;
+      --color-pending-border: #FCD34D;
+      --color-pending-text:   #92400E;
+
+      --color-ok-bg: #F0FDF4; --color-ok-border: #BBF7D0; --color-ok-text: #166534;
+      --color-no-bg: #FFF1F2; --color-no-border: #FECDD3; --color-no-text: #9F1239;
+
+      --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+      --font-family:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --font-regular: 400; --font-medium: 500; --font-semibold: 600;
+
+      --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem; --text-lg: 1.125rem;
+      --text-xl: 1.25rem; --text-2xl: 1.5rem; --text-3xl: 1.875rem; --text-4xl: 2.25rem;
+      --text-5xl: 3rem; --text-6xl: 3.75rem;
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+      --sidebar-width: 260px;
+      --section-pad-x: var(--space-16);
+      --section-pad-y: var(--space-24);
+
+      --shadow-sm: 0 1px 3px rgba(42,31,24,.08);
+      --shadow-md: 0 4px 16px rgba(42,31,24,.10);
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+      --transition: 200ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-family); font-weight: var(--font-regular);
+      color: var(--color-negro); background: var(--color-marfil);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+
+    #sidebar {
+      position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
+      background: var(--color-negro); display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto; overflow-x: hidden;
+    }
+    .sidebar-header { padding: var(--space-8) var(--space-6); border-bottom: 1px solid rgba(247,243,238,.1); }
+    .sidebar-brand {
+      font-family: var(--font-display); font-weight: 500; font-size: var(--text-xl);
+      color: var(--color-marfil); letter-spacing: .28em; padding-left: .28em;
+      text-transform: uppercase; display: block;
+    }
+    .sidebar-subtitle {
+      font-size: var(--text-xs); color: var(--color-terracota); letter-spacing: .2em;
+      text-transform: uppercase; margin-top: var(--space-2); display: block;
+    }
+    .sidebar-nav { flex: 1; padding: var(--space-6) 0; list-style: none; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6);
+      color: rgba(247,243,238,.55); text-decoration: none; font-size: var(--text-sm); font-weight: var(--font-medium);
+      transition: color var(--transition), background var(--transition), border-left-color var(--transition);
+      border-left: 2px solid transparent; line-height: 1.3; cursor: pointer;
+    }
+    .sidebar-nav a:hover { color: rgba(247,243,238,.9); background: rgba(247,243,238,.04); }
+    .sidebar-nav a.active { color: var(--color-terracota); border-left-color: var(--color-terracota); background: rgba(196,113,74,.08); }
+    .nav-num { font-size: var(--text-xs); color: var(--color-terracota); opacity: .75; min-width: 20px; }
+    .sidebar-footer { padding: var(--space-6); border-top: 1px solid rgba(247,243,238,.1); }
+    .sidebar-footer-text { font-size: var(--text-xs); color: rgba(247,243,238,.3); letter-spacing: .1em; }
+
+    #menu-toggle {
+      display: none; position: fixed; top: var(--space-4); left: var(--space-4); z-index: 200;
+      width: 44px; height: 44px; background: var(--color-negro); border: none; border-radius: var(--radius-md);
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    #menu-toggle span { display: block; width: 20px; height: 2px; background: var(--color-marfil); border-radius: 2px; }
+    #sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(42,31,24,.5); z-index: 99; }
+
+    #content { margin-left: var(--sidebar-width); }
+    .section { padding: var(--section-pad-y) var(--section-pad-x); min-height: 100vh; position: relative; }
+    .section--dark    { background: var(--color-negro); color: var(--color-marfil); }
+    .section--surface { background: #F1EAE0; }
+    .section--white   { background: var(--color-white); }
+
+    .section-label {
+      font-size: var(--text-xs); font-weight: var(--font-semibold); letter-spacing: .25em; text-transform: uppercase;
+      color: var(--color-terracota); margin-bottom: var(--space-3); display: block;
+    }
+    .section--dark .section-label { color: #D9A487; }
+    .section-title {
+      font-family: var(--font-display); font-size: var(--text-5xl); font-weight: 500; line-height: 1.08;
+      letter-spacing: -.01em; color: var(--color-negro); margin-bottom: var(--space-6);
+    }
+    .section--dark .section-title { color: var(--color-marfil); }
+    .section-intro {
+      font-size: var(--text-lg); line-height: 1.7; color: var(--color-gris); max-width: 680px; margin-bottom: var(--space-12);
+    }
+    .section--dark .section-intro { color: rgba(247,243,238,.65); }
+    .subsection-title {
+      font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--color-negro);
+      margin: var(--space-10) 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-borde);
+    }
+
+    .pending-block {
+      background: var(--color-pending-bg); border: 1px solid var(--color-pending-border);
+      border-left: 4px solid var(--color-pending); border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6); margin: var(--space-6) 0;
+    }
+    .pending-label {
+      display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--color-pending); margin-bottom: var(--space-2);
+    }
+    .pending-label::before { content: '⚠'; font-size: var(--text-sm); }
+    .pending-block p { font-size: var(--text-sm); color: var(--color-pending-text); line-height: 1.6; }
+
+    .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: var(--space-6) 0 var(--space-10); }
+    .do-block, .dont-block { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .do-block   { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); }
+    .dont-block { background: var(--color-no-bg); border: 1px solid var(--color-no-border); }
+    .do-block   .block-title { color: var(--color-ok-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .dont-block .block-title { color: var(--color-no-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .do-block ul, .dont-block ul { list-style: none; padding: 0; }
+    .do-block li { color: var(--color-ok-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .do-block li::before { content: '✓'; font-weight: 700; }
+    .dont-block li { color: var(--color-no-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .dont-block li::before { content: '✕'; font-weight: 700; }
+
+    .rules-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
+    .rules-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .rules-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .rules-table tr:last-child td { border-bottom: none; }
+
+    .comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .comp-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-md); padding: var(--space-5); }
+    .comp-card-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-2); }
+    .comp-card-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+
+    /* ===== 01 PORTADA ===== */
+    #portada {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: var(--color-negro); overflow: hidden; padding: var(--space-24) var(--space-16);
+    }
+    #portada::before {
+      content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(196,113,74,.14) 0%, transparent 70%); pointer-events: none;
+    }
+    .portada-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2); background: rgba(247,243,238,.06);
+      border: 1px solid rgba(247,243,238,.15); border-radius: var(--radius-full); padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.7); text-transform: uppercase; margin-bottom: var(--space-10);
+    }
+    .portada-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-terracota); display: inline-block; }
+    .wordmark { font-family: var(--font-display); font-weight: 500; text-transform: uppercase; color: var(--color-marfil); line-height: 1; display: inline-block; font-size: 3.5rem; letter-spacing: .3em; padding-left: .3em; }
+    .portada-line { width: 60px; height: 1px; background: var(--color-terracota); margin: var(--space-8) auto; }
+    .portada-subtitle { font-family: var(--font-display); font-size: var(--text-2xl); font-style: italic; color: rgba(247,243,238,.75); }
+    .portada-meta { display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap; justify-content: center; }
+    .portada-meta-item .label { display: block; font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.35); text-transform: uppercase; margin-bottom: 2px; }
+    .portada-meta-item .value { display: block; font-size: var(--text-sm); color: rgba(247,243,238,.75); font-weight: var(--font-medium); }
+    .portada-note { margin-top: var(--space-16); font-size: var(--text-xs); letter-spacing: .05em; color: rgba(217,164,135,.85); max-width: 480px; }
+
+    /* ===== 02 DIAGNÓSTICO ===== */
+    .priority-card {
+      background: var(--color-negro); color: var(--color-marfil); border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-10); margin: var(--space-8) 0 var(--space-10);
+      display: flex; gap: var(--space-6); align-items: flex-start;
+    }
+    .priority-num { font-family: var(--font-display); font-style: italic; font-size: var(--text-5xl); color: var(--color-terracota); line-height: 1; flex-shrink: 0; }
+    .priority-title { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); }
+    .priority-desc { font-size: var(--text-sm); color: rgba(247,243,238,.75); line-height: 1.6; }
+
+    /* ===== 03 ARQUITECTURA ===== */
+    .tree-compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin: var(--space-8) 0; }
+    .tree-col-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: var(--space-4); display: block; }
+    .tree-col-label--now  { color: var(--color-no-text); }
+    .tree-col-label--next { color: var(--color-ok-text); }
+    .tree-box { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-6); }
+    .tree-root { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-3); }
+    .tree-list { list-style: none; padding-left: var(--space-4); }
+    .tree-list li { font-size: var(--text-sm); color: var(--color-gris); padding: 3px 0; position: relative; padding-left: var(--space-4); }
+    .tree-list li::before { content: '—'; position: absolute; left: 0; color: var(--color-borde); }
+    .tree-list--flat { columns: 2; column-gap: var(--space-4); }
+    .tree-group-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--color-terracota); margin: var(--space-3) 0 var(--space-1); }
+
+    /* ===== 04 COLECCIÓN — filtros ===== */
+    .filter-mockup { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-6); margin: var(--space-8) 0; background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-6); }
+    .filter-sidebar { border-right: 1px solid var(--color-borde); padding-right: var(--space-6); }
+    .filter-group { margin-bottom: var(--space-6); }
+    .filter-group-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--color-negro); margin-bottom: var(--space-3); }
+    .filter-chip-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .filter-chip { border: 1px solid var(--color-borde); border-radius: var(--radius-sm); padding: 4px 10px; font-size: var(--text-xs); color: var(--color-negro); }
+    .filter-chip--active { background: var(--color-negro); color: var(--color-marfil); border-color: var(--color-negro); }
+    .filter-swatch-row { display: flex; gap: var(--space-2); }
+    .filter-swatch { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--color-borde); }
+    .filter-result-note { font-size: var(--text-sm); color: var(--color-gris); }
+    .filter-card-grid-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-top: var(--space-4); }
+    .filter-card-mini { aspect-ratio: 3/4; background: #EFE6D8; border-radius: var(--radius-sm); position: relative; overflow: hidden; }
+    .filter-card-mini img { width: 100%; height: 100%; object-fit: cover; }
+    .filter-card-mini .size-tag { position: absolute; bottom: 6px; left: 6px; background: rgba(42,31,24,.7); color: var(--color-marfil); font-size: 9px; padding: 2px 6px; border-radius: 3px; }
+
+    /* ===== 05 FICHA DE PRODUCTO ===== */
+    .size-guide-table { width: 100%; border-collapse: collapse; margin: var(--space-6) 0; }
+    .size-guide-table th, .size-guide-table td { text-align: center; padding: var(--space-3); border: 1px solid var(--color-borde); font-size: var(--text-sm); }
+    .size-guide-table th { background: var(--color-negro); color: var(--color-marfil); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .05em; }
+    .care-row { display: flex; gap: var(--space-6); margin: var(--space-6) 0; flex-wrap: wrap; }
+    .care-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); width: 84px; text-align: center; }
+    .care-item .icon-circle { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--color-borde); display: flex; align-items: center; justify-content: center; color: var(--color-negro); }
+    .care-item .label { font-size: 10px; color: var(--color-gris); line-height: 1.3; }
+
+    /* ===== 06 REFERENCIA CRUZADA ===== */
+    .crossref-card {
+      background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg);
+      padding: var(--space-8); display: flex; align-items: center; gap: var(--space-6); margin: var(--space-8) 0;
+    }
+    .crossref-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; color: var(--color-marfil); flex-shrink: 0; }
+    .crossref-title { font-size: var(--text-base); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-1); }
+    .crossref-desc { font-size: var(--text-sm); color: var(--color-gris); }
+    .crossref-card a { color: var(--color-terracota); font-weight: 600; }
+
+    @media (max-width: 768px) {
+      :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
+      #sidebar { transform: translateX(-100%); transition: transform 200ms ease; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-overlay.visible { display: block; }
+      #menu-toggle { display: flex; }
+      #content { margin-left: 0; }
+      .section-title { font-size: var(--text-4xl); }
+      .do-dont-grid, .comp-grid, .tree-compare, .filter-mockup { grid-template-columns: 1fr; }
+      .filter-sidebar { border-right: none; border-bottom: 1px solid var(--color-borde); padding-right: 0; padding-bottom: var(--space-6); }
+      .tree-list--flat { columns: 1; }
+      .priority-card { flex-direction: column; gap: var(--space-3); }
+      .crossref-card { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    .print-only-credit { display: none; }
+    @media print {
+      #sidebar, #menu-toggle, #sidebar-overlay { display: none !important; }
+      #content { margin-left: 0 !important; }
+      .section { min-height: auto; page-break-before: always; padding: 40px 60px; }
+      #portada { page-break-before: avoid; min-height: 100vh; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .comp-card, .tree-box, .priority-card, .crossref-card { break-inside: avoid; }
+      a { text-decoration: none; color: inherit; }
+      .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="menu-toggle" aria-label="Abrir menú" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-brand">WAY</span>
+    <span class="sidebar-subtitle">Guía de Ecommerce</span>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#portada"       class="nav-link"><span class="nav-num">01</span>Portada</a></li>
+    <li><a href="#diagnostico"   class="nav-link"><span class="nav-num">02</span>Diagnóstico</a></li>
+    <li><a href="#arquitectura"  class="nav-link"><span class="nav-num">03</span>Arquitectura</a></li>
+    <li><a href="#coleccion"     class="nav-link"><span class="nav-num">04</span>Página de Colección</a></li>
+    <li><a href="#ficha"         class="nav-link"><span class="nav-num">05</span>Ficha de Producto</a></li>
+    <li><a href="#referencia"    class="nav-link"><span class="nav-num">06</span>Referencia Cruzada</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <p class="sidebar-footer-text">© 2026 WAY PERUVIAN</p>
+    <p class="sidebar-footer-text" style="margin-top:4px;opacity:.7;">Identidad de marca — Juan Mosquera</p>
+  </div>
+</nav>
+
+<main id="content">
+
+  <!-- 01 PORTADA -->
+  <section id="portada" class="section section--dark">
+    <div class="portada-badge"><span></span>Documento Operativo</div>
+    <div class="wordmark">WAY</div>
+    <div class="portada-line"></div>
+    <p class="portada-subtitle">Guía de Reestructuración de Ecommerce</p>
+    <div class="portada-meta">
+      <div class="portada-meta-item"><span class="label">Sitio</span><span class="value">wayperuvian.pe</span></div>
+      <div class="portada-meta-item"><span class="label">Complementa</span><span class="value">Brandbook v1.1</span></div>
+      <div class="portada-meta-item"><span class="label">Edición</span><span class="value">2026</span></div>
+    </div>
+    <!-- ASSUMPTION: documento separado del brandbook a propósito — cubre arquitectura de información y UX
+         de la tienda, un problema estructural distinto al de la identidad visual. El brandbook nació,
+         de hecho, de esta misma necesidad de reestructuración; este documento la aborda directamente. -->
+    <p class="portada-note">Este documento nace de la razón original detrás del brandbook: la tienda necesita una reestructuración, no solo una nueva capa visual. Para el sistema visual aplicado a Shopify (header, tarjetas, badges), ver el brandbook oficial.</p>
+  </section>
+
+  <!-- 02 DIAGNÓSTICO -->
+  <section id="diagnostico" class="section section--surface">
+    <span class="section-label">02 — Diagnóstico</span>
+    <h1 class="section-title">Qué Tiene Hoy wayperuvian.pe</h1>
+    <p class="section-intro">Evaluación propia del sitio en vivo — home, una página de colección (Blusas, 74 productos) y una ficha de producto (Blusa Caroline). No es una auditoría formal del cliente; es punto de partida para validar juntos.</p>
+
+    <div class="priority-card">
+      <span class="priority-num">01</span>
+      <div>
+        <p class="priority-title">El gap más urgente: no se puede filtrar por talla</p>
+        <p class="priority-desc">74 productos en Blusas, 54 en stock y 57 agotados mezclados en la misma grilla, sin filtro de talla ni color. Cualquiera que busque su talla tiene que abrir producto por producto para descubrir si está disponible — esto es fricción directa contra la conversión, no un detalle estético.</p>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Home y Navegación</h2>
+    <div class="do-dont-grid">
+      <div class="do-block">
+        <p class="block-title">Funciona ✓</p>
+        <ul>
+          <li>Menú con 4 categorías principales claras (Mujer, Hombre, Nuevo, Sale)</li>
+          <li>Home organizado en carruseles — novedades, colecciones, conjuntos</li>
+          <li>Banner promocional visible en header</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <p class="block-title">Falta ✕</p>
+        <ul>
+          <li>SALE duplica todo el árbol de categorías de Mujer — dos formas de llegar al mismo lugar</li>
+          <li>13 subcategorías de Mujer en una sola lista plana, sin agrupar</li>
+          <li>Sin breadcrumbs en ninguna página revisada</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Página de Colección</h2>
+    <div class="do-dont-grid">
+      <div class="do-block">
+        <p class="block-title">Funciona ✓</p>
+        <ul>
+          <li>Filtro de disponibilidad (en stock / agotado)</li>
+          <li>Slider de precio</li>
+          <li>6 opciones de orden (relevancia, más vendidos, precio, fecha, alfabético)</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <p class="block-title">Falta ✕</p>
+        <ul>
+          <li>Sin filtro de talla — el gap #1</li>
+          <li>Sin filtro de color ni material</li>
+          <li>Tarjetas de producto no muestran tallas/colores disponibles</li>
+          <li>Precio de bundle ("2x S/169.90") como texto suelto e inconsistente</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="subsection-title">Ficha de Producto</h2>
+    <div class="do-dont-grid">
+      <div class="do-block">
+        <p class="block-title">Funciona ✓</p>
+        <ul>
+          <li>10 fotos por producto, buen carrusel</li>
+          <li>Tiempos de envío claros (Lima 1-2 días, provincia 2-4)</li>
+          <li>Métodos de pago visibles (Yape, efectivo, transferencia, tarjeta)</li>
+          <li>Política de cambio de 3 días informada</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <p class="block-title">Falta ✕</p>
+        <ul>
+          <li>Sin guía de tallas / tabla de medidas</li>
+          <li>Sin instrucciones de cuidado (aunque sí lista el material)</li>
+          <li>Sin reseñas ni calificaciones</li>
+          <li>Sin productos relacionados o recomendados</li>
+          <li>Agotado: selector deshabilitado, sin alternativa como "avísame cuando vuelva"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ARQUITECTURA DE INFORMACIÓN -->
+  <section id="arquitectura" class="section section--white">
+    <span class="section-label">03 — Arquitectura de Información</span>
+    <h1 class="section-title">Cómo Reorganizar la Navegación</h1>
+    <p class="section-intro">Menos duplicación, más agrupación. La estructura actual funciona pero repite trabajo — SALE no necesita ser un árbol paralelo completo.</p>
+
+    <div class="tree-compare">
+      <div class="tree-box">
+        <span class="tree-col-label tree-col-label--now">✕ Actual</span>
+        <p class="tree-root">Mujer</p>
+        <ul class="tree-list tree-list--flat">
+          <li>Polos</li><li>Blusas</li><li>Vestidos</li><li>Conjuntos</li><li>Bodys</li>
+          <li>Abrigos</li><li>Blazers</li><li>Casacas</li><li>Chaquetas</li><li>Chalecos</li>
+          <li>Faldas</li><li>Pantalones</li><li>Tops</li>
+        </ul>
+        <p class="tree-root" style="margin-top:var(--space-4);">Sale</p>
+        <ul class="tree-list tree-list--flat">
+          <li>Mismas 13 subcategorías, repetidas</li>
+        </ul>
+      </div>
+      <div class="tree-box">
+        <span class="tree-col-label tree-col-label--next">✓ Propuesta</span>
+        <p class="tree-root">Mujer</p>
+        <div class="tree-group-label">Superior</div>
+        <ul class="tree-list"><li>Blusas · Polos · Tops · Bodys</li></ul>
+        <div class="tree-group-label">Vestidos y Conjuntos</div>
+        <ul class="tree-list"><li>Vestidos · Conjuntos</li></ul>
+        <div class="tree-group-label">Abrigo</div>
+        <ul class="tree-list"><li>Abrigos · Blazers · Casacas · Chaquetas · Chalecos</li></ul>
+        <div class="tree-group-label">Inferior</div>
+        <ul class="tree-list"><li>Faldas · Pantalones</li></ul>
+        <p class="tree-root" style="margin-top:var(--space-4);">Sale</p>
+        <ul class="tree-list"><li>Filtro global "En descuento" dentro de cada categoría — no un árbol aparte</li></ul>
+      </div>
+    </div>
+    <p class="pending-label" style="color:var(--color-pending);">⚠ Propuesta ilustrativa</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">La agrupación en 4 grupos es un punto de partida razonable, no una decisión final — idealmente se valida contra qué categorías realmente buscan más las clientas (datos de Shopify Analytics), no solo intuición de arquitectura.</p>
+
+    <h2 class="subsection-title">Otros Cambios Estructurales</h2>
+    <table class="rules-table">
+      <thead><tr><th>Cambio</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Agregar breadcrumbs en colección y ficha de producto</td><td>Orienta a la usuaria sobre dónde está y facilita volver a la categoría — ausente hoy en todo el sitio</td></tr>
+        <tr><td>Consolidar SALE como filtro, no como árbol duplicado</td><td>Reduce mantenimiento (una sola fuente de verdad por categoría) y confusión de navegación</td></tr>
+        <tr><td>Agrupar las 13 subcategorías de Mujer en 4 grupos</td><td>Reduce carga cognitiva del menú — de 13 decisiones a 4</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 04 PÁGINA DE COLECCIÓN -->
+  <section id="coleccion" class="section section--surface">
+    <span class="section-label">04 — Página de Colección</span>
+    <h1 class="section-title">Filtros que Faltan</h1>
+    <p class="section-intro">Talla y color primero — son los dos criterios con los que una clienta de moda decide si sigue mirando o se va. Sistema visual aplicado con la paleta y tipografía La Firma.</p>
+
+    <div class="filter-mockup">
+      <div class="filter-sidebar">
+        <div class="filter-group">
+          <p class="filter-group-title">Talla</p>
+          <div class="filter-chip-row">
+            <span class="filter-chip">XS</span><span class="filter-chip filter-chip--active">S</span>
+            <span class="filter-chip filter-chip--active">M</span><span class="filter-chip">L</span><span class="filter-chip">XL</span>
+          </div>
+        </div>
+        <div class="filter-group">
+          <p class="filter-group-title">Color</p>
+          <div class="filter-swatch-row">
+            <span class="filter-swatch" style="background:#2A1F18;"></span>
+            <span class="filter-swatch" style="background:#C4714A;"></span>
+            <span class="filter-swatch" style="background:#F7F3EE;border:1px solid var(--color-borde);"></span>
+            <span class="filter-swatch" style="background:#9F1239;"></span>
+          </div>
+        </div>
+        <div class="filter-group">
+          <p class="filter-group-title">Disponibilidad</p>
+          <div class="filter-chip-row"><span class="filter-chip filter-chip--active">En stock</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="filter-result-note">32 resultados con talla S–M en stock</p>
+        <div class="filter-card-grid-mini">
+          <div class="filter-card-mini"><img src="assets/photos/lookbook-a.jpg" alt="Producto" style="object-position:center 15%;"><span class="size-tag">S · M</span></div>
+          <div class="filter-card-mini"><img src="assets/photos/editorial-b.jpg" alt="Producto"><span class="size-tag">S · M · L</span></div>
+          <div class="filter-card-mini"><img src="assets/photos/lookbook-b.jpg" alt="Producto"><span class="size-tag">M</span></div>
+        </div>
+      </div>
+    </div>
+
+    <table class="rules-table">
+      <thead><tr><th>Filtro</th><th>Estado hoy</th><th>Recomendación</th></tr></thead>
+      <tbody>
+        <tr><td>Talla</td><td class="dont-block" style="background:none;color:var(--color-no-text);">✕ No existe</td><td>Agregar como filtro principal, visible sin scroll</td></tr>
+        <tr><td>Color</td><td style="color:var(--color-no-text);">✕ No existe</td><td>Swatches de color, no dropdown de texto</td></tr>
+        <tr><td>Material</td><td style="color:var(--color-no-text);">✕ No existe</td><td>Opcional — útil pero menor prioridad que talla/color</td></tr>
+        <tr><td>Disponibilidad</td><td style="color:var(--color-ok-text);">✓ Ya existe</td><td>Mantener, combinar con talla para "en stock en mi talla"</td></tr>
+        <tr><td>Precio</td><td style="color:var(--color-ok-text);">✓ Ya existe</td><td>Mantener tal como está</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 05 FICHA DE PRODUCTO -->
+  <section id="ficha" class="section section--white">
+    <span class="section-label">05 — Ficha de Producto</span>
+    <h1 class="section-title">Qué Agregar a la Ficha</h1>
+    <p class="section-intro">La ficha de producto hoy vende bien lo visual (10 fotos, buen carrusel) pero no resuelve las dudas que evitan una devolución — talla, cuidado y confianza social.</p>
+
+    <h2 class="subsection-title">Guía de Tallas</h2>
+    <table class="size-guide-table">
+      <thead><tr><th>Talla</th><th>Busto (cm)</th><th>Cintura (cm)</th><th>Cadera (cm)</th></tr></thead>
+      <tbody>
+        <tr><td>S</td><td>82–86</td><td>62–66</td><td>88–92</td></tr>
+        <tr><td>M</td><td>87–91</td><td>67–71</td><td>93–97</td></tr>
+        <tr><td>L</td><td>92–97</td><td>72–77</td><td>98–103</td></tr>
+      </tbody>
+    </table>
+    <p class="pending-label" style="color:var(--color-pending);">⚠ Medidas ilustrativas</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">Formato de tabla propuesto — las medidas reales deben venir de WAY, específicas por tipo de prenda (una blusa y un pantalón no comparten la misma tabla).</p>
+
+    <h2 class="subsection-title">Cuidado de Prenda</h2>
+    <div class="care-row">
+      <div class="care-item"><div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><span class="label">No lavadora</span></div>
+      <div class="care-item"><div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8l8 8M16 8l-8 8"/></svg></div><span class="label">No secadora</span></div>
+      <div class="care-item"><div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M4 18h16M6 18V8a2 2 0 012-2h8a2 2 0 012 2v10"/></svg></div><span class="label">Planchar bajo</span></div>
+      <div class="care-item"><div class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 3v18M5 8l7-5 7 5"/></svg></div><span class="label">Colgar para secar</span></div>
+    </div>
+
+    <h2 class="subsection-title">Otras Adiciones</h2>
+    <div class="comp-grid">
+      <div class="comp-card"><p class="comp-card-title">Productos relacionados</p><p class="comp-card-desc">"Combina con..." — 3-4 productos sugeridos al final de la ficha. Hoy no existe ningún cross-sell.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Reseñas y calificaciones</p><p class="comp-card-desc">Prueba social directa en el momento de decisión — hoy no hay ninguna.</p></div>
+      <div class="comp-card"><p class="comp-card-title">"Avísame cuando vuelva"</p><p class="comp-card-desc">Alternativa al selector deshabilitado cuando una talla está agotada — captura demanda en vez de perderla.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Descripción de fit/ocasión</p><p class="comp-card-desc">Corte, caída, para qué ocasión — hoy solo hay material y un detalle de diseño.</p></div>
+    </div>
+  </section>
+
+  <!-- 06 REFERENCIA CRUZADA -->
+  <section id="referencia" class="section section--surface">
+    <span class="section-label">06 — Referencia Cruzada</span>
+    <h1 class="section-title">Dónde Está Cada Cosa</h1>
+    <p class="section-intro">Este documento y el brandbook resuelven problemas distintos — úsalos juntos, no uno en vez del otro.</p>
+
+    <div class="crossref-card">
+      <div class="crossref-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+      <div>
+        <p class="crossref-title">Sistema visual de Shopify (header, tarjetas de producto, badges)</p>
+        <p class="crossref-desc">Ver <strong>brandbook.html</strong> → sección 10, Aplicaciones → "Shopify — Header de Tienda" y "Shopify — Tarjeta de Producto y Badges". Este documento no repite esos mockups — se enfoca en qué estructura y filtros necesita el sitio, no en cómo se ve el logo en el header.</p>
+      </div>
+    </div>
+    <div class="crossref-card">
+      <div class="crossref-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div>
+      <div>
+        <p class="crossref-title">Voz, tono y fotografía</p>
+        <p class="crossref-desc">Cualquier copy nuevo en la ficha de producto (descripciones, cuidado, badges de "avísame") debe seguir la voz de marca del brandbook, sección 08 — cercana, segura, nunca corporativa.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="print-only-credit">Identidad de marca — Juan Mosquera</p>
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  function updateNav() {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+  navLinks.forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }));
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('visible');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>
