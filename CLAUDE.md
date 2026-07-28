@@ -14,6 +14,7 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 | Atención al cliente | WhatsApp Business (sistema way-inbox) |
 | Categorías principales | Blusas, vestidos, sets, bodys, abrigos, blazers, chaquetas, chalecos, faldas, pantalones, tops |
 | Diferenciador operativo | Envíos en 24 horas |
+| Diferenciador de producto | Producción por lotes pequeños — inicia en 50 unidades, máx. ~200, sin reposición. Renovación constante de catálogo, exclusividad real ("no se vea ni al costado") |
 
 ---
 
@@ -193,8 +194,10 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 | 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
 | 11 | Cotización formal del proyecto | ⏳ Pendiente enviar — presentación de 2 slides en preparación, ver rango de precio investigado |
 | 12 | Logo legacy (`logo.webp`) | ⏳ Sin resolver — ver nota en Archivos del Proyecto |
-| 13 | Ajuste de wordmark (kerning más cerrado, peso más liviano) | ✅ Aplicado — `brandbook.html` (CSS, peso 500→400, tracking .3em→.14-.16em) y SVG maestros `way-wordmark-negro.svg`/`way-wordmark-marfil.svg` (glyphs originales reposicionados, tracking reducido ~63%; el peso del trazo vectorial no se tocó — instanciar Bodoni Moda variable a wght=400 con fontTools produce contornos auto-intersectados/rotos, no se resolvió). `way-wordmark-embroidery-master.svg` sin tocar a propósito (peso 800 requerido para bordado) |
-| 14 | Confirmación sobre el monograma circular | ⏳ Cliente dijo que "el logo" se siente invertido/deportivo/surfero, pero la referencia enviada es un screenshot del avatar actual de @way_peruvian en Instagram (con el aro de gradiente nativo de IG por Historia activa, no parte del diseño) — falta confirmar si la crítica es al wordmark espaciado o al monograma circular antes de rediseñar nada |
+| 13 | Ajuste de wordmark (kerning más cerrado, contraste máximo) | ✅ Aplicado, en dos pasadas. Primero: `brandbook.html` (CSS, peso 500→400, tracking .3em→.14-.16em) y SVG maestros con glyphs originales reposicionados (~63% menos tracking). Cliente pidió por audio empujar el contraste al máximo (comparación directa con ZARA) — el intento de instanciar Bodoni Moda a wght=400/opsz=96 con fontTools seguía produciendo contornos rotos incluso con `removeOverlaps` (skia-pathops); se resolvió rasterizando el texto ya renderizado correctamente por Chromium (Playwright, con `font-variation-settings:'opsz' 96` forzado) y vectorizándolo con OpenCV (`findContours` + `fill-rule="evenodd"`). SVG maestros y CSS del brandbook ya reflejan el contraste máximo técnico de la tipografía. `way-wordmark-embroidery-master.svg` sin tocar a propósito (peso 800 requerido para bordado) |
+| 14 | Confirmación sobre el monograma circular | ⏳ Aclarado por audio: la clienta se refiere al avatar actual de Instagram ("se ve más surfero, queremos algo sofisticado para una clienta de San Isidro/La Molina"), no necesariamente a nuestro monograma propuesto. Se preparó un comparativo visual (avatar actual vs. `way-monogram.svg` real) para que Juan confirme con la clienta cuál de los dos generó el comentario, antes de rediseñar nada |
+| 15 | Producción por lotes pequeños (dato de negocio) | ✅ Capturado por audio — incorporado como diferenciador operativo en este archivo y como valor de marca ("Exclusividad") en `brandbook.html` |
+| 16 | Autenticidad fotográfica (piel/rasgos naturales) | ✅ Capturado por audio — agregado como regla Sí/No en la sección Fotografía de `brandbook.html`, junto con nota aclaratoria de que las fotos IA de la guía son solo referencia de estilo |
 
 ---
 
