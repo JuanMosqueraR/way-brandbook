@@ -183,8 +183,8 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 |---|---|---|
 | 1 | Territorio de identidad | ✅ La Firma |
 | 2 | Tagline final | ⏳ Cliente eligiendo entre 5 opciones propuestas |
-| 3 | Historia de origen — ¿por qué "WAY"? | ⏳ 4 preguntas enviadas al cliente |
-| 4 | Misión, visión y valores | ⏳ Borrador redactado, pendiente validación cliente |
+| 3 | Historia de origen — ¿por qué "WAY"? | ✅ Respondida por cliente — incorporada en `brandbook.html` |
+| 4 | Misión, visión y valores | ⏳ Borrador redactado, pendiente validación cliente — cliente aportó dato adicional (cultura de equipo, condiciones cálidas para jóvenes) a considerar en la validación |
 | 5 | Ticket promedio | ✅ S/180 |
 | 6 | Marcas competidoras / referencia | ✅ Saint Male (@saintmale.cl) |
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male |
@@ -193,6 +193,8 @@ El documento de Claude Design y el brandbook final son cosas distintas:
 | 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
 | 11 | Cotización formal del proyecto | ⏳ Pendiente enviar — presentación de 2 slides en preparación, ver rango de precio investigado |
 | 12 | Logo legacy (`logo.webp`) | ⏳ Sin resolver — ver nota en Archivos del Proyecto |
+| 13 | Ajuste de wordmark (kerning más cerrado, peso más liviano) | ⏳ Cliente pidió letras "más finas y más juntas" (ref. ZARA) — viable, pendiente aplicar en `brandbook.html` + SVG (no tocar `way-wordmark-embroidery-master.svg`, ese peso 800 es por necesidad técnica de bordado) |
+| 14 | Confirmación sobre el monograma circular | ⏳ Cliente dijo que "el logo" se siente invertido/deportivo/surfero, pero la referencia enviada es un screenshot del avatar actual de @way_peruvian en Instagram (con el aro de gradiente nativo de IG por Historia activa, no parte del diseño) — falta confirmar si la crítica es al wordmark espaciado o al monograma circular antes de rediseñar nada |
 
 ---
 
@@ -214,9 +216,10 @@ Pendiente: preparar presentación de máximo 2 slides con esta justificación pa
 4. ~~Construir guía operativa de Instagram~~ ✅ `guia-instagram.html`
 5. **Preparar y enviar cotización** — presentación de 2 slides (ver sección Cotización)
 6. **Formalizar acuerdo comercial** con la clienta
-7. **Obtener respuestas** de historia de origen, validación de misión/visión, y elección de tagline
+7. ~~Obtener respuestas de historia de origen~~ ✅ — pendiente aún validación de misión/visión y elección de tagline
 8. **Resolver** qué hacer con `logo.webp` (identidad legacy)
 9. **Completar** info de empaque cuando el cliente la provea
+10. **Confirmar con cliente** si la crítica de "logo invertido/surfero" es al wordmark o al monograma circular, luego ajustar kerning/peso del wordmark (ver ítems 13-14)
 
 ---
 
