@@ -101,7 +101,7 @@
       font-family: var(--font-display); font-weight: var(--font-regular); font-size: var(--text-xl);
       color: var(--color-marfil); letter-spacing: .15em; padding-left: .15em;
       text-transform: uppercase; display: block;
-      font-optical-sizing: none; font-variation-settings: 'opsz' 96;
+      font-optical-sizing: none; font-variation-settings: 'opsz' 30;
     }
     .sidebar-subtitle {
       font-size: var(--text-xs); font-weight: var(--font-regular);
@@ -217,7 +217,7 @@
     .wordmark {
       font-family: var(--font-display); font-weight: var(--font-regular); text-transform: uppercase;
       color: var(--color-negro); line-height: 1; display: inline-block;
-      font-optical-sizing: none; font-variation-settings: 'opsz' 96;
+      font-optical-sizing: none; font-variation-settings: 'opsz' 30;
     }
     .wordmark--inverted { color: var(--color-marfil); }
     .wordmark--xl  { font-size: 5.5rem;  letter-spacing: .16em;  padding-left: .16em; }
@@ -291,17 +291,28 @@
     .valor-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
 
     /* ===== 03 AUDIENCIA ===== */
-    .persona-layout { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-10); align-items: start; }
-    .persona-card   { background: var(--color-negro); border-radius: var(--radius-xl); overflow: hidden; }
+    .persona-photos-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .persona-photo-card { background: var(--color-negro); border-radius: var(--radius-xl); overflow: hidden; }
     .persona-photo  {
       width: 100%; aspect-ratio: 3/4;
       background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%);
       display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
     }
-    .persona-photo .mono-lg { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 96px; color: rgba(247,243,238,.9); }
-    .persona-info { padding: var(--space-6); }
+    .persona-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .persona-photo .mono-lg { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 64px; color: rgba(247,243,238,.9); }
+    .persona-photo-age {
+      display: block; text-align: center; padding: var(--space-3) 0;
+      font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(247,243,238,.6); background: var(--color-negro);
+    }
+    .persona-summary {
+      background: var(--color-negro); border-radius: var(--radius-xl);
+      padding: var(--space-6); margin-bottom: var(--space-10);
+      display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;
+    }
     .persona-name       { font-size: var(--text-xl); font-weight: 700; color: var(--color-marfil); margin-bottom: 2px; }
-    .persona-descriptor { font-size: var(--text-sm); color: #D9A487; margin-bottom: var(--space-4); font-style: italic; }
+    .persona-descriptor { font-size: var(--text-sm); color: #D9A487; font-style: italic; }
     .persona-tag {
       display: inline-block; background: rgba(196,113,74,.18); color: #E0AF97;
       font-size: var(--text-xs); font-weight: var(--font-medium); letter-spacing: .05em;
@@ -613,8 +624,10 @@
       .section-title { font-size: var(--text-4xl); }
       .wordmark--xl { font-size: 3rem; }
       .portada-meta { flex-wrap: wrap; justify-content: center; }
-      .mv-grid, .do-dont-grid, .copy-grid, .app-grid, .persona-layout, .grid-2, .grid-3,
+      .mv-grid, .do-dont-grid, .copy-grid, .app-grid, .grid-2, .grid-3,
       .logo-system-grid, .comp-grid, .scale-apps-wrap, .ig-compare-wrap { grid-template-columns: 1fr; }
+      .persona-photos-row { grid-template-columns: 1fr; }
+      .persona-summary { flex-direction: column; align-items: flex-start; }
       .scale-apps-wrap { display: flex; flex-direction: column; align-items: center; }
       .valores-grid, .dna-grid { grid-template-columns: repeat(2, 1fr); }
       .swatch-grid   { grid-template-columns: repeat(2, 1fr); }
@@ -709,11 +722,11 @@
   <section id="sobre-way" class="section section--surface">
     <span class="section-label">02 — Sobre WAY</span>
     <h1 class="section-title">Quiénes somos</h1>
-    <p class="section-intro">WAY es una marca de moda femenina peruana construida con su comunidad, no dirigida a ella. Ecommerce primero, con tienda física en Lima — y un compromiso operativo claro: envíos en 24 horas.</p>
+    <p class="section-intro">WAY es una marca de moda femenina peruana construida con su comunidad, no dirigida a ella. Vive primero en lo digital — Instagram, WhatsApp, wayperuvian.pe — con una boutique en Lima como extensión de esa cercanía. Piezas en lotes pequeños, sin reposición, y en tu puerta en 24 horas: la exclusividad y la inmediatez de una firma, no de una tienda más.</p>
 
     <h2 class="subsection-title">Historia de origen</h2>
-    <p class="section-intro">WAY nació el 29 de agosto de 2022, fundada por Adolfo y Lizzie — pareja con amplia experiencia en el rubro textil (logística, producción, recursos humanos). El nombre viene de "guay", una expresión española que Lizzie adoptó durante años viviendo en España: una palabra que le transmitía algo bueno y moderno, reescrita como WAY.</p>
-    <p class="section-intro">La marca nació cuando Lizzie dejó su trabajo y, junto a Adolfo, decidió apostar por un negocio propio alrededor de lo que a ambos apasiona: la moda, las tendencias de color y forma, y una idea compartida de elegancia con clase. Su proceso creativo parte de mezclar telas y estampados al buscar materiales — esa mezcla intencional es parte de la identidad editorial de la marca.</p>
+    <p class="section-intro">WAY nació el 29 de agosto de 2022, de la mano de Adolfo y Lizzie — pareja con años de trayectoria en el rubro textil (logística, producción, recursos humanos). El nombre tiene raíz en "guay", una palabra que Lizzie hizo suya durante sus años viviendo en España para nombrar todo lo que le parecía bueno, moderno, con estilo. Reescrita como WAY, se convirtió en el nombre de la marca que soñaban construir.</p>
+    <p class="section-intro">Adolfo y Lizzie decidieron apostar por un negocio propio alrededor de lo que a ambos apasiona: la moda, las tendencias de color y forma, y una idea compartida de elegancia con clase. Su proceso creativo parte de mezclar telas y estampados al buscar materiales — esa mezcla intencional es parte de la identidad editorial de la marca.</p>
 
     <div class="insight-block">
       <span class="insight-title">Fundamento</span>
@@ -744,14 +757,19 @@
         <p class="valor-desc">Construida entre todas, no dirigida desde arriba.</p>
       </div>
       <div class="valor-card">
-        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="valor-name">Calidez</span>
-        <p class="valor-desc">Presente y cercana, como una amiga con buen gusto.</p>
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span class="valor-name">Exclusividad</span>
+        <p class="valor-desc">Lotes pequeños, sin reposición — cada modelo nace, se agota y no vuelve. No verte repetida es parte de la promesa.</p>
       </div>
       <div class="valor-card">
         <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
         <span class="valor-name">Calidad</span>
         <p class="valor-desc">Premium accesible — aspiracional sin excluir.</p>
+      </div>
+      <div class="valor-card">
+        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 10-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="valor-name">Calidez</span>
+        <p class="valor-desc">Presente y cercana, como una amiga con buen gusto.</p>
       </div>
       <div class="valor-card">
         <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
@@ -763,11 +781,6 @@
         <span class="valor-name">Velocidad</span>
         <p class="valor-desc">Envíos en 24 horas. Respuesta inmediata por WhatsApp.</p>
       </div>
-      <div class="valor-card">
-        <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span class="valor-name">Exclusividad</span>
-        <p class="valor-desc">Lotes pequeños, sin reposición — cada modelo nace, se agota y no vuelve. No verte repetida es parte de la promesa.</p>
-      </div>
     </div>
   </section>
 
@@ -777,22 +790,36 @@
     <h1 class="section-title">Cliente Ideal</h1>
     <p class="section-intro">La mujer WAY es independiente económicamente, socialmente activa y guiada por valores. Tiene gusto y lo sabe — y está cansada de marcas que le hablan con condescendencia o ignoran su edad.</p>
 
-    <div class="persona-layout">
-      <div class="persona-card">
-        <div class="persona-photo"><span class="mono-lg">W</span></div>
-        <div class="persona-info">
-          <p class="persona-name">La mujer WAY</p>
-          <p class="persona-descriptor">28 – 65+ años</p>
-          <div>
-            <span class="persona-tag">Lima</span>
-            <span class="persona-tag">Independiente</span>
-            <span class="persona-tag">Instagram</span>
-            <span class="persona-tag">WhatsApp</span>
-          </div>
-        </div>
+    <div class="persona-photos-row">
+      <div class="persona-photo-card">
+        <div class="persona-photo"><img src="assets/photos/persona-28-40.png" alt="Mujer WAY, 28–40 años"></div>
+        <span class="persona-photo-age">28 – 40 años</span>
+      </div>
+      <div class="persona-photo-card">
+        <div class="persona-photo"><img src="assets/photos/persona-45-55.png" alt="Mujer WAY, 45–55 años"></div>
+        <span class="persona-photo-age">45 – 55 años</span>
+      </div>
+      <div class="persona-photo-card">
+        <div class="persona-photo"><img src="assets/photos/persona-60-65.png" alt="Mujer WAY, 60–65+ años"></div>
+        <span class="persona-photo-age">60 – 65+ años</span>
+      </div>
+    </div>
+
+    <div class="persona-summary">
+      <div>
+        <p class="persona-name">La mujer WAY</p>
+        <p class="persona-descriptor">28 – 65+ años</p>
       </div>
       <div>
-        <table class="demo-table">
+        <span class="persona-tag">Lima</span>
+        <span class="persona-tag">Independiente</span>
+        <span class="persona-tag">Instagram</span>
+        <span class="persona-tag">WhatsApp</span>
+      </div>
+    </div>
+
+    <div>
+      <table class="demo-table">
           <tr><td>Género</td><td>Mujer</td></tr>
           <tr><td>Ubicación</td><td>Lima, Perú — expansión nacional</td></tr>
           <tr><td>Edad</td><td>28–65+ años <span style="color:var(--color-gris);font-size:var(--text-xs);">(corregido de 18–30 inicial)</span></td></tr>
@@ -822,7 +849,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- 04 PERSONALIDAD DE MARCA -->
@@ -874,7 +900,7 @@
   <section id="logo" class="section section--white">
     <span class="section-label">05 — Logo</span>
     <h1 class="section-title">Sistema de Logo — La Firma</h1>
-    <p class="section-intro">WAY como el nombre de una diseñadora que ya no necesita presentación. Sin símbolos, sin íconos — el nombre solo, con calidad de firma. En otras palabras: ZARA, PRADA, CELINE.</p>
+    <p class="section-intro">WAY como el nombre de una diseñadora que ya no necesita presentación. Sin símbolos, sin íconos — el nombre solo, con calidad de firma. Es la misma lógica que usan las casas que ya no necesitan un ícono para ser reconocidas: ZARA, PRADA, CELINE construyen toda su identidad sobre la tipografía de su nombre, nada más. WAY apuesta por ese mismo camino.</p>
 
     <div class="pending-block" style="border-left-color:var(--color-ok-text);background:var(--color-ok-bg);border-color:var(--color-ok-border);">
       <span class="pending-label" style="color:var(--color-ok-text);">✓ Generado</span>
@@ -917,7 +943,7 @@
         <span class="logo-cell-label">Invertido — fondo oscuro</span>
       </div>
     </div>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);line-height:1.6;max-width:640px;margin-bottom:var(--space-10);">Letras con trazos que van del muy grueso al muy fino — esa tensión da elegancia sin esfuerzo. Las mayúsculas van muy separadas entre sí, lo que las hace imponentes. El tagline aparece en cursiva de la misma familia, a escala pequeña.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);line-height:1.6;max-width:640px;margin-bottom:var(--space-10);">Letras con trazos que van del grueso al fino — esa tensión da elegancia sin esfuerzo. El tracking es cerrado y compacto, como una firma bien trazada. El tagline aparece en cursiva de la misma familia, a escala pequeña.</p>
 
     <h2 class="subsection-title">Nota sobre Versión Bordada</h2>
     <div class="pending-block" style="border-left-color:var(--color-terracota);background:#FBF3EC;border-color:#EAD3C1;">
