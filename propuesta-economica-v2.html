@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAY — Plataforma de Marca (v2)</title>
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<style>
+  /* Territorio 01 — La Firma. Mismo sistema visual que brandbook.html. */
+  @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Archivo:wght@400;500;600;700&display=swap');
+
+  :root {
+    --color-marfil:    #F7F3EE;
+    --color-negro:     #2A1F18;
+    --color-terracota: #C4714A;
+    --color-terracota-soft: #E8C4AE;
+    --color-gris:      #8A7D70;
+    --color-borde:     #E5DDD2;
+    --color-white:     #FFFFFF;
+    --color-pending-bg: #FFFBEB;
+    --color-pending-border: #FCD34D;
+    --color-pending-text: #92400E;
+    --tag-sent-bg: #F0FDF4;
+    --tag-sent-text: #166534;
+
+    --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --font-family:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --bg: var(--color-marfil);
+    --bg-alt: var(--color-white);
+    --ink: var(--color-negro);
+    --ink-soft: var(--color-gris);
+    --accent: var(--color-terracota);
+    --accent-soft: var(--color-terracota-soft);
+    --line: var(--color-borde);
+    --shadow: 0 4px 20px rgba(42,31,24,.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1C140F;
+      --bg-alt: #241A13;
+      --ink: #F7F3EE;
+      --ink-soft: #BDAE9E;
+      --accent: #D98A5F;
+      --accent-soft: #4A362A;
+      --line: #3A2C22;
+      --shadow: 0 4px 20px rgba(0,0,0,.35);
+      --tag-sent-bg: #1E3323;
+      --tag-sent-text: #86EFAC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1C140F; --bg-alt: #241A13; --ink: #F7F3EE; --ink-soft: #BDAE9E;
+    --accent: #D98A5F; --accent-soft: #4A362A; --line: #3A2C22; --shadow: 0 4px 20px rgba(0,0,0,.35);
+    --tag-sent-bg: #1E3323; --tag-sent-text: #86EFAC;
+  }
+  :root[data-theme="light"] {
+    --bg: var(--color-marfil); --bg-alt: var(--color-white); --ink: var(--color-negro); --ink-soft: var(--color-gris);
+    --accent: var(--color-terracota); --accent-soft: var(--color-terracota-soft); --line: var(--color-borde);
+    --shadow: 0 4px 20px rgba(42,31,24,.08);
+    --tag-sent-bg: #F0FDF4; --tag-sent-text: #166534;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: var(--font-family);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: var(--bg-alt); }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 6vw, 6rem) clamp(1.5rem, 8vw, 8rem);
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .slide:last-child { border-bottom: none; }
+
+  .kicker {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    margin-bottom: 1.5rem;
+  }
+  .kicker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    max-width: 6rem;
+  }
+  .kicker .num { color: var(--ink-soft); font-weight: 500; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; text-wrap: balance; }
+
+  /* ===== SLIDE 1 — PORTADA ===== */
+  .s1 h1 {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+  .s1 h1 em { font-style: italic; color: var(--accent); }
+  .s1 .sub {
+    margin-top: 1.25rem;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .s1 .framing {
+    margin-top: 2.5rem;
+    max-width: 58ch;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-alt);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: .95rem;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .s1 .framing strong { color: var(--accent); }
+
+  .phase0 {
+    margin-top: 2.25rem;
+    max-width: 62rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 8px;
+    padding: 2rem clamp(1.5rem, 4vw, 2.5rem) 2.25rem;
+    box-shadow: var(--shadow);
+  }
+  .phase0-tag {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .phase0-title {
+    font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+    line-height: 1.25;
+    max-width: 26ch;
+    color: var(--bg);
+  }
+  .phase0-body {
+    margin-top: 1rem;
+    font-size: .92rem;
+    line-height: 1.6;
+    max-width: 62ch;
+    color: color-mix(in srgb, var(--bg) 78%, transparent);
+  }
+  .phase0-stats {
+    margin-top: 1.75rem;
+    display: flex;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+  }
+  .phase0-stat { display: flex; flex-direction: column; gap: .3rem; }
+  .phase0-stat .n { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .phase0-stat .l { font-size: .72rem; line-height: 1.35; letter-spacing: .03em; text-transform: uppercase; color: color-mix(in srgb, var(--bg) 65%, transparent); }
+  .phase0-foot {
+    margin-top: 1.5rem;
+    font-size: .85rem;
+    line-height: 1.55;
+    max-width: 60ch;
+    font-style: italic;
+    color: color-mix(in srgb, var(--bg) 70%, transparent);
+  }
+
+  .phase1-label {
+    margin-top: 2.5rem;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .deliverables {
+    margin-top: .9rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    max-width: 62rem;
+  }
+  .deliv {
+    background: var(--bg-alt);
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .deliv .tag {
+    align-self: flex-start;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .2rem .55rem;
+    border-radius: 3px;
+  }
+  .deliv .tag.sent { color: var(--tag-sent-text); background: var(--tag-sent-bg); }
+  .deliv .tag.new  { color: var(--accent); background: var(--accent-soft); }
+  .deliv h3 { font-size: 1.15rem; }
+  .deliv p { font-size: .85rem; color: var(--ink-soft); }
+
+  /* ===== SLIDE 2 — ESCALONES ===== */
+  .s2 h2 {
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    max-width: 20ch;
+  }
+  .s2 .sub { margin-top: .9rem; color: var(--ink-soft); max-width: 56ch; font-size: 1rem; }
+
+  .tiers {
+    margin-top: 2.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    max-width: 68rem;
+  }
+  .tier {
+    display: grid;
+    grid-template-columns: 13rem 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.1rem 1.4rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .tier .name { font-weight: 600; font-size: .95rem; }
+  .tier .desc { font-size: .85rem; color: var(--ink-soft); }
+  .tier .price {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: .95rem;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .tier .bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--line);
+    position: relative;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+  }
+  .tier .bar-fill { position: absolute; inset: 0; border-radius: 3px; background: var(--accent-soft); }
+  .tier.t1 .bar-fill { width: 12%; }
+  .tier.t2 .bar-fill { width: 26%; }
+  .tier.t3 .bar-fill { width: 55%; }
+  .tier.way {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+    box-shadow: var(--shadow);
+  }
+  .tier.way .desc { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+  .tier.way .bar { background: color-mix(in srgb, var(--bg) 20%, transparent); }
+  .tier.way .bar-fill { width: 100%; background: var(--accent); }
+  .tier.way .name::before { content: 'WAY  ·  '; color: var(--accent); }
+
+  .tiers-note {
+    margin-top: 1.25rem;
+    font-size: .8rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    padding-left: 1rem;
+    border-left: 2px solid var(--line);
+  }
+
+  /* ===== SLIDE 3 — PROPUESTA ===== */
+  .s3 { justify-content: center; }
+  .s3-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    max-width: 68rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .s3-grid { grid-template-columns: 1fr; } }
+
+  .value-bridge {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    line-height: 1.5;
+    max-width: 34ch;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .amount-block h2 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); font-family: var(--font-family); }
+  .amount {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 7vw, 5.4rem);
+    line-height: 1;
+    margin-top: .6rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .amount .cur { font-size: .45em; vertical-align: .5em; color: var(--accent); }
+  .amount-note { margin-top: 1rem; font-size: .88rem; color: var(--ink-soft); max-width: 40ch; }
+
+  .includes { margin-top: 2.25rem; display: flex; flex-direction: column; gap: .6rem; }
+  .includes li { list-style: none; display: flex; gap: .7rem; font-size: .92rem; align-items: baseline; }
+  .includes li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+
+  .terms {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+  }
+  .terms h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); font-family: var(--font-family); font-weight: 600; margin-bottom: 1rem; }
+  .terms .row { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-top: 1px solid var(--line); font-size: .9rem; }
+  .terms .row:first-of-type { border-top: none; }
+  .terms .row .k { color: var(--ink-soft); }
+  .terms .row .v { text-align: right; font-weight: 500; }
+
+  .pending {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--color-pending-text);
+    background: var(--color-pending-bg);
+    border: 1px solid var(--color-pending-border);
+    padding: .1rem .5rem;
+    border-radius: 4px;
+  }
+
+  .next-step {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--line);
+    max-width: 68rem;
+  }
+  .next-step p { font-size: .95rem; color: var(--ink-soft); max-width: 60ch; }
+  .next-step strong { color: var(--ink); font-weight: 600; }
+
+  footer {
+    padding: 2rem clamp(1.5rem, 8vw, 8rem);
+    font-size: .78rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .slide { animation: rise .5s ease both; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<section class="slide s1">
+  <div class="kicker"><span class="num">01 / 03</span> Plataforma de Marca WAY</div>
+  <h1>Esto ya no es una identidad más. <em>Es la base del siguiente nivel de WAY.</em></h1>
+  <p class="sub">Un proceso que resultó en la Plataforma de Marca de WAY: la base estratégica y visual que sostiene comunicación, contenido, ecommerce y crecimiento en los años que vienen.</p>
+
+  <div class="framing">
+    Todo este trabajo se desarrolló y se puso en sus manos antes de ponerle un número — una decisión deliberada, para que se evaluara por su profundidad, no por un presupuesto de antemano.
+  </div>
+
+  <div class="phase0">
+    <span class="phase0-tag">Fase 0 — antes del brandbook</span>
+    <h2 class="phase0-title">El brandbook no partió de un logo. Partió de estrategia.</h2>
+    <p class="phase0-body">Antes de diseñar nada, fue necesario responder lo que ningún logo resuelve por sí solo: qué debía representar WAY, cómo quería ser percibida, qué lugar ocupar en el mercado, y qué principios guiarían cada decisión de ahí en adelante. Ese trabajo se hizo dos veces — un diagnóstico completo del negocio y dos rondas de exploración de territorio de marca, cada una con su propio sistema visual, tono de voz, estrategia de producto y hoja de ruta a 5 años.</p>
+    <div class="phase0-stats">
+      <div class="phase0-stat"><span class="n">6</span><span class="l">territorios de marca<br>conceptualizados en total</span></div>
+      <div class="phase0-stat"><span class="n">2</span><span class="l">rondas de exploración<br>estratégica</span></div>
+      <div class="phase0-stat"><span class="n">1</span><span class="l">elegida y llevada<br>a ejecución completa</span></div>
+    </div>
+    <p class="phase0-foot">Esta fase también decidió a quién le habla WAY, cómo compite y qué la hace irrepetible — el trabajo que la mayoría de branding en el mercado se salta para llegar directo al logo.</p>
+  </div>
+
+  <p class="phase1-label">Fase 1 — Ejecución del territorio elegido (La Firma)</p>
+
+  <div class="deliverables">
+    <div class="deliv">
+      <span class="tag sent">En ajustes</span>
+      <h3>Brandbook</h3>
+      <p>Identidad completa: logo vectorial, paleta, tipografía, voz de marca, fotografía y sistema de aplicaciones digitales (IG / WhatsApp / TikTok / Shopify).</p>
+    </div>
+    <div class="deliv">
+      <span class="tag new">Nuevo</span>
+      <h3>Guía de Instagram</h3>
+      <p>Calendario de contenido, formatos de Reels y Stories, fórmula de caption, banco de CTAs y protocolo ante reclamos.</p>
+    </div>
+    <div class="deliv">
+      <span class="tag new">Nuevo</span>
+      <h3>Guía de Ecommerce</h3>
+      <p>Diagnóstico y reestructuración de home, colección y ficha de producto de wayperuvian.pe.</p>
+    </div>
+    <div class="deliv">
+      <span class="tag new">Nuevo</span>
+      <h3>Estrategia de Lanzamiento</h3>
+      <p>Plan de fases para el reveal del rebranding, checklist hora por hora y copy listo para publicar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide s2">
+  <div class="kicker"><span class="num">02 / 03</span> Referencia de mercado</div>
+  <h2>Cómo se cotiza una marca en el Perú según su nivel de ambición</h2>
+  <p class="sub">Esto no compara proveedores — compara qué cubre realmente cada nivel de inversión en identidad de marca, desde una idea validándose hasta una marca lista para liderar su categoría.</p>
+
+  <div class="tiers">
+    <div class="tier t1">
+      <div class="name">Emprendedor</div>
+      <div class="desc">Marca validando una idea: logo, paleta básica, tipografías.</div>
+      <div class="price">S/500 – 1,500</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="tier t2">
+      <div class="name">PYME en crecimiento</div>
+      <div class="desc">Marca consolidándose: guía básica de uso del logo, paleta y tipografía, sin voz de marca ni fotografía propia.</div>
+      <div class="price">S/2,500 – 5,000</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="tier t3">
+      <div class="name">Premium / Liderazgo</div>
+      <div class="desc">Marcas líderes en expansión: investigación de mercado, exploración estratégica de territorio de marca, dirección de arte, estilo fotográfico propio, supervisión de implementación.</div>
+      <div class="price">desde S/10,000</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="tier way">
+      <div class="name">Lo construido para WAY</div>
+      <div class="desc">Identidad completa — logo vectorial, manual de marca completo, sistema de aplicaciones digitales — a la que se suman herramientas de implementación: guía de contenido, lineamientos base de ecommerce y estrategia de lanzamiento, que normalmente se desarrollan como consultorías aparte.</div>
+      <div class="price">componentes que normalmente se cotizan por separado</div>
+      <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+  </div>
+
+  <p class="tiers-note">Referencia adicional: un "branding integral con manual" (identidad + manual + aplicaciones, sin fotografía ni guías operativas) ya cuesta S/6,500–15,000 en el mercado peruano.</p>
+</section>
+
+<section class="slide s3">
+  <div class="kicker"><span class="num">03 / 03</span> Propuesta</div>
+  <div class="s3-grid">
+    <div class="amount-block">
+      <p class="value-bridge">Lo que recibe WAY no se limita a una identidad nueva: es la base desde la que se decide comunicación, contenido, ecommerce y experiencia de marca en los años que vienen. Lo que sigue es, simplemente, su valor hecho número.</p>
+      <h2>Inversión total</h2>
+      <div class="amount"><span class="cur">S/</span>14,000</div>
+      <p class="amount-note">Brandbook + Guía de Instagram + Guía de Ecommerce + Estrategia de Lanzamiento, como paquete único.</p>
+
+      <ul class="includes">
+        <li>Identidad de marca completa (brandbook)</li>
+        <li>Guía operativa de Instagram</li>
+        <li>Diagnóstico y guía de reestructuración de ecommerce</li>
+        <li>Estrategia de lanzamiento del rebranding</li>
+      </ul>
+
+      <div class="next-step">
+        <p><strong>Siguiente paso natural</strong> — no incluido en esta propuesta: la remodelación completa de wayperuvian.pe. Fue la necesidad original que motivó todo este proceso, y la guía de ecommerce entregada aquí es justamente su punto de partida.</p>
+      </div>
+    </div>
+
+    <div class="terms">
+      <h3>Condiciones</h3>
+      <div class="row"><span class="k">Forma de pago</span><span class="v pending">PENDIENTE — definir con cliente</span></div>
+      <div class="row"><span class="k">Entrega</span><span class="v">Inmediata — todo ya está construido</span></div>
+      <div class="row"><span class="k">Ajuste por relación</span><span class="v pending">A definir</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>WAY — Plataforma de Marca, 2026</span>
+  <span>Preparado por Juan Mosquera</span>
+</footer>
+
+</body>
+</html>
