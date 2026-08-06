@@ -212,6 +212,59 @@
     .wa-bubble--brand { background: var(--color-white); align-self: flex-end; border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg); border: 1px solid var(--color-borde); }
     .wa-time { font-size: 10px; color: var(--color-gris); text-align: right; margin-top: 4px; }
 
+    /* ===== CHECKLIST (runbook items — check off + assign an owner) ===== */
+    .checklist { display: flex; flex-direction: column; gap: var(--space-3); margin: var(--space-6) 0; }
+    .check-item { display: flex; align-items: flex-start; gap: var(--space-4); background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); }
+    .check-box { font-family: var(--font-display); font-style: italic; font-size: var(--text-xl); color: var(--color-terracota); line-height: 1; flex-shrink: 0; }
+    .check-text { font-size: var(--text-sm); font-weight: 600; color: var(--color-negro); }
+    .check-owner { font-size: var(--text-xs); color: var(--color-gris); display: block; margin-top: 3px; }
+    .check-owner strong { color: var(--color-terracota); font-weight: 700; }
+
+    /* ===== IMAGE SLOT — points at the real filename; shows a labeled placeholder until that file exists ===== */
+    .ig-img, .story-mock, .compare-photo { position: relative; overflow: hidden; }
+    .img-slot-fallback { position: relative; z-index: 1; text-align: center; font-size: var(--text-xs); color: rgba(247,243,238,.6); line-height: 1.7; padding: var(--space-5); }
+    .img-slot-fallback code { font-family: 'Courier New', monospace; font-size: 10.5px; color: #D9A487; display: block; margin-top: var(--space-2); word-break: break-all; }
+    .img-slot-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; display: block; }
+
+    /* ===== REFERENCE BADGE — marks AI-generated stills as framing/light reference, not final photography ===== */
+    .ref-badge { position: absolute; top: var(--space-3); left: var(--space-3); z-index: 3; background: rgba(42,31,24,.82); color: var(--color-marfil); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: var(--radius-sm); backdrop-filter: blur(2px); }
+    .ref-note { font-size: var(--text-xs); color: var(--color-terracota); font-weight: 600; margin-top: var(--space-2); display: block; }
+
+    /* ===== ANTES / DESPUÉS COMPARISON ===== */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: var(--space-8) 0; }
+    .compare-col-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: var(--space-3); display: block; }
+    .compare-col-label--before { color: var(--color-no-text); }
+    .compare-col-label--after { color: var(--color-ok-text); }
+    .compare-photo { aspect-ratio: 4/5; border-radius: var(--radius-lg); background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%); border: 1px solid var(--color-borde); display: flex; align-items: center; justify-content: center; }
+    .compare-photo > img.img-slot-photo { border-radius: var(--radius-lg); }
+    .compare-photo > img:not(.img-slot-photo) { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ===== STORY MOCKUP (9:16 — teaser) ===== */
+    .story-mock { width: 100%; max-width: 220px; aspect-ratio: 9/16; border-radius: var(--radius-lg); border: 1px solid var(--color-borde); background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); }
+    .story-mock-caption { position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); z-index: 3; color: var(--color-marfil); font-size: var(--text-sm); font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.6); text-align: left; }
+    .story-mock-sticker { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 3; background: rgba(247,243,238,.92); color: var(--color-negro); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: var(--radius-full); }
+
+    /* ===== TEASER WEEK — 3-day calendar ===== */
+    .teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin: var(--space-8) 0; }
+    .teaser-day { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-5); }
+    .teaser-day-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-terracota); margin-bottom: var(--space-3); display: block; }
+    .teaser-day-goal { font-size: var(--text-xs); color: var(--color-gris); margin-bottom: var(--space-3); }
+    .teaser-day-caption { font-size: var(--text-sm); font-weight: 600; color: var(--color-negro); margin-top: var(--space-1); }
+
+    /* ===== REEL CONCEPT CARDS ===== */
+    .reel-concept { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-6); }
+    .reel-concept-header { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-2); flex-wrap: wrap; }
+    .reel-concept-num { font-family: var(--font-display); font-style: italic; font-size: var(--text-2xl); color: var(--color-terracota); }
+    .reel-concept-name { font-size: var(--text-lg); font-weight: 700; color: var(--color-negro); }
+    .reel-concept-why { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: var(--space-5); line-height: 1.6; }
+    .shot-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-4); }
+    .shot-table th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-2) var(--space-3); border-bottom: 2px solid var(--color-borde); }
+    .shot-table td { font-size: var(--text-sm); padding: var(--space-3); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .shot-table tr:last-child td { border-bottom: none; }
+    .shot-table td:first-child { font-family: var(--font-display); font-style: italic; color: var(--color-terracota); white-space: nowrap; }
+    .reel-concept-audio { font-size: var(--text-xs); color: var(--color-gris); background: #F1EAE0; border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); }
+    .reel-concept-audio strong { color: var(--color-negro); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .channel-grid { grid-template-columns: repeat(3, 1fr); }
@@ -224,7 +277,7 @@
       #menu-toggle { display: flex; }
       #content { margin-left: 0; }
       .section-title { font-size: var(--text-4xl); }
-      .grid-2, .do-dont-grid, .copy-grid, .app-grid { grid-template-columns: 1fr; }
+      .grid-2, .do-dont-grid, .copy-grid, .app-grid, .compare-grid, .teaser-grid { grid-template-columns: 1fr; }
       .channel-grid { grid-template-columns: repeat(2, 1fr); }
       .phase-timeline { flex-direction: column; }
       .phase-arrow { display: none; }
@@ -351,6 +404,14 @@
       <span class="pending-label">Estado actual</span>
       <p>Los tres ítems siguen abiertos: acuerdo comercial sin cerrar, tagline en evaluación entre 5 opciones, empaque físico sin definir. Ninguno bloquea seguir preparando el plan — sí bloquea calendarizar el Día D.</p>
     </div>
+
+    <h2 class="subsection-title">Checklist de arranque</h2>
+    <div class="checklist">
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Acuerdo comercial firmado con la clienta</p><span class="check-owner">Responsable: <strong>[ASIGNAR]</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Tagline elegido — o decisión consciente de lanzar solo con wordmark</p><span class="check-owner">Responsable: <strong>Clienta</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Wordmark vectorial final entregado (mínimo para avatar, hang tag y señalética)</p><span class="check-owner">Responsable: <strong>[ASIGNAR — diseñador]</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Fecha de Día D fijada y comunicada al equipo (no antes de marcar los 3 puntos anteriores)</p><span class="check-owner">Responsable: <strong>[ASIGNAR]</strong></span></div></div>
+    </div>
   </section>
 
   <!-- 04 FASE 1 -->
@@ -359,16 +420,52 @@
     <h1 class="section-title">Teaser Silencioso</h1>
     <p class="section-intro">Objetivo: sembrar que "algo cambia" sin quemar el reveal ni confundir a una audiencia 28–65+ que no vive pegada al feed. Duración corta a propósito — 1 a 2 semanas. Un teaser largo con esta audiencia genera más confusión que expectativa.</p>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3 class="card-title">Detrás de bastidores</h3>
-        <p class="card-body">Nadie lo ve todavía. Perfil de WhatsApp Business y catálogo de Shopify preparados en staging, sin publicar. Avatar/monograma, hang tags y bolsas ya producidos y en bodega, sin usar.</p>
+    <h3 class="card-title" style="margin-bottom:var(--space-4);">Checklist — detrás de bastidores</h3>
+    <div class="checklist">
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Perfil de WhatsApp Business preparado en staging (foto, nombre, catálogo)</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Header y favicon nuevos cargados en Shopify (sin publicar / detrás de contraseña)</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Avatar, hang tags y bolsas ya producidos y en bodega</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+    </div>
+
+    <h2 class="subsection-title">Calendario de Stories — semana de teaser (día por día)</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Solo 3 Stories en toda la semana — no feed, no TikTok. Las 3 fotos de abajo son <strong>referencia de encuadre y luz</strong>, no la foto final: Lizzie replica la composición con su celular, un momento antes de publicar cada Story.</p>
+    <div class="teaser-grid">
+      <div class="teaser-day">
+        <span class="teaser-day-label">Día 2 · Martes</span>
+        <p class="teaser-day-goal">Sembrar curiosidad, cero spoiler.</p>
+        <div class="story-mock">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-teaser.jpg" alt="Referencia — textura de tela" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-teaser.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+          <p class="story-mock-caption">algo nuevo se está cosiendo… 👀</p>
+        </div>
+        <p class="teaser-day-caption">"algo nuevo se está cosiendo… 👀"</p>
       </div>
-      <div class="card">
-        <h3 class="card-title">Señales públicas mínimas</h3>
-        <p class="card-body">Bajo compromiso, alto misterio: 2–3 Stories (no feed) con texturas del nuevo empaque o detalle tipográfico, sin mostrar el logo completo. Caption tipo <em>"algo nuevo se está cosiendo… 👀"</em>. Nada en feed permanente todavía — el feed es donde vive la consistencia de marca. TikTok no se toca en esta fase.</p>
+      <div class="teaser-day">
+        <span class="teaser-day-label">Día 4 · Jueves</span>
+        <p class="teaser-day-goal">Mantener el goteo sin repetir la misma toma.</p>
+        <div class="story-mock">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-teaser2.jpg" alt="Referencia — detalle de pliegues, falda marfil" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-teaser2.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+          <p class="story-mock-caption">una pista más… esto se pone bueno 👀</p>
+        </div>
+        <p class="teaser-day-caption">"una pista más… esto se pone bueno 👀"</p>
+      </div>
+      <div class="teaser-day">
+        <span class="teaser-day-label">Día 6 · Sábado</span>
+        <p class="teaser-day-goal">Avisar que "se viene" sin mostrar el logo completo.</p>
+        <div class="story-mock">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-teaser3.jpg" alt="Referencia — wordmark desenfocado" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-teaser3.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+          <span class="story-mock-sticker">⏱ faltan 2 días</span>
+          <p class="story-mock-caption">esta semana lo van a ver… ✨</p>
+        </div>
+        <p class="teaser-day-caption">"esta semana lo van a ver… ✨" + sticker nativo de cuenta regresiva apuntando al Día D</p>
       </div>
     </div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;">Los prompts de Nano Banana para las referencias del Día 4 y Día 6 (nuevas) se entregan aparte — mismo criterio que ya se usó para el teaser del Día 2: nunca se genera empaque o señalética, porque ese diseño todavía no está cerrado con la clienta.</p>
   </section>
 
   <!-- 05 FASE 2 -->
@@ -383,67 +480,156 @@
         <div class="channel-icon">📷</div>
         <span class="channel-name">Instagram</span>
         <p class="channel-desc">Canal líder. Publica primero: el Reel narrativo del cambio, luego Stories de refuerzo.</p>
+        <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Community manager</strong></span>
       </div>
       <div class="channel-card">
         <div class="channel-icon">💬</div>
         <span class="channel-name">WhatsApp Business</span>
         <p class="channel-desc">Broadcast a la lista de contactos ya convertida — mensaje directo y personal, no narrativo.</p>
+        <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Community manager</strong></span>
       </div>
       <div class="channel-card">
         <div class="channel-icon">🛍️</div>
         <span class="channel-name">Shopify</span>
         <p class="channel-desc">Refleja la identidad nueva desde la hora 0. Es la prueba de consistencia para quien llega desde el link en bio.</p>
+        <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Community manager</strong></span>
       </div>
       <div class="channel-card">
         <div class="channel-icon">🏬</div>
         <span class="channel-name">Tienda física</span>
         <p class="channel-desc">Señalética actualizada desde la apertura del mismo día — ni antes (evita spoilers) ni después (evita desfase).</p>
+        <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Community manager</strong></span>
       </div>
       <div class="channel-card">
         <div class="channel-icon">🎵</div>
         <span class="channel-name">TikTok</span>
         <p class="channel-desc">Espeja el Reel al día siguiente, con corte y gancho propios — canal secundario, no compite por atención el mismo día.</p>
+        <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Community manager</strong></span>
       </div>
     </div>
 
-    <h2 class="subsection-title">Secuencia hora por hora</h2>
-    <div class="timeline-steps">
-      <div class="timeline-step">
-        <div class="timeline-step-time">Hora 0</div>
-        <div><p class="timeline-step-title">Cambio simultáneo de identidad visual</p><p class="timeline-step-desc">Avatar y bio en Instagram, WhatsApp Business, TikTok y Shopify cambian dentro de la misma hora.</p></div>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-step-time">Hora 0</div>
-        <div><p class="timeline-step-title">Instagram publica el Reel de anuncio</p><p class="timeline-step-desc">Contenido narrativo, no venta — reutiliza el ángulo "antes/después" ya construido en el brandbook.</p></div>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-step-time">Hora 0 + 30 min</div>
-        <div><p class="timeline-step-title">Stories de refuerzo</p><p class="timeline-step-desc">Carrusel explicando el "por qué" en 3–4 slides, encuesta, sticker de preguntas para absorber reacciones.</p></div>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-step-time">Hora 0 + 2–4 h</div>
-        <div><p class="timeline-step-title">Broadcast de WhatsApp Business</p><p class="timeline-step-desc">A la lista de contactos existente — tono directo y personal, sin el peso narrativo del Reel.</p></div>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-step-time">Mismo día</div>
-        <div><p class="timeline-step-title">Shopify y tienda física</p><p class="timeline-step-desc">Ya reflejan la identidad nueva desde la hora 0 — sin anuncio propio adicional, solo consistencia.</p></div>
-      </div>
-      <div class="timeline-step">
-        <div class="timeline-step-time">Día D + 1</div>
-        <div><p class="timeline-step-title">TikTok</p><p class="timeline-step-desc">Publica versión adaptada del Reel — recorte y gancho distintos, no el mismo corte 1:1.</p></div>
-      </div>
+    <h2 class="subsection-title">Preparación de contenido — 2–3 días antes del Día D</h2>
+    <div class="checklist">
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Elegir 1 de las 3 opciones de Reel (ver abajo) según lo que Lizzie tenga tiempo/ánimo de grabar</p><span class="check-owner">Responsable: <strong>Community manager + Lizzie</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Grabar el Reel — de preferencia con luz de tarde, junto a una ventana</p><span class="check-owner">Responsable: <strong>Lizzie</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Editar el Reel con subtítulos (CapCut, InShot o el editor nativo de Instagram)</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Preparar los 4 slides de Stories con fondo sólido de marca (ver dirección visual abajo) — no requiere foto</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
     </div>
 
-    <h2 class="subsection-title">Ejemplo de piezas</h2>
+    <h2 class="subsection-title">Checklist — secuencia hora por hora</h2>
+    <div class="checklist">
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar y bio en Instagram, WhatsApp Business, TikTok y Shopify, todos dentro de la misma hora</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Publicar en Instagram el Reel de anuncio ("Así nace la nueva WAY")</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 + 30 min — Publicar el carrusel de Stories de refuerzo (4 slides, texto abajo) + sticker de encuesta</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 + 2–4 h — Enviar broadcast de WhatsApp Business a la lista de contactos</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Mismo día — Confirmar que Shopify y la vitrina de Galería Damero ya reflejan la identidad nueva</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Día D + 1 — Publicar en TikTok la versión adaptada del Reel (recorte y gancho propios)</p><span class="check-owner">Responsable: <strong>Community manager</strong></span></div></div>
+    </div>
+
+    <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
+      <span class="pending-label" style="color:var(--color-terracota);">Especificaciones técnicas del Reel</span>
+      <p style="color:var(--color-negro);">Formato 9:16 vertical · Subtítulos siempre (la mayoría ve sin sonido) · Gancho fuerte en los primeros 3 segundos · Duración 15–30 segundos. (Mismas specs ya definidas en la guía de Instagram, sección 03 — no se reinventan aquí.)</p>
+    </div>
+
+    <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
+      <span class="pending-label" style="color:var(--color-terracota);">Dónde grabar — trabajar con lo que ya existe</span>
+      <p style="color:var(--color-negro);">Las fotos actuales de catálogo se toman siempre en el mismo rincón (muro de ladrillo + banca de concreto, luz de tarde entrando de costado). No hace falta un local nuevo ni una locación "de revista": el brandbook prohíbe el ladrillo como <em>único</em> recurso, no prohíbe usarlo — se resuelve grabando más cerca, recortando el ladrillo del encuadre y aprovechando la parte de concreto liso y la luz de tarde que ya tienen, en vez de mostrar el muro completo como fondo.</p>
+    </div>
+
+    <h2 class="subsection-title">Piezas listas para publicar</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">El paquete completo del Día D: el Reel (3 opciones a elegir), el post/caption, el carrusel de Stories y el broadcast de WhatsApp. Todo en un solo lugar — nada que buscar en otra sección.</p>
+
+    <h3 class="card-title" style="margin-top:var(--space-8);">Reel de anuncio — 3 opciones creativas (elige 1)</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Las 3 asumen que Lizzie sale en cámara — es quien normalmente aparece en las fotos/videos de la marca. Cada una tiene su propio shot list, listo para grabar sin necesidad de guionista ni editor.</p>
+
+    <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
+      <span class="pending-label" style="color:var(--color-terracota);">Prendas reales sugeridas (catálogo vigente en wayperuvian.pe)</span>
+      <p style="color:var(--color-negro);">Cero tiempo perdido decidiendo qué ponerse — estas son piezas que ya están en catálogo hoy y calzan con la paleta crema-marrón-borgoña de la sección 09 del brandbook:</p>
+      <ul style="margin-top:var(--space-2);">
+        <li style="color:var(--color-negro);"><strong>Blusa Brasil Seda</strong> (terracota, seda, oversize) — la más cercana al terracota de marca; ideal para la toma clave de Opción 1 y 2.</li>
+        <li style="color:var(--color-negro);"><strong>Vestido Vanessa</strong> (burgundy, wrap con cinturón) o <strong>Blusa Frida</strong> (burgundy floral crema) — alternativa para Opción 2, en la misma familia de color que <code>lanzamiento-reveal.jpg</code>.</li>
+        <li style="color:var(--color-negro);"><strong>Falda Plizada</strong> (marfil plisada) + una blusa marrón/chocolate — combo de catálogo que ya reproduce la paleta completa en una sola foto.</li>
+        <li style="color:var(--color-negro);"><strong>Pantalón Eliane</strong> (burgundy, sastre) + blusa blanca — para un plano ¾ más "de oficina/editorial".</li>
+      </ul>
+      <p style="color:var(--color-negro);margin-top:var(--space-2);">Evitar para estas piezas: prendas en tonos verde oliva, azul o print floral azul (existen en catálogo pero rompen el color grading crema-marrón-borgoña que pide el brandbook).</p>
+    </div>
+
+    <div class="reel-concept">
+      <div class="reel-concept-header"><span class="reel-concept-num">1</span><span class="reel-concept-name">"Cara a cara"</span></div>
+      <p class="reel-concept-why">Lizzie habla directo a cámara, estilo selfie. La opción de menor producción y mayor cercanía — encaja perfecto con el tono "amiga que da consejos" de la marca. Se graba en un solo take, sin cortes complejos.</p>
+      <div class="app-grid" style="margin-top:0;margin-bottom:var(--space-6);grid-template-columns:200px 1fr;">
+        <div class="story-mock" style="max-width:200px;">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-reel-opcion1.jpg" alt="Referencia — encuadre y luz, Opción 1" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-reel-opcion1.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+        </div>
+        <p class="card-body" style="align-self:center;">Mirada seria y segura, no sonrisa grande de selfie casual — el vestido Vanessa aporta el detalle de cuello y moño que evita que se vea como una prenda básica.</p>
+      </div>
+      <table class="shot-table">
+        <thead><tr><th>Tiempo</th><th>Toma</th><th>Texto en pantalla</th></tr></thead>
+        <tbody>
+          <tr><td>0–3s</td><td>Lizzie de frente, celular a la altura de los ojos, luz de ventana de costado. Gancho inmediato.</td><td>"Tengo que contarte algo…"</td></tr>
+          <tr><td>3–12s</td><td>Lizzie sigue hablando, cuenta en sus palabras por qué WAY cambia de imagen (usar como guía la historia de origen ya escrita en el brandbook).</td><td>"WAY cambia de cara, no de esencia"</td></tr>
+          <tr><td>12–20s</td><td>Lizzie muestra el <strong>Vestido Vanessa</strong> (burgundy, cuello camisero y moño anudado) en cámara — pieza real, ya en catálogo.</td><td>"Misma calidad, mismo cariño de siempre"</td></tr>
+          <tr><td>20–25s</td><td>Cierre mirando a cámara, sonriendo.</td><td>"Bienvenidas a esta nueva etapa ✨"</td></tr>
+        </tbody>
+      </table>
+      <div class="reel-concept-audio"><strong>Audio:</strong> voz propia de Lizzie (sin música de fondo, o un audio suave de trending bajo volumen).</div>
+    </div>
+
+    <div class="reel-concept">
+      <div class="reel-concept-header"><span class="reel-concept-num">2</span><span class="reel-concept-name">"Así nace la nueva WAY"</span></div>
+      <p class="reel-concept-why">Más editorial: Lizzie ajustándose una prenda nueva, cortes rápidos, texto en pantalla en vez de hablar. Requiere un poco más de edición (varios clips cortos) pero se ve más "producido" sin necesitar actuación.</p>
+      <table class="shot-table">
+        <thead><tr><th>Tiempo</th><th>Toma</th><th>Texto en pantalla</th></tr></thead>
+        <tbody>
+          <tr><td>0–3s</td><td>Close-up de manos ajustando un botón o cierre de la prenda.</td><td>"Algo nuevo está pasando en WAY"</td></tr>
+          <tr><td>3–10s</td><td>Lizzie girando o caminando, plano medio, luz cálida direccional.</td><td>"WAY cambia de cara ✨"</td></tr>
+          <tr><td>10–18s</td><td>Lizzie mirando a cámara con gesto de seguridad (ver referencia).</td><td>"La misma esencia de siempre"</td></tr>
+          <tr><td>18–25s</td><td>Plano final, sonrisa, marca WAY en pantalla al cierre.</td><td>"Bienvenidas ✨"</td></tr>
+        </tbody>
+      </table>
+      <div class="reel-concept-audio"><strong>Audio:</strong> audio de tendencia instrumental (cálido, no acelerado). <strong>Referencia visual (Nano Banana):</strong> ya generada — <code>assets/photos/lanzamiento-reveal.jpg</code>, marcada como referencia más abajo.</div>
+    </div>
+
+    <div class="reel-concept">
+      <div class="reel-concept-header"><span class="reel-concept-num">3</span><span class="reel-concept-name">"Detrás de cámara"</span></div>
+      <p class="reel-concept-why">La opción más fácil de filmar sin actuación: arranca con la prenda ya en reposo en un rincón estilizado de la tienda — nadie en cuadro, cero necesidad de encontrar el momento perfecto — y Lizzie entra recién a los 4 segundos.</p>
+      <div class="app-grid" style="margin-top:0;margin-bottom:var(--space-6);grid-template-columns:200px 1fr;">
+        <div class="story-mock" style="max-width:200px;">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-reel-opcion3.jpg" alt="Referencia — Falda New Escosesa en percha, rincón estilizado" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-reel-opcion3.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+        </div>
+        <p class="card-body" style="align-self:center;">La Falda New Escosesa (tweed a cuadros, corte asimétrico) en percha de madera, rincón de concreto pulido — toma de apertura, sin nadie en cuadro todavía.</p>
+      </div>
+      <table class="shot-table">
+        <thead><tr><th>Tiempo</th><th>Toma</th><th>Texto en pantalla</th></tr></thead>
+        <tbody>
+          <tr><td>0–4s</td><td>La prenda ya colgada en el rincón estilizado (ver referencia arriba), luz de ventana entrando en diagonal — nadie en cuadro todavía.</td><td>"Un día normal en WAY… o casi 👀"</td></tr>
+          <tr><td>4–12s</td><td>Lizzie entra en cuadro y descuelga la prenda de la percha, candid, sin mirar a cámara.</td><td>"Estamos cambiando de imagen"</td></tr>
+          <tr><td>12–20s</td><td>Lizzie levanta la vista y habla brevemente a cámara.</td><td>"Y quería que lo supieran primero ustedes 💛"</td></tr>
+          <tr><td>20–25s</td><td>Cierre con Lizzie mostrando la prenda puesta sobre el hombro, sonriendo.</td><td>"Bienvenidas a esta nueva etapa ✨"</td></tr>
+        </tbody>
+      </table>
+      <div class="reel-concept-audio"><strong>Audio:</strong> sonido ambiente real + voz de Lizzie desde el segundo 12 — nada de música que tape el ambiente.</div>
+    </div>
+
+    <h3 class="card-title" style="margin-top:var(--space-10);">Post de Instagram + Broadcast de WhatsApp</h3>
     <div class="app-grid">
       <div>
-        <span class="app-label">Instagram — Post de Anuncio</span>
+        <span class="app-label">Instagram — Post/Portada del Reel</span>
         <div class="ig-post">
           <div class="ig-header"><div class="ig-avatar"><span>W</span></div><span class="ig-user">way_peruvian</span></div>
-          <div class="ig-img"><span>Reel — "Así nace la nueva WAY"</span></div>
+          <div class="ig-img">
+            <img class="img-slot-photo" src="assets/photos/lanzamiento-reveal.jpg" alt="Referencia — encuadre y luz para la Opción 2" onerror="this.style.display='none'">
+            <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-reveal.jpg</code></div>
+            <span class="ref-badge">Referencia</span>
+          </div>
           <div class="ig-actions">♡ ⤳ ⌕</div>
           <div class="ig-caption"><strong>way_peruvian</strong> Desde que empezamos, ustedes construyeron esto con nosotras 💛 Hoy le damos a WAY la cara que siempre debió tener — la misma esencia, una manera más nuestra de mostrarla. Bienvenidas a esta nueva etapa ✨</div>
         </div>
+        <p class="ref-note">Esta foto es guía de encuadre y luz — la portada final es un fotograma real del Reel de Lizzie, o una foto que ella replique con esta composición.</p>
       </div>
       <div>
         <span class="app-label">WhatsApp Business — Broadcast</span>
@@ -455,6 +641,54 @@
         </div>
       </div>
     </div>
+
+    <h3 class="card-title" style="margin-top:var(--space-10);">Stories de refuerzo — 4 slides, dirección visual + texto final</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Decisión explícita: los 4 slides usan <strong>fondo sólido de color de marca + texto</strong> — cero fotografía nueva. Es la pieza más rápida de armar sin cámara ni edición: se hace directo en el editor de Stories de Instagram, con el color de fondo y el texto centrado en Bodoni Moda si la app lo permite, o la fuente por defecto si no.</p>
+    <div class="teaser-grid">
+      <div class="teaser-day">
+        <span class="teaser-day-label">Slide 1 · Fondo negro</span>
+        <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
+          <p class="story-mock-caption" style="position:static;text-align:center;font-family:var(--font-display);font-style:italic;text-shadow:none;">Después de tanto cariño, teníamos que dar este paso 💛</p>
+        </div>
+      </div>
+      <div class="teaser-day">
+        <span class="teaser-day-label">Slide 2 · Fondo marfil</span>
+        <div class="story-mock" style="max-width:140px;background:var(--color-marfil);border:1px solid var(--color-borde);">
+          <p class="story-mock-caption" style="position:static;text-align:center;font-family:var(--font-display);font-style:italic;color:var(--color-negro);text-shadow:none;">WAY cambia de cara — la misma esencia ✨</p>
+        </div>
+      </div>
+      <div class="teaser-day">
+        <span class="teaser-day-label">Slide 3 · Fondo negro</span>
+        <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
+          <p class="story-mock-caption" style="position:static;text-align:center;font-size:var(--text-xs);text-shadow:none;">Lo que NO cambia: tu WhatsApp, tu envío en 24h, tu tienda en Galería Damero</p>
+        </div>
+      </div>
+      <div class="teaser-day">
+        <span class="teaser-day-label">Slide 4 · Fondo terracota</span>
+        <div class="story-mock" style="max-width:140px;background:var(--color-terracota);">
+          <span class="story-mock-sticker" style="position:static;">¿Qué te parece? 👀</span>
+        </div>
+      </div>
+    </div>
+    <table class="rules-table">
+      <thead><tr><th>Slide</th><th>Texto</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>"Después de tanto cariño, teníamos que dar este paso 💛"</td></tr>
+        <tr><td>2</td><td>"WAY cambia de cara — la misma esencia, una manera más nuestra de mostrarla ✨"</td></tr>
+        <tr><td>3</td><td>"Lo que NO cambia: tu WhatsApp de siempre, tu envío en 24h, tu tienda en Galería Damero"</td></tr>
+        <tr><td>4</td><td>Sticker de encuesta: "¿Qué te parece el cambio?" 👀 (opciones: Me encanta / Necesito verlo más)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Highlight "Nueva Imagen" — FAQ, texto final</h2>
+    <table class="rules-table">
+      <thead><tr><th>Pregunta</th><th>Respuesta</th></tr></thead>
+      <tbody>
+        <tr><td>¿Siguen siendo la misma tienda?</td><td>"Sí, exactamente la misma — mismo equipo, mismo WhatsApp, misma Galería Damero. Solo cambiamos cómo nos vemos 💛"</td></tr>
+        <tr><td>¿Pierdo mis pedidos o mi historial?</td><td>"No, nada de eso cambia. Tu historial de compras y pedidos sigue igual."</td></tr>
+        <tr><td>¿Cambia el número de WhatsApp?</td><td>"No — es el mismo de siempre: 963 815 213 / 940 907 685."</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- 06 FASE 3 -->
@@ -471,12 +705,30 @@
       <div class="card"><h3 class="card-title">El pasado se muestra, no se esconde</h3><p class="card-body">El contenido "antes/después" reutiliza el logo anterior con orgullo — eso es lo que hace que se sienta evolución y no reemplazo.</p></div>
     </div>
 
-    <h2 class="subsection-title">Copy de ejemplo</h2>
+    <h2 class="subsection-title">Copy final — listo para publicar</h2>
     <div class="copy-grid">
-      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Caption de sostenimiento</span>"WAY cambia de cara, no de esencia ✨ Seguimos siendo la marca que te viste en 24 horas y te escucha por WhatsApp — ahora con una imagen que por fin se ve como siempre quisimos. Gracias por construir esto con nosotras 💛"</div>
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Caption de sostenimiento (semana 1)</span>"WAY cambia de cara, no de esencia ✨ Seguimos siendo la marca que te viste en 24 horas y te escucha por WhatsApp — ahora con una imagen que por fin se ve como siempre quisimos. Gracias por construir esto con nosotras 💛"</div>
       <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Respuesta a "no me gusta el cambio"</span>"Entendemos, el cariño al logo anterior es real 💛 Seguimos siendo la misma WAY de siempre — cuéntanos qué es lo que más vas a extrañar."</div>
     </div>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">Comentarios negativos y reclamos públicos se manejan con el protocolo ya definido en la guía de Instagram — reconocer, mover a privado, resolver por WhatsApp, nunca a la defensiva. Esta fase no reemplaza la cadencia normal (4–5 feed/semana, 3–4 reels/semana) — se inserta como 1–2 piezas adicionales dentro de ella.</p>
+
+    <h2 class="subsection-title">Comparativo para publicar — "el antes se muestra, no se esconde"</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">El lado "antes" es una foto real del feed actual — nunca se genera con IA una versión falsa de cómo se veía la marca, eso sería engañoso.</p>
+    <div class="compare-grid">
+      <div>
+        <span class="compare-col-label compare-col-label--before">✕ Antes — feed actual</span>
+        <div class="compare-photo"><img src="assets/photos/antes-1.jpg" alt="Publicación real del feed actual @way_peruvian"></div>
+      </div>
+      <div>
+        <span class="compare-col-label compare-col-label--after">✓ Después — Territorio 01, La Firma</span>
+        <div class="compare-photo">
+          <img class="img-slot-photo" src="assets/photos/lanzamiento-despues.jpg" alt="Dirección nueva — pendiente de generación" onerror="this.style.display='none'">
+          <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-despues.jpg</code></div>
+          <span class="ref-badge">Referencia</span>
+        </div>
+        <p class="ref-note">Guía de dirección, no la foto final — Lizzie recrea esta misma prenda (la del "antes") en la nueva dirección fotográfica.</p>
+      </div>
+    </div>
   </section>
 
   <!-- 07 FASE 4 -->
@@ -486,13 +738,13 @@
     <p class="section-intro">Corre en paralelo a las Fases 2 y 3, no después. Qué pasa con lo que ya existe en logo anterior mientras el reveal es público.</p>
 
     <table class="rules-table">
-      <thead><tr><th>Asset</th><th>Qué pasa</th></tr></thead>
+      <thead><tr><th>Asset</th><th>Qué pasa</th><th>Responsable</th></tr></thead>
       <tbody>
-        <tr><td>Publicaciones antiguas del feed</td><td>Se quedan. No se borran ni se archivan — el contraste entre lo viejo y lo nuevo en el grid es la prueba de evolución.</td></tr>
-        <tr><td>Highlights viejos</td><td>Se archivan (no se borran) los que muestren el logo anterior de forma prominente; se crean highlights nuevos.</td></tr>
-        <tr><td>Empaque físico</td><td>Transición dual: se agota el inventario existente en productos ya en tienda; todo producto nuevo desde el Día D usa empaque nuevo. <span class="pending-inline">[PENDIENTE — Cliente]</span></td></tr>
-        <tr><td>Material de tienda física</td><td>Señalética y vitrina se actualizan el Día D — material impreso viejo se retira ese mismo día, sin mezcla.</td></tr>
-        <tr><td>Plantillas de WhatsApp / Shopify</td><td>Se actualizan en la Hora 0 — es el canal transaccional donde una clienta activa notaría la inconsistencia de inmediato.</td></tr>
+        <tr><td>Publicaciones antiguas del feed</td><td>Se quedan. No se borran ni se archivan — el contraste entre lo viejo y lo nuevo en el grid es la prueba de evolución.</td><td>—</td></tr>
+        <tr><td>Highlights viejos</td><td>Se archivan (no se borran) los que muestren el logo anterior de forma prominente; se crean highlights nuevos.</td><td>[ASIGNAR]</td></tr>
+        <tr><td>Empaque físico</td><td>Transición dual: se agota el inventario existente en productos ya en tienda; todo producto nuevo desde el Día D usa empaque nuevo. <span class="pending-inline">[PENDIENTE — Cliente]</span></td><td>[ASIGNAR]</td></tr>
+        <tr><td>Material de tienda física</td><td>Señalética y vitrina se actualizan el Día D — material impreso viejo se retira ese mismo día, sin mezcla.</td><td>[ASIGNAR]</td></tr>
+        <tr><td>Plantillas de WhatsApp / Shopify</td><td>Se actualizan en la Hora 0 — es el canal transaccional donde una clienta activa notaría la inconsistencia de inmediato.</td><td>[ASIGNAR]</td></tr>
       </tbody>
     </table>
 
@@ -523,12 +775,12 @@
     <p class="section-intro">Qué hacer si algo del rebranding sigue sin cerrar para la fecha planeada.</p>
 
     <table class="rules-table">
-      <thead><tr><th>Riesgo</th><th>Qué hacer</th></tr></thead>
+      <thead><tr><th>Riesgo</th><th>Qué hacer</th><th>Quién decide</th></tr></thead>
       <tbody>
-        <tr><td>Tagline no se cierra a tiempo</td><td>Se lanza solo con el wordmark, sin tagline. Cuando se elija, se integra en contenido normal (ej. cierre de un Reel) — no se hace un "segundo lanzamiento".</td></tr>
-        <tr><td>Empaque no se cierra a tiempo</td><td>Se usa empaque genérico/transicional sin el logo anterior visible. Nunca se despacha con logo viejo después del Día D.</td></tr>
-        <tr><td>Acuerdo comercial no se cierra</td><td>No se fija fecha de Día D. Se puede activar la Fase 1 (teaser de bajo compromiso) mientras se cierra, pero el reveal completo no se calendariza sin acuerdo firmado.</td></tr>
-        <tr><td>Reacción negativa fuerte de la comunidad</td><td>Protocolo ya existente en la guía de Instagram: reconocer → mover a privado → resolver por WhatsApp → nunca a la defensiva. No se elimina contenido ni se cierran comentarios.</td></tr>
+        <tr><td>Tagline no se cierra a tiempo</td><td>Se lanza solo con el wordmark, sin tagline. Cuando se elija, se integra en contenido normal (ej. cierre de un Reel) — no se hace un "segundo lanzamiento".</td><td>Clienta</td></tr>
+        <tr><td>Empaque no se cierra a tiempo</td><td>Se usa empaque genérico/transicional sin el logo anterior visible. Nunca se despacha con logo viejo después del Día D.</td><td>Clienta</td></tr>
+        <tr><td>Acuerdo comercial no se cierra</td><td>No se fija fecha de Día D. Se puede activar la Fase 1 (teaser de bajo compromiso) mientras se cierra, pero el reveal completo no se calendariza sin acuerdo firmado.</td><td>[ASIGNAR]</td></tr>
+        <tr><td>Reacción negativa fuerte de la comunidad</td><td>Protocolo ya existente en la guía de Instagram: reconocer → mover a privado → resolver por WhatsApp → nunca a la defensiva. No se elimina contenido ni se cierran comentarios.</td><td>[ASIGNAR — community manager]</td></tr>
       </tbody>
     </table>
 
