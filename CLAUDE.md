@@ -24,8 +24,10 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 
 - **El repo local está adelantado a `origin/main` y no se ha pusheado.** GitHub Pages (`https://juanmosquerar.github.io/way-brandbook/brandbook.html`) todavía no refleja los últimos cambios (wordmark en `opsz 16` final, monograma recto, sync de documentos hermanos). **Confirmar con Juan antes de hacer `git push`** — no es automático.
 - El brandbook está funcionalmente completo salvo dos bloqueantes de contenido, ambos esperando a la clienta (Lizzie): **elección de tagline final** y **validación de misión/visión**. Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
-- La cotización formal todavía no se envió — el documento vigente es `propuesta-economica-v3.html` (las versiones anteriores se depuraron).
-- Recomendaciones de limpieza de carpetas que quedaron **sin decidir** (ver "Próximos Pasos"): qué hacer con `logo.webp` (legacy) y si vale la pena reorganizar la raíz del repo.
+- **Cotización aprobada y facturación en curso:** monto final **S/6,500**, 50% ya pagado, 50% restante al finalizar el proyecto. `propuesta-economica-v3.html` es el documento que se aprobó.
+- **`assets/logo/logo.webp` confirmado: es el logo actual/vigente de WAY** (previo al rebrand de este proyecto) — ya no es una incógnita, ver nota en Archivos del Proyecto para qué falta decidir sobre su uso en materiales de transición.
+- **`estrategia-lanzamiento.html` sigue en iteración activa** — no tratarlo como cerrado. Objetivo explícito del cliente: que la calidad esté a la altura del resto del proyecto, y que quede lo más ejecutable posible para no recargar de trabajo a quienes lo van a llevar a cabo (Lizzie y el/la community manager).
+- Recomendación de limpieza que quedó **sin decidir**: si vale la pena reorganizar la raíz del repo (ver "Próximos Pasos").
 
 ---
 
@@ -37,7 +39,7 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 | 2 | Propuesta de identidad visual (paletas, logos, tipografías) | ✅ Completado |
 | 3 | Propuestas de logo/identidad en Claude Design | ✅ Completado |
 | 4 | Aprobación de territorio + identidad por cliente | ✅ Completado — La Firma |
-| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+) — ⏳ pendiente formalizar cotización/acuerdo comercial y pushear últimos cambios |
+| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada — ⏳ pendiente pushear últimos cambios y cerrar tagline/misión-visión |
 | 6 | Guía de Instagram (`guia-instagram.html`) — documento operativo separado | ✅ Construido |
 | 7 | Guía de Ecommerce (`guia-ecommerce.html`) — documento operativo separado | ✅ Construido |
 
@@ -176,7 +178,7 @@ way-brandbook/
   brandbook-v1.0.html          ← respaldo intencional de la versión previa a las mejoras iterativas
   guia-instagram.html          ← documento operativo separado — calendario, Reels/Stories, comunidad, copy
   guia-ecommerce.html          ← documento operativo separado — diagnóstico y reestructuración de wayperuvian.pe
-  estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets)
+  estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets) — ⏳ en iteración activa, ver Estado Actual
   territorios-way.html         ← presentación histórica de los 3 territorios (ya superada — cliente ya eligió)
   propuesta-identidad.html     ← propuesta histórica de paletas, logos y tipografías (ya superada)
   propuesta-economica-v3.html  ← cotización — versión vigente (v1 y v2 depuradas)
@@ -197,8 +199,8 @@ way-brandbook/
 
 **Nota:** los tres documentos hermanos (`guia-instagram.html`, `guia-ecommerce.html`, `estrategia-lanzamiento.html`) usan `assets/logo/favicon.png` (se actualiza solo, es un archivo compartido) pero tienen su propio CSS de wordmark — ver Notas Técnicas.
 
-### ⚠️ Nota sin resolver: `assets/logo/logo.webp`
-Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es un logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself"), probablemente el logo actual/legacy de la marca. No se ha usado en `brandbook.html`. Pendiente decidir con el cliente si hay que documentarlo como identidad anterior o simplemente reemplazarlo.
+### `assets/logo/logo.webp` — confirmado: es el logo actual/vigente de WAY
+Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es el logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself") que la marca usa **actualmente**, antes de este rebrand. Confirmado por el cliente. No se ha usado en `brandbook.html` — representa la identidad "antes" del proyecto. Pendiente decidir: si se documenta formalmente como identidad anterior (útil para `estrategia-lanzamiento.html`, que cubre la transición de assets viejo→nuevo) o si simplemente se retira una vez completado el relanzamiento.
 
 ### Hosting
 Repo en GitHub: `https://github.com/JuanMosqueraR/way-brandbook` (colaborador: `juanatquanta`). Publicado vía GitHub Pages (Settings → Pages → main → /root). URL pública: `https://juanmosquerar.github.io/way-brandbook/brandbook.html`. **Recordar:** el repo local puede estar adelantado al remoto — confirmar `git status`/`git log origin/main..HEAD` antes de asumir que lo publicado está al día (ver "Estado Actual" arriba).
@@ -233,8 +235,8 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 | 8 | Empaque (bolsas, etiquetas, tissue paper) | ⏳ Pendiente cliente |
 | 9 | Rango de edad cliente ideal | ✅ 28–65+ |
 | 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
-| 11 | Cotización formal del proyecto | ⏳ Pendiente enviar — `propuesta-economica-v3.html` es la versión vigente |
-| 12 | Logo legacy (`logo.webp`) | ⏳ Sin resolver — ver nota en Archivos del Proyecto |
+| 11 | Cotización formal del proyecto | ✅ Aprobada — S/6,500 (`propuesta-economica-v3.html`), 50% pagado, 50% restante al finalizar el proyecto |
+| 12 | Logo legacy (`logo.webp`) | ✅ Confirmado que es el logo actual/vigente de WAY — ⏳ falta decidir si se documenta como identidad "antes" o se retira, ver nota en Archivos del Proyecto |
 | 13 | Peso/contraste del wordmark | ✅ Resuelto — `opsz 16` final, confirmado por la clienta. Ver Notas Técnicas para el proceso completo y qué hacer si piden más ajuste |
 | 14 | Monograma itálica vs. recta | ✅ Resuelto — recta, confirmado por la clienta. Ver Notas Técnicas |
 | 15 | Producción por lotes pequeños (dato de negocio) | ✅ Capturado — diferenciador operativo en este archivo y valor de marca "Exclusividad" en `brandbook.html` |
@@ -246,11 +248,9 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 
 ## Cotización
 
-Investigación de mercado peruano 2026 hecha (freelance básico S/500–1,500 · identidad completa desde S/3,500 · branding integral con manual S/6,500–15,000). El brandbook entregado se posiciona en el tramo alto de "branding integral" por incluir SVG vectorial real, fotografía generada con fidelidad a prendas reales, sistema de aplicaciones digitales completo (IG/WhatsApp/TikTok/Shopify) y mockups físicos funcionales — no solo specs en texto.
+✅ **Aprobada y en curso de pago.** Monto final: **S/6,500**. 50% pagado por adelantado, 50% restante al finalizar el proyecto. Documento aprobado: `propuesta-economica-v3.html`.
 
-**Rango recomendado:** S/8,000–12,000 el brandbook (o hasta S/12,000–15,000 si aún no se cobró el proceso de fases 1-4) + S/1,500–3,000 aparte por `guia-instagram.html` (no incluir gratis — es consultoría de estrategia de contenido, servicio separado).
-
-**Documento vigente:** `propuesta-economica-v3.html` — pendiente enviar formalmente al cliente.
+Contexto histórico (investigación de mercado peruano 2026 que sustentó la propuesta): freelance básico S/500–1,500 · identidad completa desde S/3,500 · branding integral con manual S/6,500–15,000. El brandbook entregado se posicionaba en el tramo alto de "branding integral" por incluir SVG vectorial real, fotografía generada con fidelidad a prendas reales, sistema de aplicaciones digitales completo (IG/WhatsApp/TikTok/Shopify) y mockups físicos funcionales. El rango que se había recomendado internamente era S/8,000–12,000; el monto final negociado y aprobado (S/6,500) quedó por debajo de esa recomendación — dato útil si se cotiza trabajo adicional más adelante (ej. `guia-instagram.html`/`guia-ecommerce.html`, si no estaban incluidas en este monto — confirmar con Juan qué cubre exactamente el S/6,500 acordado).
 
 ---
 
@@ -261,11 +261,11 @@ Investigación de mercado peruano 2026 hecha (freelance básico S/500–1,500 ·
 3. ~~Construir `brandbook.html`~~ ✅ — v1.1+, hosteado en GitHub Pages
 4. ~~Construir guías operativas~~ ✅ `guia-instagram.html`, `guia-ecommerce.html`
 5. ~~Resolver peso/contraste del wordmark y monograma~~ ✅ — ver Notas Técnicas
-6. **Hacer `git push`** de los commits pendientes para que GitHub Pages quede al día (confirmar con Juan primero)
-7. **Preparar y enviar cotización formal** usando `propuesta-economica-v3.html`
-8. **Formalizar acuerdo comercial** con la clienta
-9. **Obtener** validación de misión/visión y elección de tagline — únicos bloqueantes de contenido restantes
-10. **Resolver** qué hacer con `logo.webp` (identidad legacy)
+6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
+7. **Hacer `git push`** de los commits pendientes para que GitHub Pages quede al día (confirmar con Juan primero)
+8. **Obtener** validación de misión/visión y elección de tagline — únicos bloqueantes de contenido restantes
+9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/community manager — sigue activo, no tratarlo como cerrado
+10. **Decidir** qué hacer con `logo.webp` ahora que se confirmó que es el logo actual de WAY — ¿se documenta como identidad "antes" (útil para `estrategia-lanzamiento.html`) o se retira tras el relanzamiento?
 11. **Completar** info de empaque cuando el cliente la provea
 12. **Decidir** (recomendación abierta, no resuelta) si vale la pena reorganizar la raíz del repo — hoy conviven el documento vivo, un backup intencional, guías operativas y documentos de propuesta ya superados sin ninguna subcarpeta. `brandbook.html` debe quedarse en la raíz sí o sí (GitHub Pages lo sirve desde ahí); cualquier otro archivo que se mueva necesita rutas relativas a `assets/` corregidas.
 
