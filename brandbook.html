@@ -291,7 +291,7 @@
     .valor-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
 
     /* ===== 03 AUDIENCIA ===== */
-    .persona-photos-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .persona-photos-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
     .persona-photo-card { background: var(--color-negro); border-radius: var(--radius-xl); overflow: hidden; }
     .persona-photo  {
       width: 100%; aspect-ratio: 3/4;
@@ -613,6 +613,29 @@
     .pack-item .icon  { font-size: 32px; }
     .pack-item .label { font-size: var(--text-xs); color: var(--color-gris); font-weight: var(--font-medium); }
 
+    /* Packaging — antes / después */
+    .pack-photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+    .pack-photo-tile {
+      aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--color-borde); border: 1px solid var(--color-borde); box-shadow: var(--shadow-sm);
+    }
+    .pack-photo-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pack-concept-bag {
+      width: 220px; height: 270px; margin: 0 auto; background: var(--color-marfil);
+      border: 1px solid var(--color-borde); border-radius: 2px; box-shadow: var(--shadow-md);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3);
+      position: relative;
+    }
+    .pack-concept-bag::before {
+      content: ''; position: absolute; top: -34px; left: 50%; transform: translateX(-50%);
+      width: 76px; height: 44px; border: 6px solid #C9BBAA; border-bottom: none;
+      border-radius: 40px 40px 0 0;
+    }
+    .pack-concept-bag .pack-concept-tagline {
+      font-family: var(--font-display); font-size: var(--text-sm); font-style: italic;
+      color: var(--color-terracota);
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
@@ -792,16 +815,27 @@
 
     <div class="persona-photos-row">
       <div class="persona-photo-card">
-        <div class="persona-photo"><img src="assets/photos/persona-28-40.png" alt="Mujer WAY, 28–40 años"></div>
-        <span class="persona-photo-age">28 – 40 años</span>
+        <div class="persona-photo"><img src="assets/photos/persona-28-45.png" alt="Mujer WAY, 28–45 años"></div>
+        <span class="persona-photo-age">28 – 45 años</span>
       </div>
       <div class="persona-photo-card">
-        <div class="persona-photo"><img src="assets/photos/persona-45-55.png" alt="Mujer WAY, 45–55 años"></div>
-        <span class="persona-photo-age">45 – 55 años</span>
+        <div class="persona-photo"><img src="assets/photos/persona-46-65.png" alt="Mujer WAY, 46–65+ años"></div>
+        <span class="persona-photo-age">46 – 65+ años</span>
       </div>
-      <div class="persona-photo-card">
-        <div class="persona-photo"><img src="assets/photos/persona-60-65.png" alt="Mujer WAY, 60–65+ años"></div>
-        <span class="persona-photo-age">60 – 65+ años</span>
+    </div>
+
+    <div class="pending-block">
+      <span class="pending-label">Alternativas en revisión — a elegir con Lizzie</span>
+      <p>Mismas edades, outfit más arriesgado — en evaluación junto a las 2 fotos de arriba. Sección temporal, se retira una vez que Lizzie elija.</p>
+      <div class="persona-photos-row" style="margin-top:var(--space-4);margin-bottom:0;">
+        <div class="persona-photo-card">
+          <div class="persona-photo"><img src="assets/photos/persona-28-45-alt.png" alt="Mujer WAY, 28–45 años — alternativa"></div>
+          <span class="persona-photo-age">28 – 45 años · Alternativa</span>
+        </div>
+        <div class="persona-photo-card">
+          <div class="persona-photo"><img src="assets/photos/persona-46-65-alt.png" alt="Mujer WAY, 46–65+ años — alternativa"></div>
+          <span class="persona-photo-age">46 – 65+ años · Alternativa</span>
+        </div>
       </div>
     </div>
 
@@ -823,7 +857,7 @@
           <tr><td>Género</td><td>Mujer</td></tr>
           <tr><td>Ubicación</td><td>Lima, Perú — expansión nacional</td></tr>
           <tr><td>Edad</td><td>28–65+ años <span style="color:var(--color-gris);font-size:var(--text-xs);">(corregido de 18–30 inicial)</span></td></tr>
-          <tr><td>Perfil</td><td>Independiente económicamente, socialmente activa, guiada por valores</td></tr>
+          <tr><td>Perfil</td><td>Independiente económicamente, socialmente activa, guiada por valores — con un estilo arriesgado y moderno, nunca básico</td></tr>
           <tr><td>Canal principal</td><td>WhatsApp + Instagram — más que TikTok, dado el rango de edad real</td></tr>
           <tr><td>Ticket promedio</td><td>S/ 180</td></tr>
           <tr><td>Posicionamiento de precio</td><td>Mid-range accesible <span class="pending-inline">[PENDIENTE — confirmar]</span></td></tr>
@@ -1497,8 +1531,35 @@
     <h2 class="subsection-title">Empaque y Materiales Físicos</h2>
     <div class="pending-block">
       <span class="pending-label">[PENDIENTE — Cliente]</span>
-      <p>Confirmar existencia y especificaciones de tissue paper con patrón/sello de marca, sticker de sellado y tarjeta de agradecimiento.</p>
+      <p>Confirmado: hoy existen 3 formatos de bolsa físicos (kraft, papel blanco, plástico troquelado), bajo la identidad anterior — ver galería abajo. Sigue sin confirmar: tissue paper con patrón/sello de marca, sticker de sellado, tarjeta de agradecimiento, y la fecha de rediseño de las bolsas bajo La Firma.</p>
     </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-8);">Empaque Actual: Antes / Después</h3>
+    <div class="ig-compare-wrap">
+      <div class="ig-compare-col">
+        <span class="ig-compare-label ig-compare-label--before">✕ Antes — empaque actual</span>
+        <div class="pack-photo-grid">
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-1.jpg" alt="Bolsa de papel kraft — empaque actual, identidad anterior"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-2.jpg" alt="Bolsa de papel kraft, dorso — empaque actual, identidad anterior"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-3.jpg" alt="Bolsa de papel blanca — empaque actual, identidad anterior"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-4.jpg" alt="Bolsa plástica troquelada — empaque actual, con dirección de Galería Damero"></div>
+        </div>
+        <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Las tres bolsas comparten la identidad anterior (silueta + rombo, tagline "Empower yourself", @way_peruvian) — la misma familia de <code>logo.webp</code>, no La Firma.</p>
+        <p class="pending-inline" style="display:block;margin-top:var(--space-2);">Fotos reales del empaque actual, provistas por la clienta</p>
+      </div>
+      <div class="ig-compare-col">
+        <span class="ig-compare-label ig-compare-label--after">✓ Después — concepto La Firma</span>
+        <div class="pack-concept-bag">
+          <div class="wordmark" style="font-size:26px;letter-spacing:.15em;padding-left:.15em;">WAY</div>
+          <span class="pack-concept-tagline">una manera propia</span>
+        </div>
+        <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Mismo formato de bolsa tote, wordmark y monograma reales sobre la paleta marfil/negro/terracota de La Firma.</p>
+        <!-- ASSUMPTION: mockup CSS con los assets vectoriales de producción (wordmark, paleta) — no una foto de producto ni una decisión de empaque tomada. -->
+        <p class="pending-inline" style="display:block;margin-top:var(--space-2);">Concepto de dirección — no reemplaza la definición de empaque con la clienta</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Sistema de Empaque — Piezas a Definir</h3>
     <div class="pack-grid">
       <div class="pack-item"><span class="icon">🛍️</span><span class="label">Bolsa de Empaque</span></div>
       <div class="pack-item"><span class="icon">🏷️</span><span class="label">Hang Tag</span></div>
