@@ -14,7 +14,7 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 | Atención al cliente | WhatsApp Business (sistema way-inbox) |
 | Categorías principales | Blusas, vestidos, sets, bodys, abrigos, blazers, chaquetas, chalecos, faldas, pantalones, tops |
 | Diferenciador operativo | Envíos en 24 horas |
-| Diferenciador de producto | Producción por lotes pequeños — inicia en 50 unidades, máx. ~200, sin reposición. Renovación constante de catálogo, exclusividad real ("no se vea ni al costado") |
+| Diferenciador de producto | Producción por lotes pequeños — inicia en 50 unidades, máx. ~200, sin reposición. Renovación constante de catálogo, exclusividad real ("no se vea ni al costado"). **Esto aplica a las prendas, no al empaque** — el empaque (bolsas, hang tags, etc.) normalmente se compra al por mayor, aparte del ritmo de producción de ropa (error que se cometió una vez en `brandbook.html`, corregido — ver Notas Técnicas — Empaque) |
 
 ---
 
@@ -23,7 +23,7 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 Leer esto primero — es lo que cambió más recientemente y lo que hay que resolver antes de seguir avanzando:
 
 - **El repo local está adelantado a `origin/main` y no se ha pusheado.** GitHub Pages (`https://juanmosquerar.github.io/way-brandbook/brandbook.html`) todavía no refleja los últimos cambios (wordmark en `opsz 16` final, monograma recto, sync de documentos hermanos). **Confirmar con Juan antes de hacer `git push`** — no es automático.
-- El brandbook está funcionalmente completo salvo dos bloqueantes de contenido, ambos esperando a la clienta (Lizzie): **elección de tagline final** y **validación de misión/visión**. Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
+- El brandbook está funcionalmente completo salvo un bloqueante de contenido, esperando a la clienta (Lizzie): **validación de misión/visión**. El tagline ya se cerró: **"Con nombre propio"** — actualizado en todo `brandbook.html` (portada, sección Logo, Tipografía, hang tags). Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
 - **Cotización aprobada y facturación en curso:** monto final **S/6,500**, 50% ya pagado, 50% restante al finalizar el proyecto. `propuesta-economica-v3.html` es el documento que se aprobó.
 - **`assets/logo/logo.webp` confirmado: es el logo actual/vigente de WAY** (previo al rebrand de este proyecto) — ya no es una incógnita, ver nota en Archivos del Proyecto para qué falta decidir sobre su uso en materiales de transición.
 - **`estrategia-lanzamiento.html` sigue en iteración activa** — no tratarlo como cerrado. Objetivo explícito del cliente: que la calidad esté a la altura del resto del proyecto, y que quede lo más ejecutable posible para no recargar de trabajo a quienes lo van a llevar a cabo (Lizzie y el/la community manager).
@@ -39,7 +39,7 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 | 2 | Propuesta de identidad visual (paletas, logos, tipografías) | ✅ Completado |
 | 3 | Propuestas de logo/identidad en Claude Design | ✅ Completado |
 | 4 | Aprobación de territorio + identidad por cliente | ✅ Completado — La Firma |
-| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada — ⏳ pendiente pushear últimos cambios y cerrar tagline/misión-visión |
+| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada, tagline cerrado — ⏳ pendiente pushear últimos cambios y cerrar misión/visión |
 | 6 | Guía de Instagram (`guia-instagram.html`) — documento operativo separado | ✅ Construido |
 | 7 | Guía de Ecommerce (`guia-ecommerce.html`) — documento operativo separado | ✅ Construido |
 
@@ -48,7 +48,7 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 ## Decisiones Confirmadas por el Cliente
 
 - **Territorio elegido:** LA FIRMA — WAY como nombre con autoridad ganada, solo tipografía sin símbolos
-- **Tagline:** Pendiente selección. Opciones propuestas: "Hecha a tu manera" / "Una manera propia" / "Con nombre propio" / "Tu estilo. Tu firma." / "El nombre lo dice todo". Cliente evalúa.
+- **Tagline:** ✅ **"Con nombre propio"** — elegido por la clienta entre 5 opciones ("Hecha a tu manera" / "Una manera propia" / "Con nombre propio" / "Tu estilo. Tu firma." / "El nombre lo dice todo"). Actualizado en todo `brandbook.html`.
 - **Audiencia confirmada:** Mujer 28–65+, independiente económicamente, socialmente activa
 - **Ticket promedio confirmado:** S/180
 - **Logo / Paleta / Tipografía:** Definidos por territorio La Firma (ver sección de identidad visual y Notas Técnicas)
@@ -170,6 +170,49 @@ Se le presentó a la clienta un comparativo (itálica actual vs. recta, a escala
 
 ---
 
+## Notas Técnicas — Empaque (conceptos "Después")
+
+Al generar los primeros 7 conceptos de empaque con Nano Banana a partir de prompts de solo texto, ninguno sirvió: la IA no reproduce la tipografía/logo exacto de WAY (mismo problema de fondo que motivó el pipeline de renderizado en navegador para el wordmark digital, ver arriba), además de fallas específicas — proporciones poco realistas para ropa, sin info de marca, sticker de sello de cera no factible en lotes de 50-200, tarjeta de agradecimiento con copy pobre, caja genérica.
+
+**Corrección aplicada (segunda vuelta):**
+- **Referencias adjuntas, no solo descritas:** Nano Banana sí soporta adjuntar imágenes de referencia — se adjunta `way-wordmark-marfil-sobre-negro.png` o `way-monogram-180.png` como referencia tipográfica exacta, y una foto real (`empaque-antes-*.jpeg` para proporción de bolsa, `pieza-sola.jpg` para prenda real en el tissue paper) en vez de describir todo solo en texto.
+- **Hang tag y tarjeta de agradecimiento ya no se generan con IA** — se resolvieron como componentes CSS reutilizando el `.hangtag` ya aprobado y un `.thankyou-card` nuevo, con copy redactado en el tono de voz de marca. Tipografía garantizada, cero riesgo de reinterpretación.
+- **Sin número de WhatsApp impreso en empaque** — decisión explícita de Juan: el número puede cambiar y reimprimir empaque físico por eso no es viable; se usa `@way_peruvian · wayperuvian.pe` en su lugar (información que sí se mantiene actualizada sin reimprimir nada).
+- **Sticker de sellado:** se reemplazó el concepto de sello de cera por un sticker plano impreso a 1 tinta (factible con cualquier imprenta de stickers en Lima).
+- Bolsa (2 direcciones: kraft y negra elevada), tissue paper, sticker y caja de envío: generados con los prompts corregidos y ya integrados en `brandbook.html` (`assets/photos/empaque-despues-*.png`). Dos rondas de ajuste necesarias: la primera con caja en formato panorámico (le faltaba especificar aspect ratio 4:5 en el prompt) y tissue paper con una prenda distinta a la esperada (resuelto — Juan decidió usar otra prenda WAY a propósito, no fue error). Sistema completo con concepto de dirección para las 6 piezas, pendiente de validación final de la clienta antes de producción.
+
+**Revisión "Físico — Escala Real" → fin del documento (12/08):** se corrigieron varias inconsistencias — título "Piezas a Definir" contradecía el "resuelto" de hang tag/tarjeta (renombrado a "Sistema de Empaque"), el tagline "una manera propia" aparecía sin marca de pendiente en el hang tag (agregada, y solo hace falta en un lugar ahora porque el hang tag reutilizado en "Sistema de Empaque" muestra el dorso en vez de repetir el frente), grid de "Antes" tenía 2 fotos duplicadas de la misma bolsa kraft (bajado de 4 a 3), y un bug real de responsive (un `style` inline le ganaba a la regla de mobile — reemplazado por clases `.pack-photo-grid--2col`/`--3col`).
+
+**Ampliación de la sección (13/08):** a pedido de Juan, se agregó (1) tercera dirección de bolsa en "Después"; (2) tabla **"Elegir la Bolsa"** (costo relativo estimado y mejor uso por formato — costos son estimados, no cotización real, marcado como pendiente); (3) bloque **"Lineamientos de Producción"** (color HEX con nota de conversión a CMYK/Pantone pendiente, tipografía siempre vectorial, tamaño mínimo impreso pendiente de confirmar con proveedor, filtro de lotes 50-200, checklist pre-producción); (4) tabla **"Aplicación del Logo en Empaque — Qué Sí / Qué No"**, mismo patrón que "Usos Incorrectos" del logo pero para contexto de producción física.
+
+**Sobre la 3ra dirección de bolsa — ojo con la confusión de nombres:** Juan generó primero una **bolsa blanca de papel** (buena calidad, aprobada visualmente) pero nunca llegó a guardarla como archivo — solo existió pegada en el chat, se perdió al no tener yo forma de extraer imágenes pegadas directamente a disco. Después aclaró que en realidad quería la **bolsa plástica** (la segunda foto de "Antes", `empaque-antes-2.jpeg`) como prioridad. Esa sí se generó, se ajustó una vez (primera versión muy translúcida, dejaba ver la prenda de adentro y rompía consistencia con el resto del set — se pidió opaca y vacía) y quedó guardada como `assets/photos/empaque-despues-bolsa-c.jpg` (llegó en `.jfif`, renombrada a `.jpg`). **Las 3 direcciones "Después" hoy son: kraft, negra, plástica** — no incluye blanca. **Decisión (13/08, no solo pendiente):** no se va a agregar blanca como 4ta variante — kraft y plástica ya cubren la evolución de bajo costo de lo que existe hoy, una 4ta opción no abre una decisión nueva, solo alarga la sección. Si en el futuro se reconsidera, el prompt queda documentado más abajo en esta nota (histórico).
+
+**Riesgo de factibilidad de la bolsa negra mate:** Juan notó que probablemente sea difícil/costosa de producir — válido: tinta clara sobre bolsa negra normalmente requiere foil o tinta blanca de base, procesos especializados con mínimos de producción más altos, mismo tipo de riesgo que ya descartó el sello de cera. Se agregó esta advertencia a la tabla "Elegir la Bolsa" en `brandbook.html` — la negra queda marcada como la opción que necesita validar factibilidad en lote de 50–200 antes de tomarla en serio, no como una alternativa igual de viable que kraft/plástica.
+
+**Limpieza de "Lineamientos de Producción" (13/08):**
+- Se quitaron referencias visibles al propio proceso de generación con IA (ej. "el mismo problema que tuvimos generando conceptos con IA" en la fila de Tipografía) — ese tipo de comentario es razonamiento interno de la sesión, no contenido para el brandbook. Se revisó todo el documento buscando frases similares ("ya aplicado", "ya descartó" referidas al sello de cera) y se reescribieron para que citen la regla/precedente sin narrar el historial de edición.
+- El dato "WAY produce en lotes de 50–200 unidades" está confirmado — viene del diferenciador de producto capturado al inicio de este archivo, y el concepto general ("lotes pequeños, sin reposición") ya aparecía antes en `brandbook.html` (intro de "Quiénes somos" y valor de marca "Exclusividad"), pero el número exacto (50–200) solo se explicitaba en Empaque, y ahí estaba repetido casi textual 3 veces seguidas. Se dejó explicado una sola vez (fila "Lotes pequeños" en Lineamientos) y las otras 2 apariciones ahora son referencias cortas a esa fila.
+- Se agregó una conversión aproximada HEX→CMYK (cálculo directo, no cotización de proveedor) para los 3 colores de marca, como punto de partida en vez de dejar el pendiente completamente vacío — la nota de pendiente ahora es más específica: el proveedor debe ajustar por su perfil de color y sustrato, no partir de cero.
+- El checklist pre-producción pasó de un párrafo con signos de interrogación seguidos a una lista real dentro de un `pending-block` (mismo componente ya usado para otros pendientes del documento) — es información que se va a usar activamente, no una nota de pie de página.
+
+**Orden de las galerías Antes/Después:** a Juan le generó confusión ver 3 fotos vs. 3 fotos sin que las posiciones correspondieran (parecía que la negra "reemplazaba" a la blanca). Se reordenaron ambas galerías para alinear lo que sí tiene equivalencia directa: posición 1 = kraft/kraft, posición 2 = plástica/plástica opaca; posición 3 queda blanca (antes, sin versión "después" todavía) junto a negra (después, dirección adicional sin equivalente en "antes") — con una nota explícita aclarando que no es una sustitución 1:1. Mismo criterio aplicado en la tabla "Elegir la Bolsa" (reordenada kraft/plástica/negra, con la negra marcada como "adicional, sin equivalente hoy").
+
+**Corrección importante — "lotes pequeños" no aplica al empaque (13/08):** desde el primer intento de generar conceptos de empaque, se venía asumiendo que cualquier pieza de empaque debía ser "rentable en un lote de 50–200 unidades" (el mismo número que el diferenciador de producción de **ropa**). Juan corrigió: las prendas sí se producen en lotes chicos sin reposición, pero **el empaque normalmente se compra al por mayor, aparte** — no tiene sentido evaluar factibilidad de una bolsa o sticker contra el tamaño de lote de las prendas. Se corrigió en varios lugares de `brandbook.html`:
+- Fila "Lotes pequeños" en Lineamientos de Producción → renombrada "Volumen de compra", explica que prenda y empaque se compran en ritmos distintos; el criterio real es costo por unidad a la cantidad que se compre + si el proceso requiere aplicación manual (eso sí no escala, independiente del volumen).
+- Tabla "Aplicación del Logo en Empaque": la fila "Procesos rentables solo en tirajes grandes (sellos de cera, foil complejo)" no tenía sentido con la lógica corregida (tirajes grandes ya no son necesariamente el problema) y además a Juan no le quedaba clara — se reemplazó por "Sellado manual pieza por pieza (ej. sello de cera)", con la razón real: no escala con el despacho diario y es frágil en envío.
+- Tabla "Elegir la Bolsa" y checklist pre-producción: se quitaron las referencias a "lote de 50–200" aplicadas al empaque.
+- Se agregó una aclaración en la tabla de "¿Qué es WAY?" al inicio de este archivo, en la fila del diferenciador de producto, para que quede claro desde el origen del dato que aplica a prendas, no a empaque.
+
+**También en esta ronda:**
+- **Proporción del wordmark en bolsa impresa:** Juan pidió alguna referencia de tamaño mínimo aunque no haya cotización de proveedor. Se agregó una proporción basada en los conceptos ya generados (wordmark ocupa 40–45% del ancho de la bolsa, no bajar de ~25%) como punto de partida, sin cerrar el pendiente de confirmación real con proveedor.
+- **Costo relativo de las bolsas:** Juan pidió omitirlo — se quitó la columna "Costo relativo" de la tabla "Elegir la Bolsa" (esos valores eran estimados, no cotizados). Se mantuvo la advertencia técnica sobre la negra mate (foil/tinta blanca de base) porque es un hecho de proceso de impresión, no una cifra de costo inventada.
+- **Texto de la bolsa blanca:** decía "todavía no tiene una versión Después generada", lo cual sonaba a pendiente cuando en realidad ya se decidió no generarla — corregido para reflejar que es una decisión tomada, no un pendiente.
+- **Zona de Exclusión:** Juan confirmó los valores (80px digital / 1.5cm bordado) como definitivos — se quitó el flag `[PENDIENTE — confirmar con diseñador]`.
+- **Estadísticas de TikTok:** Juan compartió la URL y una captura del perfil real (@way_peruvian) — actualizado en `brandbook.html` con cifras reales: 22 siguiendo, 23,9 mil seguidores, 115,8 mil me gusta (antes eran ilustrativas: 626/18,4 mil/142,3 mil). Las reproducciones por video individual siguen siendo ilustrativas. También se corrigió una frase de la intro que decía "hoy no tiene mockup en el brandbook" — sí lo tiene, justo debajo.
+- **Tagline confirmado por la clienta: "Con nombre propio"** — reemplazado en todo `brandbook.html` (portada, sección Logo, Tipografía, jerarquía tipográfica, hang tag) y quitados todos los flags `[PENDIENTE — selección final de tagline]`. También se actualizó el "Estado actual" de `estrategia-lanzamiento.html` (acuerdo comercial y tagline ya no figuran como abiertos, solo queda empaque físico pendiente de aprobación final).
+
+---
+
 ## Archivos del Proyecto
 
 ```
@@ -194,13 +237,15 @@ way-brandbook/
     photos/                    ← generadas (Editorial/Lookbook/Detalle/Promo, Gemini "Nano Banana", fieles
                                    a prendas reales de WAY) + reales del feed actual (@way_peruvian, para
                                    comparativo antes/después) + persona-28-40/45-55/60-65.png (Cliente Ideal)
+                                   + empaque-antes-1..4.jpg (fotos reales del empaque físico actual,
+                                   provistas por la clienta — identidad anterior, ver sección Empaque)
   CLAUDE.md                    ← este archivo
 ```
 
 **Nota:** los tres documentos hermanos (`guia-instagram.html`, `guia-ecommerce.html`, `estrategia-lanzamiento.html`) usan `assets/logo/favicon.png` (se actualiza solo, es un archivo compartido) pero tienen su propio CSS de wordmark — ver Notas Técnicas.
 
 ### `assets/logo/logo.webp` — confirmado: es el logo actual/vigente de WAY
-Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es el logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself") que la marca usa **actualmente**, antes de este rebrand. Confirmado por el cliente. No se ha usado en `brandbook.html` — representa la identidad "antes" del proyecto. Pendiente decidir: si se documenta formalmente como identidad anterior (útil para `estrategia-lanzamiento.html`, que cubre la transición de assets viejo→nuevo) o si simplemente se retira una vez completado el relanzamiento.
+Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es el logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself") que la marca usa **actualmente**, antes de este rebrand. Confirmado por el cliente. El archivo `logo.webp` en sí no se ha usado en `brandbook.html`, pero esa misma identidad anterior ya aparece documentada ahí de forma indirecta: la sección "Empaque y Materiales Físicos" incluye 4 fotos reales del empaque físico actual (bolsas kraft/papel/plástico, provistas por la clienta el 10/08/2026) que llevan ese mismo logo y tagline. Pendiente decidir: si `logo.webp` se documenta formalmente como identidad anterior (útil para `estrategia-lanzamiento.html`, que cubre la transición de assets viejo→nuevo) o si simplemente se retira una vez completado el relanzamiento.
 
 ### Hosting
 Repo en GitHub: `https://github.com/JuanMosqueraR/way-brandbook` (colaborador: `juanatquanta`). Publicado vía GitHub Pages (Settings → Pages → main → /root). URL pública: `https://juanmosquerar.github.io/way-brandbook/brandbook.html`. **Recordar:** el repo local puede estar adelantado al remoto — confirmar `git status`/`git log origin/main..HEAD` antes de asumir que lo publicado está al día (ver "Estado Actual" arriba).
@@ -226,13 +271,13 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 | # | Ítem | Estado |
 |---|---|---|
 | 1 | Territorio de identidad | ✅ La Firma |
-| 2 | Tagline final | ⏳ Cliente eligiendo entre 5 opciones propuestas |
+| 2 | Tagline final | ✅ "Con nombre propio" — elegido, actualizado en `brandbook.html` |
 | 3 | Historia de origen — ¿por qué "WAY"? | ✅ Respondida por cliente — incorporada en `brandbook.html` |
 | 4 | Misión, visión y valores | ⏳ Borrador redactado, pendiente validación cliente |
 | 5 | Ticket promedio | ✅ S/180 |
 | 6 | Marcas competidoras / referencia | ✅ Saint Male (@saintmale.cl) |
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male, con regla de autenticidad (Sí/No) en `brandbook.html` |
-| 8 | Empaque (bolsas, etiquetas, tissue paper) | ⏳ Pendiente cliente |
+| 8 | Empaque (bolsas, etiquetas, tissue paper) | ⏳ Bolsas confirmadas — 3 formatos existen hoy (kraft, papel blanco, plástico troquelado), identidad anterior, documentadas con fotos reales en `brandbook.html`. Sistema "Después" bajo La Firma con concepto de dirección: hang tag y tarjeta de agradecimiento como componentes CSS (tipografía garantizada); bolsa (3 direcciones: kraft, negra, plástica opaca), tissue paper, sticker y caja de envío como fotos concepto generadas con Nano Banana. Se agregó tabla de decisión de bolsa, lineamientos de producción y tabla de aplicación del logo en empaque — ver Notas Técnicas. Falta: validación/elección final de la clienta, cotización real de proveedor y fecha de producción (bolsa blanca de papel quedó fuera de las 3 direcciones — ver Notas Técnicas si se quiere agregar después) |
 | 9 | Rango de edad cliente ideal | ✅ 28–65+ |
 | 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
 | 11 | Cotización formal del proyecto | ✅ Aprobada — S/6,500 (`propuesta-economica-v3.html`), 50% pagado, 50% restante al finalizar el proyecto |
@@ -263,7 +308,7 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 5. ~~Resolver peso/contraste del wordmark y monograma~~ ✅ — ver Notas Técnicas
 6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
 7. **Hacer `git push`** de los commits pendientes para que GitHub Pages quede al día (confirmar con Juan primero)
-8. **Obtener** validación de misión/visión y elección de tagline — únicos bloqueantes de contenido restantes
+8. **Obtener** validación de misión/visión — único bloqueante de contenido restante (tagline ya cerrado: "Con nombre propio")
 9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/community manager — sigue activo, no tratarlo como cerrado
 10. **Decidir** qué hacer con `logo.webp` ahora que se confirmó que es el logo actual de WAY — ¿se documenta como identidad "antes" (útil para `estrategia-lanzamiento.html`) o se retira tras el relanzamiento?
 11. **Completar** info de empaque cuando el cliente la provea

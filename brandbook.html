@@ -615,26 +615,26 @@
 
     /* Packaging — antes / después */
     .pack-photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+    .pack-photo-grid--2col { grid-template-columns: repeat(2, 1fr); }
+    .pack-photo-grid--3col { grid-template-columns: repeat(3, 1fr); }
+    .pack-photo-item { display: flex; flex-direction: column; gap: var(--space-2); }
+    .pack-photo-tile--pending {
+      border-style: dashed; background: #F1EAE0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-4); text-align: center;
+    }
     .pack-photo-tile {
       aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden;
       background: var(--color-borde); border: 1px solid var(--color-borde); box-shadow: var(--shadow-sm);
     }
     .pack-photo-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .pack-concept-bag {
-      width: 220px; height: 270px; margin: 0 auto; background: var(--color-marfil);
-      border: 1px solid var(--color-borde); border-radius: 2px; box-shadow: var(--shadow-md);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3);
-      position: relative;
+    .thankyou-card {
+      width: 240px; min-height: 150px; background: var(--color-marfil); border: 1px solid #E0D7CA;
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; padding: 20px 18px; box-sizing: border-box; gap: 8px;
     }
-    .pack-concept-bag::before {
-      content: ''; position: absolute; top: -34px; left: 50%; transform: translateX(-50%);
-      width: 76px; height: 44px; border: 6px solid #C9BBAA; border-bottom: none;
-      border-radius: 40px 40px 0 0;
-    }
-    .pack-concept-bag .pack-concept-tagline {
-      font-family: var(--font-display); font-size: var(--text-sm); font-style: italic;
-      color: var(--color-terracota);
-    }
+    .thankyou-msg { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--color-negro); margin: 4px 0 0; }
+    .thankyou-sub { font-size: 9.5px; color: var(--color-gris); line-height: 1.5; max-width: 190px; margin: 0; }
+    .thankyou-footer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--color-terracota); font-size: 7px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); line-height: 1.6; width: 100%; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
@@ -658,6 +658,7 @@
       .prohibit-grid { grid-template-columns: 1fr; }
       .insights-grid { grid-template-columns: 1fr; }
       .pack-grid     { grid-template-columns: 1fr 1fr; }
+      .pack-photo-grid, .pack-photo-grid--2col, .pack-photo-grid--3col { grid-template-columns: 1fr 1fr; }
       .logo-cell--primary { padding: var(--space-12) var(--space-4); }
       .ig-profile-top { flex-direction: column; align-items: flex-start; }
       .product-grid  { grid-template-columns: 1fr; }
@@ -726,8 +727,7 @@
     <div class="wordmark wordmark--xl wordmark--inverted">WAY</div>
     <div class="portada-line"></div>
     <div class="portada-tagline-wrap">
-      <p class="portada-tagline">"Una manera propia"</p>
-      <p class="pending-inline" style="display:block;text-align:center;margin-top:var(--space-3);">[PENDIENTE — selección final de tagline]</p>
+      <p class="portada-tagline">"Con nombre propio"</p>
     </div>
     <div class="portada-meta">
       <div class="portada-meta-item"><span class="label">País</span><span class="value">Perú</span></div>
@@ -960,8 +960,7 @@
     <div class="logo-system-grid">
       <div class="logo-cell logo-cell--primary">
         <img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:280px;">
-        <div class="tagline-italic" style="font-size:var(--text-lg);">una manera propia</div>
-        <span class="logo-caption-note">Tagline ilustrativo — texto final [PENDIENTE — selección final]</span>
+        <div class="tagline-italic" style="font-size:var(--text-lg);">con nombre propio</div>
       </div>
       <div class="logo-cell">
         <img src="assets/logo/way-wordmark-negro.svg" alt="WAY" style="width:130px;">
@@ -991,7 +990,7 @@
       <div class="clearspace-inner">
         <div class="wordmark wordmark--md">WAY</div>
       </div>
-      <p class="clearspace-note">La zona de exclusión mínima equivale a la altura de la letra "Y" del logotipo, medida en los cuatro lados. Ningún elemento gráfico, texto o borde puede invadir este espacio. Tamaño mínimo recomendado: ~80&nbsp;px de ancho en digital, 1.5&nbsp;cm en bordado — por debajo de eso, el contraste del trazo empieza a perder nitidez. <span class="pending-inline">[PENDIENTE — confirmar con diseñador]</span></p>
+      <p class="clearspace-note">La zona de exclusión mínima equivale a la altura de la letra "Y" del logotipo, medida en los cuatro lados. Ningún elemento gráfico, texto o borde puede invadir este espacio. Tamaño mínimo recomendado: ~80&nbsp;px de ancho en digital, 1.5&nbsp;cm en bordado — por debajo de eso, el contraste del trazo empieza a perder nitidez.</p>
     </div>
 
     <h2 class="subsection-title">Usos Incorrectos</h2>
@@ -1116,7 +1115,7 @@
     <div class="type-specimen">
       <div class="type-row">
         <span class="type-meta">Bodoni Moda · Italic 400 — titulares, firma, tagline</span>
-        <p class="type-sample-display italic">Una manera propia</p>
+        <p class="type-sample-display italic">Con nombre propio</p>
       </div>
       <div class="type-row">
         <span class="type-meta">Bodoni Moda · Medium 500 — logotipo, mayúsculas</span>
@@ -1137,7 +1136,7 @@
       <thead><tr><th>Nivel</th><th>Especificación</th><th>Ejemplo</th></tr></thead>
       <tbody>
         <tr><td>H1</td><td>Bodoni Moda 500 · 48–64px</td><td><span class="hier-sample-h1">Luce única con nosotras</span></td></tr>
-        <tr><td>H2</td><td>Bodoni Moda Italic 400 · 28–32px</td><td><span class="hier-sample-h2">una manera propia</span></td></tr>
+        <tr><td>H2</td><td>Bodoni Moda Italic 400 · 28–32px</td><td><span class="hier-sample-h2">con nombre propio</span></td></tr>
         <tr><td>H3</td><td>Archivo 600 · 18–20px</td><td><span class="hier-sample-h3">Nueva colección</span></td></tr>
         <tr><td>Body</td><td>Archivo 400 · 16px / 1.6</td><td><span class="hier-sample-body">Tu combinación perfecta la encuentras aquí ✨</span></td></tr>
         <tr><td>Caption</td><td>Archivo 500 · 12px · mayúsculas trackeadas</td><td><span class="hier-sample-caption">Envíos en 24 horas</span></td></tr>
@@ -1359,7 +1358,7 @@
     <p class="scale-app-caption" style="margin-top:var(--space-4);">Avatar — recorte circular 110&nbsp;px · datos de perfil vigentes a la fecha de este documento</p>
 
     <h2 class="subsection-title">Instagram — Grid de Contenido: Antes / Después</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Referencia de dirección: <strong style="color:var(--color-negro);">@saintmale.cl</strong>, marca que la clienta señaló como el estilo editorial a seguir.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Referencia de dirección: <strong style="color:var(--color-negro);">@saintmale.cl</strong>, el estilo editorial a seguir.</p>
     <div class="ig-compare-wrap">
       <div class="ig-compare-col">
         <span class="ig-compare-label ig-compare-label--before">✕ Antes — grid actual</span>
@@ -1411,16 +1410,16 @@
     </div>
 
     <h2 class="subsection-title">TikTok — Perfil</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Canal activo (@way_peruvian) que hoy no tiene mockup en el brandbook — mismo sistema visual y bio que Instagram, para que la marca se vea igual en cada plataforma.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Canal activo (@way_peruvian) — mismo sistema visual y bio que Instagram, para que la marca se vea igual en cada plataforma.</p>
     <div class="tiktok-card">
       <div class="tiktok-top">
         <img src="assets/logo/way-monogram.svg" alt="Monograma WAY" class="tiktok-avatar">
         <p class="tiktok-username">way_peruvian</p>
         <p class="tiktok-bio">WAY | Ropa de Moda para la mujer empoderada 🤍<br>Envíos en 24 horas · Lima, Perú</p>
         <div class="tiktok-stats">
-          <div><strong>626</strong><span>Siguiendo</span></div>
-          <div><strong>18,4&nbsp;mil</strong><span>Seguidores</span></div>
-          <div><strong>142,3&nbsp;mil</strong><span>Me gusta</span></div>
+          <div><strong>22</strong><span>Siguiendo</span></div>
+          <div><strong>23,9&nbsp;mil</strong><span>Seguidores</span></div>
+          <div><strong>115,8&nbsp;mil</strong><span>Me gusta</span></div>
         </div>
         <div class="tiktok-buttons"><span>Seguir</span><span class="outline">Mensaje</span></div>
       </div>
@@ -1430,7 +1429,7 @@
         <div class="tiktok-video"><img src="assets/photos/promo-a.jpg" alt="Video — promo"><span class="play">▶ 21,1 mil</span></div>
       </div>
     </div>
-    <p class="scale-app-caption" style="margin-top:var(--space-4);">Cifras ilustrativas — a completar con datos reales del canal <span class="pending-inline" style="text-transform:none;letter-spacing:normal;">[PENDIENTE — Cliente]</span></p>
+    <p class="scale-app-caption" style="margin-top:var(--space-4);">Siguiendo/Seguidores/Me gusta — datos reales del canal a la fecha de este documento. Las reproducciones por video son ilustrativas.</p>
 
     <h2 class="subsection-title">Shopify — Header de Tienda</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">wayperuvian.pe corre en Shopify — el header es el primer contacto con la identidad en el canal donde ocurre la compra.</p>
@@ -1497,7 +1496,7 @@
         <div class="hangtag">
           <div class="hangtag-hole"></div>
           <div class="wordmark" style="font-size:22px;letter-spacing:.14em;padding-left:.14em;">WAY</div>
-          <div class="hangtag-tagline">una manera propia</div>
+          <div class="hangtag-tagline">con nombre propio</div>
           <div class="hangtag-size-row" style="margin-top:14px;">
             <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
           </div>
@@ -1529,45 +1528,120 @@
     </div>
 
     <h2 class="subsection-title">Empaque y Materiales Físicos</h2>
-    <div class="pending-block">
-      <span class="pending-label">[PENDIENTE — Cliente]</span>
-      <p>Confirmado: hoy existen 3 formatos de bolsa físicos (kraft, papel blanco, plástico troquelado), bajo la identidad anterior — ver galería abajo. Sigue sin confirmar: tissue paper con patrón/sello de marca, sticker de sellado, tarjeta de agradecimiento, y la fecha de rediseño de las bolsas bajo La Firma.</p>
-    </div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">De la bolsa que recibe la clienta al momento de abrir el pedido: cómo se ve el empaque hoy y hacia dónde se dirige bajo La Firma.</p>
 
     <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-8);">Empaque Actual: Antes / Después</h3>
     <div class="ig-compare-wrap">
       <div class="ig-compare-col">
         <span class="ig-compare-label ig-compare-label--before">✕ Antes — empaque actual</span>
-        <div class="pack-photo-grid">
-          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-1.jpg" alt="Bolsa de papel kraft — empaque actual, identidad anterior"></div>
-          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-2.jpg" alt="Bolsa de papel kraft, dorso — empaque actual, identidad anterior"></div>
-          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-3.jpg" alt="Bolsa de papel blanca — empaque actual, identidad anterior"></div>
-          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-4.jpg" alt="Bolsa plástica troquelada — empaque actual, con dirección de Galería Damero"></div>
+        <div class="pack-photo-grid pack-photo-grid--3col">
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-3.jpeg" alt="Bolsa de papel kraft — empaque actual, identidad anterior"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-2.jpeg" alt="Bolsa plástica troquelada — empaque actual, con dirección de Galería Damero"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-antes-1.jpeg" alt="Bolsa de papel blanca — empaque actual, identidad anterior"></div>
         </div>
         <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Las tres bolsas comparten la identidad anterior (silueta + rombo, tagline "Empower yourself", @way_peruvian) — la misma familia de <code>logo.webp</code>, no La Firma.</p>
-        <p class="pending-inline" style="display:block;margin-top:var(--space-2);">Fotos reales del empaque actual, provistas por la clienta</p>
       </div>
       <div class="ig-compare-col">
         <span class="ig-compare-label ig-compare-label--after">✓ Después — concepto La Firma</span>
-        <div class="pack-concept-bag">
-          <div class="wordmark" style="font-size:26px;letter-spacing:.15em;padding-left:.15em;">WAY</div>
-          <span class="pack-concept-tagline">una manera propia</span>
+        <div class="pack-photo-grid pack-photo-grid--3col">
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-bolsa-a.png" alt="Concepto de bolsa kraft con identidad La Firma"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-bolsa-c.jpg" alt="Concepto de bolsa plástica opaca con identidad La Firma"></div>
+          <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-bolsa-b.png" alt="Concepto de bolsa negra elevada con identidad La Firma"></div>
         </div>
-        <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Mismo formato de bolsa tote, wordmark y monograma reales sobre la paleta marfil/negro/terracota de La Firma.</p>
-        <!-- ASSUMPTION: mockup CSS con los assets vectoriales de producción (wordmark, paleta) — no una foto de producto ni una decisión de empaque tomada. -->
-        <p class="pending-inline" style="display:block;margin-top:var(--space-2);">Concepto de dirección — no reemplaza la definición de empaque con la clienta</p>
+        <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Las dos primeras posiciones son evolución directa de lo que existe hoy: kraft → kraft, plástica → plástica opaca (mismo formato, sin dirección de tienda impresa). La <strong>negra mate no reemplaza la bolsa blanca</strong> — es una dirección adicional más elevada, sin equivalente en el empaque actual. La blanca no se generó como "Después": kraft y plástica ya cubren la evolución de bajo costo de lo que existe hoy, una tercera opción similar no sumaba una decisión nueva.</p>
+        <!-- ASSUMPTION: fotos generadas con IA a partir de referencias del logo real (way-wordmark-marfil-sobre-negro.png) y de las fotos reales de empaque actual, no un shooting real — no es una decisión de empaque tomada. -->
       </div>
     </div>
 
-    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Sistema de Empaque — Piezas a Definir</h3>
-    <div class="pack-grid">
-      <div class="pack-item"><span class="icon">🛍️</span><span class="label">Bolsa de Empaque</span></div>
-      <div class="pack-item"><span class="icon">🏷️</span><span class="label">Hang Tag</span></div>
-      <div class="pack-item"><span class="icon">🧻</span><span class="label">Tissue Paper</span></div>
-      <div class="pack-item"><span class="icon">⭐</span><span class="label">Sticker de Sellado</span></div>
-      <div class="pack-item"><span class="icon">💌</span><span class="label">Tarjeta de Agradecimiento</span></div>
-      <div class="pack-item"><span class="icon">📦</span><span class="label">Caja de Envío</span></div>
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Elegir la Bolsa</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-4);">Referencia rápida para decidir qué formato(s) mantener bajo La Firma — no reemplaza una cotización real de proveedor.</p>
+    <table class="rules-table">
+      <thead><tr><th>Formato</th><th>Mejor para</th></tr></thead>
+      <tbody>
+        <tr><td>Kraft</td><td>Envíos de ecommerce, uso diario — mismo formato que el empaque actual</td></tr>
+        <tr><td>Plástica opaca</td><td>Envíos de ecommerce, protección extra de la prenda — mismo formato que el empaque actual</td></tr>
+        <tr><td>Negra mate <span class="pending-inline" style="white-space:normal;">(adicional, sin equivalente hoy)</span></td><td>Tienda física, regalo, ocasión especial</td></tr>
+      </tbody>
+    </table>
+    <p class="clearspace-note" style="text-align:left;">
+      La negra mate probablemente requiere foil o tinta blanca de base para que el wordmark se vea sobre negro — un proceso más especializado y con mayor costo por unidad que el de 1 tinta de kraft/plástica. <span class="pending-inline">[PENDIENTE — cotizar con proveedor de empaque antes de decidir]</span>. También queda abierto si WAY mantiene varios formatos hacia adelante o consolida a uno solo.
+    </p>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Sistema de Empaque</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Sistema completo con concepto de dirección: hang tag y tarjeta como componentes de producción (tipografía y wordmark garantizados, sin depender de que una IA los reinterprete); bolsa en el comparativo de arriba; tissue paper, sticker y caja de envío como conceptos fotográficos con el logo real aplicado.</p>
+
+    <div class="scale-apps-wrap" style="margin-bottom:var(--space-8);">
+      <div class="scale-app">
+        <div class="hangtag">
+          <div class="hangtag-back-label">Talla / Size</div>
+          <div class="hangtag-size-row">
+            <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
+          </div>
+          <div class="hangtag-barcode"></div>
+          <div class="hangtag-code">WAY 0000123 S</div>
+          <div class="hangtag-price">S/ 180</div>
+          <div class="hangtag-footer">wayperuvian.pe</div>
+        </div>
+        <span class="scale-app-caption">Hang Tag — resuelto (ver frente en "Físico — Escala Real")</span>
+      </div>
+      <div class="scale-app">
+        <div class="thankyou-card">
+          <div class="wordmark" style="font-size:15px;letter-spacing:.14em;padding-left:.14em;">WAY</div>
+          <p class="thankyou-msg">Gracias por elegirnos ✨</p>
+          <p class="thankyou-sub">Esperamos que ames tu prenda tanto como nosotras amamos crearla.</p>
+          <div class="thankyou-footer">¿Dudas o cambios? Escríbenos:<br>@way_peruvian · wayperuvian.pe</div>
+        </div>
+        <span class="scale-app-caption">Tarjeta de Agradecimiento — resuelta</span>
+      </div>
     </div>
+
+    <div class="pack-photo-grid pack-photo-grid--3col">
+      <div class="pack-photo-item">
+        <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-tissue.png" alt="Concepto de tissue paper con patrón WAY, envolviendo una prenda real"></div>
+        <span class="scale-app-caption">Tissue Paper</span>
+      </div>
+      <div class="pack-photo-item">
+        <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-sticker.png" alt="Concepto de sticker de sellado con monograma WAY"></div>
+        <span class="scale-app-caption">Sticker de Sellado</span>
+      </div>
+      <div class="pack-photo-item">
+        <div class="pack-photo-tile"><img src="assets/photos/empaque-despues-caja.png" alt="Concepto de caja de envío con wordmark y cinta WAY"></div>
+        <span class="scale-app-caption">Caja de Envío</span>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Lineamientos de Producción</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-4);">A tener en cuenta al diseñar o cotizar cualquier pieza de empaque con un proveedor.</p>
+    <table class="demo-table">
+      <tbody>
+        <tr><td>Color</td><td>Marfil <code>#F7F3EE</code> · Casi Negro <code>#2A1F18</code> · Terracota <code>#C4714A</code> (sección 06 — Sistema de Color). Conversión aproximada a CMYK como punto de partida: Marfil <code>0/2/4/3</code> · Casi Negro <code>0/26/43/84</code> · Terracota <code>0/42/62/23</code>. <span class="pending-inline">[PENDIENTE — el proveedor debe ajustar estos valores a su perfil de color y sustrato real antes de imprimir]</span></td></tr>
+        <tr><td>Tipografía</td><td>Entregar siempre el wordmark como vector real (<code>assets/logo/</code>), nunca como imagen para calcar o redibujar — es la única forma de garantizar que la tipografía salga exacta.</td></tr>
+        <tr><td>Tamaño mínimo impreso</td><td>Mismo principio que en digital (~80px) y bordado (1.5cm): por debajo de cierto ancho el trazo fino del wordmark pierde nitidez. Como referencia de proporción, en los conceptos ya generados (bolsas kraft/negra/plástica) el wordmark ocupa 40–45% del ancho de la bolsa — evitar bajar de ~25%. <span class="pending-inline">[PENDIENTE — confirmar el mínimo exacto en papel con el proveedor]</span></td></tr>
+        <tr><td>Volumen de compra</td><td>Las prendas se producen en lotes chicos (50–200 unidades, sin reposición — ver "Exclusividad" en Personalidad de Marca), pero el empaque normalmente se compra aparte, al por mayor. Lo que sí conviene evaluar por pieza: el costo real por unidad a la cantidad que se vaya a comprar, y si el proceso requiere aplicación manual — eso no escala con el despacho diario, sin importar cuánto se compre de una vez.</td></tr>
+      </tbody>
+    </table>
+    <div class="pending-block">
+      <span class="pending-label">Checklist antes de mandar a producción</span>
+      <ul>
+        <li>¿El proveedor usa el vector real del logo, no una copia redibujada?</li>
+        <li>¿Los colores están convertidos a CMYK/Pantone, no solo HEX?</li>
+        <li>¿El wordmark impreso está por encima del mínimo legible?</li>
+        <li>¿El costo por unidad es razonable a la cantidad real que se va a comprar de esta pieza?</li>
+        <li>¿Cuántos formatos de bolsa se van a mantener?</li>
+      </ul>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Aplicación del Logo en Empaque — Qué Sí / Qué No</h3>
+    <table class="rules-table">
+      <thead><tr><th>Práctica</th><th>Estado</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Wordmark entregado como vector real (SVG/AI)</td><td class="rule-ok">✓ Correcto</td><td>Nunca redibujar ni aproximar la tipografía.</td></tr>
+        <tr><td>Zona de exclusión respetada alrededor del wordmark</td><td class="rule-ok">✓ Correcto</td><td>Misma regla que en digital y bordado — ver sección Zona de Exclusión.</td></tr>
+        <tr><td>Impresión sobre superficie de bajo contraste (transparente sin fondo, textura muy visible)</td><td class="rule-no">✕ Evitar</td><td>El wordmark pierde legibilidad — mismo criterio que "Usos Incorrectos" del logo.</td></tr>
+        <tr><td>Tamaño menor al mínimo legible en impreso</td><td class="rule-avoid">△ Confirmar con proveedor</td><td>Aún no tenemos el mínimo exacto en papel — ver Lineamientos de Producción arriba.</td></tr>
+        <tr><td>Sellado manual pieza por pieza (ej. sello de cera)</td><td class="rule-no">✕ Evitar</td><td>No escala con el despacho diario y es frágil en envío — el sticker impreso resuelve lo mismo sin ese problema.</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <p class="print-only-credit">Identidad de marca — Juan Mosquera</p>
