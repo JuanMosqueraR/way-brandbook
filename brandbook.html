@@ -461,7 +461,7 @@
     .ig-post { border: 1px solid var(--color-borde); border-radius: var(--radius-xl); overflow: hidden; background: var(--color-white); }
     .ig-header { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-borde); }
     .ig-avatar  { width: 34px; height: 34px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
-    .ig-avatar span { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--color-marfil); font-size: var(--text-base); }
+    .ig-avatar span { font-family: var(--font-display); font-weight: 500; color: var(--color-marfil); font-size: var(--text-base); }
     .ig-user    { font-size: var(--text-sm); font-weight: var(--font-semibold); color: var(--color-negro); }
     .ig-img     { aspect-ratio: 1; overflow: hidden; }
     .ig-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -597,7 +597,7 @@
     .woven-label { width: 227px; height: 57px; background: var(--color-negro); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
     .scale-app-caption { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-gris); }
     .ig-avatar-lg { width: 110px; height: 110px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
-    .ig-avatar-lg span { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 52px; color: var(--color-marfil); margin-top: -4px; }
+    .ig-avatar-lg span { font-family: var(--font-display); font-weight: 500; font-size: 52px; color: var(--color-marfil); margin-top: -4px; }
     .tote-bag {
       width: 190px; height: 253px; background: var(--color-negro); box-shadow: var(--shadow-md);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3);
@@ -737,15 +737,15 @@
       <div class="portada-meta-item"><span class="label">Versión</span><span class="value">1.1</span></div>
     </div>
     <p class="portada-url">wayperuvian.pe &nbsp;·&nbsp; @way_peruvian</p>
-    <!-- ASSUMPTION: identidad basada en Territorio 01 — La Firma, aún pendiente de confirmación final del cliente (ver CLAUDE.md, Fase 4). Documento de trabajo. -->
-    <p class="portada-working-note">Identidad visual del Territorio 01 — La Firma · documento de trabajo, pendiente de confirmación final del cliente</p>
+    <!-- ASSUMPTION: identidad visual (Territorio 01 — La Firma: logo, monograma, paleta, tipografía, fotografía) ya aprobada por la clienta — ver CLAUDE.md. Lo único pendiente de validación es el contenido de Misión/Visión (sección 02), marcado ahí. -->
+    <p class="portada-working-note">Identidad visual del Territorio 01 — La Firma · aprobada por la clienta</p>
   </section>
 
   <!-- 02 SOBRE WAY -->
   <section id="sobre-way" class="section section--surface">
     <span class="section-label">02 — Sobre WAY</span>
     <h1 class="section-title">Quiénes somos</h1>
-    <p class="section-intro">WAY es una marca de moda femenina peruana construida con su comunidad, no dirigida a ella. Vive primero en lo digital — Instagram, WhatsApp, wayperuvian.pe — con una boutique en Lima como extensión de esa cercanía. Piezas en lotes pequeños, sin reposición, y en tu puerta en 24 horas: la exclusividad y la inmediatez de una firma, no de una tienda más.</p>
+    <p class="section-intro">WAY es una marca de moda femenina peruana que busca construirse junto a su comunidad, no dirigirse a ella. Vive primero en lo digital — Instagram, WhatsApp, wayperuvian.pe — con una boutique en Lima como extensión de esa cercanía. Piezas en lotes pequeños, sin reposición, y en tu puerta en 24 horas: la exclusividad y la inmediatez de una firma, no de una tienda más.</p>
 
     <h2 class="subsection-title">Historia de origen</h2>
     <p class="section-intro">WAY nació el 29 de agosto de 2022, de la mano de Adolfo y Lizzie — pareja con años de trayectoria en el rubro textil (logística, producción, recursos humanos). El nombre tiene raíz en "guay", una palabra que Lizzie hizo suya durante sus años viviendo en España para nombrar todo lo que le parecía bueno, moderno, con estilo. Reescrita como WAY, se convirtió en el nombre de la marca que soñaban construir.</p>
@@ -761,6 +761,10 @@
       </ul>
     </div>
 
+    <div class="pending-block">
+      <span class="pending-label">Borrador — pendiente de validación de la clienta</span>
+      <p>Misión y Visión están redactadas y listas para revisión, pero aún no han sido confirmadas por Lizzie. El resto de la identidad (logo, paleta, tipografía, fotografía, territorio) ya está aprobado — este es el único contenido estratégico que sigue abierto.</p>
+    </div>
     <div class="mv-grid">
       <div class="mv-card mv-card--dark">
         <span class="mv-label">Misión</span>
@@ -934,7 +938,8 @@
   <section id="logo" class="section section--white">
     <span class="section-label">05 — Logo</span>
     <h1 class="section-title">Sistema de Logo — La Firma</h1>
-    <p class="section-intro">WAY como el nombre de una diseñadora que ya no necesita presentación. Sin símbolos, sin íconos — el nombre solo, con calidad de firma. Es la misma lógica que usan las casas que ya no necesitan un ícono para ser reconocidas: ZARA, PRADA, CELINE construyen toda su identidad sobre la tipografía de su nombre, nada más. WAY apuesta por ese mismo camino: comparte la convención — wordmark sin ícono — pero el peso, el espaciado y el contraste son una calibración propia, pensada para esta marca y sus propias aplicaciones.</p>
+    <p class="section-intro">WAY como el nombre de una diseñadora que ya no necesita presentación. La <strong>identidad principal</strong> es el wordmark — el nombre solo, con calidad de firma, sin símbolo que lo acompañe. Es la misma lógica que usan las casas que ya no necesitan un ícono para ser reconocidas: ZARA, PRADA, CELINE construyen toda su identidad sobre la tipografía de su nombre, nada más. WAY apuesta por ese mismo camino: comparte la convención — wordmark como identidad principal, sin ícono adjunto — pero el peso, el espaciado y el contraste son una calibración propia, pensada para esta marca y sus propias aplicaciones.</p>
+    <p class="section-intro">Junto al wordmark, el sistema incluye un monograma W como <strong>identidad secundaria</strong> — un recurso de apoyo, no un símbolo que compita con el nombre. Se usa solo donde el wordmark completo no es viable: avatares circulares (Instagram, WhatsApp, TikTok), favicon, stickers y etiquetas a escala mínima. Fuera de esos espacios reducidos, el wordmark es siempre la aplicación por defecto.</p>
 
     <div class="pending-block" style="border-left-color:var(--color-ok-text);background:var(--color-ok-bg);border-color:var(--color-ok-border);">
       <span class="pending-label" style="color:var(--color-ok-text);">✓ Generado</span>
@@ -969,7 +974,7 @@
       </div>
       <div class="logo-cell">
         <img src="assets/logo/way-monogram.svg" alt="Monograma WAY" style="width:110px;height:110px;">
-        <span class="logo-cell-label">Monograma · recorte 110&nbsp;px</span>
+        <span class="logo-cell-label">Monograma — identidad secundaria · recorte 110&nbsp;px</span>
       </div>
       <div class="logo-cell logo-cell--dark">
         <img src="assets/logo/way-wordmark-marfil.svg" alt="WAY" style="width:130px;">
@@ -1099,7 +1104,7 @@
         <tr><td>Marfil sobre casi negro</td><td class="rule-ok">✓ Aprobado</td><td>Versión invertida — portadas, fondos oscuros.</td></tr>
         <tr><td>Terracota como línea o detalle puntual</td><td class="rule-ok">✓ Aprobado</td><td>Subrayados, separadores, acentos de marca.</td></tr>
         <tr><td>Gris cálido para texto secundario</td><td class="rule-ok">✓ Aprobado</td><td>Captions, metadatos, texto de apoyo.</td></tr>
-        <tr><td>Terracota como fondo de bloques grandes</td><td class="rule-avoid">△ Evitar</td><td>Reservado para acentos puntuales, no superficies grandes.</td></tr>
+        <tr><td>Terracota como fondo de bloques grandes</td><td class="rule-avoid">△ Evitar por defecto</td><td>Marfil o casi negro son las superficies por defecto del sistema; terracota se reserva para acentos. Excepción documentada: la tarjeta de Visión (sección 02) usa terracota como fondo completo a propósito, como contraste editorial puntual — no un patrón a repetir libremente.</td></tr>
         <tr><td>Texto largo en terracota</td><td class="rule-avoid">△ Evitar</td><td>Contraste insuficiente para lectura extensa.</td></tr>
         <tr><td>Colores fuera de esta paleta (tonos fríos, neón)</td><td class="rule-no">✕ Prohibido</td><td>Rompe la calidez atemporal del territorio.</td></tr>
       </tbody>
@@ -1159,6 +1164,7 @@
     </div>
 
     <h2 class="subsection-title">Copy de Referencia</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Frases ya usadas por la marca, mantenidas por continuidad de voz — no son una plantilla obligatoria para copy nuevo.</p>
     <ul class="reference-copy-list">
       <li>"Tu combinación perfecta la encuentras aquí ✨"</li>
       <li>"Luce única con nosotras"</li>
@@ -1206,8 +1212,8 @@
         <div class="photo-card-info"><span class="photo-card-title">Exterior urbano con textura</span><p class="photo-card-desc">Calles, muros, luz de calle — Lima como telón de fondo real.</p></div>
       </div>
       <div class="photo-card">
-        <div class="photo-box photo-box--bad"><img src="assets/photos/fondo-blanco-estudio.jpg" alt="Fondo blanco de estudio — ejemplo prohibido"></div>
-        <div class="photo-card-info"><span class="photo-card-title" style="color:var(--color-no-text);">Fondo blanco de estudio</span><p class="photo-card-desc">Prohibido — le quita el alma editorial a la marca.</p></div>
+        <div class="photo-box photo-box--bad"><img src="assets/photos/fondo-blanco-estudio.jpg" alt="Fondo blanco de estudio genérico — ejemplo prohibido en fotografía editorial"></div>
+        <div class="photo-card-info"><span class="photo-card-title" style="color:var(--color-no-text);">Fondo blanco de estudio (editorial/campaña)</span><p class="photo-card-desc">Prohibido en fotografía editorial o de lookbook — le quita el alma editorial a la marca. No aplica a fotografía de producto/ecommerce — ver "Pieza sola" abajo.</p></div>
       </div>
     </div>
 
@@ -1264,8 +1270,9 @@
     </div>
 
     <h2 class="subsection-title">Prohibido</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Estas reglas aplican a fotografía <strong>Editorial / Campaign</strong> (lookbook, editorial, retrato de marca) — no a fotografía <strong>Ecommerce / Producto</strong>, que puede usar fondos limpios y neutros cuando mejoran la claridad y la conversión (ver "Pieza sola" arriba).</p>
     <div class="prohibit-grid">
-      <div class="prohibit-item"><span class="xi">✕</span><span>Fondo blanco de estudio</span></div>
+      <div class="prohibit-item"><span class="xi">✕</span><span>Fondo blanco de estudio genérico</span></div>
       <div class="prohibit-item"><span class="xi">✕</span><span>Flash directo</span></div>
       <div class="prohibit-item"><span class="xi">✕</span><span>Pared de ladrillo como único recurso</span></div>
       <div class="prohibit-item"><span class="xi">✕</span><span>Poses de catálogo</span></div>
