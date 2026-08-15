@@ -58,6 +58,14 @@
       line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; height: auto; display: block; }
+    /* Evita que los items de cualquier grid se nieguen a encogerse por debajo del
+       ancho de su contenido (bug clásico de CSS Grid) — sin efecto visual cuando
+       sobra espacio, solo actúa en anchos de viewport ajustados. */
+    [class*="grid"] > * { min-width: 0; }
+    /* Tablas anchas no achican sus columnas más allá de cierto punto — que
+       escapen a un scroll horizontal propio en vez de desbordar la página
+       completa. Inerte cuando la tabla ya cabe en el ancho disponible. */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
     #sidebar {
       position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
@@ -190,6 +198,7 @@
 
     /* ===== 03 ARQUITECTURA ===== */
     .tree-compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin: var(--space-8) 0; }
+    .tree-compare > * { min-width: 0; }
     .tree-col-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: var(--space-4); display: block; }
     .tree-col-label--now  { color: var(--color-no-text); }
     .tree-col-label--next { color: var(--color-ok-text); }

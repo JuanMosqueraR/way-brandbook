@@ -58,6 +58,10 @@
       line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; height: auto; display: block; }
+    /* Tablas anchas no achican sus columnas más allá de cierto punto — que
+       escapen a un scroll horizontal propio en vez de desbordar la página
+       completa. Inerte cuando la tabla ya cabe en el ancho disponible. */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
     #sidebar {
       position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
@@ -134,11 +138,15 @@
     .pending-block p { font-size: var(--text-sm); color: var(--color-pending-text); line-height: 1.6; }
     .pending-block ul { margin-top: var(--space-2); padding-left: var(--space-5); }
     .pending-block li { font-size: var(--text-sm); color: var(--color-pending-text); margin-bottom: var(--space-1); line-height: 1.6; }
-    .pending-inline { color: var(--color-pending); font-size: var(--text-xs); font-weight: 700; white-space: nowrap; }
+    .pending-inline { color: var(--color-pending); font-size: var(--text-xs); font-weight: 700; }
 
     .card { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-sm); border: 1px solid var(--color-borde); }
     .card-title { font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--color-negro); margin-bottom: var(--space-3); }
     .card-body { font-size: var(--text-base); color: var(--color-gris); line-height: 1.7; }
+    /* Evita que los items de cualquier grid se nieguen a encogerse por debajo del
+       ancho de su contenido (bug clásico de CSS Grid) — sin efecto visual cuando
+       sobra espacio, solo actúa en anchos de viewport ajustados. */
+    [class*="grid"] > * { min-width: 0; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
