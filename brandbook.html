@@ -478,7 +478,7 @@
     /* WhatsApp mockup */
     .wa-wrap { background: #E9E1D4; border-radius: var(--radius-xl); overflow: hidden; }
     .wa-header { background: var(--color-negro); padding: var(--space-3) var(--space-5); display: flex; align-items: center; gap: var(--space-3); }
-    .wa-avatar  { width: 36px; height: 36px; border-radius: 50%; background: var(--color-terracota); display: flex; align-items: center; justify-content: center; }
+    .wa-avatar  { width: 36px; height: 36px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
     .wa-avatar span { font-family: var(--font-display); font-weight: 500; color: var(--color-marfil); font-size: var(--text-base); }
     .wa-name    { color: var(--color-marfil); font-size: var(--text-sm); font-weight: var(--font-semibold); }
     .wa-status  { color: rgba(247,243,238,.6); font-size: var(--text-xs); }
@@ -644,6 +644,14 @@
     .thankyou-sub { font-size: 9.5px; color: var(--color-gris); line-height: 1.5; max-width: 190px; margin: 0; }
     .thankyou-footer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--color-terracota); font-size: 7px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); line-height: 1.6; width: 100%; }
 
+    /* Brand in Digital — button principles (documentación, no componente técnico) */
+    .digital-btn-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; margin: var(--space-6) 0 var(--space-2); }
+    .digital-btn { font-family: var(--font-family); font-weight: 700; font-size: var(--text-sm); letter-spacing: .04em; padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); display: inline-block; }
+    .digital-btn--primary   { background: var(--color-negro); color: var(--color-marfil); }
+    .digital-btn--secondary { background: transparent; color: var(--color-negro); border: 1px solid var(--color-negro); }
+    .digital-btn--text      { background: none; color: var(--color-terracota); font-weight: 600; padding: var(--space-3) 0; }
+    .digital-btn-label { font-size: var(--text-xs); color: var(--color-gris); text-transform: uppercase; letter-spacing: .1em; margin-top: var(--space-2); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
@@ -692,6 +700,24 @@
         text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0;
       }
     }
+
+    /* ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
+       Deliberadamente fuera de la paleta de marca (gris-azulado neutro, tipografía de
+       sistema) para que nunca se confunda con la identidad de WAY. Ver CLAUDE.md. */
+    .v11-tag {
+      display: inline-flex; align-items: center; font-family: system-ui, -apple-system, sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: #5B6472; background: #EEF1F4; border: 1px dashed #A9B2BD; border-radius: 4px;
+      padding: 2px 7px; margin-left: 10px; vertical-align: middle; white-space: nowrap;
+    }
+    #v11-review-toggle {
+      position: fixed; top: var(--space-4); right: var(--space-4); z-index: 300;
+      font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: .04em; color: #5B6472; background: #EEF1F4; border: 1px solid #A9B2BD;
+      border-radius: var(--radius-full); padding: 6px 14px; cursor: pointer;
+    }
+    body.v11-review-off .v11-tag { display: none; }
+    @media print { #v11-review-toggle, .v11-tag { display: none !important; } }
   </style>
 </head>
 <body>
@@ -905,7 +931,7 @@
 
   <!-- 04 PERSONALIDAD DE MARCA -->
   <section id="personalidad" class="section section--surface">
-    <span class="section-label">04 — Personalidad de Marca</span>
+    <span class="section-label">04 — Personalidad de Marca<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></span>
     <h1 class="section-title">ADN de Marca</h1>
     <p class="section-intro">Ocho atributos gobiernan cada decisión de marca, de la palabra escrita al pixel. Lo que Glossier hizo por la belleza, aplicado a la moda premium accesible en América Latina.</p>
 
@@ -946,6 +972,82 @@
         </ul>
       </div>
     </div>
+
+    <h2 class="subsection-title">Personalidad como Sistema de Decisión<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">El ADN de 8 atributos de arriba no cambia — sigue siendo la referencia completa de personalidad de marca. Lo que sigue es una <strong>capa operativa</strong> sobre ese ADN ya aprobado: tres atributos que sirven como criterio rápido para decidir si algo "suena a WAY", sin tener que repasar los 8 cada vez.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);"><strong style="color:var(--color-negro);">Contemporánea</strong> se utiliza como atributo operativo para sintetizar la expresión actual de <em>Atemporal</em> + <em>Editorial</em> y facilitar decisiones de aplicación — no es un atributo nuevo del ADN, es una lectura práctica de dos de los ocho ya existentes.</p>
+
+    <div class="valores-grid" style="grid-template-columns:repeat(3,1fr);margin-top:0;margin-bottom:var(--space-10);">
+      <div class="valor-card">
+        <span class="valor-name">Cálida</span>
+        <p class="valor-desc">Cercana y humana, nunca infantil.</p>
+      </div>
+      <div class="valor-card">
+        <span class="valor-name">Segura</span>
+        <p class="valor-desc">Confiada y clara, nunca arrogante.</p>
+      </div>
+      <div class="valor-card">
+        <span class="valor-name">Contemporánea</span>
+        <p class="valor-desc">Actual y sofisticada, nunca dependiente de tendencias.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">WAY Es / WAY No Es</h3>
+    <table class="rules-table">
+      <thead><tr><th>WAY Es</th><th>WAY No Es</th></tr></thead>
+      <tbody>
+        <tr><td>Cálida</td><td>Infantil</td></tr>
+        <tr><td>Segura</td><td>Arrogante</td></tr>
+        <tr><td>Contemporánea</td><td>Trendy / excesivamente dependiente de tendencias</td></tr>
+        <tr><td>Elegante</td><td>Pretenciosa</td></tr>
+        <tr><td>Cercana</td><td>Informal en exceso</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Cómo se Manifiesta cada Atributo</h3>
+    <table class="demo-table">
+      <tbody>
+        <tr><td>Cálida — Copy</td><td>Segunda persona, tono de amiga — nunca genérico o de call center.</td></tr>
+        <tr><td>Cálida — Fotografía</td><td>Rostro protagonista, luz cálida y direccional (ver sección 09).</td></tr>
+        <tr><td>Cálida — Diseño</td><td>Marfil y negro cálido como base, terracota como acento humano.</td></tr>
+        <tr><td>Cálida — Servicio</td><td>Respuesta cercana por WhatsApp, nunca un guion leído.</td></tr>
+        <tr><td>Segura — Copy</td><td>Directo, sin exageraciones ni urgencia falsa.</td></tr>
+        <tr><td>Segura — Fotografía</td><td>Actitud natural, nunca pose forzada de catálogo.</td></tr>
+        <tr><td>Segura — Diseño</td><td>Composición limpia, jerarquía clara (ver sección 07).</td></tr>
+        <tr><td>Segura — Servicio</td><td>Respuestas claras, sin ambigüedad sobre talla, precio o envío.</td></tr>
+        <tr><td>Contemporánea — Copy</td><td>Vocabulario actual, sin depender de jerga de tendencia pasajera.</td></tr>
+        <tr><td>Contemporánea — Fotografía</td><td>Editorial cálido (ver sección 09), nunca nostálgico ni folclórico.</td></tr>
+        <tr><td>Contemporánea — Diseño</td><td>Wordmark La Firma — atemporal, no atado a una moda gráfica del momento.</td></tr>
+        <tr><td>Contemporánea — Servicio</td><td>Canales donde la clienta ya está (WhatsApp, Instagram), sin procesos anticuados.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Cómo se Siente WAY / Qué Evitar<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Síntesis operativa de decisiones que ya existen en la identidad — no es una estrategia nueva.</p>
+    <div class="do-dont-grid">
+      <div class="do-block">
+        <p class="block-title">WAY se siente</p>
+        <ul>
+          <li>Cálida</li>
+          <li>Segura</li>
+          <li>Contemporánea</li>
+          <li>Editorial</li>
+          <li>Cercana</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <p class="block-title">Evitar</p>
+        <ul>
+          <li>Genérica</li>
+          <li>Demasiado lujosa</li>
+          <li>Artificialmente juvenil</li>
+          <li>Folclórica</li>
+          <li>Corporativa</li>
+          <li>Agresivamente promocional</li>
+          <li>Dependiente de tendencias</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- 05 LOGO -->
@@ -973,6 +1075,33 @@
         <li>AI/EPS — conversión directa del SVG en Illustrator (abrir → guardar como), no requiere rediseño</li>
         <li>Archivo de digitalización de bordado (DST/PES) — requiere al proveedor de bordado; usar <code>way-wordmark-embroidery-master.svg</code> como fuente (ver nota más abajo)</li>
       </ul>
+    </div>
+
+    <h2 class="subsection-title">Arquitectura de Identidad<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Formaliza lo ya descrito arriba — no se crea ningún activo visual nuevo, solo se documenta explícitamente cuándo usar cada uno.</p>
+    <div class="grid-2" style="margin-bottom:var(--space-10);">
+      <div class="card">
+        <p class="card-title">Identidad Principal — WAY Wordmark</p>
+        <p class="card-body" style="margin-bottom:var(--space-4);">La identidad principal del sistema. Aplicación por defecto en cualquier espacio con lugar suficiente.</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Ecommerce</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Packaging</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Etiquetas</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Comunicación institucional</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Piezas con espacio suficiente</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-title">Identidad Secundaria — Monograma W</p>
+        <p class="card-body" style="margin-bottom:var(--space-4);">Recurso de apoyo. Se usa solo donde el wordmark completo no es viable — nunca compite con el nombre. Fondo del círculo siempre <strong style="color:var(--color-negro);">casi negro</strong> — nunca terracota (mismo criterio que <code>way-monogram.svg</code>).</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Instagram avatar</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Favicon</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ WhatsApp</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Stickers</li>
+          <li style="font-size:var(--text-sm);color:var(--color-negro);padding:4px 0;">→ Aplicaciones pequeñas / etiquetas a escala mínima</li>
+        </ul>
+      </div>
     </div>
 
     <h2 class="subsection-title">Sistema de Identidad</h2>
@@ -1123,6 +1252,20 @@
         <tr><td>Colores fuera de esta paleta (tonos fríos, neón)</td><td class="rule-no">✕ Prohibido</td><td>Rompe la calidez atemporal del territorio.</td></tr>
       </tbody>
     </table>
+
+    <h2 class="subsection-title">Arquitectura de Uso del Color<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Ningún color de la paleta cambia — esto solo formaliza su jerarquía de uso.</p>
+    <table class="demo-table" style="margin-bottom:var(--space-4);">
+      <tbody>
+        <tr><td>Marfil cálido</td><td>Fondos y superficies principales.</td></tr>
+        <tr><td>Casi negro</td><td>Texto, contraste y elementos estructurales.</td></tr>
+        <tr><td>Terracota</td><td>Acento distintivo de marca.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-8);">Guía orientativa de proporción — <strong style="color:var(--color-negro);">60 / 30 / 10</strong> (marfil cálido / casi negro / terracota) — no es una regla matemática rígida, es un punto de referencia visual.</p>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Colores de Marca vs. Colores Funcionales de UI</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);"><strong style="color:var(--color-negro);">Colores de Marca</strong> (marfil, casi negro, terracota, gris cálido, borde) son los que construyen reconocimiento de WAY — la paleta de arriba. <strong style="color:var(--color-negro);">Colores Funcionales de UI</strong> son un sistema aparte, para estados de interfaz — éxito, error, advertencia, deshabilitado, foco — y no deben confundirse con la paleta de identidad. Sus valores exactos son responsabilidad del sistema UX/UI de <code>wayperuvian.pe</code>, no de este brandbook — ver <code>guia-ecommerce.html</code>.</p>
   </section>
 
   <!-- 07 TIPOGRAFÍA -->
@@ -1150,7 +1293,7 @@
       </div>
     </div>
 
-    <h2 class="subsection-title">Jerarquía Completa</h2>
+    <h2 class="subsection-title">Jerarquía Completa<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></h2>
     <table class="hier-table">
       <thead><tr><th>Nivel</th><th>Especificación</th><th>Ejemplo</th></tr></thead>
       <tbody>
@@ -1160,6 +1303,8 @@
         <tr><td>Body</td><td>Archivo 400 · 16px / 1.6</td><td><span class="hier-sample-body">Tu combinación perfecta la encuentras aquí ✨</span></td></tr>
         <tr><td>Caption</td><td>Archivo 500 · 12px · mayúsculas trackeadas</td><td><span class="hier-sample-caption">Envíos en 24 horas</span></td></tr>
         <tr><td>Label</td><td>Archivo 600 · 11px · mayúsculas, tracking amplio</td><td><span class="hier-sample-label">Nuevo</span></td></tr>
+        <tr><td>Price</td><td>Archivo 600 · 14–16px</td><td><span class="hier-sample-h3" style="font-size:var(--text-base);">S/ 180</span></td></tr>
+        <tr><td>CTA</td><td>Archivo 700 · 11–12px · mayúsculas, tracking amplio</td><td><span class="hier-sample-label" style="color:var(--color-negro);">Agregar al carrito</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -1231,26 +1376,27 @@
       </div>
     </div>
 
-    <h2 class="subsection-title">Tipos de Toma por Propósito</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Cada necesidad de contenido pide un tipo de toma distinto — no toda foto sirve para todo.</p>
+    <h2 class="subsection-title">Tipos de Toma por Propósito<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Cada necesidad de contenido pide un tipo de toma distinto — no toda foto sirve para todo. Mismo criterio que ya existía, reorganizado en 4 categorías con objetivo y características explícitas.</p>
     <div class="shot-type-grid">
       <div class="photo-card">
         <div class="photo-box photo-box--type"><img src="assets/photos/editorial-b.jpg" alt="Editorial"></div>
-        <div class="photo-card-info"><span class="photo-card-title">Editorial</span><p class="photo-card-desc">Foto con narrativa propia — no necesita mostrar la prenda completa. Úsala en: portada de campaña, feed de Instagram, historia de marca.</p></div>
+        <div class="photo-card-info"><span class="photo-card-title">01 — Editorial</span><p class="photo-card-desc"><strong>Objetivo:</strong> construir deseo y universo de marca. Emocional, contextual, mayor libertad creativa. Úsala en: portada de campaña, feed de Instagram, historia de marca.</p></div>
       </div>
       <div class="photo-card">
         <div class="photo-box photo-box--type"><img src="assets/photos/lookbook-a.jpg" alt="Lookbook" style="object-position:center 15%;"></div>
-        <div class="photo-card-info"><span class="photo-card-title">Lookbook</span><p class="photo-card-desc">Modelo de cuerpo entero con el look puesto. Úsala en: lanzamiento de colección, carrusel "cómo combinarlo".</p></div>
+        <div class="photo-card-info"><span class="photo-card-title">02 — Lookbook</span><p class="photo-card-desc"><strong>Objetivo:</strong> mostrar cómo se ve la colección puesta. Cuerpo completo, styling claro, pose natural, contexto controlado. Úsala en: lanzamiento de colección, carrusel "cómo combinarlo".</p></div>
       </div>
       <div class="photo-card">
-        <div class="photo-box photo-box--type"><img src="assets/photos/pieza-sola.jpg" alt="Pieza sola"></div>
-        <div class="photo-card-info"><span class="photo-card-title">Pieza sola</span><p class="photo-card-desc">Prenda sin modelo, fondo limpio. Úsala en: ficha de producto en Shopify, catálogo de WhatsApp.</p></div>
+        <div class="photo-box photo-box--type"><img src="assets/photos/pieza-sola.jpg" alt="Ecommerce"></div>
+        <div class="photo-card-info"><span class="photo-card-title">03 — Ecommerce</span><p class="photo-card-desc"><strong>Objetivo:</strong> facilitar la decisión de compra. Producto claramente visible, fondo limpio, consistencia, múltiples ángulos, detalle de textura. Úsala en: ficha de producto en Shopify, catálogo de WhatsApp.</p></div>
       </div>
       <div class="photo-card">
-        <div class="photo-box photo-box--type"><img src="assets/photos/detalle-a.jpg" alt="Detalle"></div>
-        <div class="photo-card-info"><span class="photo-card-title">Detalle</span><p class="photo-card-desc">Close-up de textura, costura o tela. Úsala en: prueba de calidad en la ficha de producto, stories de proceso.</p></div>
+        <div class="photo-box photo-box--type"><img src="assets/photos/social-ugc-a.jpg" alt="Social / UGC"></div>
+        <div class="photo-card-info"><span class="photo-card-title">04 — Social / UGC</span><p class="photo-card-desc">UGC = contenido generado por usuarios (clientas, no un shooting de marca). <strong>Objetivo:</strong> construir cercanía y autenticidad. Espontáneo, con movimiento, backstage, clientas, tienda, proceso. Úsala en: Stories, Reels de comunidad.</p></div>
       </div>
     </div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-top:var(--space-2);">La regla de fondo blanco (evitarlo en Editorial/Lookbook, permitido en Ecommerce cuando mejora la conversión) está detallada más abajo, en "Prohibido".</p>
 
     <h2 class="subsection-title">Reglas de Composición</h2>
     <div class="comp-grid">
@@ -1284,7 +1430,7 @@
     </div>
 
     <h2 class="subsection-title">Prohibido</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Estas reglas aplican a fotografía <strong>Editorial / Campaign</strong> (lookbook, editorial, retrato de marca) — no a fotografía <strong>Ecommerce / Producto</strong>, que puede usar fondos limpios y neutros cuando mejoran la claridad y la conversión (ver "Pieza sola" arriba).</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Estas reglas aplican a fotografía <strong>Editorial / Lookbook</strong> (retrato de marca, narrativa de marca) — no a fotografía <strong>Ecommerce / Producto</strong>, que puede usar fondos limpios y neutros cuando mejoran la claridad y la conversión (ver "Ecommerce" arriba).</p>
     <div class="prohibit-grid">
       <div class="prohibit-item"><span class="xi">✕</span><span>Fondo blanco de estudio genérico</span></div>
       <div class="prohibit-item"><span class="xi">✕</span><span>Flash directo</span></div>
@@ -1400,11 +1546,11 @@
           <div class="ig-mini-tile"><img src="assets/photos/editorial-a.jpg" alt="Editorial — blusa borgoña"><span class="ig-mini-tag">EDITORIAL</span></div>
           <div class="ig-mini-tile"><img src="assets/photos/lookbook-a.jpg" alt="Lookbook — casaca gris" style="object-position:center 15%;"><span class="ig-mini-tag">LOOKBOOK</span></div>
           <div class="ig-mini-tile"><img src="assets/photos/lookbook-b.jpg" alt="Lookbook — abrigo terracota"><span class="ig-mini-tag">LOOKBOOK</span></div>
-          <div class="ig-mini-tile"><img src="assets/photos/detalle-a.jpg" alt="Detalle — textura blusa terracota"><span class="ig-mini-tag">DETALLE</span></div>
+          <div class="ig-mini-tile"><img src="assets/photos/detalle-a.jpg" alt="Ecommerce — textura blusa terracota"><span class="ig-mini-tag">ECOMMERCE</span></div>
           <div class="ig-mini-tile"><img src="assets/photos/editorial-b.jpg" alt="Editorial — blusa marfil"><span class="ig-mini-tag">EDITORIAL</span></div>
           <div class="ig-mini-tile ig-mini-tile--promo"><img src="assets/photos/promo-a.jpg" alt="Promo — nueva colección"><span class="ig-mini-promo-text">Nueva<br>Colección</span></div>
           <div class="ig-mini-tile"><img src="assets/photos/lookbook-c.jpg" alt="Lookbook — camisa blanca"><span class="ig-mini-tag">LOOKBOOK</span></div>
-          <div class="ig-mini-tile"><img src="assets/photos/detalle-b.jpg" alt="Detalle — textura casaca gris"><span class="ig-mini-tag">DETALLE</span></div>
+          <div class="ig-mini-tile"><img src="assets/photos/detalle-b.jpg" alt="Ecommerce — textura casaca gris"><span class="ig-mini-tag">ECOMMERCE</span></div>
           <div class="ig-mini-tile"><img src="assets/photos/editorial-c.jpg" alt="Editorial — casaca marrón"><span class="ig-mini-tag">EDITORIAL</span></div>
         </div>
         <p class="clearspace-note" style="text-align:left;margin-top:var(--space-3);">Mezcla intencional de Editorial / Lookbook / Detalle (ver sección 09) con una pieza promocional ocasional — nunca la misma composición dos veces seguidas.</p>
@@ -1510,6 +1656,37 @@
     </div>
     <p class="scale-app-caption" style="margin-top:var(--space-2);">Nombres y precios ilustrativos — a reemplazar por datos reales del catálogo</p>
 
+    <h2 class="subsection-title">La Marca en Digital — Fundamentos<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <div class="pending-block" style="border-left-color:var(--color-terracota);background:#FBF3EC;border-color:#EAD3C1;">
+      <span class="pending-label" style="color:var(--color-terracota);">Alcance de esta sección</span>
+      <p style="color:var(--color-negro);"><strong>Brandbook = cómo debe expresarse la marca en digital. Guía de Ecommerce = cómo se implementa esa expresión en la experiencia de compra.</strong> Lo que sigue son principios y patrones de marca — jerarquía, intención visual, relación entre componentes e identidad — no una especificación técnica de componentes. No define hover/focus/error states, breakpoints ni tokens de implementación; eso corresponde a <code>guia-ecommerce.html</code>.</p>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Botones</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Tres principios visuales, ya en uso en esta sección — formalizados aquí, no rediseñados.</p>
+    <div class="digital-btn-row">
+      <div><span class="digital-btn digital-btn--primary">Agregar al carrito</span><p class="digital-btn-label">Principal</p></div>
+      <div><span class="digital-btn digital-btn--secondary">Ver detalles</span><p class="digital-btn-label">Secundario</p></div>
+      <div><span class="digital-btn digital-btn--text">Ver guía de tallas →</span><p class="digital-btn-label">Texto / Enlace</p></div>
+    </div>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Jerarquía Tipográfica</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">Ver tabla completa (H1–CTA) en la sección 07 — Tipografía.</p>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Tarjetas</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">Dos patrones ya en uso en este documento: <strong style="color:var(--color-negro);">Tarjeta de Producto</strong> (arriba, con badge e info de compra) y <strong style="color:var(--color-negro);">Tarjeta Editorial</strong> (<code>.photo-card</code>, ver sección 09 — Fotografía).</p>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Badges</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-4);">Aplicaciones ya existentes en el catálogo (ver tarjetas arriba): <span class="product-badge product-badge--new" style="position:static;display:inline-block;">Nuevo</span> · <span class="product-badge product-badge--sale" style="position:static;display:inline-block;">Sale</span> · <span class="product-badge product-badge--soldout" style="position:static;display:inline-block;">Agotado</span></p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;">La disponibilidad limitada (lotes pequeños, sin reposición — ver valor de marca "Exclusividad" en la sección 02) puede comunicarse cuando sea real y verificable en el catálogo.</p>
+
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Tono de la Interfaz</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-4);">La interfaz debe sentirse limpia, cálida, editorial, clara y directa — extensión digital de los atributos operativos de la sección 04 (Cálida, Segura, Contemporánea).</p>
+    <div class="voice-quote" style="margin:var(--space-6) 0;">
+      <p>"El branding nunca debe sacrificar claridad comercial ni facilidad de uso."</p>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:640px;">Fuera de alcance de este documento: checkout, hover/focus/error states, breakpoints, tokens y demás especificaciones de implementación — corresponden a la guía/proyecto de ecommerce, no al brandbook.</p>
+
     <h2 class="subsection-title">Físico — Escala Real</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-6);">Esta es la prueba real del peso y contraste del logotipo: si se lee bien aquí, a 1.5&nbsp;cm de bordado, se lee bien en cualquier aplicación más grande.</p>
     <div class="scale-apps-wrap">
@@ -1585,7 +1762,7 @@
       </tbody>
     </table>
     <p class="clearspace-note" style="text-align:left;">
-      La negra mate probablemente requiere foil o tinta blanca de base para que el wordmark se vea sobre negro — un proceso más especializado y con mayor costo por unidad que el de 1 tinta de kraft/plástica. <span class="pending-inline">[PENDIENTE — cotizar con proveedor de empaque antes de decidir]</span>. También queda abierto si WAY mantiene varios formatos hacia adelante o consolida a uno solo.
+      Queda abierto si WAY mantiene varios formatos hacia adelante o consolida a uno solo.
     </p>
 
     <h3 class="subsection-title" style="font-size:var(--text-lg);margin-top:var(--space-10);">Sistema de Empaque</h3>
@@ -1659,7 +1836,6 @@
         <tr><td>Zona de exclusión respetada alrededor del wordmark</td><td class="rule-ok">✓ Correcto</td><td>Misma regla que en digital y bordado — ver sección Zona de Exclusión.</td></tr>
         <tr><td>Impresión sobre superficie de bajo contraste (transparente sin fondo, textura muy visible)</td><td class="rule-no">✕ Evitar</td><td>El wordmark pierde legibilidad — mismo criterio que "Usos Incorrectos" del logo.</td></tr>
         <tr><td>Tamaño menor al mínimo legible en impreso</td><td class="rule-avoid">△ Confirmar con proveedor</td><td>Aún no tenemos el mínimo exacto en papel — ver Lineamientos de Producción arriba.</td></tr>
-        <tr><td>Sellado manual pieza por pieza (ej. sello de cera)</td><td class="rule-no">✕ Evitar</td><td>No escala con el despacho diario y es frágil en envío — el sticker impreso resuelve lo mismo sin ese problema.</td></tr>
       </tbody>
     </table>
   </section>
@@ -1699,6 +1875,26 @@
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sidebar-overlay').classList.remove('visible');
   }
+
+  // ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
+  (function () {
+    var KEY = 'way-v11-review-mode';
+    var on = localStorage.getItem(KEY) !== 'off'; // arranca en ON por defecto
+    var btn = document.createElement('button');
+    btn.id = 'v11-review-toggle';
+    btn.type = 'button';
+    function apply() {
+      document.body.classList.toggle('v11-review-off', !on);
+      btn.textContent = 'Review: ' + (on ? 'ON' : 'OFF');
+    }
+    btn.addEventListener('click', function () {
+      on = !on;
+      localStorage.setItem(KEY, on ? 'on' : 'off');
+      apply();
+    });
+    document.body.appendChild(btn);
+    apply();
+  })();
 </script>
 
 </body>

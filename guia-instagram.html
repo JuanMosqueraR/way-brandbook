@@ -300,6 +300,24 @@
       a { text-decoration: none; color: inherit; }
       .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
     }
+
+    /* ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
+       Deliberadamente fuera de la paleta de marca (gris-azulado neutro, tipografía de
+       sistema) para que nunca se confunda con la identidad de WAY. Ver CLAUDE.md. */
+    .v11-tag {
+      display: inline-flex; align-items: center; font-family: system-ui, -apple-system, sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: #5B6472; background: #EEF1F4; border: 1px dashed #A9B2BD; border-radius: 4px;
+      padding: 2px 7px; margin-left: 10px; vertical-align: middle; white-space: nowrap;
+    }
+    #v11-review-toggle {
+      position: fixed; top: var(--space-4); right: var(--space-4); z-index: 300;
+      font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: .04em; color: #5B6472; background: #EEF1F4; border: 1px solid #A9B2BD;
+      border-radius: var(--radius-full); padding: 6px 14px; cursor: pointer;
+    }
+    body.v11-review-off .v11-tag { display: none; }
+    @media print { #v11-review-toggle, .v11-tag { display: none !important; } }
   </style>
 </head>
 <body>
@@ -366,8 +384,8 @@
       </div>
     </div>
 
-    <h2 class="subsection-title">Mezcla de Contenido</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Basada en los tipos de toma definidos en el brandbook (sección 09).</p>
+    <h2 class="subsection-title">Mezcla de Contenido<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Basada en los tipos de toma definidos en el brandbook (sección 09 — Editorial / Lookbook / Ecommerce / Social-UGC). Mismos porcentajes de siempre — solo se renombró "Detalle" a "Ecommerce" para no contradecir el brandbook.</p>
     <div class="pillar-wrap">
       <div class="pillar-row">
         <span class="pillar-row-label">Lookbook</span>
@@ -378,7 +396,7 @@
         <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:25%;background:#9B7B5A;">25%</div></div>
       </div>
       <div class="pillar-row">
-        <span class="pillar-row-label">Detalle</span>
+        <span class="pillar-row-label">Ecommerce</span>
         <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:20%;background:var(--color-terracota);">20%</div></div>
       </div>
       <div class="pillar-row">
@@ -393,7 +411,7 @@
       <tbody>
         <tr><td class="week-day">Lunes</td><td>Feed</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>Arranque de semana — outfit completo, inspiración</td></tr>
         <tr><td class="week-day">Martes</td><td>Reel</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>"Cómo combinarlo" — una prenda, 3 looks</td></tr>
-        <tr><td class="week-day">Miércoles</td><td>Feed</td><td><span class="tag-pill tag-pill--detalle">Detalle</span></td><td>Textura y calidad — construir confianza</td></tr>
+        <tr><td class="week-day">Miércoles</td><td>Feed</td><td><span class="tag-pill tag-pill--detalle">Ecommerce</span></td><td>Textura y calidad — construir confianza</td></tr>
         <tr><td class="week-day">Jueves</td><td>Reel</td><td><span class="tag-pill tag-pill--editorial">Editorial</span></td><td>Narrativa de marca — sin venta directa</td></tr>
         <tr><td class="week-day">Viernes</td><td>Feed</td><td><span class="tag-pill tag-pill--promo">Promo</span></td><td>Nuevo ingreso o disponibilidad de fin de semana</td></tr>
         <tr><td class="week-day">Sábado</td><td>Reel</td><td><span class="tag-pill tag-pill--lookbook">Lookbook</span></td><td>Contenido de mayor alcance — fin de semana</td></tr>
@@ -401,6 +419,24 @@
       </tbody>
     </table>
     <p class="pending-inline" style="display:block;">[PROPUESTA — ajustar según qué días muestran mejor rendimiento real]</p>
+
+    <h2 class="subsection-title">Marco de Contenido<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Dos dimensiones distintas, no dos taxonomías en competencia:</p>
+    <ul style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);padding-left:var(--space-5);">
+      <li style="margin-bottom:4px;"><strong style="color:var(--color-negro);">Formatos de contenido visual</strong> (arriba y en el brandbook §09): Editorial, Lookbook, Ecommerce, Social/UGC — <em>qué tipo de toma es</em>.</li>
+      <li><strong style="color:var(--color-negro);">Pilares de comunicación</strong> (tabla abajo): Producto, Styling, Marca, Comunidad, Comercial — <em>para qué sirve ese contenido</em>.</li>
+    </ul>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Un mismo contenido puede combinar un formato visual con un propósito de comunicación — ej. un Reel de Styling puede usar recursos visuales de Lookbook; un contenido Comercial puede usar fotografía Ecommerce.</p>
+    <table class="rules-table">
+      <thead><tr><th>Pilar</th><th>Objetivo</th><th>Formatos</th><th>Expresión de marca</th></tr></thead>
+      <tbody>
+        <tr><td>Producto</td><td>Vender</td><td>Post / Reel / Story</td><td>Editorial</td></tr>
+        <tr><td>Styling</td><td>Inspirar</td><td>Reel / Carousel</td><td>Cercano</td></tr>
+        <tr><td>Marca</td><td>Construir identidad</td><td>Post / Reel</td><td>Editorial</td></tr>
+        <tr><td>Comunidad</td><td>Relación</td><td>Stories / UGC</td><td>Humano</td></tr>
+        <tr><td>Comercial</td><td>Conversión</td><td>Story / Post</td><td>Directo</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- 03 REELS Y STORIES -->
@@ -465,6 +501,17 @@
       <div class="spec-item"><span class="spec-item-label">Gancho</span><span class="spec-item-value">Primeros 3 segundos, visual fuerte</span></div>
       <div class="spec-item"><span class="spec-item-label">Duración Reel</span><span class="spec-item-value">15–30 segundos</span></div>
     </div>
+
+    <h2 class="subsection-title">Personalidad Aplicada<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Los 3 atributos operativos del brandbook (sección 04), aplicados a Reels y Stories.</p>
+    <table class="rules-table">
+      <thead><tr><th>Atributo</th><th>Cómo se ve en Reels/Stories</th></tr></thead>
+      <tbody>
+        <tr><td>Cálida</td><td>Voz cercana en subtítulos y texto en pantalla — nunca un guion leído o corporativo.</td></tr>
+        <tr><td>Segura</td><td>Gancho directo en los primeros 3 segundos, sin urgencia falsa ni exageración.</td></tr>
+        <tr><td>Contemporánea</td><td>Formato y edición actuales (9:16, subtítulos siempre), sin depender de un trend pasajero para sostenerse.</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- 04 GESTIÓN DE COMUNIDAD -->
@@ -599,6 +646,26 @@
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sidebar-overlay').classList.remove('visible');
   }
+
+  // ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
+  (function () {
+    var KEY = 'way-v11-review-mode';
+    var on = localStorage.getItem(KEY) !== 'off'; // arranca en ON por defecto
+    var btn = document.createElement('button');
+    btn.id = 'v11-review-toggle';
+    btn.type = 'button';
+    function apply() {
+      document.body.classList.toggle('v11-review-off', !on);
+      btn.textContent = 'Review: ' + (on ? 'ON' : 'OFF');
+    }
+    btn.addEventListener('click', function () {
+      on = !on;
+      localStorage.setItem(KEY, on ? 'on' : 'off');
+      apply();
+    });
+    document.body.appendChild(btn);
+    apply();
+  })();
 </script>
 
 </body>
