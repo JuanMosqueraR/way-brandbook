@@ -300,24 +300,6 @@
       a { text-decoration: none; color: inherit; }
       .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
     }
-
-    /* ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
-       Deliberadamente fuera de la paleta de marca (gris-azulado neutro, tipografía de
-       sistema) para que nunca se confunda con la identidad de WAY. Ver CLAUDE.md. */
-    .v11-tag {
-      display: inline-flex; align-items: center; font-family: system-ui, -apple-system, sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      color: #5B6472; background: #EEF1F4; border: 1px dashed #A9B2BD; border-radius: 4px;
-      padding: 2px 7px; margin-left: 10px; vertical-align: middle; white-space: nowrap;
-    }
-    #v11-review-toggle {
-      position: fixed; top: var(--space-4); right: var(--space-4); z-index: 300;
-      font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600;
-      letter-spacing: .04em; color: #5B6472; background: #EEF1F4; border: 1px solid #A9B2BD;
-      border-radius: var(--radius-full); padding: 6px 14px; cursor: pointer;
-    }
-    body.v11-review-off .v11-tag { display: none; }
-    @media print { #v11-review-toggle, .v11-tag { display: none !important; } }
   </style>
 </head>
 <body>
@@ -384,7 +366,7 @@
       </div>
     </div>
 
-    <h2 class="subsection-title">Mezcla de Contenido<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></h2>
+    <h2 class="subsection-title">Mezcla de Contenido</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Basada en los tipos de toma definidos en el brandbook (sección 09 — Editorial / Lookbook / Ecommerce / Social-UGC). Mismos porcentajes de siempre — solo se renombró "Detalle" a "Ecommerce" para no contradecir el brandbook.</p>
     <div class="pillar-wrap">
       <div class="pillar-row">
@@ -420,7 +402,7 @@
     </table>
     <p class="pending-inline" style="display:block;">[PROPUESTA — ajustar según qué días muestran mejor rendimiento real]</p>
 
-    <h2 class="subsection-title">Marco de Contenido<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <h2 class="subsection-title">Marco de Contenido</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Dos dimensiones distintas, no dos taxonomías en competencia:</p>
     <ul style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);padding-left:var(--space-5);">
       <li style="margin-bottom:4px;"><strong style="color:var(--color-negro);">Formatos de contenido visual</strong> (arriba y en el brandbook §09): Editorial, Lookbook, Ecommerce, Social/UGC — <em>qué tipo de toma es</em>.</li>
@@ -502,7 +484,7 @@
       <div class="spec-item"><span class="spec-item-label">Duración Reel</span><span class="spec-item-value">15–30 segundos</span></div>
     </div>
 
-    <h2 class="subsection-title">Personalidad Aplicada<span class="v11-tag v11-tag--new">V1.1 — New</span></h2>
+    <h2 class="subsection-title">Personalidad Aplicada</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Los 3 atributos operativos del brandbook (sección 04), aplicados a Reels y Stories.</p>
     <table class="rules-table">
       <thead><tr><th>Atributo</th><th>Cómo se ve en Reels/Stories</th></tr></thead>
@@ -647,25 +629,6 @@
     document.getElementById('sidebar-overlay').classList.remove('visible');
   }
 
-  // ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
-  (function () {
-    var KEY = 'way-v11-review-mode';
-    var on = localStorage.getItem(KEY) !== 'off'; // arranca en ON por defecto
-    var btn = document.createElement('button');
-    btn.id = 'v11-review-toggle';
-    btn.type = 'button';
-    function apply() {
-      document.body.classList.toggle('v11-review-off', !on);
-      btn.textContent = 'Review: ' + (on ? 'ON' : 'OFF');
-    }
-    btn.addEventListener('click', function () {
-      on = !on;
-      localStorage.setItem(KEY, on ? 'on' : 'off');
-      apply();
-    });
-    document.body.appendChild(btn);
-    apply();
-  })();
 </script>
 
 </body>

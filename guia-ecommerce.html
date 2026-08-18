@@ -273,24 +273,6 @@
       a { text-decoration: none; color: inherit; }
       .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
     }
-
-    /* ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
-       Deliberadamente fuera de la paleta de marca (gris-azulado neutro, tipografía de
-       sistema) para que nunca se confunda con la identidad de WAY. Ver CLAUDE.md. */
-    .v11-tag {
-      display: inline-flex; align-items: center; font-family: system-ui, -apple-system, sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      color: #5B6472; background: #EEF1F4; border: 1px dashed #A9B2BD; border-radius: 4px;
-      padding: 2px 7px; margin-left: 10px; vertical-align: middle; white-space: nowrap;
-    }
-    #v11-review-toggle {
-      position: fixed; top: var(--space-4); right: var(--space-4); z-index: 300;
-      font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 600;
-      letter-spacing: .04em; color: #5B6472; background: #EEF1F4; border: 1px solid #A9B2BD;
-      border-radius: var(--radius-full); padding: 6px 14px; cursor: pointer;
-    }
-    body.v11-review-off .v11-tag { display: none; }
-    @media print { #v11-review-toggle, .v11-tag { display: none !important; } }
   </style>
 </head>
 <body>
@@ -552,7 +534,7 @@
 
   <!-- 06 REFERENCIA CRUZADA -->
   <section id="referencia" class="section section--surface">
-    <span class="section-label">06 — Referencia Cruzada<span class="v11-tag v11-tag--updated">V1.1 — Updated</span></span>
+    <span class="section-label">06 — Referencia Cruzada</span>
     <h1 class="section-title">Dónde Está Cada Cosa</h1>
     <p class="section-intro">Este documento y el brandbook resuelven problemas distintos — úsalos juntos, no uno en vez del otro.</p>
 
@@ -609,25 +591,6 @@
     document.getElementById('sidebar-overlay').classList.remove('visible');
   }
 
-  // ===== V1.1 REVIEW MODE — temporal, se retira antes del commit final de V1.1 =====
-  (function () {
-    var KEY = 'way-v11-review-mode';
-    var on = localStorage.getItem(KEY) !== 'off'; // arranca en ON por defecto
-    var btn = document.createElement('button');
-    btn.id = 'v11-review-toggle';
-    btn.type = 'button';
-    function apply() {
-      document.body.classList.toggle('v11-review-off', !on);
-      btn.textContent = 'Review: ' + (on ? 'ON' : 'OFF');
-    }
-    btn.addEventListener('click', function () {
-      on = !on;
-      localStorage.setItem(KEY, on ? 'on' : 'off');
-      apply();
-    });
-    document.body.appendChild(btn);
-    apply();
-  })();
 </script>
 
 </body>
