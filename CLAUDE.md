@@ -22,8 +22,8 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 
 Leer esto primero — es lo que cambió más recientemente y lo que hay que resolver antes de seguir avanzando:
 
-- **El repo local está adelantado a `origin/main` y no se ha pusheado.** GitHub Pages (`https://juanmosquerar.github.io/way-brandbook/brandbook.html`) todavía no refleja los últimos cambios (wordmark en `opsz 16` final, monograma recto, sync de documentos hermanos). **Confirmar con Juan antes de hacer `git push`** — no es automático.
-- El brandbook está funcionalmente completo salvo un bloqueante de contenido, esperando a la clienta (Lizzie): **validación de misión/visión**. El tagline ya se cerró: **"Con nombre propio"** — actualizado en todo `brandbook.html` (portada, sección Logo, Tipografía, hang tags). Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
+- **Repo local sincronizado con `origin/main`** (verificado con `git fetch` el 19/08) — el atraso mencionado en versiones anteriores de esta nota ya se resolvió fuera de esta sesión. GitHub Pages (`https://juanmosquerar.github.io/way-brandbook/brandbook.html`) debería reflejar el estado del repo salvo los commits nuevos de hoy (Misión/Visión), aún no pusheados. Sigue aplicando la norma general: **confirmar con Juan antes de `git push`.**
+- **Misión y Visión ya cerradas.** Lizzie dio su alcance por audio (crecimiento nacional/tiendas ancla para Visión; moda moderna + seguridad/confianza de la clienta para Misión), se redactó una propuesta y ella la aprobó — texto actualizado en `brandbook.html` (sección "Quiénes somos"), flag de pendiente removido. Con esto, junto con el tagline **"Con nombre propio"** (actualizado en portada, sección Logo, Tipografía, hang tags), el brandbook ya no tiene ningún bloqueante de contenido pendiente de la clienta. Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
 - **Cotización aprobada y facturación en curso:** monto final **S/6,500**, 50% ya pagado, 50% restante al finalizar el proyecto. `propuesta-economica-v3.html` es el documento que se aprobó.
 - **`assets/logo/logo.webp` confirmado: es el logo actual/vigente de WAY** (previo al rebrand de este proyecto) — ya no es una incógnita, ver nota en Archivos del Proyecto para qué falta decidir sobre su uso en materiales de transición.
 - **`estrategia-lanzamiento.html` sigue en iteración activa** — no tratarlo como cerrado. Objetivo explícito del cliente: que la calidad esté a la altura del resto del proyecto, y que quede lo más ejecutable posible para no recargar de trabajo a quienes lo van a llevar a cabo (Lizzie y el/la community manager).
@@ -39,7 +39,7 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 | 2 | Propuesta de identidad visual (paletas, logos, tipografías) | ✅ Completado |
 | 3 | Propuestas de logo/identidad en Claude Design | ✅ Completado |
 | 4 | Aprobación de territorio + identidad por cliente | ✅ Completado — La Firma |
-| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada, tagline cerrado — ⏳ pendiente pushear últimos cambios y cerrar misión/visión |
+| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada, tagline y misión/visión cerrados — ⏳ pendiente pushear últimos cambios |
 | 6 | Guía de Instagram (`guia-instagram.html`) — documento operativo separado | ✅ Construido |
 | 7 | Guía de Ecommerce (`guia-ecommerce.html`) — documento operativo separado | ✅ Construido |
 
@@ -210,6 +210,7 @@ Al generar los primeros 7 conceptos de empaque con Nano Banana a partir de promp
 - **Zona de Exclusión:** Juan confirmó los valores (80px digital / 1.5cm bordado) como definitivos — se quitó el flag `[PENDIENTE — confirmar con diseñador]`.
 - **Estadísticas de TikTok:** Juan compartió la URL y una captura del perfil real (@way_peruvian) — actualizado en `brandbook.html` con cifras reales: 22 siguiendo, 23,9 mil seguidores, 115,8 mil me gusta (antes eran ilustrativas: 626/18,4 mil/142,3 mil). Las reproducciones por video individual siguen siendo ilustrativas. También se corrigió una frase de la intro que decía "hoy no tiene mockup en el brandbook" — sí lo tiene, justo debajo.
 - **Tagline confirmado por la clienta: "Con nombre propio"** — reemplazado en todo `brandbook.html` (portada, sección Logo, Tipografía, jerarquía tipográfica, hang tag) y quitados todos los flags `[PENDIENTE — selección final de tagline]`. También se actualizó el "Estado actual" de `estrategia-lanzamiento.html` (acuerdo comercial y tagline ya no figuran como abiertos, solo queda empaque físico pendiente de aprobación final).
+- **Misión y Visión — cerradas (19/08):** Lizzie dio su alcance por audio transcrito, con dos ideas mezcladas bajo "visión" que en realidad correspondían a las dos tarjetas distintas: (1) crecimiento — liderazgo a nivel nacional, tiendas propias y presencia en tiendas ancla, con un salto siguiente a ser referencia en América Latina (esto sí es Visión); (2) experiencia de la clienta — moda actual, seguridad y confianza al vestir, transmitir modernidad sin importar la edad (esto es Misión, aunque ella lo mencionó hablando de visión). Se separaron ambas ideas en su tarjeta correspondiente. Un punto de la transcripción decía "no ser líderes a nivel nacional" — interpretado como artefacto de transcripción (probable "no sé si...") dado que el resto del audio describe expansión, no lo contrario; se redactó como afirmación positiva ("ser líderes"), no como negación. También mencionó un posible plazo ("de acá a 5 años") pero dudando si correspondía — se dejó fuera del texto de la Visión a propósito, porque una visión de marca se redacta atemporal (mismo criterio que el atributo de marca "Atemporal"); si se quiere fijar un horizonte de tiempo concreto, debería vivir como meta en `estrategia-lanzamiento.html`, no en la tarjeta de Visión. Lizzie aprobó el borrador propuesto sin cambios — actualizado en `brandbook.html` y removido el `pending-block` que marcaba Misión/Visión como sin confirmar.
 
 ---
 
@@ -273,7 +274,7 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 | 1 | Territorio de identidad | ✅ La Firma |
 | 2 | Tagline final | ✅ "Con nombre propio" — elegido, actualizado en `brandbook.html` |
 | 3 | Historia de origen — ¿por qué "WAY"? | ✅ Respondida por cliente — incorporada en `brandbook.html` |
-| 4 | Misión, visión y valores | ⏳ Borrador redactado, pendiente validación cliente |
+| 4 | Misión, visión y valores | ✅ Aprobada por la clienta — ver Notas Técnicas / Estado Actual |
 | 5 | Ticket promedio | ✅ S/180 |
 | 6 | Marcas competidoras / referencia | ✅ Saint Male (@saintmale.cl) |
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male, con regla de autenticidad (Sí/No) en `brandbook.html` |
@@ -308,7 +309,7 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 5. ~~Resolver peso/contraste del wordmark y monograma~~ ✅ — ver Notas Técnicas
 6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
 7. **Hacer `git push`** de los commits pendientes para que GitHub Pages quede al día (confirmar con Juan primero)
-8. **Obtener** validación de misión/visión — único bloqueante de contenido restante (tagline ya cerrado: "Con nombre propio")
+8. ~~Obtener validación de misión/visión~~ ✅ — aprobada por Lizzie, texto actualizado en `brandbook.html`
 9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/community manager — sigue activo, no tratarlo como cerrado
 10. **Decidir** qué hacer con `logo.webp` ahora que se confirmó que es el logo actual de WAY — ¿se documenta como identidad "antes" (útil para `estrategia-lanzamiento.html`) o se retira tras el relanzamiento?
 11. **Completar** info de empaque cuando el cliente la provea
