@@ -22,11 +22,12 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 
 Leer esto primero — es lo que cambió más recientemente y lo que hay que resolver antes de seguir avanzando:
 
-- **Repo local sincronizado con `origin/main`** (verificado con `git fetch` el 19/08) — el atraso mencionado en versiones anteriores de esta nota ya se resolvió fuera de esta sesión. GitHub Pages (`https://juanmosquerar.github.io/way-brandbook/brandbook.html`) debería reflejar el estado del repo salvo los commits nuevos de hoy (Misión/Visión), aún no pusheados. Sigue aplicando la norma general: **confirmar con Juan antes de `git push`.**
-- **Misión y Visión ya cerradas.** Lizzie dio su alcance por audio (crecimiento nacional/tiendas ancla para Visión; moda moderna + seguridad/confianza de la clienta para Misión), se redactó una propuesta y ella la aprobó — texto actualizado en `brandbook.html` (sección "Quiénes somos"), flag de pendiente removido. Con esto, junto con el tagline **"Con nombre propio"** (actualizado en portada, sección Logo, Tipografía, hang tags), el brandbook ya no tiene ningún bloqueante de contenido pendiente de la clienta. Todo el resto de identidad visual (logo, monograma, colores, tipografía, fotografía) ya está aprobado por ella.
+- **`brandbook.html` ya no tiene ningún bloqueante de contenido pendiente de la clienta.** Misión y Visión se cerraron el 19/08 (Lizzie dio su alcance por audio — crecimiento nacional/tiendas ancla para Visión, moda moderna + seguridad/confianza de la clienta para Misión — se redactó una propuesta y la aprobó sin cambios) y el diseño/dirección de Empaque también quedó validado el mismo día. Junto con el tagline **"Con nombre propio"** (ya cerrado antes), toda la identidad — visual y de contenido — está aprobada por la clienta.
+- **Repo sincronizado y pusheado.** `git push` hecho el 19/08 (`4f99d46..a8b4621`), GitHub Pages al día con los cambios de Misión/Visión. Sigue aplicando la norma general para el futuro: **confirmar con Juan antes de cada `git push`.**
 - **Cotización aprobada y facturación en curso:** monto final **S/6,500**, 50% ya pagado, 50% restante al finalizar el proyecto. `propuesta-economica-v3.html` es el documento que se aprobó.
-- **`assets/logo/logo.webp` confirmado: es el logo actual/vigente de WAY** (previo al rebrand de este proyecto) — ya no es una incógnita, ver nota en Archivos del Proyecto para qué falta decidir sobre su uso en materiales de transición.
-- **`estrategia-lanzamiento.html` sigue en iteración activa** — no tratarlo como cerrado. Objetivo explícito del cliente: que la calidad esté a la altura del resto del proyecto, y que quede lo más ejecutable posible para no recargar de trabajo a quienes lo van a llevar a cabo (Lizzie y el/la community manager).
+- **Empaque:** diseño/dirección validado por la clienta. Cotización real de proveedor y fecha de producción quedan **fuera del alcance de este proyecto** (decisión de Juan, 19/08) — no son un pendiente abierto del brandbook.
+- **`assets/logo/logo.webp` (logo legacy):** decisión tomada (19/08) — se documenta como identidad "antes", no se retira. Falta el paso de implementación: insertarlo en `estrategia-lanzamiento.html` (sección Transición de Assets), ver Archivos del Proyecto.
+- **`estrategia-lanzamiento.html` sigue en iteración activa** — no tratarlo como cerrado. Objetivo explícito del cliente: que la calidad esté a la altura del resto del proyecto, y que quede lo más ejecutable posible para no recargar de trabajo a quienes lo van a llevar a cabo (Lizzie y el/la community manager). También tiene un par de filas en la tabla de Riesgos que hoy están desactualizadas (tagline y acuerdo comercial descritos como si siguieran abiertos) — pendiente de limpieza, no urgente.
 - Recomendación de limpieza que quedó **sin decidir**: si vale la pena reorganizar la raíz del repo (ver "Próximos Pasos").
 
 ---
@@ -39,7 +40,7 @@ Leer esto primero — es lo que cambió más recientemente y lo que hay que reso
 | 2 | Propuesta de identidad visual (paletas, logos, tipografías) | ✅ Completado |
 | 3 | Propuestas de logo/identidad en Claude Design | ✅ Completado |
 | 4 | Aprobación de territorio + identidad por cliente | ✅ Completado — La Firma |
-| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), cotización aprobada, tagline y misión/visión cerrados — ⏳ pendiente pushear últimos cambios |
+| 5 | Brandbook completo (`brandbook.html`) | ✅ Construido y hosteado (v1.1+), pusheado y al día — cotización aprobada, tagline, misión/visión y empaque cerrados |
 | 6 | Guía de Instagram (`guia-instagram.html`) — documento operativo separado | ✅ Construido |
 | 7 | Guía de Ecommerce (`guia-ecommerce.html`) — documento operativo separado | ✅ Construido |
 
@@ -245,8 +246,10 @@ way-brandbook/
 
 **Nota:** los tres documentos hermanos (`guia-instagram.html`, `guia-ecommerce.html`, `estrategia-lanzamiento.html`) usan `assets/logo/favicon.png` (se actualiza solo, es un archivo compartido) pero tienen su propio CSS de wordmark — ver Notas Técnicas.
 
-### `assets/logo/logo.webp` — confirmado: es el logo actual/vigente de WAY
-Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es el logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself") que la marca usa **actualmente**, antes de este rebrand. Confirmado por el cliente. El archivo `logo.webp` en sí no se ha usado en `brandbook.html`, pero esa misma identidad anterior ya aparece documentada ahí de forma indirecta: la sección "Empaque y Materiales Físicos" incluye 4 fotos reales del empaque físico actual (bolsas kraft/papel/plástico, provistas por la clienta el 10/08/2026) que llevan ese mismo logo y tagline. Pendiente decidir: si `logo.webp` se documenta formalmente como identidad anterior (útil para `estrategia-lanzamiento.html`, que cubre la transición de assets viejo→nuevo) o si simplemente se retira una vez completado el relanzamiento.
+### `assets/logo/logo.webp` — confirmado: es el logo actual/vigente de WAY, se documenta como identidad "antes"
+Al construir el brandbook se encontró que este archivo ya existía (no estaba vacío como se creía) — es el logo distinto a La Firma (silueta + wordmark en otra tipografía + tagline "Empower yourself") que la marca usa **actualmente**, antes de este rebrand. Confirmado por el cliente. El archivo `logo.webp` en sí no se ha usado en `brandbook.html`, pero esa misma identidad anterior ya aparece documentada ahí de forma indirecta: la sección "Empaque y Materiales Físicos" incluye 4 fotos reales del empaque físico actual (bolsas kraft/papel/plástico, provistas por la clienta el 10/08/2026) que llevan ese mismo logo y tagline.
+
+**Decisión (Juan, 19/08):** se documenta formalmente como identidad "antes" — no se retira. Uso previsto: `estrategia-lanzamiento.html`, sección "Transición de Assets" (07 — Fase 4), que ya habla en texto de "logo anterior" (tabla de qué pasa con cada asset, bloque Sí/No) pero todavía no muestra la imagen real — sería el lugar natural para insertarlo como referencia visual del antes. **Pendiente de implementación:** el archivo aún no está enlazado en ningún HTML; falta ese paso, no solo la decisión.
 
 ### Hosting
 Repo en GitHub: `https://github.com/JuanMosqueraR/way-brandbook` (colaborador: `juanatquanta`). Publicado vía GitHub Pages (Settings → Pages → main → /root). URL pública: `https://juanmosquerar.github.io/way-brandbook/brandbook.html`. **Recordar:** el repo local puede estar adelantado al remoto — confirmar `git status`/`git log origin/main..HEAD` antes de asumir que lo publicado está al día (ver "Estado Actual" arriba).
@@ -278,11 +281,11 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 | 5 | Ticket promedio | ✅ S/180 |
 | 6 | Marcas competidoras / referencia | ✅ Saint Male (@saintmale.cl) |
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male, con regla de autenticidad (Sí/No) en `brandbook.html` |
-| 8 | Empaque (bolsas, etiquetas, tissue paper) | ⏳ Bolsas confirmadas — 3 formatos existen hoy (kraft, papel blanco, plástico troquelado), identidad anterior, documentadas con fotos reales en `brandbook.html`. Sistema "Después" bajo La Firma con concepto de dirección: hang tag y tarjeta de agradecimiento como componentes CSS (tipografía garantizada); bolsa (3 direcciones: kraft, negra, plástica opaca), tissue paper, sticker y caja de envío como fotos concepto generadas con Nano Banana. Se agregó tabla de decisión de bolsa, lineamientos de producción y tabla de aplicación del logo en empaque — ver Notas Técnicas. Falta: validación/elección final de la clienta, cotización real de proveedor y fecha de producción (bolsa blanca de papel quedó fuera de las 3 direcciones — ver Notas Técnicas si se quiere agregar después) |
+| 8 | Empaque (bolsas, etiquetas, tissue paper) | ✅ Diseño/dirección validado por la clienta — hang tag y tarjeta de agradecimiento como componentes CSS, bolsa (3 direcciones: kraft, negra, plástica opaca), tissue paper, sticker y caja de envío, con tabla de decisión de bolsa, lineamientos de producción y tabla de aplicación del logo en empaque. Ver Notas Técnicas. **Cotización real de proveedor y fecha de producción quedan fuera del alcance de este proyecto** (decisión de Juan, 19/08) — no son un pendiente abierto, es trabajo que le corresponde a WAY con su proveedor, no al brandbook |
 | 9 | Rango de edad cliente ideal | ✅ 28–65+ |
 | 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
 | 11 | Cotización formal del proyecto | ✅ Aprobada — S/6,500 (`propuesta-economica-v3.html`), 50% pagado, 50% restante al finalizar el proyecto |
-| 12 | Logo legacy (`logo.webp`) | ✅ Confirmado que es el logo actual/vigente de WAY — ⏳ falta decidir si se documenta como identidad "antes" o se retira, ver nota en Archivos del Proyecto |
+| 12 | Logo legacy (`logo.webp`) | ✅ Se documenta como identidad "antes" (decisión de Juan, 19/08) — no se retira. Falta integrarlo visualmente en `estrategia-lanzamiento.html` (sección Transición de Assets), ver Archivos del Proyecto |
 | 13 | Peso/contraste del wordmark | ✅ Resuelto — `opsz 16` final, confirmado por la clienta. Ver Notas Técnicas para el proceso completo y qué hacer si piden más ajuste |
 | 14 | Monograma itálica vs. recta | ✅ Resuelto — recta, confirmado por la clienta. Ver Notas Técnicas |
 | 15 | Producción por lotes pequeños (dato de negocio) | ✅ Capturado — diferenciador operativo en este archivo y valor de marca "Exclusividad" en `brandbook.html` |
@@ -308,11 +311,11 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 4. ~~Construir guías operativas~~ ✅ `guia-instagram.html`, `guia-ecommerce.html`
 5. ~~Resolver peso/contraste del wordmark y monograma~~ ✅ — ver Notas Técnicas
 6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
-7. **Hacer `git push`** de los commits pendientes para que GitHub Pages quede al día (confirmar con Juan primero)
+7. ~~Hacer `git push` de los commits pendientes~~ ✅ — hecho 19/08, `4f99d46..a8b4621`, GitHub Pages al día
 8. ~~Obtener validación de misión/visión~~ ✅ — aprobada por Lizzie, texto actualizado en `brandbook.html`
 9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/community manager — sigue activo, no tratarlo como cerrado
-10. **Decidir** qué hacer con `logo.webp` ahora que se confirmó que es el logo actual de WAY — ¿se documenta como identidad "antes" (útil para `estrategia-lanzamiento.html`) o se retira tras el relanzamiento?
-11. **Completar** info de empaque cuando el cliente la provea
+10. ~~Decidir qué hacer con `logo.webp`~~ ✅ decisión tomada (se documenta como identidad "antes") — falta el paso de implementación: insertarlo en `estrategia-lanzamiento.html` / Transición de Assets
+11. ~~Completar info de empaque~~ ✅ diseño/dirección validado por la clienta — cotización de proveedor y fecha de producción quedan fuera de alcance del proyecto
 12. **Decidir** (recomendación abierta, no resuelta) si vale la pena reorganizar la raíz del repo — hoy conviven el documento vivo, un backup intencional, guías operativas y documentos de propuesta ya superados sin ninguna subcarpeta. `brandbook.html` debe quedarse en la raíz sí o sí (GitHub Pages lo sirve desde ahí); cualquier otro archivo que se mueva necesita rutas relativas a `assets/` corregidas.
 
 ---
