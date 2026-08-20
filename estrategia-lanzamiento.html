@@ -250,6 +250,13 @@
     .story-mock-caption { position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); z-index: 3; color: var(--color-marfil); font-size: var(--text-sm); font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.6); text-align: left; }
     .story-mock-sticker { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 3; background: rgba(247,243,238,.92); color: var(--color-negro); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: var(--radius-full); }
 
+    /* ===== STORY SLIDE — solid-color Stories with a bit of editorial depth (mark + glow + divider) ===== */
+    .story-slide-glow { position: absolute; top: -25%; right: -25%; width: 75%; height: 55%; pointer-events: none; }
+    .story-slide-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 var(--space-4); text-align: center; }
+    .story-slide-mark { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .story-slide-mark span { font-family: var(--font-display); font-weight: 500; font-size: 13px; }
+    .story-slide-divider { width: 24px; height: 1px; }
+
     /* ===== TEASER WEEK — 3-day calendar ===== */
     .teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin: var(--space-8) 0; }
     .teaser-day { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-5); }
@@ -392,7 +399,7 @@
     <div class="pending-block">
       <span class="pending-label">Antes de fijar el Día D</span>
       <ul>
-        <li>Wordmark en AI/EPS entregado al proveedor de impresión (hang tag, señalética) — el SVG ya está aprobado y disponible, ver brandbook §05 — Responsable: <strong>[ASIGNAR — diseñador]</strong></li>
+        <li>PDF vectorial del wordmark (equivalente a AI/EPS, ver brandbook §05) entregado al proveedor de impresión para hang tag y señalética — Responsable: <strong>Juan</strong></li>
         <li>Fecha de Día D fijada y comunicada al equipo — Responsable: <strong>Lizzie</strong></li>
       </ul>
     </div>
@@ -620,6 +627,7 @@
           <div class="ig-caption"><strong>way_peruvian</strong> Desde que empezamos, ustedes construyeron esto con nosotras 💛 Hoy le damos a WAY la cara que siempre debió tener — la misma esencia, una manera más nuestra de mostrarla. Bienvenidas a esta nueva etapa ✨</div>
         </div>
         <p class="ref-note">Esta foto es guía de encuadre y luz — la portada final es un fotograma real del Reel de Lizzie, o una foto que ella replique con esta composición.</p>
+        <p style="font-size:var(--text-xs);color:var(--color-gris);margin-top:var(--space-2);">Caption genérica de arriba — funciona sin importar cuál de las 3 opciones se grabe. Abajo, una variante por opción si se prefiere algo más pegado al tono de cada una.</p>
       </div>
       <div>
         <span class="app-label">WhatsApp Business — Broadcast</span>
@@ -632,34 +640,64 @@
       </div>
     </div>
 
+    <h3 class="card-title" style="margin-top:var(--space-10);">Caption por opción de Reel</h3>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Usar solo si se prefiere una caption más pegada al tono de la opción grabada, en vez de la genérica de arriba.</p>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Opción 1 — "Cara a cara"</span>"Tenía que contarles esto yo misma 💛 WAY cambia de cara, no de esencia — la misma calidad y el mismo cariño de siempre, ahora con una imagen que por fin nos representa. Gracias por construir esto con nosotras ✨"</div>
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Opción 2 — "Así nace la nueva WAY"</span>"Así nace la nueva WAY ✨ Un look que por fin refleja lo que somos: piezas que no se repiten, hechas con el mismo cariño de siempre. Bienvenidas a esta nueva etapa 💛"</div>
+    </div>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Opción 3 — "Detrás de cámara"</span>"Un día normal en WAY… o casi 👀 Hoy les contamos que estamos cambiando de imagen — misma esencia, misma comunidad que construimos juntas. Gracias por estar aquí desde siempre 💛"</div>
+    </div>
+
     <h3 class="card-title" style="margin-top:var(--space-10);">Stories de refuerzo — 4 slides, dirección visual + texto final</h3>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Decisión explícita: los 4 slides usan <strong>fondo sólido de color de marca + texto</strong> — cero fotografía nueva. Es la pieza más rápida de armar sin cámara ni edición: se hace directo en el editor de Stories de Instagram, con el color de fondo y el texto centrado en Bodoni Moda si la app lo permite, o la fuente por defecto si no.</p>
     <div class="teaser-grid">
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 1 · Fondo negro</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
-          <p class="story-mock-caption" style="position:static;text-align:center;font-family:var(--font-display);font-style:italic;text-shadow:none;">Después de tanto cariño, teníamos que dar este paso 💛</p>
+          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.22) 0%, transparent 70%);"></div>
+          <div class="story-slide-inner">
+            <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
+            <p class="story-mock-caption" style="position:static;font-family:var(--font-display);font-style:italic;text-shadow:none;">Después de tanto cariño, teníamos que dar este paso 💛</p>
+            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+          </div>
         </div>
       </div>
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 2 · Fondo marfil</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-marfil);border:1px solid var(--color-borde);">
-          <p class="story-mock-caption" style="position:static;text-align:center;font-family:var(--font-display);font-style:italic;color:var(--color-negro);text-shadow:none;">WAY cambia de cara — la misma esencia ✨</p>
+          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(42,31,24,.06) 0%, transparent 70%);"></div>
+          <div class="story-slide-inner">
+            <div class="story-slide-mark" style="background:rgba(42,31,24,.05);border:1px solid rgba(42,31,24,.2);"><span style="color:var(--color-negro);">W</span></div>
+            <p class="story-mock-caption" style="position:static;font-family:var(--font-display);font-style:italic;color:var(--color-negro);text-shadow:none;">WAY cambia de cara — la misma esencia ✨</p>
+            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+          </div>
         </div>
       </div>
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 3 · Fondo negro</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
-          <p class="story-mock-caption" style="position:static;text-align:center;font-size:var(--text-xs);text-shadow:none;">Lo que NO cambia: tu WhatsApp, tu envío en 24h, tu tienda en Galería Damero</p>
+          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.16) 0%, transparent 70%);"></div>
+          <div class="story-slide-inner">
+            <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
+            <p class="story-mock-caption" style="position:static;font-size:var(--text-xs);text-shadow:none;">Lo que NO cambia: tu WhatsApp, tu envío en 24h, tu tienda en Galería Damero</p>
+            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+          </div>
         </div>
       </div>
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 4 · Fondo terracota</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-terracota);">
-          <span class="story-mock-sticker" style="position:static;">¿Qué te parece? 👀</span>
+          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(247,243,238,.28) 0%, transparent 70%);"></div>
+          <div class="story-slide-inner">
+            <div class="story-slide-mark" style="background:rgba(247,243,238,.15);border:1px solid rgba(247,243,238,.35);"><span style="color:var(--color-marfil);">W</span></div>
+            <span class="story-mock-sticker" style="position:static;">¿Qué te parece? 👀</span>
+          </div>
         </div>
       </div>
     </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Cada slide suma el monograma (misma marca de agua que el resto del sistema), un resplandor sutil de terracota/marfil según el fondo y una línea divisoria — sigue siendo 100% editor de Stories, sin cámara, pero deja de verse como texto suelto sobre un color plano.</p>
     <table class="rules-table">
       <thead><tr><th>Slide</th><th>Texto</th></tr></thead>
       <tbody>
@@ -775,7 +813,7 @@
       <thead><tr><th>Asset</th><th>Qué pasa</th><th>Responsable</th></tr></thead>
       <tbody>
         <tr><td>Publicaciones antiguas del feed</td><td>Se quedan. No se borran ni se archivan — el contraste entre lo viejo y lo nuevo en el grid es la prueba de evolución.</td><td>—</td></tr>
-        <tr><td>Highlights viejos</td><td>Se archivan (no se borran) los que muestren el logo anterior de forma prominente; se crean highlights nuevos.</td><td>Nayelli</td></tr>
+        <tr><td>Highlights viejos</td><td>Se archivan (no se borran) los que muestren el logo anterior de forma prominente; se crean highlights nuevos con el sistema de la sección 10 del brandbook (Colaboraciones, Clientes, Tienda Damero, Horarios, Modelos, Nuestro Equipo, Testimonios, Página web, Cómo Comprar). "WAY for Men" se retira — línea descontinuada. "Envíos" y "Medios de Pago" se consolidan dentro de "Cómo Comprar".</td><td>Nayelli</td></tr>
         <tr><td>Empaque físico</td><td>Transición dual: se agota el inventario existente en productos ya en tienda. El Día D no espera al empaque nuevo — si el definitivo (con logo nuevo) no llegó a tiempo, se despacha con empaque transicional/genérico sin el logo anterior mientras tanto; nunca se vuelve al empaque viejo.</td><td>Lizzie</td></tr>
         <tr><td>Material de tienda física</td><td>Señalética y vitrina se actualizan el Día D — material impreso viejo se retira ese mismo día, sin mezcla.</td><td>Lizzie</td></tr>
         <tr><td>Plantillas de WhatsApp</td><td>Se actualizan en la Hora 0 — es el canal transaccional donde una clienta activa notaría la inconsistencia de inmediato.</td><td>Juan (WAY Inbox)</td></tr>

@@ -169,6 +169,11 @@ Se le presentó a la clienta un comparativo (itálica actual vs. recta, a escala
 ### ⚠️ El wordmark vive en 4 archivos, no solo en `brandbook.html`
 `guia-instagram.html`, `guia-ecommerce.html` y `estrategia-lanzamiento.html` tienen **su propio CSS de wordmark/monograma** (`.wordmark`, `.sidebar-brand`, y en `estrategia-lanzamiento.html` también los monogramas de texto), copiado en algún punto anterior y completamente independiente del de `brandbook.html`. Se sincronizaron una vez en esta sesión (estaban en peso 500 / tracking `.3em`/`.28em` / sin `opsz`, el estado pre-sesión). **Cualquier cambio futuro al wordmark debe replicarse en los cuatro archivos** o van a volver a desincronizarse.
 
+### AI/EPS del wordmark — resuelto sin Illustrator (PDF vectorial)
+Juan no tiene Illustrator. En vez de bloquear el punto "AI/EPS" (pendiente #10), se generó un **PDF vectorial real** directo desde los SVG ya aprobados, con la librería Python `cairosvg` (`pip install cairosvg`, luego `cairosvg.svg2pdf(url=..., write_to=...)`) — conversión de segundos, sin dependencias pesadas ni Ghostscript/Inkscape. Se generaron `way-wordmark-negro.pdf`, `way-wordmark-marfil.pdf` y `way-monogram.pdf` en `assets/logo/`.
+
+Un PDF vectorial es **funcionalmente equivalente a un AI/EPS** para producción de imprenta — el propio formato `.ai` de Illustrator es internamente PDF desde las versiones CS, y la mayoría de imprentas en Lima aceptan PDF vectorial sin problema (muchas hoy lo prefieren sobre EPS, que es un formato más antiguo). Si algún proveedor puntual exige específicamente `.ai` o `.eps` y no acepta PDF, recién ahí vale la pena reabrir este punto — mientras tanto no es un bloqueante. `way-wordmark-embroidery-master.svg` queda fuera de este método — el archivo de bordado (DST/PES) sigue siendo un pendiente real, aparte, que solo puede generar un proveedor de bordado.
+
 ---
 
 ## Notas Técnicas — Empaque (conceptos "Después")
@@ -235,6 +240,9 @@ way-brandbook/
       way-monogram.svg                ← monograma W recto en círculo — avatar/favicon
       favicon.png                     ← 32×32, derivado del monograma
       way-monogram-180.png            ← 180×180, derivado del monograma — generado, aún no enlazado en ningún HTML
+      way-wordmark-negro.pdf          ← PDF vectorial, equivalente a AI/EPS — generado con cairosvg, ver Notas Técnicas
+      way-wordmark-marfil.pdf         ← ídem, versión invertida
+      way-monogram.pdf                ← ídem, monograma
       logo.webp                       ← ⚠️ logo legacy pre-existente, distinto a La Firma — ver nota abajo
     photos/                    ← generadas (Editorial/Lookbook/Detalle/Promo, Gemini "Nano Banana", fieles
                                    a prendas reales de WAY) + reales del feed actual (@way_peruvian, para
@@ -266,7 +274,7 @@ Repo en GitHub: `https://github.com/JuanMosqueraR/way-brandbook` (colaborador: `
 
 ## Documento de propuesta vs. brandbook final
 
-El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brandbook.html` (SVG vectorial real, producción, con zonas de exclusión/usos incorrectos/jerarquía tipográfica/guía de foto/aplicaciones digitales/mockups físicos) son cosas distintas — el primero ya cumplió su función. Pendiente en el segundo: especificaciones de empaque (depende del cliente), AI/EPS del logo, archivo de digitalización de bordado.
+El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brandbook.html` (SVG vectorial real, producción, con zonas de exclusión/usos incorrectos/jerarquía tipográfica/guía de foto/aplicaciones digitales/mockups físicos) son cosas distintas — el primero ya cumplió su función. Pendiente en el segundo: especificaciones de empaque (depende del cliente), archivo de digitalización de bordado (AI/EPS del logo ya resuelto — ver Notas Técnicas).
 
 ---
 
@@ -283,7 +291,7 @@ El documento de Claude Design (mockup HTML/CSS, para elegir dirección) y `brand
 | 7 | Estilo fotográfico | ✅ Definido — editorial cálido, referencia Saint Male, con regla de autenticidad (Sí/No) en `brandbook.html` |
 | 8 | Empaque (bolsas, etiquetas, tissue paper) | ✅ Diseño/dirección validado por la clienta — hang tag y tarjeta de agradecimiento como componentes CSS, bolsa (3 direcciones: kraft, negra, plástica opaca), tissue paper, sticker y caja de envío, con tabla de decisión de bolsa, lineamientos de producción y tabla de aplicación del logo en empaque. Ver Notas Técnicas. **Cotización real de proveedor y fecha de producción quedan fuera del alcance de este proyecto** (decisión de Juan, 19/08) — no son un pendiente abierto, es trabajo que le corresponde a WAY con su proveedor, no al brandbook |
 | 9 | Rango de edad cliente ideal | ✅ 28–65+ |
-| 10 | Logo vectorial (SVG) | ✅ Generado — falta solo AI/EPS (conversión trivial) y archivo de digitalización de bordado (DST/PES, requiere proveedor) |
+| 10 | Logo vectorial (SVG) | ✅ Generado, más PDF vectorial (equivalente a AI/EPS, sin Illustrator — ver Notas Técnicas). Falta solo el archivo de digitalización de bordado (DST/PES, requiere proveedor) |
 | 11 | Cotización formal del proyecto | ✅ Aprobada — S/6,500 (`propuesta-economica-v3.html`), 50% pagado, 50% restante al finalizar el proyecto |
 | 12 | Logo legacy (`logo.webp`) | ✅ Se documenta como identidad "antes" (decisión de Juan, 19/08) — no se retira. Falta integrarlo visualmente en `estrategia-lanzamiento.html` (sección Transición de Assets), ver Archivos del Proyecto |
 | 13 | Peso/contraste del wordmark | ✅ Resuelto — `opsz 16` final, confirmado por la clienta. Ver Notas Técnicas para el proceso completo y qué hacer si piden más ajuste |
@@ -313,7 +321,7 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
 7. ~~Hacer `git push` de los commits pendientes~~ ✅ — hecho 19/08, `4f99d46..a8b4621`, GitHub Pages al día
 8. ~~Obtener validación de misión/visión~~ ✅ — aprobada por Lizzie, texto actualizado en `brandbook.html`
-9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/community manager — sigue activo, no tratarlo como cerrado
+9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/Nayelli (community manager) — sigue activo, no tratarlo como cerrado
 10. ~~Decidir qué hacer con `logo.webp`~~ ✅ documentado como identidad "antes" e insertado en `estrategia-lanzamiento.html` / Transición de Assets
 11. ~~Completar info de empaque~~ ✅ diseño/dirección validado por la clienta — cotización de proveedor y fecha de producción quedan fuera de alcance del proyecto
 12. **Decidir** (recomendación abierta, no resuelta) si vale la pena reorganizar la raíz del repo — hoy conviven el documento vivo, un backup intencional, guías operativas y documentos de propuesta ya superados sin ninguna subcarpeta. `brandbook.html` debe quedarse en la raíz sí o sí (GitHub Pages lo sirve desde ahí); cualquier otro archivo que se mueva necesita rutas relativas a `assets/` corregidas.
