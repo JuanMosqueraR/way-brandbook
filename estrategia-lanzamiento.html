@@ -250,7 +250,9 @@
     .story-mock-caption { position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); z-index: 3; color: var(--color-marfil); font-size: var(--text-sm); font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.6); text-align: left; }
     .story-mock-sticker { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 3; background: rgba(247,243,238,.92); color: var(--color-negro); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: var(--radius-full); }
 
-    /* ===== STORY SLIDE — solid-color Stories with a bit of editorial depth (mark + glow + divider) ===== */
+    /* ===== STORY SLIDE — shared reference photo + brand-color scrim + mark + glow + divider ===== */
+    .story-slide-bg { position: absolute; inset: 0; background-image: url('assets/photos/lanzamiento-stories-refuerzo.jpg'); background-size: cover; background-position: center; }
+    .story-slide-scrim { position: absolute; inset: 0; }
     .story-slide-glow { position: absolute; top: -25%; right: -25%; width: 75%; height: 55%; pointer-events: none; }
     .story-slide-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 var(--space-4); text-align: center; }
     .story-slide-mark { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -651,11 +653,13 @@
     </div>
 
     <h3 class="card-title" style="margin-top:var(--space-10);">Stories de refuerzo — 4 slides, dirección visual + texto final</h3>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Decisión explícita: los 4 slides usan <strong>fondo sólido de color de marca + texto</strong> — cero fotografía nueva. Es la pieza más rápida de armar sin cámara ni edición: se hace directo en el editor de Stories de Instagram, con el color de fondo y el texto centrado en Bodoni Moda si la app lo permite, o la fuente por defecto si no.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Una sola foto de referencia (<code>lanzamiento-stories-refuerzo.jpg</code>), reusada en los 4 slides con un velo de color de marca encima — evita generar y revisar 4 imágenes distintas. Se arma en el editor de Stories de Instagram: subir la foto, oscurecerla con los controles nativos de la app o superponer un rectángulo de color de marca (baja opacidad), y el texto centrado encima en Bodoni Moda si la app lo permite, o la fuente por defecto si no.</p>
     <div class="teaser-grid">
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 1 · Fondo negro</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
+          <div class="story-slide-bg"></div>
+          <div class="story-slide-scrim" style="background:rgba(42,31,24,.74);"></div>
           <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.22) 0%, transparent 70%);"></div>
           <div class="story-slide-inner">
             <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
@@ -667,6 +671,8 @@
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 2 · Fondo marfil</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-marfil);border:1px solid var(--color-borde);">
+          <div class="story-slide-bg"></div>
+          <div class="story-slide-scrim" style="background:rgba(247,243,238,.86);"></div>
           <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(42,31,24,.06) 0%, transparent 70%);"></div>
           <div class="story-slide-inner">
             <div class="story-slide-mark" style="background:rgba(42,31,24,.05);border:1px solid rgba(42,31,24,.2);"><span style="color:var(--color-negro);">W</span></div>
@@ -678,6 +684,8 @@
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 3 · Fondo negro</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
+          <div class="story-slide-bg"></div>
+          <div class="story-slide-scrim" style="background:rgba(42,31,24,.78);"></div>
           <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.16) 0%, transparent 70%);"></div>
           <div class="story-slide-inner">
             <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
@@ -689,6 +697,8 @@
       <div class="teaser-day">
         <span class="teaser-day-label">Slide 4 · Fondo terracota</span>
         <div class="story-mock" style="max-width:140px;background:var(--color-terracota);">
+          <div class="story-slide-bg"></div>
+          <div class="story-slide-scrim" style="background:rgba(196,113,74,.78);"></div>
           <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(247,243,238,.28) 0%, transparent 70%);"></div>
           <div class="story-slide-inner">
             <div class="story-slide-mark" style="background:rgba(247,243,238,.15);border:1px solid rgba(247,243,238,.35);"><span style="color:var(--color-marfil);">W</span></div>
@@ -697,7 +707,7 @@
         </div>
       </div>
     </div>
-    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Cada slide suma el monograma (misma marca de agua que el resto del sistema), un resplandor sutil de terracota/marfil según el fondo y una línea divisoria — sigue siendo 100% editor de Stories, sin cámara, pero deja de verse como texto suelto sobre un color plano.</p>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Cada slide suma la foto de referencia con velo de color de marca, el monograma (misma marca de agua que el resto del sistema), un resplandor sutil de terracota/marfil según el fondo y una línea divisoria — deja de verse como texto suelto sobre un color plano, sin necesitar 4 fotos distintas.</p>
     <table class="rules-table">
       <thead><tr><th>Slide</th><th>Texto</th></tr></thead>
       <tbody>
