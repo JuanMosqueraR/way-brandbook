@@ -244,6 +244,11 @@ way-brandbook/
       way-wordmark-marfil.pdf         ← ídem, versión invertida
       way-monogram.pdf                ← ídem, monograma
       logo.webp                       ← ⚠️ logo legacy pre-existente, distinto a La Firma — ver nota abajo
+    highlights/                ← 10 portadas de highlights de Instagram, PNG reales listos para subir
+                                   (círculo marfil + ícono casi-negro) — 9 del sistema permanente ya
+                                   mostrado en brandbook.html §10 (mismos paths SVG, exportados como
+                                   archivo real) + 1 específico del lanzamiento ("Nueva Imagen",
+                                   ver estrategia-lanzamiento.html)
     photos/                    ← generadas (Editorial/Lookbook/Detalle/Promo, Gemini "Nano Banana", fieles
                                    a prendas reales de WAY) + reales del feed actual (@way_peruvian, para
                                    comparativo antes/después) + persona-28-40/45-55/60-65.png (Cliente Ideal)
@@ -319,9 +324,9 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 4. ~~Construir guías operativas~~ ✅ `guia-instagram.html`, `guia-ecommerce.html`
 5. ~~Resolver peso/contraste del wordmark y monograma~~ ✅ — ver Notas Técnicas
 6. ~~Preparar y aprobar cotización formal~~ ✅ — S/6,500, 50% pagado, `propuesta-economica-v3.html`
-7. ~~Hacer `git push` de los commits pendientes~~ ✅ — hecho 19/08, `4f99d46..a8b4621`, GitHub Pages al día
+7. ~~Hacer `git push` de los commits pendientes~~ ✅ — hecho 21/08, `c6fa4eb..1bdc0f4`, GitHub Pages al día
 8. ~~Obtener validación de misión/visión~~ ✅ — aprobada por Lizzie, texto actualizado en `brandbook.html`
-9. **Seguir iterando `estrategia-lanzamiento.html`** hasta que esté a la altura del resto del proyecto y sea lo más ejecutable posible para Lizzie/Nayelli (community manager) — sigue activo, no tratarlo como cerrado
+9. ~~Iterar `estrategia-lanzamiento.html`~~ ✅ — revisión completa el 21/08: nombres reales (Juan/Nayelli/Lizzie) en todos los responsables, wordmark en PDF vectorial (ver Notas Técnicas), highlights reales generados en `assets/highlights/`, Stories de refuerzo con foto en vez de solo texto, tabla "Quién hace qué", nota de contingencia (si algo no está listo se pospone el Día D completo), captions por opción de Reel. Sigue siendo un documento operativo — puede necesitar ajustes puntuales antes del Día D real (fecha, prenda disponible), pero ya no tiene pendientes estructurales
 10. ~~Decidir qué hacer con `logo.webp`~~ ✅ documentado como identidad "antes" e insertado en `estrategia-lanzamiento.html` / Transición de Assets
 11. ~~Completar info de empaque~~ ✅ diseño/dirección validado por la clienta — cotización de proveedor y fecha de producción quedan fuera de alcance del proyecto
 12. **Decidir** (recomendación abierta, no resuelta) si vale la pena reorganizar la raíz del repo — hoy conviven el documento vivo, un backup intencional, guías operativas y documentos de propuesta ya superados sin ninguna subcarpeta. `brandbook.html` debe quedarse en la raíz sí o sí (GitHub Pages lo sirve desde ahí); cualquier otro archivo que se mueva necesita rutas relativas a `assets/` corregidas.
