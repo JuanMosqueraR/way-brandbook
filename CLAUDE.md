@@ -224,14 +224,15 @@ Al generar los primeros 7 conceptos de empaque con Nano Banana a partir de promp
 
 ```
 way-brandbook/
-  brandbook.html               ← entregable principal — Territorio 01, La Firma (v1.1+)
-  brandbook-v1.0.html          ← respaldo intencional de la versión previa a las mejoras iterativas
+  brandbook.html               ← entregable principal — Territorio 01, La Firma (v1.1+) — raíz obligatoria (GitHub Pages)
   guia-instagram.html          ← documento operativo separado — calendario, Reels/Stories, comunidad, copy
   guia-ecommerce.html          ← documento operativo separado — diagnóstico y reestructuración de wayperuvian.pe
-  estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets) — ⏳ en iteración activa, ver Estado Actual
-  territorios-way.html         ← presentación histórica de los 3 territorios (ya superada — cliente ya eligió)
-  propuesta-identidad.html     ← propuesta histórica de paletas, logos y tipografías (ya superada)
-  propuesta-economica-v3.html  ← cotización — versión vigente (v1 y v2 depuradas)
+  estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets)
+  archivo/                     ← documentos superados o de referencia — no se iteran más (ver nota abajo)
+    territorios-way.html         ← presentación histórica de los 3 territorios (ya superada — cliente ya eligió)
+    propuesta-identidad.html     ← propuesta histórica de paletas, logos y tipografías (ya superada)
+    propuesta-economica-v3.html  ← cotización — versión vigente (v1 y v2 depuradas), sigue siendo la referencia contractual activa aunque viva en archivo/
+    AUDITORIA_v1.0.md            ← auditoría independiente de identidad, 13/08, solo lectura — no modifica los documentos auditados
   assets/
     logo/                      ← SVG vectoriales reales (fontTools+Playwright+OpenCV, ver Notas Técnicas)
       way-wordmark-negro.svg          ← logotipo principal, negro sobre transparente — opsz 16
@@ -329,7 +330,7 @@ Contexto histórico (investigación de mercado peruano 2026 que sustentó la pro
 9. ~~Iterar `estrategia-lanzamiento.html`~~ ✅ — revisión completa el 21/08: nombres reales (Juan/Nayelli/Lizzie) en todos los responsables, wordmark en PDF vectorial (ver Notas Técnicas), highlights reales generados en `assets/highlights/`, Stories de refuerzo con foto en vez de solo texto, tabla "Quién hace qué", nota de contingencia (si algo no está listo se pospone el Día D completo), captions por opción de Reel. Sigue siendo un documento operativo — puede necesitar ajustes puntuales antes del Día D real (fecha, prenda disponible), pero ya no tiene pendientes estructurales
 10. ~~Decidir qué hacer con `logo.webp`~~ ✅ documentado como identidad "antes" e insertado en `estrategia-lanzamiento.html` / Transición de Assets
 11. ~~Completar info de empaque~~ ✅ diseño/dirección validado por la clienta — cotización de proveedor y fecha de producción quedan fuera de alcance del proyecto
-12. **Decidir** (recomendación abierta, no resuelta) si vale la pena reorganizar la raíz del repo — hoy conviven el documento vivo, un backup intencional, guías operativas y documentos de propuesta ya superados sin ninguna subcarpeta. `brandbook.html` debe quedarse en la raíz sí o sí (GitHub Pages lo sirve desde ahí); cualquier otro archivo que se mueva necesita rutas relativas a `assets/` corregidas.
+12. ~~Reorganizar la raíz del repo~~ ✅ — hecho 21/08: `territorios-way.html`, `propuesta-identidad.html`, `propuesta-economica-v3.html` y `AUDITORIA_v1.0.md` se movieron a `archivo/` (con `git mv`, historial preservado). `brandbook.html` y los 3 documentos operativos activos (`guia-instagram.html`, `guia-ecommerce.html`, `estrategia-lanzamiento.html`) se quedaron en la raíz. Única ruta relativa corregida: el favicon de `propuesta-economica-v3.html`. De paso se corrigieron 2 desviaciones que ya existían en este árbol de archivos: `brandbook-v1.0.html` (listado pero ya no existía en el repo, borrado en `f1af94b`) y `AUDITORIA_v1.0.md` (existía desde `5446737` pero nunca se había documentado aquí).
 
 ---
 
