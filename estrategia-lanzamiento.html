@@ -229,6 +229,8 @@
 
     /* ===== REFERENCE BADGE — marks AI-generated stills as framing/light reference, not final photography ===== */
     .ref-badge { position: absolute; top: var(--space-3); left: var(--space-3); z-index: 3; background: rgba(42,31,24,.82); color: var(--color-marfil); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: var(--radius-sm); backdrop-filter: blur(2px); }
+    .video-ref-wrap { position: relative; max-width: 220px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-borde); background: var(--color-negro); }
+    .video-ref-wrap video { width: 100%; display: block; }
     .ref-note { font-size: var(--text-xs); color: var(--color-terracota); font-weight: 600; margin-top: var(--space-2); display: block; }
 
     /* ===== ANTES / DESPUÉS COMPARISON ===== */
@@ -589,6 +591,11 @@
         </tbody>
       </table>
       <div class="reel-concept-audio"><strong>Audio:</strong> voz propia de Lizzie (sin música de fondo, o un audio suave de trending bajo volumen).</div>
+      <div class="video-ref-wrap" style="margin-top:var(--space-4);">
+        <video src="assets/videos/1/kling_20260822_VIDEO_Point_of_v_823_0.mp4" controls muted loop playsinline></video>
+        <span class="ref-badge">Referencia</span>
+      </div>
+      <p class="ref-note">Video de referencia generado con IA (rostro y voz sintéticos, no Lizzie) — muestra encuadre, ritmo y actuación a imitar. No es el video final.</p>
     </div>
 
     <div class="reel-concept">
@@ -612,6 +619,11 @@
         </tbody>
       </table>
       <div class="reel-concept-audio"><strong>Audio:</strong> audio de tendencia instrumental (cálido, no acelerado). La portada del post de Instagram reusa <code>assets/photos/lanzamiento-reveal.jpg</code> como referencia — ver más abajo.</div>
+      <div class="video-ref-wrap" style="margin-top:var(--space-4);">
+        <video src="assets/videos/2/reel-opcion-2-final.mp4" controls muted loop playsinline></video>
+        <span class="ref-badge">Referencia</span>
+      </div>
+      <p class="ref-note">Video de referencia generado con IA (los 2 clips ya editados y unidos) — muestra encuadre, ritmo y los textos en pantalla sugeridos. No es el video final.</p>
     </div>
 
     <div class="reel-concept">
@@ -635,6 +647,11 @@
         </tbody>
       </table>
       <div class="reel-concept-audio"><strong>Audio:</strong> sonido ambiente real + voz de Lizzie desde el segundo 12 — nada de música que tape el ambiente.</div>
+      <div class="video-ref-wrap" style="margin-top:var(--space-4);">
+        <video src="assets/videos/3/1-final-v2-subtitulo-discreto.mp4" controls muted loop playsinline></video>
+        <span class="ref-badge">Referencia</span>
+      </div>
+      <p class="ref-note">Video de referencia generado con IA (rostro y voz sintéticos, no Lizzie), ya editado con subtítulos — muestra encuadre, ritmo y actuación a imitar. No es el video final.</p>
     </div>
 
     <h3 class="card-title" style="margin-top:var(--space-10);">Caption según la opción grabada — usar esta primero</h3>
