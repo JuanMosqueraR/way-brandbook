@@ -452,7 +452,7 @@
     </div>
 
     <h2 class="subsection-title">Tipos de Story</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Mapeados a los highlights ya rediseñados en el brandbook (sección 10).</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Mapeados al sistema de 9 highlights ya cerrado en el brandbook (sección 10) — Colaboraciones, Clientes, Tienda Damero, Horarios, Modelos, Nuestro Equipo, Testimonios, Página web y Cómo Comprar.</p>
     <div class="story-grid">
       <div class="story-item">
         <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5 8.4 8.4 0 01-4-1L3 20l1-4.5A8.5 8.5 0 1121 11.5z"/></svg></div>
@@ -474,6 +474,32 @@
         <p class="story-item-title">Nuevo ingreso</p>
         <p class="story-item-desc">Disponibilidad de talla, primeras fotos de producto nuevo.</p>
       </div>
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <p class="story-item-title">Equipo / detrás de cámara</p>
+        <p class="story-item-desc">Quién arma cada pedido, el empaque en proceso — alimenta el highlight "Nuestro Equipo" (staff, distinto de "Modelos").</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
+        <p class="story-item-title">Cómo comprar</p>
+        <p class="story-item-desc">Medios de pago, envío y pasos para pedir por WhatsApp — alimenta el highlight "Cómo Comprar".</p>
+      </div>
+    </div>
+
+    <div class="pending-block">
+      <span class="pending-label">[PROPUESTA — para Lizzie, sin aprobar]</span>
+      <p>La cuenta real casi no usa highlights hoy — la última Story guardada en uno es de 2025. Con los 9 de arriba eso tiene sentido: 2 (Colaboraciones, Página web) no tienen ningún pilar de contenido que los alimente, y 2 pares son redundantes entre sí (Horarios + Tienda Damero, Testimonios + Clientes). Propuesta: reducir a 5 highlights, cada uno con una fuente de contenido ya definida arriba. <strong>Mientras no se apruebe, el sistema vigente sigue siendo el de 9</strong> (brandbook §10) — esto es un borrador para presentar, no un cambio hecho.</p>
+      <table class="rules-table" style="margin:var(--space-4) 0 var(--space-2);">
+        <thead><tr><th>Nuevo</th><th>Reemplaza</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tienda</strong></td><td>Tienda Damero + Horarios</td><td>Ambos son "info para visitarnos" — un solo destino.</td></tr>
+          <tr><td><strong>Clientas</strong></td><td>Clientes + Testimonios</td><td>Misma función de prueba social (repost de compra + reseña escrita). Se mantiene en femenino a propósito — es sobre la audiencia (compradoras), y el resto del brandbook ya usa "clienta" porque la audiencia de WAY está definida como mujer.</td></tr>
+          <tr><td><strong>Modelos</strong></td><td>— sin cambio</td><td>Término estándar de e-commerce de moda — describe prendas puestas, no personas del equipo.</td></tr>
+          <tr><td><strong>Equipo</strong></td><td>Nuestro Equipo</td><td>Versión corta del nombre ya aprobado. Se descarta "Nosotras" (y también "Nosotros", por quedar como pronombre suelto poco natural junto a Tienda/Modelos/Clientas) — "Nosotras" asume que todo el staff es mujer, lo cual no es cierto en WAY.</td></tr>
+          <tr><td><strong>Cómo Comprar</strong></td><td>— sin cambio</td><td>Ya consolida Envíos + Medios de Pago + Cómo Comprar (ronda anterior).</td></tr>
+        </tbody>
+      </table>
+      <p>Se retiran del sistema activo — el PNG ya generado se queda en la carpeta, no se borra: <strong>Colaboraciones</strong> (ningún pilar de contenido lo alimenta hoy; se reactiva bajo demanda si surge una colaboración real) y <strong>Página web</strong> (redundante con Cómo Comprar, que ya cubre el link y el proceso de compra).</p>
     </div>
 
     <h2 class="subsection-title">Especificaciones Técnicas</h2>
@@ -483,6 +509,10 @@
       <div class="spec-item"><span class="spec-item-label">Gancho</span><span class="spec-item-value">Primeros 3 segundos, visual fuerte</span></div>
       <div class="spec-item"><span class="spec-item-label">Duración Reel</span><span class="spec-item-value">15–30 segundos</span></div>
     </div>
+
+    <h2 class="subsection-title">Tratamiento Visual — Stories con Texto</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-3);">Texto flotando sobre un color plano se ve pobre. El estándar por defecto para cualquier Story con texto superpuesto: una foto de referencia real + un velo de color de marca encima (negro, marfil o terracota, según el mensaje) + el monograma como marca de agua + un resplandor sutil de terracota/marfil + una línea divisoria delgada. Una sola foto sirve para varios slides — no hace falta generar ni revisar una imagen distinta por cada uno.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-8);">Se arma directo en el editor nativo de Stories de Instagram: subir la foto, oscurecerla con los controles nativos de la app o superponer un rectángulo de color de marca a baja opacidad, y centrar el texto encima en Bodoni Moda si la app lo permite, o la fuente por defecto si no — sin apps externas de edición.</p>
 
     <h2 class="subsection-title">Personalidad Aplicada</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Los 3 atributos operativos del brandbook (sección 04), aplicados a Reels y Stories.</p>
@@ -603,6 +633,14 @@
     <div class="copy-grid">
       <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado</span>"Gracias por tu mensaje 💛 lamentamos el inconveniente, te escribimos por privado para resolverlo."</div>
       <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"Lamentamos que no haya cumplido sus expectativas. Un asesor se pondrá en contacto."</div>
+    </div>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado — escepticismo ("no cambió nada", "para qué")</span>"Jaja te entendemos 😅 el cambio es más de fondo de lo que parece a primera vista — la esencia sigue siendo WAY, pero cuidamos cada detalle nuevo. ¿Ya viste el post completo? 👀"</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"El cambio de imagen responde a un proceso estratégico de posicionamiento de marca."</div>
+    </div>
+    <div class="copy-grid">
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Aprobado — comentario hostil/agresivo</span>"Gracias por tu mensaje 💛 lamentamos que no te haya gustado. Te escribimos por privado para escucharte con calma."</div>
+      <div class="copy-bubble copy-bubble--bad"><span class="bubble-label">✕ Rechazado</span>"Respetamos tu opinión, pero no todas van a estar de acuerdo, así es esto."</div>
     </div>
   </section>
 
