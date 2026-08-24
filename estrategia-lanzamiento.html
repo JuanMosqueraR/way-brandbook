@@ -249,17 +249,26 @@
 
     /* ===== STORY MOCKUP (9:16 — teaser) ===== */
     .story-mock { width: 100%; max-width: 220px; aspect-ratio: 9/16; border-radius: var(--radius-lg); border: 1px solid var(--color-borde); background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); }
-    .story-mock-caption { position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); z-index: 3; color: var(--color-marfil); font-size: var(--text-sm); font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.6); text-align: left; }
-    .story-mock-sticker { position: absolute; top: var(--space-3); right: var(--space-3); z-index: 3; background: rgba(247,243,238,.92); color: var(--color-negro); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: var(--radius-full); }
+    .story-mock-caption { position: absolute; bottom: 13%; left: var(--space-4); right: var(--space-4); z-index: 3; color: var(--color-marfil); font-size: var(--text-sm); font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.6); text-align: left; }
+    .story-mock-sticker { position: absolute; top: 13%; right: var(--space-3); z-index: 3; background: rgba(247,243,238,.92); color: var(--color-negro); font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: var(--radius-full); }
 
-    /* ===== STORY SLIDE — shared reference photo + brand-color scrim + mark + glow + divider ===== */
-    .story-slide-bg { position: absolute; inset: 0; background-image: url('assets/photos/lanzamiento-stories-refuerzo.jpg'); background-size: cover; background-position: center; }
-    .story-slide-scrim { position: absolute; inset: 0; }
-    .story-slide-glow { position: absolute; top: -25%; right: -25%; width: 75%; height: 55%; pointer-events: none; }
-    .story-slide-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 var(--space-4); text-align: center; }
-    .story-slide-mark { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .story-slide-mark span { font-family: var(--font-display); font-weight: 500; font-size: 13px; }
-    .story-slide-divider { width: 24px; height: 1px; }
+    /* ===== STORY SLIDE — 4 distinct editorial photos, bottom-anchored text, one consistent terracota accent thread ===== */
+    .story-slide-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(20,14,10,.03) 0%, rgba(20,14,10,.1) 28%, rgba(20,14,10,.5) 52%, rgba(20,14,10,.84) 75%, rgba(20,14,10,.96) 100%); }
+    .story-slide-glow { position: absolute; top: -20%; right: -20%; width: 70%; height: 50%; z-index: 1; pointer-events: none; background: radial-gradient(circle, rgba(196,113,74,.28) 0%, transparent 70%); }
+    .story-slide-brandtag { position: absolute; top: 15.5%; right: var(--space-4); z-index: 3; font-size: 10.5px; font-weight: 500; letter-spacing: .4em; text-transform: uppercase; color: rgba(247,243,238,.88); text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.4); }
+    .story-slide-inner { position: absolute; left: var(--space-4); right: var(--space-4); bottom: 18%; z-index: 3; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .story-slide-headline { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 21px; line-height: 1.08; color: var(--color-marfil); margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 4px 16px rgba(0,0,0,.55); }
+    .story-slide-micro { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(247,243,238,.9); font-weight: 600; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 2px 8px rgba(0,0,0,.5); }
+    .story-slide-divider { width: 24px; height: 1px; background: var(--color-terracota); margin: 2px 0; }
+    .story-slide-eyebrow { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-marfil); font-weight: 700; margin: 0 0 2px; text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 2px 8px rgba(0,0,0,.5); }
+    .story-slide-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+    .story-slide-list li { font-size: 12px; font-weight: 600; color: var(--color-marfil); text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 2px 8px rgba(0,0,0,.5); }
+
+    /* ===== STORIES DE REFUERZO — 4-up sequence, own grid (not the 3-col teaser-grid) ===== */
+    .story-sequence-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-6); }
+    .stories-refuerzo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+    .story-slide-item { display: flex; flex-direction: column; align-items: center; }
+    @media (max-width: 1024px) { .stories-refuerzo-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* ===== TEASER WEEK — 3-day calendar ===== */
     .teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin: var(--space-8) 0; }
@@ -294,7 +303,7 @@
       #menu-toggle { display: flex; }
       #content { margin-left: 0; }
       .section-title { font-size: var(--text-4xl); }
-      .grid-2, .do-dont-grid, .copy-grid, .app-grid, .compare-grid, .teaser-grid { grid-template-columns: 1fr; }
+      .grid-2, .do-dont-grid, .copy-grid, .app-grid, .compare-grid, .teaser-grid, .stories-refuerzo-grid { grid-template-columns: 1fr; }
       .channel-grid { grid-template-columns: repeat(2, 1fr); }
       .phase-timeline { flex-direction: column; }
       .phase-arrow { display: none; }
@@ -621,7 +630,7 @@
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Elegir 1 de las 3 opciones de Reel (ver abajo) según la disponibilidad de Lizzie</p><span class="check-owner">Responsable: <strong>Nayelli + Lizzie</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Grabar el Reel — de preferencia con luz de tarde, junto a una ventana</p><span class="check-owner">Responsable: <strong>Lizzie</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Editar el Reel con subtítulos (CapCut, InShot o el editor nativo de Instagram)</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
-      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Preparar los 4 slides de Stories con la foto de referencia + velo de color (ver dirección visual abajo)</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Preparar los 4 slides de Stories con sus 4 fotos y el copy final (ver dirección visual abajo)</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
     </div>
 
     <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
@@ -796,68 +805,80 @@
     </div>
 
     <h3 class="card-title" style="margin-top:var(--space-10);">Stories de refuerzo — 4 slides, dirección visual + texto final</h3>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Una sola foto de referencia (<code>lanzamiento-stories-refuerzo.jpg</code>), reusada en los 4 slides con un velo de color de marca encima — evita generar y revisar 4 imágenes distintas. Se arma en el editor de Stories de Instagram: subir la foto, oscurecerla con los controles nativos de la app o superponer un rectángulo de color de marca (baja opacidad), y el texto centrado encima en Bodoni Moda si la app lo permite, o la fuente por defecto si no.</p>
-    <div class="teaser-grid">
-      <div class="teaser-day">
-        <span class="teaser-day-label">Slide 1 · Fondo negro</span>
-        <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
-          <div class="story-slide-bg"></div>
-          <div class="story-slide-scrim" style="background:rgba(42,31,24,.74);"></div>
-          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.22) 0%, transparent 70%);"></div>
-          <div class="story-slide-inner">
-            <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
-            <p class="story-mock-caption" style="position:static;font-family:var(--font-display);font-style:italic;text-shadow:none;">Después de tanto cariño, teníamos que dar este paso 💛</p>
-            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">4 fotos distintas — no la misma imagen repetida con un velo de color encima — mismo mundo visual que el Concepto 2 (Editorial) del Día 7: interiores cálidos, luz de tarde, paleta marfil/terracota/marrón. Un solo hilo conductor de color (terracota) une las 4, en vez de rotar el fondo por slide. El texto sigue siendo overlay CSS en Bodoni, nunca generado por IA — tipografía de marca garantizada. Sin monograma en la imagen: en una Story, Instagram ya superpone el avatar de la cuenta (que es el mismo monograma) sobre la esquina superior — repetirlo ahí es redundante, a diferencia de un post de feed donde el avatar vive fuera de la imagen. Texto y foto respetan la zona segura de Stories (250px reservados arriba y abajo para la interfaz nativa de Instagram — usuario/hora arriba, caja de mensaje/reacciones abajo).</p>
+    <div class="story-sequence-card">
+      <div class="stories-refuerzo-grid">
+        <div class="story-slide-item">
+          <span class="teaser-day-label">Slide 1 · Puente</span>
+          <div class="story-mock">
+            <img class="img-slot-photo" src="assets/photos/lanzamiento-stories-1-puente.jpg" alt="Referencia — figura en movimiento dentro del set arquitectónico cálido, continúa la energía del Reel" onerror="this.style.display='none'">
+            <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-stories-1-puente.jpg</code></div>
+            <div class="story-slide-scrim"></div>
+            <div class="story-slide-glow"></div>
+            <span class="story-slide-brandtag">WAY</span>
+            <div class="story-slide-inner">
+              <p class="story-slide-headline">Esto recién<br>empieza.</p>
+              <div class="story-slide-divider"></div>
+              <p class="story-slide-micro">por si te lo perdiste 👀</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="teaser-day">
-        <span class="teaser-day-label">Slide 2 · Fondo marfil</span>
-        <div class="story-mock" style="max-width:140px;background:var(--color-marfil);border:1px solid var(--color-borde);">
-          <div class="story-slide-bg"></div>
-          <div class="story-slide-scrim" style="background:rgba(247,243,238,.86);"></div>
-          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(42,31,24,.06) 0%, transparent 70%);"></div>
-          <div class="story-slide-inner">
-            <div class="story-slide-mark" style="background:rgba(42,31,24,.05);border:1px solid rgba(42,31,24,.2);"><span style="color:var(--color-negro);">W</span></div>
-            <p class="story-mock-caption" style="position:static;font-family:var(--font-display);font-style:italic;color:var(--color-negro);text-shadow:none;">WAY cambia de cara — la misma esencia ✨</p>
-            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+        <div class="story-slide-item">
+          <span class="teaser-day-label">Slide 2 · Identidad</span>
+          <div class="story-mock">
+            <img class="img-slot-photo" src="assets/photos/lanzamiento-stories-2-identidad.jpg" alt="Referencia — retrato o figura de 3/4, mirada segura, espacio negativo real para el texto" onerror="this.style.display='none'">
+            <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-stories-2-identidad.jpg</code></div>
+            <div class="story-slide-scrim"></div>
+            <div class="story-slide-glow"></div>
+            <span class="story-slide-brandtag">WAY</span>
+            <div class="story-slide-inner">
+              <p class="story-slide-headline">Con nombre<br>propio.</p>
+              <div class="story-slide-divider"></div>
+              <p class="story-slide-micro">así se ve nuestra nueva etapa ✨</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="teaser-day">
-        <span class="teaser-day-label">Slide 3 · Fondo negro</span>
-        <div class="story-mock" style="max-width:140px;background:var(--color-negro);">
-          <div class="story-slide-bg"></div>
-          <div class="story-slide-scrim" style="background:rgba(42,31,24,.78);"></div>
-          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(196,113,74,.16) 0%, transparent 70%);"></div>
-          <div class="story-slide-inner">
-            <div class="story-slide-mark" style="background:rgba(247,243,238,.08);border:1px solid rgba(247,243,238,.25);"><span style="color:var(--color-marfil);">W</span></div>
-            <p class="story-mock-caption" style="position:static;font-size:var(--text-xs);text-shadow:none;">Lo que NO cambia: tu WhatsApp, tu envío en 24h, tu tienda en Galería Damero</p>
-            <div class="story-slide-divider" style="background:var(--color-terracota);"></div>
+        <div class="story-slide-item">
+          <span class="teaser-day-label">Slide 3 · Cuidado</span>
+          <div class="story-mock">
+            <img class="img-slot-photo" src="assets/photos/lanzamiento-stories-3-cuidado.jpg" alt="Referencia — detalle cercano y cálido, manos o prenda, tono de cuidado" onerror="this.style.display='none'">
+            <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-stories-3-cuidado.jpg</code></div>
+            <div class="story-slide-scrim"></div>
+            <div class="story-slide-glow"></div>
+            <span class="story-slide-brandtag">WAY</span>
+            <div class="story-slide-inner">
+              <p class="story-slide-eyebrow">Lo que no cambia</p>
+              <ul class="story-slide-list">
+                <li>Tu WhatsApp de siempre</li>
+                <li>Envío en 24h</li>
+                <li>Tu tienda en Galería Damero</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="teaser-day">
-        <span class="teaser-day-label">Slide 4 · Fondo terracota</span>
-        <div class="story-mock" style="max-width:140px;background:var(--color-terracota);">
-          <div class="story-slide-bg"></div>
-          <div class="story-slide-scrim" style="background:rgba(196,113,74,.78);"></div>
-          <div class="story-slide-glow" style="background:radial-gradient(circle, rgba(247,243,238,.28) 0%, transparent 70%);"></div>
-          <div class="story-slide-inner">
-            <div class="story-slide-mark" style="background:rgba(247,243,238,.15);border:1px solid rgba(247,243,238,.35);"><span style="color:var(--color-marfil);">W</span></div>
-            <span class="story-mock-sticker" style="position:static;">¿Qué te parece? 👀</span>
+        <div class="story-slide-item">
+          <span class="teaser-day-label">Slide 4 · Invitación</span>
+          <div class="story-mock">
+            <img class="img-slot-photo" src="assets/photos/lanzamiento-stories-4-encuesta.jpg" alt="Referencia — tono cercano y desenfadado, invita a interactuar" onerror="this.style.display='none'">
+            <div class="img-slot-fallback">Imagen pendiente<code>assets/photos/lanzamiento-stories-4-encuesta.jpg</code></div>
+            <div class="story-slide-scrim"></div>
+            <div class="story-slide-glow"></div>
+            <span class="story-slide-brandtag">WAY</span>
+            <span class="story-mock-sticker" style="top:26%;right:var(--space-3);">¿Qué te parece? 👀</span>
+            <div class="story-slide-inner">
+              <p class="story-slide-micro">tu opinión nos importa 💛</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Cada slide suma la foto de referencia con velo de color de marca, el monograma (misma marca de agua que el resto del sistema), un resplandor sutil de terracota/marfil según el fondo y una línea divisoria — deja de verse como texto suelto sobre un color plano, sin necesitar 4 fotos distintas.</p>
     <table class="rules-table">
-      <thead><tr><th>Slide</th><th>Texto</th></tr></thead>
+      <thead><tr><th>Slide</th><th>Titular</th><th>Texto / mecánica</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>"Después de tanto cariño, teníamos que dar este paso 💛"</td></tr>
-        <tr><td>2</td><td>"WAY cambia de cara — la misma esencia, una manera más nuestra de mostrarla ✨"</td></tr>
-        <tr><td>3</td><td>"Lo que NO cambia: tu WhatsApp de siempre, tu envío en 24h, tu tienda en Galería Damero"</td></tr>
-        <tr><td>4</td><td>Sticker de encuesta: "¿Qué te parece el cambio?" 👀 (opciones: Me encanta / Necesito verlo más)</td></tr>
+        <tr><td>1 — Puente</td><td>"Esto recién empieza."</td><td>"por si te lo perdiste 👀" — armar esta Story compartiendo el Reel con el sticker nativo de republicación (queda un thumbnail tocable del Reel dentro de la Story)</td></tr>
+        <tr><td>2 — Identidad</td><td>"Con nombre propio."</td><td>"así se ve nuestra nueva etapa ✨"</td></tr>
+        <tr><td>3 — Cuidado</td><td>"Lo que no cambia"</td><td>Tu WhatsApp de siempre · Envío en 24h · Tu tienda en Galería Damero</td></tr>
+        <tr><td>4 — Invitación</td><td>Sticker de encuesta nativo</td><td>"¿Qué te parece?" 👀 (opciones: Me encanta / Necesito verlo más) + "tu opinión nos importa 💛"</td></tr>
       </tbody>
     </table>
 
