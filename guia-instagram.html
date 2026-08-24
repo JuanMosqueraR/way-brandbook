@@ -209,6 +209,18 @@
     .pillar-bar-track { flex: 1; height: 28px; background: var(--color-borde); border-radius: var(--radius-sm); overflow: hidden; }
     .pillar-bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: var(--space-3); font-size: var(--text-xs); font-weight: 700; color: var(--color-marfil); }
 
+    /* Compact reference to brandbook §09 shot-type categories — condensed, not duplicated in full */
+    .shot-ref-table { width: 100%; border-collapse: collapse; margin: var(--space-6) 0; }
+    .shot-ref-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-2) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .shot-ref-table td { font-size: var(--text-sm); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .shot-ref-table tr:last-child td { border-bottom: none; }
+
+    /* Compact photo strip — real assets from brandbook, illustrates the variety checklist without duplicating the full grid */
+    .variety-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin: var(--space-6) 0; }
+    .variety-tile { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-borde); }
+    .variety-tile img { width: 100%; height: 100%; object-fit: cover; }
+    .variety-tile-tag { position: absolute; bottom: var(--space-2); left: var(--space-2); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-marfil); background: rgba(42,31,24,.72); padding: 3px 7px; border-radius: var(--radius-sm); }
+
     .week-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
     .week-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
     .week-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); }
@@ -282,7 +294,7 @@
       #content { margin-left: 0; }
       .section-title { font-size: var(--text-4xl); }
       .grid-2, .grid-3, .grid-4, .cadence-grid, .reel-grid, .do-dont-grid, .copy-grid, .response-grid { grid-template-columns: 1fr; }
-      .story-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-grid, .variety-strip { grid-template-columns: repeat(2, 1fr); }
       .hashtag-groups { grid-template-columns: 1fr; }
       .pillar-row-label { width: 100px; font-size: var(--text-xs); }
     }
@@ -395,10 +407,21 @@
         <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:20%;background:var(--color-terracota);">20%</div></div>
       </div>
       <div class="pillar-row">
-        <span class="pillar-row-label">Promo</span>
+        <span class="pillar-row-label">Social/UGC</span>
         <div class="pillar-bar-track"><div class="pillar-bar-fill" style="width:15%;background:var(--color-gris);">15%</div></div>
       </div>
     </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Promo no está en esta lista — es un pilar de comunicación (Comercial, ver "Marco de Contenido" más abajo), no un tipo de toma: una publicación Promo puede usar fotografía Ecommerce o Lookbook, no compite por este mismo 100%. Su frecuencia se controla aparte, en "Reglas de Variedad".</p>
+    <table class="shot-ref-table">
+      <thead><tr><th>Tipo de toma</th><th>Objetivo</th><th>Úsala en</th></tr></thead>
+      <tbody>
+        <tr><td>Editorial</td><td>Construir deseo y universo de marca</td><td>Feed, portada de campaña, historia de marca</td></tr>
+        <tr><td>Lookbook</td><td>Mostrar cómo se ve la colección puesta</td><td>Carrusel "cómo combinarlo", lanzamiento</td></tr>
+        <tr><td>Ecommerce</td><td>Facilitar la decisión de compra (producto + detalle de tela/costura)</td><td>Ficha de producto, catálogo de WhatsApp</td></tr>
+        <tr><td>Social/UGC</td><td>Construir cercanía y autenticidad — contenido de clientas, no de shooting</td><td>Stories, Reels de comunidad</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Detalle completo, con reglas de composición, en brandbook §09 — "Tipos de Toma por Propósito".</p>
 
     <h2 class="subsection-title">Reglas de Variedad</h2>
     <p class="pending-inline" style="display:block;margin-bottom:var(--space-3);">[PROPUESTA — para Nayelli]</p>
@@ -417,6 +440,14 @@
         <div><p class="protocol-step-title">¿Ya hubo una Promo en las últimas 6–7 publicaciones?</p><p class="protocol-step-desc">Si ya hubo una, esta no debería serlo — evita que la cuenta empiece a leerse como solo venta.</p></div>
       </div>
     </div>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin:var(--space-6) 0 var(--space-3);">Así se ve la variedad en la práctica — 4 tomas reales, ninguna repite la anterior:</p>
+    <div class="variety-strip">
+      <div class="variety-tile"><img src="assets/photos/editorial-a.jpg" alt="Editorial — blusa borgoña"><span class="variety-tile-tag">Editorial</span></div>
+      <div class="variety-tile"><img src="assets/photos/lookbook-a.jpg" alt="Lookbook — casaca gris" style="object-position:center 15%;"><span class="variety-tile-tag">Lookbook</span></div>
+      <div class="variety-tile"><img src="assets/photos/detalle-a.jpg" alt="Ecommerce — textura blusa terracota"><span class="variety-tile-tag">Ecommerce</span></div>
+      <div class="variety-tile"><img src="assets/photos/promo-a.jpg" alt="Promo — nueva colección"><span class="variety-tile-tag">Promo</span></div>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;">Mismos assets del grid "Después" aprobado en brandbook §09.</p>
 
     <h2 class="subsection-title">Marco de Contenido</h2>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Dos dimensiones distintas, no dos taxonomías en competencia:</p>
