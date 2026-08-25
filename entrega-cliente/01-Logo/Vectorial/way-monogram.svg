@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440">
+  <circle cx="220" cy="220" r="220" fill="#2A1F18"/>
+  <g transform="translate(90.0,91.9) scale(0.320197)" fill="#F7F3EE">
+    <path fill-rule="evenodd" d="M277,697 L291,697 L403,398 L501,697 L512,697 L730,97 L732,95 L800,95 L800,90 L642,90 L642,95 L724,95 L725,98 L552,571 L465,300 L536,96 L601,95 L602,90 L10,90 L11,95 L80,95 Z M529,95 L530,98 L462,291 L398,96 Z M178,95 L306,96 L401,388 L332,571 Z"/>
+  </g>
+</svg>

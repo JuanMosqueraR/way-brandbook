@@ -601,7 +601,12 @@
     }
     .hangtag-code { font-size: 6.5px; letter-spacing: .08em; color: var(--color-gris); margin-top: 5px; }
     .hangtag-sticker-space { width: 100%; min-height: 68px; box-sizing: border-box; border: 1px dashed var(--color-borde); border-radius: 2px; padding: 7px 4px; margin-top: 14px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 6px; line-height: 1.5; letter-spacing: .04em; color: var(--color-gris); }
-    .woven-label { width: 227px; height: 57px; background: var(--color-negro); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    .woven-label { width: 227px; height: 57px; background: var(--color-negro); display: flex; align-items: center; justify-content: center; gap: 14px; box-shadow: var(--shadow-sm); }
+    .woven-label-size {
+      width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--color-marfil);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: var(--font-family); font-size: 10px; font-weight: 600; color: var(--color-marfil);
+    }
     .scale-app-caption { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-gris); }
     .ig-avatar-lg { width: 110px; height: 110px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
     .ig-avatar-lg span { font-family: var(--font-display); font-weight: 500; font-size: 52px; color: var(--color-marfil); margin-top: -4px; }
@@ -1263,6 +1268,11 @@
         <tr><td>CTA</td><td>Archivo 700 · 11–12px · mayúsculas, tracking amplio</td><td><span class="hier-sample-label" style="color:var(--color-negro);">Agregar al carrito</span></td></tr>
       </tbody>
     </table>
+
+    <div class="pending-block" style="border-left-color:var(--color-terracota);background:#FBF3EC;border-color:#EAD3C1;">
+      <span class="pending-label" style="color:var(--color-terracota);">Nota sobre los archivos de fuente</span>
+      <p style="color:var(--color-negro);">Bodoni Moda y Archivo son fuentes variables: un solo archivo cubre todo el rango de peso. Al instalarlas, el selector de fuente de la mayoría de programas (Word, PowerPoint, Canva básico) no muestra números sino nombres — <code>Thin</code>=100, <code>ExtraLight</code>=200, <code>Light</code>=300, <code>Regular</code>=400, <code>Medium</code>=500, <code>SemiBold</code>=600, <code>Bold</code>=700, <code>ExtraBold</code>=800, <code>Black</code>=900 — igual en ambas familias. Para el logotipo en sí, usar siempre los archivos vectoriales de <code>01-Logo/</code> — nunca tipearlo con la fuente.</p>
+    </div>
   </section>
 
   <!-- 08 VOZ Y TONO -->
@@ -1684,7 +1694,7 @@
           <div class="hangtag-hole" style="margin-bottom:20px;"></div>
           <div class="hangtag-back-label">Talla / Size</div>
           <div class="hangtag-size-row">
-            <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
+            <span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
           </div>
           <div class="hangtag-barcode"></div>
           <div class="hangtag-code">WAY 0000123 S</div>
@@ -1701,7 +1711,7 @@
         <span class="scale-app-caption">Hang tag — dorso</span>
       </div>
       <div class="scale-app">
-        <div class="woven-label"><div class="wordmark wordmark--inverted" style="font-size:19px;letter-spacing:.16em;padding-left:.16em;">WAY</div></div>
+        <div class="woven-label"><div class="wordmark wordmark--inverted" style="font-size:19px;letter-spacing:.16em;padding-left:.16em;">WAY</div><span class="woven-label-size">S</span></div>
         <span class="scale-app-caption">Etiqueta tejida — 1.5 cm, escala real</span>
       </div>
       <div class="scale-app">
