@@ -582,7 +582,6 @@
       padding: 22px 12px; box-sizing: border-box;
     }
     .hangtag-hole { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--color-negro); margin-bottom: 56px; }
-    .hangtag-tagline { font-family: var(--font-display); font-style: italic; font-size: 9.5px; letter-spacing: .08em; color: var(--color-negro); margin-top: 8px; }
     .hangtag-footer { margin-top: auto; width: 100%; border-top: 1px solid var(--color-terracota); padding-top: 8px; text-align: center; font-size: 7px; letter-spacing: .24em; text-transform: uppercase; color: var(--color-gris); }
     .hangtag-back-label { font-size: 7px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gris); margin-bottom: 10px; }
     .hangtag-size-row { display: flex; gap: 4px; }
@@ -601,7 +600,7 @@
         var(--color-negro) 9px, var(--color-negro) 12px, transparent 12px, transparent 13px);
     }
     .hangtag-code { font-size: 6.5px; letter-spacing: .08em; color: var(--color-gris); margin-top: 5px; }
-    .hangtag-price { font-family: var(--font-family); font-weight: 600; font-size: 13px; color: var(--color-negro); border: 1px solid var(--color-borde); padding: 3px 10px; margin-top: 12px; }
+    .hangtag-sticker-space { width: 100%; min-height: 68px; box-sizing: border-box; border: 1px dashed var(--color-borde); border-radius: 2px; padding: 7px 4px; margin-top: 14px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 6px; line-height: 1.5; letter-spacing: .04em; color: var(--color-gris); }
     .woven-label { width: 227px; height: 57px; background: var(--color-negro); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
     .scale-app-caption { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-gris); }
     .ig-avatar-lg { width: 110px; height: 110px; border-radius: 50%; background: var(--color-negro); display: flex; align-items: center; justify-content: center; }
@@ -1682,26 +1681,22 @@
     <div class="scale-apps-wrap">
       <div class="scale-app">
         <div class="hangtag">
-          <div class="hangtag-hole"></div>
-          <div class="wordmark" style="font-size:22px;letter-spacing:.14em;padding-left:.14em;">WAY</div>
-          <div class="hangtag-tagline">con nombre propio</div>
-          <div class="hangtag-size-row" style="margin-top:14px;">
-            <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
-          </div>
-          <div class="hangtag-footer">Lima · Perú</div>
-        </div>
-        <span class="scale-app-caption">Hang tag — frente</span>
-      </div>
-      <div class="scale-app">
-        <div class="hangtag">
+          <div class="hangtag-hole" style="margin-bottom:20px;"></div>
           <div class="hangtag-back-label">Talla / Size</div>
           <div class="hangtag-size-row">
             <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
           </div>
           <div class="hangtag-barcode"></div>
           <div class="hangtag-code">WAY 0000123 S</div>
-          <div class="hangtag-price">S/ 180</div>
-          <div class="hangtag-footer">wayperuvian.pe</div>
+          <div class="hangtag-sticker-space">Espacio para sticker<br>con información adicional</div>
+          <div class="hangtag-footer">wayperuvian.pe · Lima, Perú</div>
+        </div>
+        <span class="scale-app-caption">Hang tag — frente</span>
+      </div>
+      <div class="scale-app">
+        <div class="hangtag">
+          <div class="hangtag-hole"></div>
+          <div class="wordmark" style="font-size:22px;letter-spacing:.14em;padding-left:.14em;margin:auto 0;">WAY</div>
         </div>
         <span class="scale-app-caption">Hang tag — dorso</span>
       </div>
@@ -1761,16 +1756,10 @@
     <div class="scale-apps-wrap" style="margin-bottom:var(--space-8);">
       <div class="scale-app">
         <div class="hangtag">
-          <div class="hangtag-back-label">Talla / Size</div>
-          <div class="hangtag-size-row">
-            <span class="hangtag-size">XS</span><span class="hangtag-size hangtag-size--active">S</span><span class="hangtag-size">M</span><span class="hangtag-size">L</span><span class="hangtag-size">XL</span>
-          </div>
-          <div class="hangtag-barcode"></div>
-          <div class="hangtag-code">WAY 0000123 S</div>
-          <div class="hangtag-price">S/ 180</div>
-          <div class="hangtag-footer">wayperuvian.pe</div>
+          <div class="hangtag-hole"></div>
+          <div class="wordmark" style="font-size:22px;letter-spacing:.14em;padding-left:.14em;margin:auto 0;">WAY</div>
         </div>
-        <span class="scale-app-caption">Hang Tag — resuelto (ver frente en "Físico — Escala Real")</span>
+        <span class="scale-app-caption">Hang Tag — dorso (ver frente con talla y código en "Físico — Escala Real")</span>
       </div>
       <div class="scale-app">
         <div class="thankyou-card">
