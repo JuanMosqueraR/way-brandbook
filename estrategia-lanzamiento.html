@@ -279,9 +279,12 @@
 
     /* ===== REEL CONCEPT CARDS ===== */
     .reel-concept { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-6); }
+    .reel-concept--selected { border: 2px solid var(--color-terracota); box-shadow: 0 0 0 4px rgba(196,113,74,.08); }
     .reel-concept-header { display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-2); flex-wrap: wrap; }
     .reel-concept-num { font-family: var(--font-display); font-style: italic; font-size: var(--text-2xl); color: var(--color-terracota); }
     .reel-concept-name { font-size: var(--text-lg); font-weight: 700; color: var(--color-negro); }
+    .reel-concept-selected-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--color-terracota); color: var(--color-marfil); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--radius-full); }
+    .reel-concept-alt-note { font-size: var(--text-xs); color: var(--color-gris); font-style: italic; }
     .reel-concept-why { font-size: var(--text-sm); color: var(--color-gris); margin-bottom: var(--space-5); line-height: 1.6; }
     .shot-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-4); }
     .shot-table th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-2) var(--space-3); border-bottom: 2px solid var(--color-borde); }
@@ -487,10 +490,10 @@
     <p style="font-size:var(--text-xs);color:var(--color-terracota);font-weight:600;max-width:680px;margin-bottom:var(--space-8);">Regla de publicación: domingo, entre 6pm y 9pm (pico de actividad del perfil).</p>
 
     <h3 class="card-title">3 conceptos para elegir con Lizzie</h3>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Cada uno distinto en foto y en copy — no son variaciones del mismo diseño. <span class="pending-inline">[PENDIENTE — Lizzie elige 1 antes de producir]</span></p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Cada uno distinto en foto y en copy — no son variaciones del mismo diseño. Lizzie eligió el Concepto 1 — los otros 2 quedan documentados para usarlos más adelante si hace falta otra dirección.</p>
 
-    <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">1</span><span class="reel-concept-name">Íntimo</span></div>
+    <div class="reel-concept reel-concept--selected">
+      <div class="reel-concept-header"><span class="reel-concept-num">1</span><span class="reel-concept-name">Íntimo</span><span class="reel-concept-selected-badge">✓ Elegido por Lizzie</span></div>
       <p class="reel-concept-why">Foto táctil de tela en close-up, velo cálido, composición anclada abajo. La dirección más cercana/cálida de las 3 — y la única con foto final ya aprobada, lista para producir sin depender de nada más.</p>
       <div style="max-width:340px;">
         <div class="ig-post">
@@ -524,7 +527,7 @@
     </div>
 
     <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">2</span><span class="reel-concept-name">Editorial</span></div>
+      <div class="reel-concept-header"><span class="reel-concept-num">2</span><span class="reel-concept-name">Editorial</span><span class="reel-concept-alt-note">— disponible para otro momento</span></div>
       <p class="reel-concept-why">Figura completa, actitud segura, espacio negativo real (no simulado con velo) — split entre panel marfil y foto.</p>
       <div style="max-width:340px;">
         <div class="ig-post">
@@ -553,7 +556,7 @@
     </div>
 
     <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">3</span><span class="reel-concept-name">Gráfico</span></div>
+      <div class="reel-concept-header"><span class="reel-concept-num">3</span><span class="reel-concept-name">Gráfico</span><span class="reel-concept-alt-note">— disponible para otro momento</span></div>
       <p class="reel-concept-why">Sin foto — tipografía Bodoni como protagonista total, el tagline al frente. El más audaz de los 3, y el único que no depende de ninguna foto (ni la actual ni una nueva).</p>
       <div style="max-width:340px;">
         <div class="ig-post">
@@ -582,7 +585,7 @@
       <p class="ref-note">Sin dependencias de foto — es el que más rápido se puede dejar listo para producción.</p>
     </div>
 
-    <p style="font-size:var(--text-xs);color:var(--color-gris);margin-top:var(--space-2);">Responsable: <strong>Nayelli</strong> (prepara y programa el post elegido).</p>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);margin-top:var(--space-2);">Responsable: <strong>Nayelli</strong> (prepara y programa el Concepto 1 — Íntimo).</p>
   </section>
 
   <!-- 04 FASE 2 -->
@@ -627,7 +630,7 @@
 
     <h2 class="subsection-title">Preparación de contenido — 2–3 días antes del Día D</h2>
     <div class="checklist">
-      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Elegir 1 de las 3 opciones de Reel (ver abajo) según la disponibilidad de Lizzie</p><span class="check-owner">Responsable: <strong>Nayelli + Lizzie</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☑</span><div><p class="check-text">Reel elegido: Opción 1 — "Cara a cara" (ver abajo). Las otras 2 quedan documentadas para otro momento</p><span class="check-owner">Responsable: <strong>Nayelli + Lizzie</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Grabar el Reel — de preferencia con luz de tarde, junto a una ventana</p><span class="check-owner">Responsable: <strong>Lizzie</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Editar el Reel con subtítulos (CapCut, InShot o el editor nativo de Instagram)</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☑</span><div><p class="check-text">Los 4 slides de Stories ya están listos como imagen final (<code>assets/stories-dia-d/</code>) — si Lizzie consigue una foto mejor ese día, pasársela a Juan para regenerar antes de publicar (ver dirección visual abajo)</p><span class="check-owner">Responsable: <strong>Nayelli</strong> (avisa a Juan si hace falta regenerar)</span></div></div>
@@ -642,7 +645,7 @@
     <div class="checklist">
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar y bio en Instagram, WhatsApp Business y TikTok, dentro de la misma hora</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar y datos en Shopify, dentro de la misma hora que el resto de los canales</p><span class="check-owner">Responsable: <strong>Juan</strong></span></div></div>
-      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Publicar en Instagram el Reel de anuncio ("Así nace la nueva WAY")</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Publicar en Instagram el Reel de anuncio (Opción 1 — "Cara a cara")</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 + 30 min — Publicar el carrusel de Stories de refuerzo, subiendo las 4 imágenes ya listas de <code>assets/stories-dia-d/</code> como foto (no rearmar el texto a mano) + sticker de encuesta nativo en la 4ta</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 + 2–4 h — Enviar broadcast de WhatsApp Business a la lista de contactos</p><span class="check-owner">Responsable: <strong>Juan</strong> — programado en WAY Inbox (CRM propio)</span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Mismo día — Confirmar que Shopify ya refleja la identidad nueva</p><span class="check-owner">Responsable: <strong>Juan</strong></span></div></div>
@@ -665,7 +668,7 @@
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">El paquete completo del Día D: el Reel (3 opciones a elegir), el post/caption, el carrusel de Stories y el broadcast de WhatsApp. Todo en un solo lugar — nada que buscar en otra sección.</p>
 
     <h3 class="card-title" style="margin-top:var(--space-8);">Reel de anuncio — 3 opciones creativas (elige 1)</h3>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Las 3 asumen que Lizzie sale en cámara — es quien normalmente aparece en las fotos/videos de la marca. Cada una tiene su propio shot list, listo para grabar sin necesidad de guionista ni editor.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Las 3 asumen que Lizzie sale en cámara — es quien normalmente aparece en las fotos/videos de la marca. Cada una tiene su propio shot list, listo para grabar sin necesidad de guionista ni editor. Lizzie eligió la Opción 1 — las otras 2 quedan documentadas para usarlas más adelante (ej. semana 2 de sostenimiento, ver Fase 3).</p>
 
     <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
       <span class="pending-label" style="color:var(--color-terracota);">Dirección de vestuario — por silueta, no por SKU</span>
@@ -682,8 +685,8 @@
       <p>WAY no repone stock (lotes pequeños, sin reposición) — cualquier pieza específica elegida hoy puede agotarse antes de grabar. Confirmar la pieza real disponible cerca de la fecha del Día D, no con semanas de anticipación.</p>
     </div>
 
-    <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">1</span><span class="reel-concept-name">"Cara a cara"</span></div>
+    <div class="reel-concept reel-concept--selected">
+      <div class="reel-concept-header"><span class="reel-concept-num">1</span><span class="reel-concept-name">"Cara a cara"</span><span class="reel-concept-selected-badge">✓ Elegido por Lizzie</span></div>
       <p class="reel-concept-why">Lizzie habla directo a cámara, estilo selfie. La opción de menor producción y mayor cercanía — encaja perfecto con el tono "amiga que da consejos" de la marca. Se graba en un solo take, sin cortes complejos.</p>
       <div class="app-grid" style="margin-top:0;margin-bottom:var(--space-6);grid-template-columns:200px 1fr;">
         <div class="story-mock" style="max-width:200px;">
@@ -711,7 +714,7 @@
     </div>
 
     <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">2</span><span class="reel-concept-name">"Así nace la nueva WAY"</span></div>
+      <div class="reel-concept-header"><span class="reel-concept-num">2</span><span class="reel-concept-name">"Así nace la nueva WAY"</span><span class="reel-concept-alt-note">— disponible para otro momento</span></div>
       <p class="reel-concept-why">Más editorial: Lizzie ajustándose una prenda nueva, cortes rápidos, texto en pantalla en vez de hablar. Requiere un poco más de edición (varios clips cortos) pero se ve más "producido" sin necesitar actuación.</p>
       <div class="app-grid" style="margin-top:0;margin-bottom:var(--space-6);grid-template-columns:200px 1fr;">
         <div class="story-mock" style="max-width:200px;">
@@ -739,7 +742,7 @@
     </div>
 
     <div class="reel-concept">
-      <div class="reel-concept-header"><span class="reel-concept-num">3</span><span class="reel-concept-name">"Detrás de cámara"</span></div>
+      <div class="reel-concept-header"><span class="reel-concept-num">3</span><span class="reel-concept-name">"Detrás de cámara"</span><span class="reel-concept-alt-note">— disponible para otro momento</span></div>
       <p class="reel-concept-why">La opción más fácil de filmar sin actuación: arranca con la prenda ya en reposo en un rincón estilizado de la tienda — nadie en cuadro, cero necesidad de encontrar el momento perfecto — y Lizzie entra recién a los 4 segundos.</p>
       <div class="app-grid" style="margin-top:0;margin-bottom:var(--space-6);grid-template-columns:200px 1fr;">
         <div class="story-mock" style="max-width:200px;">
@@ -767,9 +770,9 @@
     </div>
 
     <h3 class="card-title" style="margin-top:var(--space-10);">Caption según la opción grabada — usar esta primero</h3>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Elegí la que corresponde a la opción de Reel que se grabó. Solo si no se grabó ninguna con anticipación, o hay duda de cuál usar, la caption genérica de más abajo funciona para cualquiera.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Lizzie eligió la Opción 1 — usar esa caption. Las de las opciones 2 y 3 quedan disponibles por si se graba esa versión más adelante (ver Fase 3, semana 2).</p>
     <div class="copy-grid">
-      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Opción 1 — "Cara a cara"</span>"Tenía que contarles esto yo misma 💛 WAY cambia de cara, no de esencia — la misma calidad y el mismo cariño de siempre, ahora con una imagen que por fin nos representa. Gracias por construir esto con nosotras ✨"</div>
+      <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">✓ Opción 1 — "Cara a cara" (elegida)</span>"Tenía que contarles esto yo misma 💛 WAY cambia de cara, no de esencia — la misma calidad y el mismo cariño de siempre, ahora con una imagen que por fin nos representa. Gracias por construir esto con nosotras ✨"</div>
       <div class="copy-bubble copy-bubble--ok"><span class="bubble-label">Opción 2 — "Así nace la nueva WAY"</span>"Así nace la nueva WAY ✨ Un look que por fin refleja lo que somos: piezas que no se repiten, hechas con el mismo cariño de siempre. Bienvenidas a esta nueva etapa 💛"</div>
     </div>
     <div class="copy-grid">
