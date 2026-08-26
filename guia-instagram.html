@@ -255,6 +255,10 @@
     .story-ref-glow { position: absolute; top: -14%; right: -20%; width: 83%; height: 47%; pointer-events: none; background: radial-gradient(circle, rgba(196,113,74,.4) 0%, rgba(196,113,74,.18) 35%, rgba(196,113,74,0) 72%); filter: blur(14px); }
     .story-ref-rule { position: absolute; left: 8.9%; bottom: 24.5%; width: 2.5%; height: 2px; background: var(--color-terracota); }
     .story-ref-caption { position: absolute; left: 8.9%; right: 10%; bottom: 27%; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: var(--text-sm); line-height: 1.25; }
+
+    /* Nivel 1 — Venta diaria: rectángulo nativo de color sólido, sin degradado ni resplandor (deliberadamente más simple) */
+    .story-native-pill { position: absolute; left: 8%; right: 8%; bottom: 12%; padding: 5% 4%; border-radius: 10px; text-align: center; }
+    .story-native-pill p { font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 700; font-size: var(--text-sm); line-height: 1.35; margin: 0; }
     .story-ref-block { position: absolute; left: 0; right: 0; bottom: 0; height: 30%; }
     .story-ref-fade { position: absolute; left: 0; right: 0; top: 67%; height: 3%; }
     .story-ref-wordmark { position: absolute; left: 7.4%; top: 74%; width: 20%; height: auto; }
@@ -583,9 +587,63 @@
     </div>
 
     <h2 class="subsection-title">Tratamiento Visual — Stories con Texto</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Texto flotando sobre un color plano se ve pobre. Dos recetas de referencia, validadas en Claude Design — ambas se arman directo en el editor nativo de Stories, sin apps externas. Sin monograma en ninguna de las dos: Instagram ya muestra el usuario y el avatar arriba de cada Story de forma nativa, repetirlo en la imagen es redundante.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Dos niveles, no una sola receta — el volumen real (10–15 Stories/día) no da tiempo para armar algo elaborado cada vez. Nivel 1 es el reemplazo directo de cómo se arman hoy, con disciplina de marca. Nivel 2 es para cuando el momento sí justifica más tiempo de producción. Sin monograma en ninguno de los dos: Instagram ya muestra el usuario y el avatar arriba de cada Story de forma nativa, repetirlo en la imagen es redundante.</p>
 
-    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Receta 1 — Foto + velo (uso general)</p>
+    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Nivel 1 — Venta diaria (100% nativo, sin apps)</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);">El mismo flujo rápido que ya se usa hoy — texto con fondo de color, armado directo en la app — con 4 reglas de disciplina de marca en vez de improvisar color y tipografía cada vez:</p>
+    <ol style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin:0 0 var(--space-5);padding-left:var(--space-5);">
+      <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Color siempre de la paleta WAY</strong> — marfil, negro o terracota, nunca un color al azar. Técnica rápida: mantener presionado el selector de color nativo para abrir la rueda completa y deslizar hasta el tono más cercano, o guardar una captura de los 3 colores de marca en el rollo y usar el gotero nativo sobre esa imagen para clavar el tono exacto.</li>
+      <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Siempre la misma fuente nativa</strong> — de las que trae Instagram (Classic/Modern/Neon/Typewriter/Strong), elegir una sola y no cambiarla. No es Bodoni, pero la consistencia sí se nota.</li>
+      <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Misma zona de texto siempre</strong> — el mismo tercio del encuadre en cada Story, no una posición distinta cada vez.</li>
+      <li><strong style="color:var(--color-negro);">Usar el tag nativo de producto/precio de Instagram</strong> siempre que el producto ya esté cargado en el catálogo — reemplaza escribir el precio a mano, y es lo que ya funciona bien hoy (se usa menos de lo que debería).</li>
+    </ol>
+    <div class="story-ref-grid" style="grid-template-columns:repeat(3,1fr);max-width:620px;">
+      <div class="story-ref">
+        <span class="story-ref-label">Marfil</span>
+        <div class="story-ref-frame" style="background:#F7F3EE;">
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
+          <div class="story-native-pill" style="background:var(--color-marfil);"><p style="color:var(--color-negro);">Chaqueta New Peplum<br>S · M · L</p></div>
+        </div>
+      </div>
+      <div class="story-ref">
+        <span class="story-ref-label">Negro</span>
+        <div class="story-ref-frame" style="background:#2A1F18;">
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
+          <div class="story-native-pill" style="background:var(--color-negro);"><p style="color:var(--color-marfil);">Envíos en 24h 🤍</p></div>
+        </div>
+      </div>
+      <div class="story-ref">
+        <span class="story-ref-label">Terracota</span>
+        <div class="story-ref-frame" style="background:#C4714A;">
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
+          <div class="story-native-pill" style="background:var(--color-terracota);"><p style="color:var(--color-marfil);">Últimas unidades<br>escríbenos 💛</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont-grid" style="margin:var(--space-6) 0 var(--space-10);">
+      <div class="do-block">
+        <div class="block-title">Se mantiene</div>
+        <ul>
+          <li>Flujo 100% nativo, sin apps de diseño</li>
+          <li>Grid de varias fotos para mostrar color/talla</li>
+          <li>Tag nativo de producto y precio</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="block-title">Se corrige</div>
+        <ul>
+          <li>Colores al azar (rosa, verde…) fuera de la paleta WAY</li>
+          <li>Emoji que no calzan con el tono cálido de marca</li>
+          <li>Mismo fondo de pared de ladrillo repetido — ver "Prohibido" en el brandbook §09</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Nivel 2 — Momentos especiales (destacados semanales, anuncios, lanzamientos)</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Dos recetas de referencia, validadas en Claude Design — para cuando el momento amerita más tiempo de producción, no para el uso diario. A diferencia del Nivel 1, estas sí necesitan Canva o una app de diseño — el degradado y el bloque de color recortado no se arman a mano en el editor nativo.</p>
+
+    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Receta 1 — Foto + velo</p>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);">Una foto de referencia real + un velo de color de marca encima (negro o marfil, según el mensaje) + un resplandor sutil de terracota + una línea divisoria delgada. Una sola foto sirve para varios slides — no hace falta generar ni revisar una imagen distinta por cada uno. Se arma subiendo la foto y oscureciéndola con los controles nativos de la app, o superponiendo un rectángulo de color de marca a baja opacidad, con el texto centrado encima en Bodoni Moda si la app lo permite.</p>
     <div class="story-ref-grid" style="grid-template-columns:repeat(2,1fr);max-width:460px;">
       <div class="story-ref">
