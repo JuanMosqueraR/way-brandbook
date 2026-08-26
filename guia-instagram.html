@@ -195,6 +195,11 @@
     .portada-meta-item .label { display: block; font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.35); text-transform: uppercase; margin-bottom: 2px; }
     .portada-meta-item .value { display: block; font-size: var(--text-sm); color: rgba(247,243,238,.75); font-weight: var(--font-medium); }
     .portada-note { margin-top: var(--space-16); font-size: var(--text-xs); letter-spacing: .05em; color: rgba(217,164,135,.85); max-width: 480px; }
+    .status-legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); width: min(720px, 100%); margin-top: var(--space-10); text-align: left; }
+    .status-legend-item { border-top: 1px solid rgba(247,243,238,.18); padding-top: var(--space-2); }
+    .status-legend-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-terracota); margin-bottom: 2px; }
+    .status-legend-desc { display: block; font-size: 11px; line-height: 1.4; color: rgba(247,243,238,.58); }
+    .review-date { margin-top: var(--space-4); font-size: var(--text-xs); letter-spacing: .08em; color: rgba(247,243,238,.45); }
 
     /* ===== 02 CALENDARIO ===== */
     .cadence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin: var(--space-8) 0 var(--space-12); }
@@ -313,6 +318,7 @@
       .story-grid, .variety-strip, .story-ref-grid, .story-ref-grid--3col, .story-ref-grid--2col { grid-template-columns: repeat(2, 1fr); }
       .hashtag-groups { grid-template-columns: 1fr; }
       .pillar-row-label { width: 100px; font-size: var(--text-xs); }
+      .status-legend { grid-template-columns: repeat(2, 1fr); }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
@@ -368,24 +374,31 @@
     </div>
     <!-- ASSUMPTION: documento independiente del brandbook a propósito — la cadencia/estrategia operativa cambia con frecuencia; la identidad de marca no. Este documento referencia al brandbook en vez de duplicar contenido (voz, tipos de toma, paleta). -->
     <p class="portada-note">Documento operativo — se actualiza con más frecuencia que el brandbook. Para identidad de marca (logo, color, tipografía, voz), ver el brandbook oficial.</p>
+    <div class="status-legend" aria-label="Estados de la guía">
+      <div class="status-legend-item"><span class="status-legend-label">Vigente</span><span class="status-legend-desc">Se puede aplicar ahora.</span></div>
+      <div class="status-legend-item"><span class="status-legend-label">Propuesta</span><span class="status-legend-desc">Requiere validación antes de aplicarse.</span></div>
+      <div class="status-legend-item"><span class="status-legend-label">Ejemplo</span><span class="status-legend-desc">Muestra el criterio; adaptar antes de publicar.</span></div>
+      <div class="status-legend-item"><span class="status-legend-label">Dato operativo</span><span class="status-legend-desc">Confirmar y actualizar cuando cambie la realidad de la cuenta.</span></div>
+    </div>
+    <p class="review-date">Última revisión: 26/08/2026</p>
   </section>
 
   <!-- 02 CALENDARIO Y CADENCIA -->
   <section id="calendario" class="section section--surface">
     <span class="section-label">02 — Calendario y Cadencia</span>
     <h1 class="section-title">Ritmo de Publicación</h1>
-    <p class="section-intro">Cadencia real de la cuenta, validada directo con la Community Manager. Con una audiencia 28–65+ que ya consume bastante contenido, el volumen no es el problema — lo que hay que cuidar es que no se vea repetitivo ni 100% venta. Ver "Reglas de Variedad" y §03.</p>
+    <p class="section-intro">Cadencia objetivo de la cuenta, validada como referencia con la Community Manager. Con una audiencia 28–65+ que ya consume bastante contenido, el volumen no es el problema — lo que hay que cuidar es que no se vea repetitivo ni 100% venta. Ver "Reglas de Variedad" y §03.</p>
 
     <div class="cadence-grid">
       <div class="cadence-card">
         <div class="cadence-number">6–7</div>
         <div class="cadence-label">Posts de Feed / semana</div>
-        <div class="cadence-desc">Se dispara con cada ingreso de producto nuevo — no por casilla de calendario. Ver "Cómo se Dispara el Contenido" abajo.</div>
+        <div class="cadence-desc">Meta orientativa, no cuota rígida. Se dispara principalmente con producto nuevo y se completa con otros pilares cuando haga falta.</div>
       </div>
       <div class="cadence-card">
         <div class="cadence-number">6–7</div>
         <div class="cadence-label">Reels / semana</div>
-        <div class="cadence-desc">Mismo disparador que el post — producto nuevo — con el formato de mayor alcance del algoritmo.</div>
+        <div class="cadence-desc">Meta orientativa. Producto nuevo es el disparador principal; styling, marca y comunidad completan la frecuencia.</div>
       </div>
       <div class="cadence-card">
         <div class="cadence-number">10–15</div>
@@ -395,11 +408,11 @@
     </div>
 
     <h2 class="subsection-title">Cómo se Dispara el Contenido</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">No hay una casilla fija por día de semana — cada post y Reel sale por uno de estos 2 disparadores:</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">No hay una casilla fija por día de semana. El producto nuevo es el disparador principal; el clima, la temporada y los pilares de contenido ayudan a completar la frecuencia cuando no hay suficientes ingresos:</p>
     <div class="grid-2" style="margin-bottom:var(--space-8);">
       <div class="card">
         <h3 class="card-title">Ingreso de producto nuevo</h3>
-        <p class="card-body">Motor principal: cada prenda nueva en catálogo dispara 1 post + 1 Reel, mismo día si es posible. Encaja con el diferenciador de negocio de WAY — lotes chicos, sin reposición, catálogo que rota seguido — cada prenda nueva ya es, de por sí, el gancho de contenido.</p>
+        <p class="card-body">Motor principal: cada prenda nueva en catálogo puede disparar 1 post + 1 Reel, mismo día si es posible. Encaja con el diferenciador de negocio de WAY — lotes chicos, sin reposición, catálogo que rota seguido — cada prenda nueva ya es, de por sí, el gancho de contenido. Si los ingresos de la semana no alcanzan la meta, no se repite el producto: se completa con styling, marca o comunidad.</p>
       </div>
       <div class="card">
         <h3 class="card-title">Clima y Temporada</h3>
@@ -476,7 +489,7 @@
       <thead><tr><th>Pilar</th><th>Objetivo</th><th>Formatos</th><th>Expresión de marca</th></tr></thead>
       <tbody>
         <tr><td>Producto</td><td>Vender</td><td>Post / Reel / Story</td><td>Editorial</td></tr>
-        <tr><td>Styling</td><td>Inspirar</td><td>Reel / Carousel</td><td>Cercano</td></tr>
+        <tr><td>Styling</td><td>Inspirar</td><td>Reel / Carrusel</td><td>Cercano</td></tr>
         <tr><td>Marca</td><td>Construir identidad</td><td>Post / Reel</td><td>Editorial</td></tr>
         <tr><td>Comunidad</td><td>Relación</td><td>Stories / UGC</td><td>Humano</td></tr>
         <tr><td>Comercial</td><td>Conversión</td><td>Story / Post</td><td>Directo</td></tr>
@@ -515,7 +528,7 @@
     </div>
 
     <h2 class="subsection-title">Tipos de Story</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Mapeados al sistema de 9 highlights ya cerrado en el brandbook (sección 10) — Colaboraciones, Clientes, Tienda Damero, Horarios, Modelos, Nuestro Equipo, Testimonios, Página web y Cómo Comprar.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Estos formatos alimentan el sistema vigente de 9 highlights del brandbook (sección 10). La propuesta de reducirlo a 5 sigue pendiente de aprobación de Lizzie y no cambia todavía el sistema activo.</p>
     <div class="story-grid">
       <div class="story-item">
         <div class="story-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5 8.4 8.4 0 01-4-1L3 20l1-4.5A8.5 8.5 0 1121 11.5z"/></svg></div>
@@ -549,9 +562,25 @@
       </div>
     </div>
 
+    <h3 class="subsection-title" style="font-size:var(--text-lg);">Cómo se Alimenta Cada Highlight</h3>
+    <table class="rules-table">
+      <thead><tr><th>Highlight vigente</th><th>Contenido que lo alimenta</th></tr></thead>
+      <tbody>
+        <tr><td>Colaboraciones</td><td>Publicaciones conjuntas, menciones o alianzas reales con otras marcas, creadoras o espacios.</td></tr>
+        <tr><td>Clientes</td><td>Reposts de compras y contenido enviado por clientas.</td></tr>
+        <tr><td>Tienda Damero</td><td>Ubicación, recorrido, novedades y experiencia de visita en la tienda física.</td></tr>
+        <tr><td>Horarios</td><td>Horarios vigentes, cambios excepcionales y recordatorios de atención.</td></tr>
+        <tr><td>Modelos</td><td>Prendas puestas, combinaciones y referencias visuales de fit.</td></tr>
+        <tr><td>Nuestro Equipo</td><td>Personas del staff, preparación de pedidos y escenas reales de trabajo.</td></tr>
+        <tr><td>Testimonios</td><td>Reseñas y mensajes reales de clientas, con permiso cuando corresponda.</td></tr>
+        <tr><td>Página web</td><td>Enlaces, novedades y recorridos de compra dentro de wayperuvian.pe.</td></tr>
+        <tr><td>Cómo Comprar</td><td>Medios de pago, envío, pasos para comprar y respuestas a dudas frecuentes.</td></tr>
+      </tbody>
+    </table>
+
     <div class="pending-block">
       <span class="pending-label">[PROPUESTA — redefine el criterio de Stories]</span>
-      <p>Volumen real: 10–15 Stories/día, intercalando video y flyer — hoy el 100% va orientado a venta directa. A este volumen hay margen de sobra para no perder el ADN de marca (brandbook §04 — Cálida, Comunidad primero) sin bajar nada de venta:</p>
+      <p>Volumen real: 10–15 Stories/día, intercalando video y flyer — hoy el 100% va orientado a venta directa. La propuesta mantiene el volumen total, pero distribuye mejor las Stories entre venta, comunidad, información y marca:</p>
       <ul>
         <li>Reservar un mínimo de 2–4 Stories/día para los tipos no-venta del catálogo de arriba (encuesta, testimonios, equipo, cómo comprar) — el resto sigue siendo venta directa, sin recortar volumen.</li>
         <li>El clima real (no un calendario de temporada fijo) define qué categoría de prenda se prioriza en las Stories de venta — mismo criterio de "Clima y Temporada" en §02.</li>
@@ -740,7 +769,7 @@
     <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;margin-top:var(--space-2);">Los textos de ejemplo (etiqueta, titular, CTA) están compuestos en CSS/Bodoni sobre la foto — nunca generados por IA, mismo criterio que el resto del proyecto.</p>
 
     <h2 class="subsection-title">Personalidad Aplicada</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Los 3 atributos operativos del brandbook (sección 04), aplicados a Reels y Stories.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Estos 3 atributos son una capa operativa del ADN de 8 atributos definido en el brandbook (sección 04): sirven como filtro rápido para decidir si un Reel o una Story suena a WAY, sin reemplazar la referencia completa.</p>
     <table class="rules-table">
       <thead><tr><th>Atributo</th><th>Cómo se ve en Reels/Stories</th></tr></thead>
       <tbody>
@@ -805,6 +834,18 @@
         <div><p class="protocol-step-title">Nunca a la defensiva</p><p class="protocol-step-desc">Aunque el reclamo sea injusto, el tono público siempre es calmado y cálido — quien lee no es solo la clienta, es cualquiera que pase por ahí.</p></div>
       </div>
     </div>
+
+    <h2 class="subsection-title">Criterios de Escalación y Seguimiento</h2>
+    <table class="rules-table">
+      <thead><tr><th>Situación</th><th>Qué hacemos</th></tr></thead>
+      <tbody>
+        <tr><td>Fuera del horario laboral</td><td>Reconocer el mensaje cuando sea posible y avisar cuándo continuará la atención. No prometer una solución inmediata si no hay una persona disponible.</td></tr>
+        <tr><td>Datos personales o del pedido</td><td>No pedir ni publicar información sensible en comentarios. Mover la conversación a DM y luego a WhatsApp.</td></tr>
+        <tr><td>Caso que requiere decisión</td><td>Escalar a la persona responsable cuando involucre devolución, compensación, pérdida de paquete, error de despacho o una excepción a la política.</td></tr>
+        <tr><td>La clienta no responde</td><td>Enviar un seguimiento por WhatsApp y dejar constancia interna del intento. No cerrar el caso como resuelto sin confirmación.</td></tr>
+        <tr><td>Plazo de resolución</td><td>Dar una primera respuesta dentro del tiempo objetivo del canal y comunicar un siguiente paso concreto, aunque la solución final tome más tiempo.</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- 05 COPY Y CAPTIONS -->
@@ -824,7 +865,7 @@
       <div class="formula-part"><span class="formula-part-label">Hashtags</span><p class="formula-part-example">8–12, mezcla de marca y nicho</p></div>
     </div>
 
-    <h2 class="subsection-title">Banco de CTAs Aprobados</h2>
+    <h2 class="subsection-title">Banco de CTAs de Referencia</h2>
     <div class="cta-pills">
       <span class="cta-pill">Escríbenos por WhatsApp</span>
       <span class="cta-pill">Encuéntralo en el link de la bio</span>
@@ -834,7 +875,7 @@
     </div>
 
     <h2 class="subsection-title">Estrategia de Hashtags</h2>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">8–12 por post — menos y más relevantes rinde mejor que el máximo de 30.</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:640px;margin-bottom:var(--space-2);">Pauta inicial: probar entre 8 y 12 hashtags relevantes por post y medir su aporte antes de convertirlo en una regla fija. La mezcla debe combinar marca, nicho y ubicación; no es necesario acercarse al máximo de 30.</p>
     <div class="hashtag-groups">
       <div>
         <p class="hashtag-group-title">Marca</p>
