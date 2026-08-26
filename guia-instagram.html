@@ -255,10 +255,6 @@
     .story-ref-glow { position: absolute; top: -14%; right: -20%; width: 83%; height: 47%; pointer-events: none; background: radial-gradient(circle, rgba(196,113,74,.4) 0%, rgba(196,113,74,.18) 35%, rgba(196,113,74,0) 72%); filter: blur(14px); }
     .story-ref-rule { position: absolute; left: 8.9%; bottom: 24.5%; width: 2.5%; height: 2px; background: var(--color-terracota); }
     .story-ref-caption { position: absolute; left: 8.9%; right: 10%; bottom: 27%; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: var(--text-sm); line-height: 1.25; }
-
-    /* Nivel 1 — Venta diaria: rectángulo nativo de color sólido, sin degradado ni resplandor (deliberadamente más simple) */
-    .story-native-pill { position: absolute; left: 8%; right: 8%; bottom: 12%; padding: 5% 4%; border-radius: 10px; text-align: center; }
-    .story-native-pill p { font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 700; font-size: var(--text-sm); line-height: 1.35; margin: 0; }
     .story-ref-block { position: absolute; left: 0; right: 0; bottom: 0; height: 30%; }
     .story-ref-fade { position: absolute; left: 0; right: 0; top: 67%; height: 3%; }
     .story-ref-wordmark { position: absolute; left: 7.4%; top: 74%; width: 20%; height: auto; }
@@ -594,32 +590,46 @@
     <ol style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin:0 0 var(--space-5);padding-left:var(--space-5);">
       <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Color siempre de la paleta WAY</strong> — marfil, negro o terracota, nunca un color al azar. Técnica rápida: mantener presionado el selector de color nativo para abrir la rueda completa y deslizar hasta el tono más cercano, o guardar una captura de los 3 colores de marca en el rollo y usar el gotero nativo sobre esa imagen para clavar el tono exacto.</li>
       <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Siempre la misma fuente nativa</strong> — de las que trae Instagram (Classic/Modern/Neon/Typewriter/Strong), elegir una sola y no cambiarla. No es Bodoni, pero la consistencia sí se nota.</li>
-      <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Misma zona de texto siempre</strong> — el mismo tercio del encuadre en cada Story, no una posición distinta cada vez.</li>
+      <li style="margin-bottom:6px;"><strong style="color:var(--color-negro);">Zona de texto de una lista corta ya aprobada</strong> — no una posición nueva cada vez. Sin caja ni sombra detrás: la legibilidad viene de elegir bien la zona (un tramo liso de piso, pared o ventanal) y del color con buen contraste ahí, no de un recurso gráfico. 2 plantillas: <strong style="color:var(--color-negro);">directa</strong> (solo el titular, para zonas más ajustadas) o <strong style="color:var(--color-negro);">con encabezado</strong> (etiqueta pequeña + línea fina + titular, cuando hay más espacio vertical).</li>
       <li><strong style="color:var(--color-negro);">Usar el tag nativo de producto/precio de Instagram</strong> siempre que el producto ya esté cargado en el catálogo — reemplaza escribir el precio a mano, y es lo que ya funciona bien hoy (se usa menos de lo que debería).</li>
     </ol>
     <div class="story-ref-grid" style="grid-template-columns:repeat(3,1fr);max-width:620px;">
       <div class="story-ref">
-        <span class="story-ref-label">Marfil</span>
-        <div class="story-ref-frame" style="background:#F7F3EE;">
-          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
-          <div class="story-native-pill" style="background:var(--color-marfil);"><p style="color:var(--color-negro);">Chaqueta New Peplum<br>S · M · L</p></div>
-        </div>
-      </div>
-      <div class="story-ref">
-        <span class="story-ref-label">Negro</span>
+        <span class="story-ref-label">Piso · directa</span>
         <div class="story-ref-frame" style="background:#2A1F18;">
-          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
-          <div class="story-native-pill" style="background:var(--color-negro);"><p style="color:var(--color-marfil);">Envíos en 24h 🤍</p></div>
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — titular directo sobre el piso, sin encabezado" style="object-position:50% 20%;">
+          <div style="position:absolute;left:6.1%;bottom:33%;width:44%;">
+            <p style="font-family:var(--font-display);font-weight:400;font-size:10px;line-height:1.15;color:#2A1F18;margin:0;">Terracota, toda la temporada</p>
+          </div>
+          <div style="position:absolute;left:6.1%;bottom:25.6%;display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:rgba(60,60,60,.55);">
+            <span style="font-family:'Archivo',sans-serif;font-size:8px;color:#F4F4F4;">wayperuvian.pe</span>
+          </div>
         </div>
       </div>
       <div class="story-ref">
-        <span class="story-ref-label">Terracota</span>
-        <div class="story-ref-frame" style="background:#C4714A;">
-          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — producto sobre modelo, nivel 1" style="object-position:50% 20%;">
-          <div class="story-native-pill" style="background:var(--color-terracota);"><p style="color:var(--color-marfil);">Últimas unidades<br>escríbenos 💛</p></div>
+        <span class="story-ref-label">Ventanal · con encabezado</span>
+        <div class="story-ref-frame" style="background:#2A1F18;">
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — encabezado + línea + titular sobre el ventanal" style="object-position:50% 20%;">
+          <div style="position:absolute;left:6.1%;top:19.8%;width:42%;display:flex;flex-direction:column;gap:5px;color:#2A1F18;">
+            <span style="font-family:'Archivo',sans-serif;font-size:7px;letter-spacing:.2em;text-transform:uppercase;opacity:.72;">WAY · OI 26</span>
+            <span style="width:14px;height:1px;background:currentColor;opacity:.5;"></span>
+            <p style="font-family:var(--font-display);font-weight:400;font-size:11px;line-height:1.12;margin:0;">El abrigo que ordena el resto</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-ref">
+        <span class="story-ref-label">Muro · con encabezado</span>
+        <div class="story-ref-frame" style="background:#2A1F18;">
+          <img class="story-ref-photo" src="assets/photos/lookbook-b.jpg" alt="Referencia — encabezado + línea + titular sobre el muro de concreto" style="object-position:78% 20%;">
+          <div style="position:absolute;right:6.1%;top:20.4%;width:44%;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px;color:#F7F3EE;">
+            <span style="font-family:'Archivo',sans-serif;font-size:7px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;">WAY · OI 26</span>
+            <span style="width:14px;height:1px;background:currentColor;opacity:.55;"></span>
+            <p style="font-family:var(--font-display);font-weight:400;font-size:11px;line-height:1.12;margin:0;">Nueva línea de abrigos</p>
+          </div>
         </div>
       </div>
     </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;margin-top:var(--space-2);">Validado en Claude Design — sin sombra ni contorno en el texto, la zona y el color ya hacen el trabajo. La "1a" (piso) usa la plantilla directa porque el espacio junto a la silla era más ajustado; "1b"/"1c" usan la de encabezado porque el ventanal y el muro dan más aire vertical.</p>
 
     <div class="do-dont-grid" style="margin:var(--space-6) 0 var(--space-10);">
       <div class="do-block">
@@ -643,30 +653,53 @@
     <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Nivel 2 — Momentos especiales (destacados semanales, anuncios, lanzamientos)</p>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-6);">Dos recetas de referencia, validadas en Claude Design — para cuando el momento amerita más tiempo de producción, no para el uso diario. A diferencia del Nivel 1, estas sí necesitan Canva o una app de diseño — el degradado y el bloque de color recortado no se arman a mano en el editor nativo.</p>
 
-    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Receta 1 — Foto + velo</p>
-    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);">Una foto de referencia real + un velo de color de marca encima (negro o marfil, según el mensaje) + un resplandor sutil de terracota + una línea divisoria delgada. Una sola foto sirve para varios slides — no hace falta generar ni revisar una imagen distinta por cada uno. Se arma subiendo la foto y oscureciéndola con los controles nativos de la app, o superponiendo un rectángulo de color de marca a baja opacidad, con el texto centrado encima en Bodoni Moda si la app lo permite.</p>
+    <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin-bottom:var(--space-2);">Receta 1 — Foto + panel + detalle señalado</p>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);">Sin velo ni degradado cubriendo la foto — la foto ocupa el 56% superior, intacta. Debajo, un panel de color sólido (tinta o marfil) con el nombre del producto, línea divisoria terracota y material/precio en versalitas pequeñas. Sobre la foto, un único detalle señalado con una línea fina + un punto — apuntando a algo real y visible (aquí, el volante) — con una etiqueta que habla del mismo tema que el titular de abajo, no de otro distinto.</p>
     <div class="story-ref-grid" style="grid-template-columns:repeat(2,1fr);max-width:460px;">
       <div class="story-ref">
-        <span class="story-ref-label">1a · Velo negro</span>
-        <div class="story-ref-frame" style="background:#2A1F18;">
-          <img class="story-ref-photo" src="assets/photos/editorial-a.jpg" alt="Referencia — foto editorial con velo negro" style="object-position:46% 42%;">
-          <div class="story-ref-veil" style="background:linear-gradient(180deg, rgba(42,31,24,.10) 0%, rgba(42,31,24,.22) 26%, rgba(42,31,24,.52) 52%, rgba(42,31,24,.82) 72%, rgba(42,31,24,.94) 86%, rgba(42,31,24,.97) 100%);"></div>
-          <div class="story-ref-glow"></div>
-          <p class="story-ref-caption" style="color:var(--color-marfil);">Cada pieza, hecha con cariño 💛</p>
-          <div class="story-ref-rule"></div>
+        <span class="story-ref-label">Panel tinta</span>
+        <div class="story-ref-frame" style="background:#15120F;">
+          <div style="position:relative;left:0;top:5.2%;width:100%;height:56.25%;overflow:hidden;">
+            <img class="story-ref-photo" src="assets/photos/editorial-a.jpg" alt="Referencia — blusa con volante, detalle señalado" style="object-position:46% 42%;">
+            <svg viewBox="0 0 1080 1080" style="position:absolute;inset:0;width:100%;height:100%;">
+              <line x1="714" y1="480" x2="612" y2="472" stroke="#C4714A" stroke-width="2.5"></line>
+              <circle cx="602" cy="472" r="9" fill="#C4714A" stroke="#F7F3EE" stroke-width="2.5"></circle>
+            </svg>
+            <div style="position:absolute;left:66.9%;top:40.4%;display:flex;flex-direction:column;gap:2px;white-space:nowrap;background:#F7F3EE;padding:3px 7px 4px;">
+              <span style="font-family:'Archivo',sans-serif;font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#2A1F18;">Volantes</span>
+              <span style="font-family:var(--font-display);font-style:italic;font-size:8px;line-height:1;color:#C4714A;">en la botonera</span>
+            </div>
+          </div>
+          <div style="position:absolute;left:8.1%;top:63%;width:83.7%;display:flex;flex-direction:column;gap:6px;">
+            <div style="height:1px;width:18%;background:#C4714A;"></div>
+            <p style="font-family:var(--font-display);font-style:italic;font-weight:400;font-size:var(--text-xl);line-height:.95;color:#F2EAE0;margin:0;">Blusa Karely,<br>en vino</p>
+            <p style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,234,224,.62);margin:0;">Material Bali · ligera y fresca · S/. 89.90</p>
+          </div>
         </div>
       </div>
       <div class="story-ref">
-        <span class="story-ref-label">1b · Velo marfil</span>
-        <div class="story-ref-frame" style="background:#F7F3EE;">
-          <img class="story-ref-photo" src="assets/photos/editorial-a.jpg" alt="Referencia — foto editorial con velo marfil" style="object-position:46% 42%;">
-          <div class="story-ref-veil" style="background:linear-gradient(180deg, rgba(247,243,238,.06) 0%, rgba(247,243,238,.18) 26%, rgba(247,243,238,.50) 52%, rgba(247,243,238,.82) 72%, rgba(247,243,238,.93) 86%, rgba(247,243,238,.97) 100%);"></div>
-          <div class="story-ref-glow"></div>
-          <p class="story-ref-caption" style="color:var(--color-negro);">Nuevo ingreso — mira el detalle ✨</p>
-          <div class="story-ref-rule"></div>
+        <span class="story-ref-label">Panel marfil</span>
+        <div class="story-ref-frame" style="background:#EFE7DC;">
+          <div style="position:relative;left:0;top:5.2%;width:100%;height:56.25%;overflow:hidden;">
+            <img class="story-ref-photo" src="assets/photos/editorial-a.jpg" alt="Referencia — blusa con volante, detalle señalado" style="object-position:46% 42%;">
+            <svg viewBox="0 0 1080 1080" style="position:absolute;inset:0;width:100%;height:100%;">
+              <line x1="714" y1="480" x2="612" y2="472" stroke="#C4714A" stroke-width="2.5"></line>
+              <circle cx="602" cy="472" r="9" fill="#C4714A" stroke="#F7F3EE" stroke-width="2.5"></circle>
+            </svg>
+            <div style="position:absolute;left:66.9%;top:40.4%;display:flex;flex-direction:column;gap:2px;white-space:nowrap;background:#F7F3EE;padding:3px 7px 4px;">
+              <span style="font-family:'Archivo',sans-serif;font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#2A1F18;">Volantes</span>
+              <span style="font-family:var(--font-display);font-style:italic;font-size:8px;line-height:1;color:#C4714A;">en la botonera</span>
+            </div>
+          </div>
+          <div style="position:absolute;left:8.1%;top:63%;width:83.7%;display:flex;flex-direction:column;gap:6px;">
+            <div style="height:1px;width:18%;background:#C4714A;"></div>
+            <p style="font-family:var(--font-display);font-style:italic;font-weight:400;font-size:var(--text-xl);line-height:.95;color:#14100D;margin:0;">Blusa Karely,<br>en vino</p>
+            <p style="font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,16,13,.6);margin:0;">Material Bali · ligera y fresca · S/. 89.90</p>
+          </div>
         </div>
       </div>
     </div>
+    <p style="font-size:var(--text-xs);color:var(--color-gris);max-width:680px;margin-top:var(--space-2);">Validado en Claude Design — ambas variantes de color sirven, se elige según el tono de la foto. Copy de ejemplo, ajustar producto/precio/material real en cada caso.</p>
 
     <p style="font-size:var(--text-sm);font-weight:700;color:var(--color-negro);margin:var(--space-8) 0 var(--space-2);">Receta 2 — Flyer de venta (producto + bloque de color)</p>
     <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-4);">Foto de producto o lookbook completa, sin recortar la prenda de su fondo — un bloque de color sólido de marca abajo con el wordmark real y espacio vacío para precio o CTA. Ninguna IA reinterpreta el logo: es el mismo asset vectorial de siempre.</p>
