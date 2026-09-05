@@ -694,11 +694,65 @@
     @media print {
       #sidebar, #menu-toggle, #sidebar-overlay { display: none !important; }
       #content { margin-left: 0 !important; }
-      .section { min-height: auto; page-break-before: always; padding: 40px 60px; }
+      /* .section no longer stretches to fill a full page (min-height:auto below), so
+         whenever a section's content ends before the physical page bottom, the leftover
+         space shows through to body's own background — which is marfil, not white. */
+      body { background: var(--color-white) !important; }
+      /* Every page prints on plain white — the whole document, portada included.
+         Vertical breathing room comes from the PDF export margin (applied to every
+         physical page by Playwright), not CSS padding — padding-top/bottom on a box
+         that spans several printed pages only applies to its first/last fragment,
+         leaving pages in between with none. Horizontal padding stays here since it
+         correctly repeats on every fragment. With every page sharing one background
+         there's no per-fragment color to repaint, so a plain PDF margin is enough —
+         no box-decoration-break needed. */
+      .section { min-height: auto; page-break-before: always; padding: 0 60px; }
+      .section--surface, .section--dark { background: var(--color-white) !important; }
       #portada { page-break-before: avoid; min-height: 100vh; }
+      /* portada's wordmark/monogram/meta text is styled for its on-screen dark
+         background (marfil-on-negro) — on white print that's invisible, so it's
+         recolored to the dark palette here. Scoped to #portada only: .wordmark--inverted
+         is also used by the woven-label/tote-bag mockups elsewhere, which must stay
+         dark because they represent the real color of that packaging piece. */
+      #portada .wordmark--inverted { color: var(--color-negro); }
+      #portada .portada-monogram { background: var(--color-white); border: 1.5px solid var(--color-negro); }
+      #portada .portada-monogram span { color: var(--color-negro); }
+      #portada .portada-tagline { color: rgba(42,31,24,.7); }
+      #portada .portada-meta-item .label { color: rgba(42,31,24,.4); }
+      #portada .portada-meta-item .value { color: rgba(42,31,24,.8); }
+      #portada .portada-url { color: rgba(42,31,24,.3); }
+      #portada .portada-badge { border-color: rgba(42,31,24,.2); color: var(--color-negro); }
       * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .card, .valor-card, .swatch, .mv-card, .dna-card, .logo-cell { break-inside: avoid; }
       a { text-decoration: none; color: inherit; }
+      /* never leave a subsection heading alone at the bottom of a page with its
+         content pushed to the next one — force heading + what follows to move together */
+      h2.subsection-title, h3.subsection-title { break-after: avoid; }
+      /* a table splitting BETWEEN rows across pages is normal pagination; splitting
+         MID-ROW is not — this is the only table rule needed */
+      tr { break-inside: avoid; }
+      /* every bounded visual unit (a card, an icon tile, a small grid of them, a
+         mockup, a callout box) must move to the next page as a whole rather than
+         split. This list was built by walking every "-grid"/"-card"/"-box" component
+         class in the file (not from memory), so it should not need one-off additions
+         every time a new page turn is checked — a grid genuinely too tall to ever fit
+         one page just falls back to normal flow (break-inside:avoid degrades
+         gracefully when it's impossible to honor). */
+      .card, .valor-card, .swatch, .mv-card, .dna-card, .logo-cell,
+      .grid-2, .grid-3, .do-dont-grid, .mv-grid, .valores-grid, .persona-photos-row,
+      .insights-grid, .dna-grid, .logo-system-grid, .wronguse-grid, .wronguse-box,
+      .wronguse-demo, .swatch-grid, .copy-grid, .prohibit-grid, .photo-grid,
+      .shot-type-grid, .comp-grid, .app-grid, .ig-compare-wrap, .ig-mini-grid,
+      .tiktok-grid, .product-grid, .pack-grid, .pack-photo-grid, .scale-app,
+      .voice-quote, .thankyou-card, .persona-photo-card, .persona-summary,
+      .pending-block, .wa-profile-card, .ig-profile-card, .tiktok-card,
+      .shopify-header, .product-card {
+        break-inside: avoid;
+      }
+      /* long reference tables (10+ rows) are exempt from the rule above on purpose —
+         forcing one of those whole onto a fresh page would waste far more space than
+         letting it break cleanly between rows, which .demo-table/.rules-table already
+         do safely via the tr rule */
+      #audiencia .demo-table { break-inside: avoid; }
       .print-only-credit {
         display: block; text-align: center; font-size: 9px; letter-spacing: .15em;
         text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0;
