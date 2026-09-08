@@ -252,6 +252,33 @@ Se investigó también si esto afectaba `opsz` (en Bodoni Moda, esas instancias 
 
 ---
 
+## Notas Técnicas — Logos Secundarios (WAY FOR MEN / WAY COMUNIDAD)
+
+WAY tiene 2 cuentas de Instagram adicionales a la principal (@way_peruvian): **WAY FOR MEN** (cuenta de pruebas, inactiva) y **WAY COMUNIDAD** (cuenta de respaldo, @way_peruvian_comunidad). **Ninguna de las dos está dentro del alcance contractual de este proyecto** — no aparecen como cuentas activas en `guia-instagram.html` ni en ningún otro entregable — pero Juan pidió (07/09) darles un logo de cortesía coherente con la identidad La Firma, ya que hoy usan logos legacy inconsistentes entre sí (WAY FOR MEN: ilustración de saco dentro de un rombo; WAY COMUNIDAD: mismo estilo de rombo con el tagline anterior "Empower yourself", la misma identidad "antes" que `logo.webp`).
+
+**Decisiones de diseño (confirmadas por Juan sobre un comparativo, antes de tocar `entrega-cliente/`):**
+- Dos piezas por cuenta, mismo criterio que separa `way-monogram.svg` de `way-wordmark.svg` en el sistema principal: un **monograma circular** (foto de perfil de IG) y un **wordmark apilado** ("WAY" + "FOR MEN"/"COMUNIDAD" debajo, para usos más grandes).
+- **Fondo marfil** (`#F7F3EE`) en vez del negro del monograma principal — pedido explícito, para diferenciar las cuentas secundarias del avatar principal a simple vista.
+- **Misma paleta de marca** en las 3 cuentas (marfil / casi-negro `#2A1F18` / terracota `#C4714A`) — se diferencian solo por texto, no por color.
+- Iteración de diseño (2 rondas, mismo patrón de "mostrar antes de aplicar" ya usado para el wordmark/monograma principal): la primera versión del monograma llevaba el texto secundario en arco siguiendo el borde del círculo — Juan lo rechazó ("muy pegado al borde", "no debería tener forma redonda") y se cambió a texto recto centrado debajo de la W, con más margen respecto al borde. El primer wordmark apilado tenía demasiado espacio muerto entre "WAY" y la etiqueta (el `viewBox` original de `way-wordmark-negro.svg` incluye ~800px de zona de exclusión por encima y por debajo de la tinta real, pensada para ese archivo, no para un lockup nuevo) — se corrigió recortando el `viewBox` a la tinta real del path antes de componer el lockup.
+- El texto "WAY" en ambas piezas **reutiliza el path vectorial ya aprobado** de `way-wordmark-negro.svg` (wordmark) y `way-monogram.svg` (la W del avatar), solo recoloreado — cero riesgo de reinterpretación tipográfica, mismo principio que ya rige el resto del sistema. El texto secundario ("FOR MEN" / "COMUNIDAD") se generó con el mismo pipeline ya usado para las piezas planas de empaque: HTML con Archivo embebido en base64 → Playwright local (`page.pdf()`) → `page.get_svg_image()` de PyMuPDF, que convierte el texto a trazo vectorial real (confirmado: el PDF resultante mantiene el texto seleccionable, pero el SVG derivado no referencia ninguna fuente — `font-family` no aparece en el archivo).
+
+**Alcance de archivos entregado** (paquete completo, misma estructura de carpetas que `01-Logo/`, replicada dentro de cada cuenta):
+```
+entrega-cliente/01-Logo/WAY FOR MEN/        (y WAY COMUNIDAD/, misma estructura)
+  Ficha-Tecnica-Logo.pdf
+  Vectorial/        way-for-men-monograma.svg/.pdf, way-for-men-wordmark.svg/.pdf
+  PNG-transparente/ way-for-men-monograma-1000px.png, -180px.png (listo para subir como foto de perfil)
+  JPG-fondo-solido/ way-for-men-monograma-sobre-negro.jpg, way-for-men-wordmark-sobre-marfil.jpg
+```
+**Por qué el wordmark no tiene versión "transparente":** a diferencia del monograma (transparente fuera del círculo, igual que `way-monogram.svg`), el wordmark apilado incluye el fondo marfil como parte del diseño mismo (pedido explícito de Juan) — no es un fondo removible, así que solo se generó su versión ya flatteada en `JPG-fondo-solido/`. Esto queda explicado en la `Ficha-Tecnica-Logo.pdf` de cada cuenta para que no se lea como una pieza incompleta.
+
+No se modificó `LEEME.pdf` — las dos carpetas nuevas se explican solas por su nombre; se puede agregar una línea de referencia ahí si Juan lo pide más adelante.
+
+**Bug real encontrado y corregido en el pipeline de raster (07/09):** las primeras exportaciones PNG/JPG salieron con el diseño recortado y descentrado (Juan lo detectó a simple vista en `way-comunidad-monograma-sobre-negro.jpg`). Causa: al generar un raster a una resolución mayor que el tamaño nativo del SVG, el `<svg>` se estaba creando con sus atributos `width`/`height` ya puestos al tamaño de exportación final (ej. 1000px), mientras el viewport de Playwright se dejaba en el tamaño nativo del diseño (ej. 440px) y el escalado real se delegaba a `device_scale_factor`. Con esa combinación el navegador dibuja un `<svg>` más grande que su propio viewport y el screenshot recorta al viewport *antes* de aplicar el factor de escala — el resultado es un zoom sobre una esquina del diseño, no el diseño completo reescalado. **Corrección:** el `<svg>` siempre debe generarse a su tamaño nativo (el mismo que el viewport pasado a Playwright); `device_scale_factor = resolución_objetivo / tamaño_nativo` es lo único que debe encargarse de subir la resolución. Los 8 archivos raster afectados (PNG-transparente y JPG-fondo-solido de ambas cuentas) se regeneraron y se volvieron a verificar armando un montaje sin recortes antes de aceptarlos — verificar solo con `get_links()`/`get_text()` de PyMuPDF no habría detectado este bug porque no toca texto ni enlaces, hay que mirar el render completo.
+
+---
+
 ## Archivos del Proyecto
 
 ```
@@ -261,6 +288,9 @@ way-brandbook/
   guia-ecommerce.html          ← documento operativo separado — diagnóstico y reestructuración de wayperuvian.pe
   estrategia-lanzamiento.html  ← plan de lanzamiento del rebranding (fases, riesgos, transición de assets)
   entrega-cliente/             ← carpeta de entrega para marketing de WAY — ver Notas Técnicas — Carpeta de Entrega
+    01-Logo/
+      WAY FOR MEN/                ← logo de cortesía, cuenta secundaria fuera de alcance — ver Notas Técnicas — Logos Secundarios
+      WAY COMUNIDAD/               ← ídem, cuenta de respaldo @way_peruvian_comunidad
   archivo/                     ← documentos superados o de referencia — no se iteran más (ver nota abajo)
     territorios-way.html         ← presentación histórica de los 3 territorios (ya superada — cliente ya eligió)
     propuesta-identidad.html     ← propuesta histórica de paletas, logos y tipografías (ya superada)
