@@ -246,6 +246,11 @@
     .compare-photo.compare-photo--logo-old > img { width: 72%; height: 72%; object-fit: contain; }
     .compare-photo.compare-photo--logo-new { aspect-ratio: 1/1; background: var(--color-negro); }
     .compare-photo.compare-photo--logo-new .wordmark { font-size: 2.5rem; }
+    /* Avatar sequence (4 steps): circular crop, matches how each asset actually renders as an Instagram avatar */
+    .compare-grid--4col { grid-template-columns: repeat(4, 1fr); }
+    .compare-photo.compare-photo--avatar { aspect-ratio: 1/1; border-radius: 50%; background: var(--color-white); overflow: hidden; }
+    .compare-photo.compare-photo--avatar > img { width: 100%; height: 100%; object-fit: cover; }
+    .compare-col-label--puente { color: var(--color-terracota); }
 
     /* ===== STORY MOCKUP (9:16 — teaser) ===== */
     .story-mock { width: 100%; max-width: 220px; aspect-ratio: 9/16; border-radius: var(--radius-lg); border: 1px solid var(--color-borde); background: linear-gradient(160deg, #3B2D22 0%, var(--color-negro) 100%); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); }
@@ -638,7 +643,7 @@
 
     <h2 class="subsection-title">Checklist — secuencia hora por hora</h2>
     <div class="checklist">
-      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar y bio en Instagram, WhatsApp Business y TikTok, dentro de la misma hora</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
+      <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar (Puente A — wordmark sobre fondo marfil, no el monograma todavía; ver secuencia completa en Fase 4) y bio en Instagram, WhatsApp Business y TikTok, dentro de la misma hora</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Cambiar avatar y datos en Shopify, dentro de la misma hora que el resto de los canales</p><span class="check-owner">Responsable: <strong>Juan</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 — Publicar en Instagram el Reel de anuncio (Opción 1 — "Cara a cara")</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
       <div class="check-item"><span class="check-box">☐</span><div><p class="check-text">Hora 0 + 30 min — Publicar el carrusel de Stories de refuerzo, subiendo las 4 imágenes ya listas de <code>assets/stories-dia-d/</code> como foto (no rearmar el texto a mano) + sticker de encuesta nativo en la 4ta</p><span class="check-owner">Responsable: <strong>Nayelli</strong></span></div></div>
@@ -924,7 +929,7 @@
       <div class="teaser-day">
         <span class="teaser-day-label">Semana 3</span>
         <p class="teaser-day-goal">Cerrar el "modo lanzamiento".</p>
-        <p class="teaser-day-caption">Vuelta completa a la cadencia normal de la guía de Instagram. El cambio de imagen ya no se menciona salvo que surja orgánicamente en comentarios — a esta altura, ya es simplemente cómo se ve WAY.</p>
+        <p class="teaser-day-caption">Vuelta completa a la cadencia normal de la guía de Instagram. El cambio de imagen ya no se menciona salvo que surja orgánicamente en comentarios — a esta altura, ya es simplemente cómo se ve WAY. Es también la ventana en la que, si las preguntas sobre el cambio ya bajaron, el avatar pasa de Puente B al monograma final (ver Fase 4).</p>
         <span class="check-owner" style="margin-top:var(--space-3);display:block;">Responsable: <strong>Nayelli</strong></span>
       </div>
     </div>
@@ -990,11 +995,40 @@
       </div>
     </div>
 
+    <h2 class="subsection-title">Secuencia del avatar de Instagram — 4 pasos, no 2</h2>
+    <p style="font-size:var(--text-sm);color:var(--color-gris);max-width:680px;margin-bottom:var(--space-2);">Se solicitó evaluar si pasar directo del logo actual al monograma podía confundir a las clientas en una búsqueda — el ícono cambia demasiado de golpe frente a un logo actual que sí trae el nombre completo. Se resuelve con dos pasos puente en vez de uno: primero el wordmark completo sobre fondo claro, después sobre fondo oscuro, y recién ahí el ícono final. Mismo criterio que ya usa el sistema para cualquier ajuste de identidad — de a poco, nunca de un salto.</p>
+    <div class="compare-grid compare-grid--4col">
+      <div>
+        <span class="compare-col-label compare-col-label--before">Hoy</span>
+        <div class="compare-photo compare-photo--avatar"><img src="assets/logo/logo.webp" alt="Logo anterior de WAY, vigente en Instagram hoy"></div>
+      </div>
+      <div>
+        <span class="compare-col-label compare-col-label--puente">Puente A</span>
+        <div class="compare-photo compare-photo--avatar"><img src="assets/logo/avatar-puente-1-marfil.svg" alt="Wordmark WAY completo sobre fondo marfil"></div>
+      </div>
+      <div>
+        <span class="compare-col-label compare-col-label--puente">Puente B</span>
+        <div class="compare-photo compare-photo--avatar"><img src="assets/logo/avatar-puente-2-negro.svg" alt="Wordmark WAY completo sobre fondo negro"></div>
+      </div>
+      <div>
+        <span class="compare-col-label compare-col-label--after">Final</span>
+        <div class="compare-photo compare-photo--avatar"><img src="assets/logo/way-monogram.svg" alt="Monograma W — identidad final aprobada"></div>
+      </div>
+    </div>
+
+    <div class="pending-block" style="background:var(--color-white);border-color:var(--color-borde);border-left-color:var(--color-terracota);">
+      <span class="pending-label" style="color:var(--color-terracota);">Cuándo cambia cada paso</span>
+      <p style="color:var(--color-negro);"><strong>Hoy → Puente A:</strong> Hora 0 del Día D (ver checklist, Fase 2).</p>
+      <p style="color:var(--color-negro);"><strong>Puente A → Puente B:</strong> <span class="pending-inline" style="white-space:normal;">[PENDIENTE — Cliente: falta definir el disparador. Al no perderse el nombre completo en ningún momento de este paso, no es un cambio de alto riesgo — puede resolverse con un plazo fijo corto en vez de esperar una señal]</span></p>
+      <p style="color:var(--color-negro);"><strong>Puente B → Final (monograma):</strong> cuando bajen las preguntas/comentarios sobre el cambio — revisar respuestas al highlight "Nueva Imagen" y DMs; ~3 días consecutivos sin preguntas nuevas es la señal. <span class="pending-inline" style="white-space:normal;">[PENDIENTE — Cliente: confirmar tope máximo, sugerido 4 semanas desde el Día D, para que el puente no se lea como un rebrand a medio terminar]</span> Responsable de monitorear y ejecutar los 3 cambios: <strong>Nayelli</strong>.</p>
+    </div>
+
     <table class="rules-table">
       <thead><tr><th>Asset</th><th>Qué pasa</th><th>Responsable</th></tr></thead>
       <tbody>
         <tr><td>Publicaciones antiguas del feed</td><td>Se quedan. No se borran ni se archivan — el contraste entre lo viejo y lo nuevo en el grid es la prueba de evolución.</td><td>—</td></tr>
         <tr><td>Highlights viejos</td><td>Se archivan (no se borran) los que muestren el logo anterior de forma prominente; se crean highlights nuevos con el sistema de la sección 10 del brandbook (Colaboraciones, Clientes, Tienda Damero, Horarios, Modelos, Nuestro Equipo, Testimonios, Página web, Cómo Comprar). "WAY for Men" se retira — línea descontinuada. "Envíos" y "Medios de Pago" se consolidan dentro de "Cómo Comprar".</td><td>Nayelli</td></tr>
+        <tr><td>Avatar de Instagram</td><td>Hora 0: sube Puente A (wordmark, fondo marfil) — no directo al monograma. Pasa por Puente B (fondo negro) antes de llegar al monograma final. Ver secuencia completa y disparadores de cada paso arriba.</td><td>Nayelli</td></tr>
         <tr><td>Empaque físico</td><td>Transición dual: se agota el inventario existente en productos ya en tienda. El Día D no espera al empaque nuevo — si el definitivo (con logo nuevo) no llegó a tiempo, se despacha con empaque transicional/genérico sin el logo anterior mientras tanto; nunca se vuelve al empaque viejo.</td><td>Lizzie</td></tr>
         <tr><td>Material de tienda física</td><td>Señalética y vitrina se actualizan el Día D — material impreso viejo se retira ese mismo día, sin mezcla.</td><td>Lizzie</td></tr>
         <tr><td>Plantillas de WhatsApp</td><td>Se actualizan en la Hora 0 — es el canal transaccional donde una clienta activa notaría la inconsistencia de inmediato.</td><td>Juan (WAY Inbox)</td></tr>

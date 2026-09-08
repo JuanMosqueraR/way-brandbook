@@ -22,6 +22,7 @@ Marca de moda femenina peruana. Canal principal ecommerce con tienda física.
 
 Leer esto primero — es lo que cambió más recientemente y lo que hay que resolver antes de seguir avanzando:
 
+- **Avatar de Instagram — secuencia de transición "puente" (08/09), en curso.** Lizzie pidió evaluar el salto directo del logo actual al monograma; se resolvió con una secuencia de 4 pasos (Hoy → Puente A marfil → Puente B negro → Monograma). Implementado en `estrategia-lanzamiento.html` (Fase 4) y en `entrega-cliente/06-Lanzamiento/Avatar-Instagram-Puente/`. **Quedan 2 pendientes reales sin cerrar:** el disparador Puente A→B (sin definir) y el tope máximo del puente B→Final (sugerido 4 semanas, sin confirmar). Ver Notas Técnicas — Avatar de Instagram (Puente) para el detalle completo. Los 2 PDF de `entrega-cliente/` que dependen de `estrategia-lanzamiento.html` (`05-Documentos-de-Marca/Estrategia-Lanzamiento-WAY.pdf` y `06-Lanzamiento/05-Fase-4-Transicion-de-Assets.pdf`) **todavía no se regeneraron** — esperar a que se cierren esos 2 pendientes antes de regenerar, para no repetir el proceso.
 - **`brandbook.html` ya no tiene ningún bloqueante de contenido pendiente de la clienta.** Misión y Visión se cerraron el 19/08 (Lizzie dio su alcance por audio — crecimiento nacional/tiendas ancla para Visión, moda moderna + seguridad/confianza de la clienta para Misión — se redactó una propuesta y la aprobó sin cambios) y el diseño/dirección de Empaque también quedó validado el mismo día. Junto con el tagline **"Con nombre propio"** (ya cerrado antes), toda la identidad — visual y de contenido — está aprobada por la clienta.
 - **Repo sincronizado y pusheado.** `git push` hecho el 19/08 (`4f99d46..a8b4621`), GitHub Pages al día con los cambios de Misión/Visión. Sigue aplicando la norma general para el futuro: **confirmar con Juan antes de cada `git push`.**
 - **Cotización aprobada y facturación en curso:** monto final **S/6,500**, 50% ya pagado, 50% restante al finalizar el proyecto. `propuesta-economica-v3.html` es el documento que se aprobó.
@@ -279,6 +280,37 @@ No se modificó `LEEME.pdf` — las dos carpetas nuevas se explican solas por su
 
 ---
 
+## Notas Técnicas — Avatar de Instagram (Puente)
+
+Lizzie validó el monograma como identidad final del avatar, pero en la revisión del brandbook (08/09) hizo notar que el salto directo desde el logo actual (silueta + wordmark + "Empower yourself") a una sola letra abstracta podía confundir a las clientas en una búsqueda de Instagram — el logo actual sí trae el nombre completo, el monograma no. Juan ya le había propuesto lo mismo en la reunión: un wordmark completo como paso intermedio.
+
+**Comparativo de decisión (Artifact privado, antes de tocar producción):** se generó un comparativo con las 2 variantes de fondo (círculo negro/wordmark marfil vs. círculo marfil/wordmark negro), a escala de perfil y a escala real de una fila de búsqueda de Instagram (40px) — el tamaño donde realmente vive la preocupación de Lizzie, no el de la foto de perfil grande. Mismo principio que ya rige el proyecto: nunca aplicar un cambio a un asset aprobado sin mostrarlo primero.
+
+**Secuencia final aprobada — 4 pasos, no 2:** Lizzie no eligió una sola variante de puente, sino las dos en secuencia:
+1. **Hoy** — logo actual (sale de uso en la Hora 0 del Día D).
+2. **Puente A** — wordmark completo, círculo marfil / texto negro. Sube en la Hora 0.
+3. **Puente B** — wordmark completo, círculo negro / texto marfil.
+4. **Final** — monograma W (`way-monogram.svg`, ya aprobado, sin cambios).
+
+Mismo criterio que ya usa el proyecto para cualquier ajuste de identidad — de a poco, no de un salto (ver Notas Técnicas — Pipeline del Wordmark, calibración `opsz` 96→30→20→16).
+
+**Disparadores de cada paso:**
+- Hoy → Puente A: Hora 0 del Día D. Cerrado.
+- Puente B → Final: cuando bajen las preguntas/comentarios sobre el cambio (revisar respuestas al highlight "Nueva Imagen" y DMs; ~3 días consecutivos sin preguntas nuevas es la señal que monitorea Nayelli). **`[PENDIENTE — Cliente]` el tope máximo** — sugerido 4 semanas desde el Día D, para que el puente no se lea como un rebrand a medio terminar; Juan no lo ha confirmado todavía.
+- Puente A → Puente B: **`[PENDIENTE — Cliente]` sin definir.** Juan indicó explícitamente que este disparador "aún no está definido" — no asumir un plazo. Al no perderse el nombre completo en ningún momento de este paso (ambas puente muestran "WAY"), es un cambio de bajo riesgo — probablemente resoluble con un plazo fijo corto en vez de esperar una señal, pero queda su decisión.
+
+**Dónde vive esto:** documentado en `estrategia-lanzamiento.html`, sección "06 — Fase 4 — Transición de Assets" (comparativo de 4 columnas + bloque de disparadores), con referencias cruzadas breves en el checklist Hora 0 (Fase 2) y en la tarjeta de Semana 3 (Fase 3) — sin repetir el detalle completo en más de un lugar. La fila "Avatar de Instagram" ya existía en la tabla de reglas de Fase 4; se actualizó ahí también.
+
+**Assets de producción — por qué NO viven en `entrega-cliente/01-Logo/`:** el primer intento los guardó ahí como `way-wordmark-avatar-puente-*`, y Juan lo corrigió: visualmente son círculos (mismo formato que el monograma), aunque el contenido es el wordmark completo — llamarlos "wordmark" junto al resto de los archivos de esa carpeta (que sí son wordmark plano, sin círculo) generaba confusión, y además son piezas transitorias, no parte del sistema de logo permanente. Se movieron a `entrega-cliente/06-Lanzamiento/Avatar-Instagram-Puente/` (mismo criterio que `Highlights-Instagram/02-Temporal-Nueva-Imagen/`, ya en esa misma carpeta por ser temporal) y se renombraron sin la palabra "wordmark", con el orden explícito en el nombre: `avatar-puente-1-marfil.*` / `avatar-puente-2-negro.*` (SVG + PDF vectorial + PNG 1000px). Un `LEEME.txt` ahí explica qué son, el orden de uso y remite a `estrategia-lanzamiento.html` para el detalle de disparadores — no lo repite. El archivo fuente (`assets/logo/`) usa el mismo nombre para no tener dos nomenclaturas distintas del mismo asset en el repo.
+
+**PDF vectorial sin cairosvg:** en esta máquina `cairosvg` no tiene la librería nativa `cairo` disponible (`OSError: no library called "cairo-2"`), a diferencia de lo documentado en Notas Técnicas — Pipeline del Wordmark. Se generó el PDF con Playwright local (`page.pdf()` sobre un HTML con el SVG a tamaño explícito) en su lugar — mismo método ya usado para hang tag/tarjeta de agradecimiento, y de hecho más consistente con el resto del pipeline de piezas planas que cairosvg. Verificado con PyMuPDF (`get_links()`/`get_text()` vacíos, 1 sola página — la primera generación salió con 2 páginas por el mismo bug de `<svg>` sin `display:block` ya documentado para el sticker de sellado, corregido igual).
+
+**Hallazgo pendiente de resolver — `logo.webp` no es igual al avatar real de Instagram:** al pedir el comparativo, Juan adjuntó una captura del avatar real, vigente hoy en Instagram — tiene un rombo de doble línea con un rombo-sombra sólido detrás (desplazado), y el logo (`logo.webp`) adentro. El archivo `assets/logo/logo.webp` del repo **no tiene ese rombo** — es el logo plano solo. O sea, el asset "antes" que ya usa `estrategia-lanzamiento.html` (sección Transición de Assets) no es 100% igual al que está publicado hoy. No se corrigió todavía — pendiente de decisión de Juan. El rombo se reconstruyó a mano (polígonos SVG) para el comparativo/imagen de WhatsApp porque no hay forma de guardar a disco una imagen pegada directamente en el chat (mismo límite ya documentado para la bolsa blanca de empaque, ver Notas Técnicas — Empaque).
+
+**Regeneración de PDF pendiente:** `entrega-cliente/05-Documentos-de-Marca/Estrategia-Lanzamiento-WAY.pdf` y `entrega-cliente/06-Lanzamiento/05-Fase-4-Transicion-de-Assets.pdf` reflejan el `estrategia-lanzamiento.html` de antes de este cambio — no se regeneraron todavía a propósito, para no repetir el proceso mientras sigan abiertos los 2 pendientes de arriba.
+
+---
+
 ## Archivos del Proyecto
 
 ```
@@ -291,6 +323,10 @@ way-brandbook/
     01-Logo/
       WAY FOR MEN/                ← logo de cortesía, cuenta secundaria fuera de alcance — ver Notas Técnicas — Logos Secundarios
       WAY COMUNIDAD/               ← ídem, cuenta de respaldo @way_peruvian_comunidad
+    06-Lanzamiento/
+      Avatar-Instagram-Puente/    ← avatar-puente-1-marfil.*, avatar-puente-2-negro.* + LEEME.txt — piezas
+                                     temporales del Día D, no del sistema de logo permanente — ver Notas
+                                     Técnicas — Avatar de Instagram (Puente)
   archivo/                     ← documentos superados o de referencia — no se iteran más (ver nota abajo)
     territorios-way.html         ← presentación histórica de los 3 territorios (ya superada — cliente ya eligió)
     propuesta-identidad.html     ← propuesta histórica de paletas, logos y tipografías (ya superada)
@@ -307,7 +343,11 @@ way-brandbook/
       way-wordmark-negro.pdf          ← PDF vectorial, equivalente a AI/EPS — generado con cairosvg, ver Notas Técnicas
       way-wordmark-marfil.pdf         ← ídem, versión invertida
       way-monogram.pdf                ← ídem, monograma
-      logo.webp                       ← ⚠️ logo legacy pre-existente, distinto a La Firma — ver nota abajo
+      logo.webp                       ← ⚠️ logo legacy pre-existente, distinto a La Firma — ver nota abajo.
+                                          Ojo: no incluye el rombo del avatar real de IG — ver Notas Técnicas
+                                          — Avatar de Instagram (Puente)
+      avatar-puente-1-marfil.svg/.pdf/-1000px.png  ← avatar temporal, wordmark en círculo marfil — Puente A
+      avatar-puente-2-negro.svg/.pdf/-1000px.png   ← ídem, círculo negro — Puente B
     highlights/                ← 10 portadas de highlights de Instagram, PNG reales listos para subir
                                    (círculo marfil + ícono casi-negro) — 9 del sistema permanente ya
                                    mostrado en brandbook.html §10 (mismos paths SVG, exportados como

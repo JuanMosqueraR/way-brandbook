@@ -1,0 +1,38 @@
+AVATAR DE INSTAGRAM — SECUENCIA DE TRANSICIÓN (PUENTE)
+========================================================
+
+Qué es esto
+-----------
+El monograma W (carpeta 01-Logo/) es la identidad FINAL y ya aprobada para
+el avatar de Instagram. Estos 2 archivos NO la reemplazan — son un paso
+intermedio, temporal, para que el cambio de foto de perfil no se sienta
+tan brusco frente al logo actual.
+
+Por qué están acá y no en 01-Logo/
+-----------------------------------
+Visualmente son círculos (mismo formato que el monograma), pero el
+contenido es el nombre completo "WAY" (wordmark), no la letra sola.
+Guardarlos junto al resto del logo permanente iba a generar confusión
+sobre cuál usar. Como son piezas de uso temporal y solo aplican al
+lanzamiento, viven acá — mismo criterio que la carpeta
+Highlights-Instagram/02-Temporal-Nueva-Imagen/.
+
+Orden de uso — 3 pasos, no 2
+------------------------------
+  1º  avatar-puente-1-marfil   → sube el Día D, Hora 0
+  2º  avatar-puente-2-negro    → sube después (disparador aún sin definir
+                                   con el cliente)
+  3º  way-monogram.svg (en 01-Logo/) → identidad final. Sube cuando bajen
+                                   las preguntas sobre el cambio (~3 días
+                                   consecutivos sin preguntas nuevas)
+
+El detalle completo de cuándo pasa cada paso, quién lo ejecuta (Nayelli) y
+qué falta confirmar todavía está en estrategia-lanzamiento.html, sección
+"06 — Fase 4 — Transición de Assets" (y su PDF,
+05-Documentos-de-Marca/Estrategia-Lanzamiento-WAY.pdf). No se repite acá
+para no tener el mismo dato desactualizándose en dos lugares.
+
+Archivos
+--------
+avatar-puente-1-marfil.svg / .pdf / -1000px.png
+avatar-puente-2-negro.svg  / .pdf / -1000px.png
