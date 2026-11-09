@@ -1,0 +1,17 @@
+WAY — Colores para pantalla (pegar en el Kit de marca de Canva)
+
+PALETA DEL BRANDBOOK
+Marfil cálido: #F7F3EE
+Casi negro: #2A1F18
+Terracota: #C4714A
+Gris cálido: #8A7D70
+Borde: #E5DDD2
+
+VERSIONES DE PANTALLA (solo pantalla, sin equivalente de impresión)
+Terracota profundo: #9C4F2C
+Terracota suave: #D9A487
+Marfil profundo: #F1EAE0
+Casi negro 72 %: #635A54
+
+Uso: casi negro para lectura; casi negro 72 % para texto secundario; terracota profundo para texto pequeño de acento;
+terracota y gris cálido en titulares grandes, líneas, íconos y superficies; terracota suave solo sobre fondo casi negro.
