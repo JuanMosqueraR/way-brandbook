@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAY — Anexo al Brandbook · Pantallas y digital</title>
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+  <style>
+    /* Mismo sistema visual del brandbook (Territorio 01 — La Firma). Anexo: lleva la identidad aprobada
+       a pantallas (web, redes, WhatsApp, correo). No cambia el Brandbook ni lo impreso. */
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Archivo:wdth,wght@100..125,400..700&display=swap');
+
+    :root {
+      --color-marfil:    #F7F3EE;
+      --color-negro:     #2A1F18;
+      --color-terracota: #C4714A;
+      --color-gris:      #8A7D70;
+      --color-borde:     #E5DDD2;
+      --color-white:     #FFFFFF;
+
+      --color-pending:        #D97706;
+      --color-pending-bg:     #FFFBEB;
+      --color-pending-border: #FCD34D;
+      --color-pending-text:   #92400E;
+
+      --color-ok-bg: #F0FDF4; --color-ok-border: #BBF7D0; --color-ok-text: #166534;
+      --color-no-bg: #FFF1F2; --color-no-border: #FECDD3; --color-no-text: #9F1239;
+
+      --font-display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+      --font-family:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --font-regular: 400; --font-medium: 500; --font-semibold: 600;
+
+      --text-xs: 0.75rem; --text-sm: 0.875rem; --text-base: 1rem; --text-lg: 1.125rem;
+      --text-xl: 1.25rem; --text-2xl: 1.5rem; --text-3xl: 1.875rem; --text-4xl: 2.25rem;
+      --text-5xl: 3rem; --text-6xl: 3.75rem;
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+      --sidebar-width: 260px;
+      --section-pad-x: var(--space-16);
+      --section-pad-y: var(--space-24);
+
+      --shadow-sm: 0 1px 3px rgba(42,31,24,.08);
+      --shadow-md: 0 4px 16px rgba(42,31,24,.10);
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+      --transition: 200ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-family); font-weight: var(--font-regular);
+      color: var(--color-negro); background: var(--color-marfil);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    /* Evita que los items de cualquier grid se nieguen a encogerse por debajo del
+       ancho de su contenido (bug clásico de CSS Grid) — sin efecto visual cuando
+       sobra espacio, solo actúa en anchos de viewport ajustados. */
+    [class*="grid"] > * { min-width: 0; }
+    /* Tablas anchas no achican sus columnas más allá de cierto punto — que
+       escapen a un scroll horizontal propio en vez de desbordar la página
+       completa. Inerte cuando la tabla ya cabe en el ancho disponible. */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    #sidebar {
+      position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
+      background: var(--color-negro); display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto; overflow-x: hidden;
+    }
+    .sidebar-header { padding: var(--space-8) var(--space-6); border-bottom: 1px solid rgba(247,243,238,.1); }
+    .sidebar-brand {
+      font-family: var(--font-display); font-weight: var(--font-regular); font-size: var(--text-xl);
+      color: var(--color-marfil); letter-spacing: .15em; padding-left: .15em;
+      text-transform: uppercase; display: block;
+      font-optical-sizing: none; font-variation-settings: 'opsz' 16;
+    }
+    .sidebar-subtitle {
+      font-size: var(--text-xs); color: var(--color-terracota); letter-spacing: .2em;
+      text-transform: uppercase; margin-top: var(--space-2); display: block;
+    }
+    .sidebar-nav { flex: 1; padding: var(--space-6) 0; list-style: none; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-6);
+      color: rgba(247,243,238,.55); text-decoration: none; font-size: var(--text-sm); font-weight: var(--font-medium);
+      transition: color var(--transition), background var(--transition), border-left-color var(--transition);
+      border-left: 2px solid transparent; line-height: 1.3; cursor: pointer;
+    }
+    .sidebar-nav a:hover { color: rgba(247,243,238,.9); background: rgba(247,243,238,.04); }
+    .sidebar-nav a.active { color: var(--color-terracota); border-left-color: var(--color-terracota); background: rgba(196,113,74,.08); }
+    .nav-num { font-size: var(--text-xs); color: var(--color-terracota); opacity: .75; min-width: 20px; }
+    .sidebar-footer { padding: var(--space-6); border-top: 1px solid rgba(247,243,238,.1); }
+    .sidebar-footer-text { font-size: var(--text-xs); color: rgba(247,243,238,.3); letter-spacing: .1em; }
+
+    #menu-toggle {
+      display: none; position: fixed; top: var(--space-4); left: var(--space-4); z-index: 200;
+      width: 44px; height: 44px; background: var(--color-negro); border: none; border-radius: var(--radius-md);
+      cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    #menu-toggle span { display: block; width: 20px; height: 2px; background: var(--color-marfil); border-radius: 2px; }
+    #sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(42,31,24,.5); z-index: 99; }
+
+    #content { margin-left: var(--sidebar-width); }
+    .section { padding: var(--section-pad-y) var(--section-pad-x); min-height: 100vh; position: relative; }
+    .section--dark    { background: var(--color-negro); color: var(--color-marfil); }
+    .section--surface { background: #F1EAE0; }
+    .section--white   { background: var(--color-white); }
+
+    .section-label {
+      font-size: var(--text-xs); font-weight: var(--font-semibold); letter-spacing: .25em; text-transform: uppercase;
+      color: var(--color-terracota); margin-bottom: var(--space-3); display: block;
+    }
+    .section--dark .section-label { color: #D9A487; }
+    .section-title {
+      font-family: var(--font-display); font-size: var(--text-5xl); font-weight: 500; line-height: 1.08;
+      letter-spacing: -.01em; color: var(--color-negro); margin-bottom: var(--space-6);
+    }
+    .section--dark .section-title { color: var(--color-marfil); }
+    .section-intro {
+      font-size: var(--text-lg); line-height: 1.7; color: var(--color-gris); max-width: 680px; margin-bottom: var(--space-12);
+    }
+    .section--dark .section-intro { color: rgba(247,243,238,.65); }
+    .subsection-title {
+      font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--color-negro);
+      margin: var(--space-10) 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-borde);
+    }
+
+    .pending-block {
+      background: var(--color-pending-bg); border: 1px solid var(--color-pending-border);
+      border-left: 4px solid var(--color-pending); border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6); margin: var(--space-6) 0;
+    }
+    .pending-label {
+      display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--color-pending); margin-bottom: var(--space-2);
+    }
+    .pending-label::before { content: '⚠'; font-size: var(--text-sm); }
+    .pending-block p { font-size: var(--text-sm); color: var(--color-pending-text); line-height: 1.6; }
+
+    .do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: var(--space-6) 0 var(--space-10); }
+    .do-block, .dont-block { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .do-block   { background: var(--color-ok-bg); border: 1px solid var(--color-ok-border); }
+    .dont-block { background: var(--color-no-bg); border: 1px solid var(--color-no-border); }
+    .do-block   .block-title { color: var(--color-ok-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .dont-block .block-title { color: var(--color-no-text); font-size: var(--text-sm); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .do-block ul, .dont-block ul { list-style: none; padding: 0; }
+    .do-block li { color: var(--color-ok-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .do-block li::before { content: '✓'; font-weight: 700; }
+    .dont-block li { color: var(--color-no-text); font-size: var(--text-sm); line-height: 1.6; padding: var(--space-1) 0; display: flex; gap: var(--space-2); }
+    .dont-block li::before { content: '✕'; font-weight: 700; }
+
+    .rules-table { width: 100%; border-collapse: collapse; margin: var(--space-8) 0; }
+    .rules-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gris); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); }
+    .rules-table td { font-size: var(--text-sm); padding: var(--space-4); border-bottom: 1px solid var(--color-borde); color: var(--color-negro); vertical-align: top; }
+    .rules-table tr:last-child td { border-bottom: none; }
+
+    .comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .comp-card { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-md); padding: var(--space-5); }
+    .comp-card-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-negro); margin-bottom: var(--space-2); }
+    .comp-card-desc { font-size: var(--text-xs); color: var(--color-gris); line-height: 1.5; }
+
+    /* ===== 01 PORTADA ===== */
+    #portada {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: var(--color-negro); overflow: hidden; padding: var(--space-24) var(--space-16);
+    }
+    #portada::before {
+      content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(196,113,74,.14) 0%, transparent 70%); pointer-events: none;
+    }
+    .portada-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2); background: rgba(247,243,238,.06);
+      border: 1px solid rgba(247,243,238,.15); border-radius: var(--radius-full); padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.7); text-transform: uppercase; margin-bottom: var(--space-10);
+    }
+    .portada-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-terracota); display: inline-block; }
+    .wordmark { font-family: var(--font-display); font-weight: var(--font-regular); text-transform: uppercase; color: var(--color-marfil); line-height: 1; display: inline-block; font-size: 3.5rem; letter-spacing: .16em; padding-left: .16em; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .portada-line { width: 60px; height: 1px; background: var(--color-terracota); margin: var(--space-8) auto; }
+    .portada-subtitle { font-family: var(--font-display); font-size: var(--text-2xl); font-style: italic; color: rgba(247,243,238,.75); }
+    .portada-meta { display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap; justify-content: center; }
+    .portada-meta-item .label { display: block; font-size: var(--text-xs); letter-spacing: .2em; color: rgba(247,243,238,.35); text-transform: uppercase; margin-bottom: 2px; }
+    .portada-meta-item .value { display: block; font-size: var(--text-sm); color: rgba(247,243,238,.75); font-weight: var(--font-medium); }
+    .portada-note { margin-top: var(--space-16); font-size: var(--text-xs); letter-spacing: .05em; color: rgba(217,164,135,.85); max-width: 480px; }
+
+    
+
+    /* ===== Ajustes propios del anexo: el texto pequeño sigue las reglas de este mismo documento ===== */
+    :root {
+      --color-terracota-ink: #9C4F2C;
+      --color-terracota-soft: #D9A487;
+      --color-marfil-deep: #F1EAE0;
+      --ink-2: rgba(42,31,24,.72);
+    }
+    .section-label { color: var(--color-terracota-ink); }
+    .section--dark .section-label { color: var(--color-terracota-soft); }
+    .section-intro { color: var(--ink-2); }
+    .comp-card-desc, .rules-table th, .portada-meta-item .label { color: var(--ink-2); }
+    .portada-meta-item .label { color: rgba(247,243,238,.6); }
+    .portada-note { color: var(--color-terracota-soft); }
+    .section-title, .portada-subtitle, .priority-num { font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .section-title em, .section-title i { font-style: italic; font-weight: 400; color: var(--color-terracota); }
+    .section--dark .section-title em { color: var(--color-terracota-soft); }
+    .lead-p { font-size: var(--text-base); color: var(--ink-2); max-width: 680px; margin-bottom: var(--space-5); }
+    .small-note { font-size: var(--text-sm); color: var(--ink-2); max-width: 680px; margin-top: var(--space-3); line-height: 1.5; }
+    .tag-new { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-terracota-ink); border: 1px solid var(--color-terracota-ink); border-radius: 999px; padding: 2px 9px; margin-left: 8px; vertical-align: middle; }
+    .pend-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #92400E; background: #FFFBEB; border: 1px solid #FCD34D; border-radius: 999px; padding: 2px 9px; margin-left: 8px; vertical-align: middle; }
+    .list-clean { list-style: none; }
+    .list-clean li { font-size: var(--text-sm); color: var(--color-negro); padding: 5px 0 5px 18px; position: relative; line-height: 1.5; }
+    .list-clean li::before { content: '—'; position: absolute; left: 0; color: var(--color-terracota); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin: var(--space-8) 0; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-8) 0; }
+    .comp-card-title { font-size: var(--text-base); }
+    .code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .92em; background: rgba(42,31,24,.06); border-radius: 4px; padding: 1px 5px; }
+
+    /* ----- Tipografía: tabla de papeles con muestra ----- */
+    .role-table { width: 100%; border-collapse: collapse; margin: var(--space-6) 0; }
+    .role-table th { text-align: left; font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); padding: var(--space-3) var(--space-4); border-bottom: 2px solid var(--color-borde); white-space: nowrap; }
+    .role-table td { padding: var(--space-4); border-bottom: 1px solid var(--color-borde); vertical-align: middle; font-size: var(--text-sm); }
+    .role-table tr:last-child td { border-bottom: none; }
+    .role-name { font-weight: 600; color: var(--color-negro); display: block; margin-bottom: 2px; }
+    .role-spec { color: var(--ink-2); font-size: var(--text-sm); line-height: 1.45; }
+    .role-size { white-space: nowrap; color: var(--color-negro); font-weight: 500; }
+    .sp { color: var(--color-negro); margin: 0; }
+    .sp-title { font-family: var(--font-display); font-weight: 500; font-size: 34px; line-height: 1.1; letter-spacing: -.022em; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .sp-title em { font-style: italic; font-weight: 400; color: var(--color-terracota); }
+    .sp-num { font-family: var(--font-display); font-weight: 500; font-size: 56px; line-height: 1; color: var(--color-terracota); font-optical-sizing: none; font-variation-settings: 'opsz' 36; }
+    .sp-prod { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.1; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .sp-name { font-weight: 500; font-size: 15px; line-height: 1.35; }
+    .sp-price { font-weight: 600; font-size: 15px; font-variant-numeric: tabular-nums; }
+    .sp-price-big { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.1; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .sp-block { font-weight: 600; font-size: 18px; }
+    .sp-label { font-weight: 600; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-stretch: 125%; color: var(--color-terracota-ink); }
+    .sp-body { font-size: 16px; line-height: 1.6; }
+    .sp-aviso { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+    .sp-btn { display: inline-block; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; background: var(--color-negro); color: var(--color-marfil); padding: 14px 26px; }
+    .rule-list { margin: var(--space-6) 0; padding-left: var(--space-5); font-size: var(--text-sm); color: var(--color-negro); max-width: 720px; }
+    .rule-list li { margin-bottom: 8px; line-height: 1.55; }
+
+    /* ----- Color ----- */
+    .sw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin: var(--space-6) 0 var(--space-8); }
+    .sw { background: var(--color-white); border: 1px solid var(--color-borde); border-radius: var(--radius-md); overflow: hidden; }
+    .sw-chip { height: 84px; border-bottom: 1px solid var(--color-borde); }
+    .sw-body { padding: var(--space-3) var(--space-4) var(--space-4); }
+    .sw-name { font-size: var(--text-sm); font-weight: 600; display: block; }
+    .sw-vals { font-size: var(--text-xs); color: var(--ink-2); display: block; margin-top: 2px; line-height: 1.5; }
+    .sw-use { font-size: var(--text-xs); color: var(--color-negro); display: block; margin-top: 6px; line-height: 1.45; }
+    .use-chip { display: inline-block; padding: 6px 12px; border-radius: 4px; font-size: 15px; font-weight: 500; }
+
+    /* ----- Ejemplos vivos ----- */
+    .mock-wrap { display: flex; gap: var(--space-8); flex-wrap: wrap; align-items: flex-start; margin: var(--space-6) 0; }
+    .mock-wrap > div { min-width: 0; max-width: 100%; }
+    .mock-caption { font-size: var(--text-sm); color: var(--ink-2); margin-top: var(--space-2); max-width: 340px; line-height: 1.45; }
+    .m-card { width: 230px; background: var(--color-marfil); }
+    .m-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 22%; }
+    .m-card .m-info { padding: 10px 2px 0; }
+    .m-card .m-name { font-weight: 500; font-size: 15px; line-height: 1.35; display: block; }
+    .m-card .m-price { font-weight: 600; font-size: 15px; font-variant-numeric: tabular-nums; display: block; margin-top: 3px; }
+    .m-pdp { width: 640px; max-width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); background: var(--color-marfil); border: 1px solid var(--color-borde); padding: var(--space-6); }
+    .m-pdp img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 22%; }
+    .m-pdp .m-label { font-weight: 600; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-stretch: 125%; color: var(--color-terracota-ink); display: block; margin-bottom: 8px; }
+    .m-pdp h3 { font-family: var(--font-display); font-weight: 500; font-size: 32px; line-height: 1.1; letter-spacing: -.022em; margin-bottom: 10px; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .m-pdp .m-price { font-weight: 600; font-size: 20px; font-variant-numeric: tabular-nums; margin-bottom: 14px; display: block; }
+    .m-sizes { display: flex; gap: 8px; margin-bottom: 14px; }
+    .m-sizes span { width: 42px; height: 42px; border: 1px solid var(--color-borde); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; }
+    .m-sizes span.on { background: var(--color-negro); color: var(--color-marfil); border-color: var(--color-negro); }
+    .m-ship { font-size: 14px; font-weight: 600; margin-top: 14px; display: block; }
+    .m-cart { width: 420px; max-width: 100%; background: var(--color-marfil); border: 1px solid var(--color-borde); padding: var(--space-5); }
+    .m-line { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--color-borde); }
+    .m-line img { width: 64px; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 22%; }
+    .m-line .m-name { font-weight: 500; font-size: 16px; line-height: 1.3; display: block; }
+    .m-line .m-var { font-size: 14px; color: var(--ink-2); display: block; margin-top: 2px; }
+    .m-line .m-p { font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; }
+    .m-total { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 4px; }
+    .m-total .t { font-weight: 600; font-size: 18px; }
+    .m-total .v { font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
+    .m-cart .m-note { font-size: 14px; color: var(--ink-2); line-height: 1.45; margin-bottom: 14px; }
+    .m-cart .sp-btn { display: block; text-align: center; }
+    .wa-phone { width: 340px; max-width: 100%; background: #E7DFD3; border-radius: 18px; padding: 18px 14px 22px; }
+    .wa-head { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; color: #2A1F18; opacity: .75; margin-bottom: 12px; text-align: center; }
+    .wa-bubble { background: #fff; border-radius: 0 10px 10px 10px; padding: 0; overflow: hidden; box-shadow: 0 1px 1px rgba(0,0,0,.12); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 1.4; color: #111; }
+    .wa-hdr { background: var(--color-negro); display: flex; align-items: center; justify-content: center; height: 92px; }
+    .wa-hdr b { font-family: var(--font-display); font-weight: 400; font-size: 30px; letter-spacing: .16em; padding-left: .16em; color: var(--color-marfil); font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .wa-txt { padding: 10px 12px 8px; }
+    .wa-txt p { margin: 0 0 8px; }
+    .wa-time { text-align: right; font-size: 11px; color: #667781; padding: 0 12px 8px; }
+    .em-frame { width: 560px; max-width: 100%; background: var(--color-marfil); border: 1px solid var(--color-borde); }
+    .em-top { background: var(--color-negro); text-align: center; padding: 26px 20px; }
+    .em-top b { font-family: var(--font-display); font-weight: 400; font-size: 34px; letter-spacing: .16em; padding-left: .16em; color: var(--color-marfil); font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
+    .em-body { padding: 34px 36px 36px; }
+    .em-body .sp-title { font-size: 34px; margin: 10px 0 14px; }
+    .em-foot { border-top: 1px solid var(--color-borde); padding: 16px 36px; font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+
+    /* ----- Redes ----- */
+    .fmt-table td, .fmt-table th { font-size: var(--text-sm); }
+    .pend-cell { color: #92400E; }
+
+    @media (max-width: 768px) {
+      .two-col, .three-col { grid-template-columns: 1fr; }
+      .sw-grid { grid-template-columns: repeat(2, 1fr); }
+      .m-pdp { grid-template-columns: 1fr; padding: var(--space-4); }
+      .m-card { width: 100%; max-width: 260px; }
+      .wa-phone, .em-frame { width: 100%; }
+      .sp-title { font-size: 28px; }
+      .em-body { padding: 24px 20px; } .em-foot { padding: 14px 20px; }
+      .role-table th, .role-table td { padding: var(--space-3); }
+    }
+    @media (max-width: 768px) {
+      :root { --section-pad-x: var(--space-6); --section-pad-y: var(--space-16); }
+      #sidebar { transform: translateX(-100%); transition: transform 200ms ease; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-overlay.visible { display: block; }
+      #menu-toggle { display: flex; }
+      #content { margin-left: 0; }
+      .section-title { font-size: var(--text-4xl); }
+      .do-dont-grid, .comp-grid, .tree-compare, .filter-mockup { grid-template-columns: 1fr; }
+      .filter-sidebar { border-right: none; border-bottom: 1px solid var(--color-borde); padding-right: 0; padding-bottom: var(--space-6); }
+      .tree-list--flat { columns: 1; }
+      .priority-card { flex-direction: column; gap: var(--space-3); }
+      .crossref-card { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    .print-only-credit { display: none; }
+    @media print {
+      #sidebar, #menu-toggle, #sidebar-overlay { display: none !important; }
+      #content { margin-left: 0 !important; }
+      .section { min-height: auto; page-break-before: always; padding: 40px 60px; }
+      #portada { page-break-before: avoid; min-height: 100vh; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .comp-card, .tree-box, .priority-card, .crossref-card { break-inside: avoid; }
+      a { text-decoration: none; color: inherit; }
+      .print-only-credit { display: block; text-align: center; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; color: var(--color-gris); padding: 24px 0 0; }
+    }
+  
+    @media print {
+      .m-card, .m-pdp, .m-cart, .wa-phone, .em-frame, .sw, .role-table tr { break-inside: avoid; }
+      .role-table, .fmt-table { display: table; }
+      .subsection-title { break-after: avoid; } .sw-grid, .mock-wrap > div, .two-col, .rule-list li { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="menu-toggle" aria-label="Abrir menú" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-brand">WAY</span>
+    <span class="sidebar-subtitle">Anexo · Pantallas y digital</span>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#portada"   class="nav-link"><span class="nav-num">01</span>Portada</a></li>
+    <li><a href="#anexo"     class="nav-link"><span class="nav-num">02</span>Qué es este anexo</a></li>
+    <li><a href="#tipografia" class="nav-link"><span class="nav-num">03</span>Tipografía en pantalla</a></li>
+    <li><a href="#color"     class="nav-link"><span class="nav-num">04</span>Color en pantalla</a></li>
+    <li><a href="#web"       class="nav-link"><span class="nav-num">05</span>Web: tarjeta, ficha, carrito</a></li>
+    <li><a href="#redes"     class="nav-link"><span class="nav-num">06</span>Redes sociales</a></li>
+    <li><a href="#mensajes"  class="nav-link"><span class="nav-num">07</span>WhatsApp y correo</a></li>
+    <li><a href="#envios"    class="nav-link"><span class="nav-num">08</span>Promesa de envío</a></li>
+    <li><a href="#kit"       class="nav-link"><span class="nav-num">09</span>Kit y herramientas</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <p class="sidebar-footer-text">© 2026 WAY PERUVIAN</p>
+    <p class="sidebar-footer-text" style="margin-top:4px;opacity:.7;">Identidad de marca — Juan Mosquera</p>
+  </div>
+</nav>
+
+<main id="content">
+
+  <!-- 01 PORTADA -->
+  <section id="portada" class="section section--dark">
+    <div class="portada-badge"><span></span>Anexo al Brandbook</div>
+    <div class="wordmark">WAY</div>
+    <div class="portada-line"></div>
+    <p class="portada-subtitle">Pantallas y digital</p>
+    <div class="portada-meta">
+      <div class="portada-meta-item"><span class="label">Complementa</span><span class="value">Brandbook v1.1</span></div>
+      <div class="portada-meta-item"><span class="label">Aplica a</span><span class="value">Web · Redes · WhatsApp · Correo</span></div>
+      <div class="portada-meta-item"><span class="label">Edición</span><span class="value">2026</span></div>
+    </div>
+    <p class="portada-note">El Brandbook no cambia. Este anexo lleva su identidad a las pantallas —sobre todo a las pequeñas— y reúne en un solo lugar lo que necesita quien diseña para la web, las redes, WhatsApp y el correo. Lo impreso, el empaque y el bordado siguen exactamente como están.</p>
+  </section>
+
+  <!-- 02 EL ANEXO -->
+  <section id="anexo" class="section section--surface">
+    <span class="section-label">02 — El anexo</span>
+    <h1 class="section-title">Del papel a la <em>pantalla</em></h1>
+    <p class="section-intro">La escala tipográfica del Brandbook está pensada para el papel y las láminas: un titular de 48 a 64 px es natural en una página impresa. En una pantalla de celular, la misma jerarquía se lleva a tamaños menores y se afinan unos pocos detalles de lectura. Es la práctica habitual de un sistema de marca: la identidad es una, y cada medio tiene su propia escala.</p>
+
+    <div class="two-col">
+      <div class="comp-card">
+        <p class="comp-card-title">Sigue exactamente igual</p>
+        <ul class="list-clean">
+          <li>Logo, wordmark y monograma, con sus reglas de uso.</li>
+          <li>Los cinco colores de la paleta y sus equivalentes de impresión (CMYK).</li>
+          <li>Las dos familias: Bodoni Moda para titulares, Archivo para todo lo funcional.</li>
+          <li>Voz y tono: cercana, segura, nunca corporativa.</li>
+          <li>Impresos, empaque y etiqueta bordada.</li>
+        </ul>
+      </div>
+      <div class="comp-card">
+        <p class="comp-card-title">Lo que suma este anexo<span class="tag-new">Pantalla</span></p>
+        <ul class="list-clean">
+          <li>Una escala por papel (titular, nombre, precio, rótulo, cuerpo, aviso, botón) con tamaños para celular y computador.</li>
+          <li>Cuatro versiones de pantalla de colores de la paleta, para el texto pequeño y las superficies.</li>
+          <li>Criterios por canal: web, redes, WhatsApp y correo.</li>
+          <li>Un kit para Canva e Illustrator: colores, fuentes y guía de uso.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 TIPOGRAFÍA -->
+  <section id="tipografia" class="section section--white">
+    <span class="section-label">03 — Tipografía en pantalla</span>
+    <h1 class="section-title">Un papel, un <em>estilo</em></h1>
+    <p class="section-intro">Cada papel que cumple el texto tiene un solo estilo. Así una pieza se reconoce como WAY en cualquier canal, y quien diseña no necesita decidir la tipografía cada vez. Las muestras de abajo están compuestas con las fuentes reales.</p>
+
+    <table class="role-table">
+      <thead><tr><th>Papel</th><th>Muestra</th><th>Estilo</th><th>Celular · PC</th></tr></thead>
+      <tbody>
+        <tr><td><span class="role-name">Titular</span><span class="role-spec">página o sección</span></td>
+            <td><p class="sp sp-title">Con nombre <em>propio</em></p></td>
+            <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 16 · interlineado 1,1<br>Palabra de acento en cursiva 400, terracota</td>
+            <td class="role-size">34 · 48 px</td></tr>
+        <tr><td><span class="role-name">Cifra editorial</span><span class="role-spec">69K, SALE, palabra grande</span></td>
+            <td><p class="sp sp-num">SALE</p></td>
+            <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 36</td>
+            <td class="role-size">40 a 72 px</td></tr>
+        <tr><td><span class="role-name">Nombre de producto</span><span class="role-spec">encabezado de la ficha</span></td>
+            <td><p class="sp sp-prod">Chaqueta New Peplum</p></td>
+            <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 16</td>
+            <td class="role-size">28 · 40 px</td></tr>
+        <tr><td><span class="role-name">Nombre en lista y compra</span><span class="role-spec">tarjeta, carrito, pago</span></td>
+            <td><p class="sp sp-name">Chaqueta New Peplum</p></td>
+            <td class="role-spec">Archivo Medium 500 · interlineado 1,35</td>
+            <td class="role-size">15 (tarjeta) · 16 (carrito)</td></tr>
+        <tr><td><span class="role-name">Precio</span><span class="role-spec">como dato: tarjeta, lista, carrito, pago</span></td>
+            <td><p class="sp sp-price">S/ 159.90</p></td>
+            <td class="role-spec">Archivo SemiBold 600 · cifras tabulares<br>Tachado: Archivo 400, negro al 72 %</td>
+            <td class="role-size">15 · 16 px</td></tr>
+        <tr><td><span class="role-name">Precio que hace de titular</span><span class="role-spec">Hero, bloques de oferta</span></td>
+            <td><p class="sp sp-price-big">S/ 159.90</p></td>
+            <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 16 · desde 28 px</td>
+            <td class="role-size">28 px o más</td></tr>
+        <tr><td><span class="role-name">Título de bloque</span><span class="role-spec">pie, resumen, filtros</span></td>
+            <td><p class="sp sp-block">Total estimado</p></td>
+            <td class="role-spec">Archivo SemiBold 600 (el H3 del Brandbook)</td>
+            <td class="role-size">18 · 20 px</td></tr>
+        <tr><td><span class="role-name">Rótulo</span><span class="role-spec">etiquetas, insignias, kicker</span></td>
+            <td><p class="sp sp-label">Nueva colección</p></td>
+            <td class="role-spec">Archivo SemiBold 600 · ancho expandido (125) · MAYÚSCULAS · espaciado .09 em · terracota profundo</td>
+            <td class="role-size">12 px</td></tr>
+        <tr><td><span class="role-name">Cuerpo</span><span class="role-spec">lectura</span></td>
+            <td><p class="sp sp-body">Hecha en lotes pequeños, para que no se vea igual.</p></td>
+            <td class="role-spec">Archivo Regular 400 · interlineado 1,6 · negro</td>
+            <td class="role-size">16 px</td></tr>
+        <tr><td><span class="role-name">Aviso</span><span class="role-spec">notas, condiciones, microtexto</span></td>
+            <td><p class="sp sp-aviso">Pedidos de lunes a viernes. Provincias: 2 a 3 días.</p></td>
+            <td class="role-spec">Archivo Regular 400 · interlineado 1,45 · negro al 72 %</td>
+            <td class="role-size">14 px</td></tr>
+        <tr><td><span class="role-name">Botón</span><span class="role-spec">llamada a la acción</span></td>
+            <td><span class="sp-btn">Agregar al carrito</span></td>
+            <td class="role-spec">Archivo Bold 700 · MAYÚSCULAS · espaciado .08 em · marfil sobre negro</td>
+            <td class="role-size">12 px</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Reglas de apoyo</h2>
+    <ol class="rule-list">
+      <li><strong>Bodoni Moda, desde 28 px.</strong> Sus trazos finos necesitan tamaño: en titulares desde 28 px y en cifras editoriales desde 24 px. Por debajo de eso, el papel lo cumple Archivo.</li>
+      <li><strong>Tamaño óptico 16.</strong> Bodoni Moda trae un eje de tamaño óptico; en pantalla se usa 16 para titulares y 36 para cifras grandes. Donde el programa no permita ajustarlo (Canva), el kit trae las fuentes ya fijadas en 16 y 36.</li>
+      <li><strong>Máximo dos estilos por línea.</strong> Un rótulo y un titular, por ejemplo; no tres tipografías distintas en la misma línea.</li>
+      <li><strong>Un precio, un papel.</strong> Si es un dato (tarjeta, carrito, pago), va en Archivo 600. Si hace de titular, va en Bodoni, nunca en Archivo seminegrita agrandado.</li>
+      <li><strong>Cursiva de acento.</strong> Bodoni Moda Italic 400, en una o dos palabras del titular, nunca en una frase entera.</li>
+    </ol>
+  </section>
+
+  <!-- 04 COLOR -->
+  <section id="color" class="section section--surface">
+    <span class="section-label">04 — Color en pantalla</span>
+    <h1 class="section-title">La misma paleta, por <em>uso</em></h1>
+    <p class="section-intro">Los cinco colores del Brandbook son los mismos y conservan su valor. En pantalla, donde el texto es pequeño y la luz cambia, se suman cuatro versiones de esos colores. No son colores nuevos de marca: son el mismo marfil, el mismo terracota y el mismo negro, ajustados para leerse bien en un celular. Existen solo en pantalla, así que no tienen equivalente de impresión. Los equivalentes CMYK de los tres colores principales siguen siendo los de la Paleta de Colores del Brandbook.</p>
+
+    <h2 class="subsection-title">Paleta del Brandbook</h2>
+    <div class="sw-grid">
+      <div class="sw"><div class="sw-chip" style="background:#F7F3EE"></div><div class="sw-body"><span class="sw-name">Marfil cálido</span><span class="sw-vals">#F7F3EE · RGB 247, 243, 238</span><span class="sw-use">Fondo principal.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#2A1F18"></div><div class="sw-body"><span class="sw-name">Casi negro</span><span class="sw-vals">#2A1F18 · RGB 42, 31, 24</span><span class="sw-use">Texto, logotipo, fondos invertidos.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#C4714A"></div><div class="sw-body"><span class="sw-name">Terracota</span><span class="sw-vals">#C4714A · RGB 196, 113, 74</span><span class="sw-use">Titulares grandes, cursivas de acento, filetes y detalles.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#8A7D70"></div><div class="sw-body"><span class="sw-name">Gris cálido</span><span class="sw-vals">#8A7D70 · RGB 138, 125, 112</span><span class="sw-use">Superficies, líneas, íconos y titulares grandes.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#E5DDD2"></div><div class="sw-body"><span class="sw-name">Borde</span><span class="sw-vals">#E5DDD2 · RGB 229, 221, 210</span><span class="sw-use">Bordes y separadores.</span></div></div>
+    </div>
+
+    <h2 class="subsection-title">Versiones de pantalla<span class="tag-new">Pantalla</span></h2>
+    <div class="sw-grid">
+      <div class="sw"><div class="sw-chip" style="background:#9C4F2C"></div><div class="sw-body"><span class="sw-name">Terracota profundo</span><span class="sw-vals">#9C4F2C · RGB 156, 79, 44</span><span class="sw-use">El terracota para texto pequeño: rótulos, precios de oferta, enlaces.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#D9A487"></div><div class="sw-body"><span class="sw-name">Terracota suave</span><span class="sw-vals">#D9A487 · RGB 217, 164, 135</span><span class="sw-use">El terracota sobre fondo casi negro.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#F1EAE0"></div><div class="sw-body"><span class="sw-name">Marfil profundo</span><span class="sw-vals">#F1EAE0 · RGB 241, 234, 224</span><span class="sw-use">Superficie alterna: franjas y bloques sobre marfil.</span></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#635A54"></div><div class="sw-body"><span class="sw-name">Casi negro al 72 %</span><span class="sw-vals">#635A54 sobre marfil · RGB 99, 90, 84</span><span class="sw-use">Texto secundario: avisos, metadatos, notas.</span></div></div>
+    </div>
+
+    <h2 class="subsection-title">Qué color para cada uso</h2>
+    <table class="rules-table">
+      <thead><tr><th>Uso en pantalla</th><th>Color</th><th>Contraste medido</th></tr></thead>
+      <tbody>
+        <tr><td>Lectura (cuerpo, nombres, precios)</td><td><span class="use-chip" style="background:#F7F3EE;color:#2A1F18;border:1px solid #E5DDD2">Casi negro sobre marfil</span></td><td>14,5 : 1</td></tr>
+        <tr><td>Texto secundario (avisos, metadatos, notas)</td><td><span class="use-chip" style="background:#F7F3EE;color:#635A54;border:1px solid #E5DDD2">Casi negro al 72 %</span></td><td>6,1 : 1</td></tr>
+        <tr><td>Texto pequeño de acento (rótulos, enlaces, oferta)</td><td><span class="use-chip" style="background:#F7F3EE;color:#9C4F2C;border:1px solid #E5DDD2">Terracota profundo</span></td><td>5,3 : 1</td></tr>
+        <tr><td>Titulares grandes y cursivas de acento (desde 24 px)</td><td><span class="use-chip" style="background:#F7F3EE;color:#C4714A;border:1px solid #E5DDD2;font-family:'Bodoni Moda',serif;font-size:20px">Terracota</span></td><td>3,3 : 1 · apto para texto grande</td></tr>
+        <tr><td>Texto sobre fondo casi negro</td><td><span class="use-chip" style="background:#2A1F18;color:#F7F3EE">Marfil</span> <span class="use-chip" style="background:#2A1F18;color:#D9A487">Terracota suave</span></td><td>14,5 : 1 · 7,4 : 1</td></tr>
+        <tr><td>Líneas, filetes, íconos y superficies</td><td>Terracota, gris cálido, borde, marfil profundo</td><td>No es texto: sin requisito</td></tr>
+      </tbody>
+    </table>
+    <p class="small-note">Contrastes calculados con la fórmula WCAG 2.x sobre marfil #F7F3EE. Para texto normal se busca 4,5 : 1 o más; para texto grande (24 px o más), 3 : 1.</p>
+  </section>
+
+  <!-- 05 WEB -->
+  <section id="web" class="section section--white">
+    <span class="section-label">05 — Web</span>
+    <h1 class="section-title">Tarjeta, ficha y <em>carrito</em></h1>
+    <p class="section-intro">Los tres momentos de la compra, compuestos con la escala de arriba. Son ejemplos ilustrativos del criterio (la foto es una prenda real de WAY; el precio es de ejemplo), no maquetas de la tienda.</p>
+
+    <div class="mock-wrap">
+      <div>
+        <div class="m-card">
+          <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
+          <div class="m-info"><span class="m-name">Chaqueta New Peplum</span><span class="m-price">S/ 159.90</span></div>
+        </div>
+        <p class="mock-caption"><strong>Tarjeta.</strong> Nombre en Archivo 500 de 15 px; precio en Archivo 600 de 15 px.</p>
+      </div>
+      <div>
+        <div class="m-pdp">
+          <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
+          <div>
+            <span class="m-label">Nueva colección</span>
+            <h3>Chaqueta New Peplum</h3>
+            <span class="m-price">S/ 159.90</span>
+            <div class="m-sizes"><span>S</span><span class="on">M</span><span>L</span><span>XL</span></div>
+            <span class="sp-btn" style="display:block;text-align:center">Agregar al carrito</span>
+            <span class="m-ship">Envíos en Lima en 24 horas</span>
+            <p class="sp-aviso" style="margin-top:2px">Pedidos de lunes a viernes. Los del fin de semana llegan el lunes. Provincias: 2 a 3 días.</p>
+          </div>
+        </div>
+        <p class="mock-caption"><strong>Ficha.</strong> Rótulo en Archivo 600 expandido; nombre en Bodoni 500 (28 px en celular, 40 en computador); la promesa de envío lleva su condición debajo, en letra de aviso.</p>
+      </div>
+    </div>
+    <div class="mock-wrap">
+      <div>
+        <div class="m-cart">
+          <div class="m-line">
+            <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
+            <div><span class="m-name">Chaqueta New Peplum</span><span class="m-var">Beige · M</span></div>
+            <span class="m-p">S/ 159.90</span>
+          </div>
+          <div class="m-total"><span class="t">Total estimado</span><span class="v">S/ 159.90</span></div>
+          <p class="m-note">Envío calculado al pagar según tu distrito.</p>
+          <span class="sp-btn">Ir a pagar</span>
+        </div>
+        <p class="mock-caption"><strong>Carrito.</strong> Nombre en Archivo 500 de 16 px; variante como aviso de 14 px; título de bloque en Archivo 600 de 18 px.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 REDES -->
+  <section id="redes" class="section section--surface">
+    <span class="section-label">06 — Redes sociales</span>
+    <h1 class="section-title">Piezas de marca e historias <em>rápidas</em></h1>
+    <p class="section-intro">Las piezas se hacen de dos maneras, y cada una tiene su herramienta. Las piezas de marca (feed, carruseles, portadas, campañas) se diseñan en Canva o Illustrator con el kit de este anexo. Las historias del día a día se arman directamente en la app de Instagram, siguiendo las pautas de abajo.</p>
+
+    <h2 class="subsection-title">Formatos que ya define la guía de Instagram</h2>
+    <table class="rules-table fmt-table">
+      <thead><tr><th>Formato</th><th>Medida</th><th>Zona de texto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Historia</strong></td><td>1080 × 1920 px</td><td>Unos 250 px arriba y 250 px abajo quedan sin texto: la app los usa para su propia interfaz.</td></tr>
+        <tr><td><strong>Reel</strong></td><td>9:16 (1080 × 1920 px)</td><td>Subtítulos en el tercio inferior, dejando libre la columna derecha (alrededor del 15 al 18 %) para los íconos de la app.</td></tr>
+        <tr><td><strong>Feed</strong></td><td>Retícula 4:5 · ejemplos cuadrados de 1080 × 1080 px</td><td>Texto con la escala de este anexo; mismo criterio de zona y color de la guía.</td></tr>
+        <tr><td><strong>Portada de destacadas</strong></td><td>400 × 400 px (las ya creadas)</td><td>Ícono o nombre corto sobre fondo de la paleta.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Historias desde la app de Instagram</h2>
+    <p class="lead-p">La app no permite subir fuentes propias y el color se toma con el cuentagotas. Para que una historia rápida se vea de WAY:</p>
+    <ol class="rule-list">
+      <li><strong>Color con cuentagotas sobre la paleta.</strong> El kit trae una imagen de la paleta en formato historia (1080 × 1920 px). Se guarda en el rollo del celular, se abre en la historia y se toma el color con el cuentagotas, sin adivinarlo.</li>
+      <li><strong>Una fuente nativa por papel, siempre la misma:</strong> una para el titular, una para el rótulo y una para el cuerpo (máximo dos estilos por historia).</li>
+      <li><strong>Zona segura</strong> de 250 px arriba y abajo, sin cajas ni sombras detrás del texto.</li>
+      <li><strong>Precio con la etiqueta de producto de Instagram</strong> cuando el producto está en el catálogo, en vez de escribirlo a mano.</li>
+    </ol>
+    <table class="rules-table fmt-table">
+      <thead><tr><th>Papel</th><th>Fuente nativa de Instagram</th><th>Criterio</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Titular</strong></td><td class="pend-cell">Por confirmar por el diseñador</td><td>La que más se acerque a un serif de contraste alto (la voz de Bodoni).</td></tr>
+        <tr><td><strong>Rótulo</strong></td><td class="pend-cell">Por confirmar por el diseñador</td><td>Sans limpia en mayúsculas, con espaciado (la voz de Archivo expandida).</td></tr>
+        <tr><td><strong>Cuerpo</strong></td><td class="pend-cell">Por confirmar por el diseñador</td><td>Sans sencilla y legible (la voz de Archivo regular).</td></tr>
+      </tbody>
+    </table>
+    <p class="small-note">Las fuentes que ofrece Instagram cambian con las versiones de la app. La guía de Instagram menciona Classic, Modern, Neon, Typewriter y Strong; el diseñador elige en la app actual la más cercana a cada papel y la deja anotada aquí.</p>
+
+    <h2 class="subsection-title">Regla de uso</h2>
+    <div class="two-col">
+      <div class="comp-card"><p class="comp-card-title">Piezas de marca</p><p class="comp-card-desc">Canva (con el Kit de marca) o Illustrator. Feed, carruseles, portadas de reels y destacadas, campañas, y cualquier pieza que se reutilice.</p></div>
+      <div class="comp-card"><p class="comp-card-title">Historias rápidas</p><p class="comp-card-desc">Directamente en la app de Instagram, con las pautas de arriba: paleta con cuentagotas, una fuente nativa por papel y zona segura.</p></div>
+    </div>
+  </section>
+
+  <!-- 07 MENSAJES -->
+  <section id="mensajes" class="section section--white">
+    <span class="section-label">07 — WhatsApp y correo</span>
+    <h1 class="section-title">Cuando la marca llega a la <em>bandeja</em></h1>
+    <p class="section-intro">En WhatsApp y en el correo, la fuente la decide el aparato de quien lee. La marca se reconoce entonces por la voz, el orden del mensaje y los elementos que sí se controlan: el encabezado con el wordmark y los colores.</p>
+
+    <div class="mock-wrap">
+      <div>
+        <div class="wa-phone">
+          <div class="wa-head">WAY Peruvian</div>
+          <div class="wa-bubble">
+            <div class="wa-hdr"><b>WAY</b></div>
+            <div class="wa-txt">
+              <p><strong>Hola, Lucía.</strong> Tu pedido <strong>#1042</strong> ya está preparado.</p>
+              <p>En cuanto salga te avisamos por aquí. Si necesitas algo, escríbenos.</p>
+            </div>
+            <div class="wa-time">10:42</div>
+          </div>
+        </div>
+        <p class="mock-caption"><strong>WhatsApp.</strong> Ejemplo de formato (el texto es ilustrativo). Encabezado con el wordmark marfil sobre casi negro; mensaje corto, en voz cercana, con negrita solo para el dato clave. La letra del mensaje es la de WhatsApp.</p>
+      </div>
+      <div>
+        <div class="em-frame">
+          <div class="em-top"><b>WAY</b></div>
+          <div class="em-body">
+            <span class="sp-label">Tu pedido</span>
+            <p class="sp sp-title">Ya está <em>preparado</em></p>
+            <p class="sp-body" style="margin-bottom:20px">Hola, Lucía. Revisamos tu pedido #1042 con cuidado y está listo. Te avisaremos en cuanto salga.</p>
+            <span class="sp-btn">Ver mi pedido</span>
+          </div>
+          <div class="em-foot">Jr. Gamarra 939, tienda 118, Galería Damero · WhatsApp 989 485 890 · wayperuvian.pe</div>
+        </div>
+        <p class="mock-caption"><strong>Cabecera de correo.</strong> Banda casi negro con el wordmark; titular Bodoni 34 px; cuerpo Archivo 16 px; botón Archivo 700. Algunos programas de correo no cargan fuentes web: define alternativas (Georgia para Bodoni, Arial para Archivo).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 ENVÍOS -->
+  <section id="envios" class="section section--surface">
+    <span class="section-label">08 — Promesa de envío</span>
+    <h1 class="section-title">«Envíos en Lima en 24 <em>horas</em>»</h1>
+    <p class="section-intro">El envío en 24 horas es un diferenciador de WAY y se mantiene como tal. En pantalla, donde la frase se lee sin una persona que la aclare, lleva su condición a un costado: así se cumple lo que se promete.</p>
+
+    <div class="two-col">
+      <div class="comp-card" style="background:var(--color-marfil)">
+        <span class="sp-label">En la ficha, el carrito y las historias</span>
+        <p style="font-weight:600;font-size:16px;margin:12px 0 2px">Envíos en Lima en 24 horas</p>
+        <p class="sp-aviso">Pedidos de lunes a viernes. Los del fin de semana llegan el lunes. Provincias: 2 a 3 días.</p>
+      </div>
+      <div class="comp-card">
+        <p class="comp-card-title">Cómo se escribe</p>
+        <ul class="list-clean">
+          <li>La frase principal en Archivo 600; la condición debajo, en letra de aviso (Archivo 400, 14 px, casi negro al 72 %).</li>
+          <li>La condición va siempre que la frase aparece en una pantalla; en el empaque y en los impresos, la frase sigue como en el Brandbook.</li>
+          <li>Hoy (el mismo día) solo se menciona con su condición de horario y distrito.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 KIT -->
+  <section id="kit" class="section section--white">
+    <span class="section-label">09 — Kit y herramientas</span>
+    <h1 class="section-title">Para quien <em>diseña</em></h1>
+    <p class="section-intro">El kit vive en la carpeta <span class="code">entrega-cliente/07-Pantallas-y-Digital</span> y está pensado para Canva e Illustrator, que son las herramientas del día a día.</p>
+
+    <h2 class="subsection-title">Qué trae el kit</h2>
+    <table class="rules-table fmt-table">
+      <thead><tr><th>Archivo</th><th>Para qué sirve</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code">Colores-WAY.ase</span></td><td>Muestras de color para Illustrator (y otros programas de Adobe).</td></tr>
+        <tr><td><span class="code">Colores-WAY.txt</span></td><td>Lista de nombres y HEX para pegar en el Kit de marca de Canva. Sirve también en el plan gratuito.</td></tr>
+        <tr><td><span class="code">Paleta-historias-1080x1920.png</span></td><td>Imagen de la paleta para guardar en el celular y tomar los colores con el cuentagotas de Instagram.</td></tr>
+        <tr><td><span class="code">Fuentes-estaticas/</span></td><td>Bodoni Moda (16pt Medium, 16pt Italic, 36pt Medium) y Archivo (Regular, Medium, SemiBold, Bold, Expanded SemiBold), con su licencia OFL. Para subir a Canva.</td></tr>
+        <tr><td><span class="code">Guia-Canva-e-Illustrator.pdf</span></td><td>Paso a paso: Kit de marca, estilos de texto y piezas de redes.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="subsection-title">Canva</h2>
+    <ol class="rule-list">
+      <li><strong>Kit de marca con colores:</strong> pegar los HEX de <span class="code">Colores-WAY.txt</span>. Funciona en el plan gratuito.</li>
+      <li><strong>Fuentes propias y Kit de marca completo:</strong> son del plan de pago (Canva Pro). Recomendado para que las piezas salgan con Bodoni Moda y Archivo reales; sin él, se usa la fuente de la biblioteca más cercana y la pieza se ve parecida, no idéntica.</li>
+      <li>Canva no admite fuentes variables, por eso el kit trae versiones estáticas: <em>Bodoni Moda 16pt Medium</em> (titulares), <em>Bodoni Moda 16pt Italic</em> (acentos) y <em>Bodoni Moda 36pt Medium</em> (cifras), más Archivo en sus pesos.</li>
+      <li>Crear en el Kit de marca los estilos de texto de la tabla de la sección 03 (titular, rótulo, cuerpo, aviso, precio) para no decidirlos cada vez.</li>
+    </ol>
+
+    <h2 class="subsection-title">Illustrator</h2>
+    <ol class="rule-list">
+      <li><strong>Color:</strong> importar <span class="code">Colores-WAY.ase</span> desde el panel Muestras (abrir biblioteca de muestras → otra biblioteca).</li>
+      <li><strong>Fuentes:</strong> instalar las variables de <span class="code">02-Tipografia</span>. Illustrator permite ajustar peso y ancho de una fuente variable; si en la versión del diseñador no aparece el control de tamaño óptico, se usan las estáticas del kit (16pt y 36pt), que quedan iguales.</li>
+      <li><strong>Logo:</strong> siempre desde <span class="code">01-Logo</span>, nunca escrito a mano.</li>
+    </ol>
+    <p class="small-note">Por confirmar por el diseñador en su versión: el control de tamaño óptico de Illustrator y el menú exacto de importación de muestras.</p>
+  </section>
+
+  <p class="print-only-credit">Identidad de marca — Juan Mosquera</p>
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  function updateNav() {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+  navLinks.forEach(a => a.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); }));
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('visible');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>
