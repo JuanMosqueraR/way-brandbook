@@ -231,6 +231,7 @@
     .sp-prod { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.1; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
     .sp-name { font-weight: 500; font-size: 15px; line-height: 1.35; }
     .sp-price { font-weight: 600; font-size: 15px; font-variant-numeric: tabular-nums; }
+    .sp-price-ficha { font-weight: 500; font-size: 20px; line-height: 28px; font-variant-numeric: normal; }
     .sp-price-big { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.1; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
     .sp-block { font-weight: 600; font-size: 18px; }
     .sp-label { font-weight: 600; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-stretch: 125%; color: var(--color-terracota-ink); }
@@ -263,17 +264,20 @@
     .m-pdp img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 22%; }
     .m-pdp .m-label { font-weight: 600; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-stretch: 125%; color: var(--color-terracota-ink); display: block; margin-bottom: 8px; }
     .m-pdp h3 { font-family: var(--font-display); font-weight: 500; font-size: 32px; line-height: 1.1; letter-spacing: -.022em; margin-bottom: 10px; font-optical-sizing: none; font-variation-settings: 'opsz' 16; }
-    .m-pdp .m-price { font-weight: 600; font-size: 20px; font-variant-numeric: tabular-nums; margin-bottom: 14px; display: block; }
+    .m-pdp .m-price { font-weight: 500; font-size: 20px; line-height: 28px; margin-bottom: 14px; display: block; }
     .m-sizes { display: flex; gap: 8px; margin-bottom: 14px; }
     .m-sizes span { width: 42px; height: 42px; border: 1px solid var(--color-borde); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; }
     .m-sizes span.on { background: var(--color-negro); color: var(--color-marfil); border-color: var(--color-negro); }
     .m-ship { font-size: 14px; font-weight: 600; margin-top: 14px; display: block; }
-    .m-cart { width: 420px; max-width: 100%; background: var(--color-marfil); border: 1px solid var(--color-borde); padding: var(--space-5); }
-    .m-line { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--color-borde); }
+    .web-grid { display: grid; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: var(--space-8) var(--space-10); align-items: start; margin: var(--space-6) 0; }
+    .web-grid > div { min-width: 0; }
+    .m-cart { width: 640px; max-width: 100%; background: var(--color-marfil); border: 1px solid var(--color-borde); padding: var(--space-5); }
+    .m-line { display: grid; grid-template-columns: 64px 1fr auto auto; column-gap: 24px; gap: 12px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--color-borde); }
     .m-line img { width: 64px; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 22%; }
     .m-line .m-name { font-weight: 500; font-size: 16px; line-height: 1.3; display: block; }
     .m-line .m-var { font-size: 14px; color: var(--ink-2); display: block; margin-top: 2px; }
     .m-line .m-p { font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; }
+    .m-line .m-q { font-size: 14px; color: var(--ink-2); }
     .m-total { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 4px; }
     .m-total .t { font-weight: 600; font-size: 18px; }
     .m-total .v { font-weight: 600; font-size: 18px; font-variant-numeric: tabular-nums; }
@@ -302,6 +306,9 @@
       .two-col, .three-col { grid-template-columns: 1fr; }
       .sw-grid { grid-template-columns: repeat(2, 1fr); }
       .m-pdp { grid-template-columns: 1fr; padding: var(--space-4); }
+      .m-pdp h3 { font-size: 28px; }
+      .web-grid { grid-template-columns: 1fr; }
+      .m-cart { width: 100%; }
       .m-card { width: 100%; max-width: 260px; }
       .wa-phone, .em-frame { width: 100%; }
       .sp-title { font-size: 28px; }
@@ -436,7 +443,7 @@
         <tr><td><span class="role-name">Nombre de producto</span><span class="role-spec">encabezado de la ficha</span></td>
             <td><p class="sp sp-prod">Chaqueta New Peplum</p></td>
             <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 16</td>
-            <td class="role-size">28 · 40 px</td></tr>
+            <td class="role-size">28 · 32 px</td></tr>
         <tr><td><span class="role-name">Nombre en lista y compra</span><span class="role-spec">tarjeta, carrito, pago</span></td>
             <td><p class="sp sp-name">Chaqueta New Peplum</p></td>
             <td class="role-spec">Archivo Medium 500 · interlineado 1,35</td>
@@ -445,6 +452,10 @@
             <td><p class="sp sp-price">S/ 159.90</p></td>
             <td class="role-spec">Archivo SemiBold 600 · cifras tabulares<br>Tachado: Archivo 400, negro al 72 %</td>
             <td class="role-size">15 · 16 px</td></tr>
+        <tr><td><span class="role-name">Precio en la ficha</span><span class="role-spec">junto al nombre del producto</span></td>
+            <td><p class="sp sp-price-ficha">S/ 169.00</p></td>
+            <td class="role-spec">Archivo Medium 500<br>Precio anterior tachado: Archivo 400, 12 px, negro al 72 %</td>
+            <td class="role-size">18 · 20 px</td></tr>
         <tr><td><span class="role-name">Precio que hace de titular</span><span class="role-spec">Hero, bloques de oferta</span></td>
             <td><p class="sp sp-price-big">S/ 159.90</p></td>
             <td class="role-spec">Bodoni Moda Medium 500 · tamaño óptico 16 · desde 28 px</td>
@@ -477,7 +488,7 @@
       <li><strong>Bodoni Moda, desde 28 px.</strong> Sus trazos finos necesitan tamaño: en titulares desde 28 px y en cifras editoriales desde 24 px. Por debajo de eso, el papel lo cumple Archivo.</li>
       <li><strong>Tamaño óptico 16.</strong> Bodoni Moda trae un eje de tamaño óptico; en pantalla se usa 16 para titulares y 36 para cifras grandes. Donde el programa no permita ajustarlo (Canva), el kit trae las fuentes ya fijadas en 16 y 36.</li>
       <li><strong>Máximo dos estilos por línea.</strong> Un rótulo y un titular, por ejemplo; no tres tipografías distintas en la misma línea.</li>
-      <li><strong>Un precio, un papel.</strong> Si es un dato (tarjeta, carrito, pago), va en Archivo 600. Si hace de titular, va en Bodoni, nunca en Archivo seminegrita agrandado.</li>
+      <li><strong>Un precio, un papel.</strong> Si es un dato (tarjeta, carrito, pago), va en Archivo 600; en la ficha, junto al nombre, en Archivo 500. Si hace de titular, va en Bodoni, nunca en Archivo seminegrita agrandado.</li>
       <li><strong>Cursiva de acento.</strong> Bodoni Moda Italic 400, en una o dos palabras del titular, nunca en una frase entera.</li>
     </ol>
   </section>
@@ -526,39 +537,38 @@
     <h1 class="section-title">Tarjeta, ficha y <em>carrito</em></h1>
     <p class="section-intro">Los tres momentos de la compra, compuestos con la escala de arriba. Son ejemplos ilustrativos del criterio (la foto es una prenda real de WAY; el precio es de ejemplo), no maquetas de la tienda.</p>
 
-    <div class="mock-wrap">
-      <div>
-        <div class="m-card">
-          <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
-          <div class="m-info"><span class="m-name">Chaqueta New Peplum</span><span class="m-price">S/ 159.90</span></div>
-        </div>
-        <p class="mock-caption"><strong>Tarjeta.</strong> Nombre en Archivo 500 de 15 px; precio en Archivo 600 de 15 px.</p>
-      </div>
+    <div class="web-grid">
       <div>
         <div class="m-pdp">
           <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
           <div>
             <span class="m-label">Nueva colección</span>
             <h3>Chaqueta New Peplum</h3>
-            <span class="m-price">S/ 159.90</span>
+            <span class="m-price">S/ 169.00</span>
             <div class="m-sizes"><span>S</span><span class="on">M</span><span>L</span><span>XL</span></div>
             <span class="sp-btn" style="display:block;text-align:center">Agregar al carrito</span>
             <span class="m-ship">Envíos en Lima en 24 horas</span>
             <p class="sp-aviso" style="margin-top:2px">Pedidos de lunes a viernes. Los del fin de semana llegan el lunes. Provincias: 2 a 3 días.</p>
           </div>
         </div>
-        <p class="mock-caption"><strong>Ficha.</strong> Rótulo en Archivo 600 expandido; nombre en Bodoni 500 (28 px en celular, 40 en computador); la promesa de envío lleva su condición debajo, en letra de aviso.</p>
+        <p class="mock-caption"><strong>Ficha.</strong> Rótulo en Archivo 600 expandido; nombre en Bodoni 500 (28 px en celular, 32 en computador); precio en Archivo 500 (18 y 20 px); la promesa de envío lleva su condición debajo, en letra de aviso.</p>
       </div>
-    </div>
-    <div class="mock-wrap">
+      <div>
+        <div class="m-card">
+          <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
+          <div class="m-info"><span class="m-name">Chaqueta New Peplum</span><span class="m-price">S/ 169.00</span></div>
+        </div>
+        <p class="mock-caption"><strong>Tarjeta.</strong> Nombre en Archivo 500 de 15 px; precio en Archivo 600 de 15 px.</p>
+      </div>
       <div>
         <div class="m-cart">
           <div class="m-line">
             <img src="assets/photos/782310735_18033905597831988_2783986159780317557_n.jpg" alt="Prenda de ejemplo">
             <div><span class="m-name">Chaqueta New Peplum</span><span class="m-var">Beige · M</span></div>
-            <span class="m-p">S/ 159.90</span>
+            <span class="m-q">Cant. 1</span>
+            <span class="m-p">S/ 169.00</span>
           </div>
-          <div class="m-total"><span class="t">Total estimado</span><span class="v">S/ 159.90</span></div>
+          <div class="m-total"><span class="t">Total estimado</span><span class="v">S/ 169.00</span></div>
           <p class="m-note">Envío calculado al pagar según tu distrito.</p>
           <span class="sp-btn">Ir a pagar</span>
         </div>
